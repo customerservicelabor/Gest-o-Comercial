@@ -1,0 +1,48 @@
+{
+  "updated_at": "30/01/2026",
+  "kpis_dia": {
+    "pedidos_faturados": 0,
+    "valor_faturado": 0.0,
+    "margem_media": 0.0,
+    "pedidos_abertos": 23,
+    "valor_em_risco": 108905.48
+  },
+  "faturamento_ultimos_3_dias": [
+    { "data": "28/01/2026", "valor": 841918.13 },
+    { "data": "29/01/2026", "valor": 1772211.99 },
+    { "data": "30/01/2026", "valor": 0.0 }
+  ],
+  "status_abertos_macro": [
+    { "status": "ANALISE DE CREDITO", "quantidade": 10, "valor": 106273.88 },
+    { "status": "ALVARA SANITARIO", "quantidade": 1, "valor": 2631.6 },
+    { "status": "BLOQUEADO", "quantidade": 0, "valor": 0.0 },
+    { "status": "PROCESSUAIS", "quantidade": 12, "valor": 140631.44 }
+  ],
+  "status_detalhado": [
+    { "status": "Pedido incluido", "quantidade": 0, "valor": 0.0 },
+    { "status": "Ecommerce", "quantidade": 0, "valor": 0.0 },
+    { "status": "Aguardando Liberação", "quantidade": 0, "valor": 0.0 },
+    { "status": "Alvará Sanitário", "quantidade": 1, "valor": 2631.6 },
+    { "status": "Bloqueado por regra", "quantidade": 0, "valor": 0.0 },
+    { "status": "Análise de Crédito", "quantidade": 10, "valor": 106273.88 },
+    { "status": "Aguard. Envio Separação", "quantidade": 3, "valor": 3159.43 },
+    { "status": "Em Separação", "quantidade": 9, "valor": 137472.01 },
+    { "status": "Separado", "quantidade": 0, "valor": 0.0 },
+    { "status": "Faturado", "quantidade": 0, "valor": 0.0 }
+  ],
+  "analise_credito": [
+    { "pedido": 676688, "cliente": "MONTALVAO COMERCIAL", "uf": "REVENDEDOR", "valor": 1980.0, "margem": 19.3, "vendedor": "JOELMA NUNES" },
+    { "pedido": 676696, "cliente": "AARAO MED", "uf": "REVENDEDOR", "valor": 46498.92, "margem": 39.55, "vendedor": "FLAVIA VELIS" },
+    { "pedido": 676748, "cliente": "CONSUMERSLAB PRODUTO", "uf": "REVENDEDOR", "valor": 700.8, "margem": 18.86, "vendedor": "FLAVIA VELIS" },
+    { "pedido": 676774, "cliente": "HOSPITAL DE CLINICAS", "uf": "CONS.FINAL", "valor": 4760.58, "margem": 33.55, "vendedor": "PRISCILA SOARES SILVA" },
+    { "pedido": 676799, "cliente": "SM HOSPITALAR", "uf": "REVENDEDOR", "valor": 24510.0, "margem": 22.59, "vendedor": "JOELMA NUNES" },
+    { "pedido": 676826, "cliente": "CAPIXABA SAUDE SERRA", "uf": "REVENDEDOR", "valor": 2870.5, "margem": 34.39, "vendedor": "REP. BILLYMED REPRESENTAC" },
+    { "pedido": 676865, "cliente": "JP MEDICAMENTOS E MA", "uf": "REVENDEDOR", "valor": 8898.96, "margem": 40.22, "vendedor": "DENNYS SANTOS" },
+    { "pedido": 676967, "cliente": "HOSPITAL REGIONAL", "uf": "CONS.FINAL", "valor": 916.2, "margem": 39.06, "vendedor": "REP. CAREMED" },
+    { "pedido": 677042, "cliente": "ESSENCIA SAUDE DISTR", "uf": "REVENDEDOR", "valor": 14372.0, "margem": 22.37, "vendedor": "LUCIA FLORESTA" },
+    { "pedido": 677064, "cliente": "ALPHAMED HOSPITALAR", "uf": "REVENDEDOR", "valor": 765.92, "margem": 13.79, "vendedor": "REP. SUPREMO" }
+  ],
+  "bloqueios_alvara": [
+    { "pedido": 676996, "cliente": "MEDCLEAN COMERCIO DE", "motivo": "ALVARA SANITARIO", "valor": 2631.6, "margem": 2.7, "vendedor": "ALICE RODRIGUES" }
+  ]
+}
