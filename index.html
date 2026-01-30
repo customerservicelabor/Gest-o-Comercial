@@ -26,8 +26,7 @@
       --padY:14px;
 
       /* alturas para caber em notebook */
-      --hLeftTop:120px;
-      --hLeftMid:170px;
+      --hLeftTop:120px; /* histórico */
     }
 
     *{ box-sizing:border-box; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
@@ -40,6 +39,7 @@
                   linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
+    /* HEADER */
     header{
       height:var(--headerH);
       padding:0 var(--padX);
@@ -49,13 +49,6 @@
       border-bottom:1px solid var(--border);
       background: rgba(6,9,19,.65);
       backdrop-filter: blur(8px);
-    }
-
-    .brand{
-      display:flex;
-      align-items:baseline;
-      gap:10px;
-      min-width:0;
     }
 
     header h1{
@@ -74,9 +67,9 @@
       color:var(--muted);
       white-space:nowrap;
     }
-
     header .meta strong{ color:var(--text); font-weight:650; }
 
+    /* APP GRID */
     main{
       height: calc(100vh - var(--headerH));
       padding: var(--padY) var(--padX);
@@ -86,9 +79,10 @@
       overflow:hidden;
     }
 
+    /* KPI STRIP (4 cards agora) */
     .kpis{
       display:grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--gap);
     }
 
@@ -107,9 +101,10 @@
     .warn{ color:var(--warn); }
     .bad{ color:var(--bad); }
 
+    /* BODY LAYOUT */
     .layout{
       display:grid;
-      grid-template-columns: 420px 1fr;
+      grid-template-columns: 460px 1fr;
       gap: var(--gap);
       min-height:0;
       overflow:hidden;
@@ -117,13 +112,13 @@
 
     .leftStack{
       display:grid;
-      grid-template-rows: var(--hLeftTop) var(--hLeftMid) 1fr;
+      grid-template-rows: var(--hLeftTop) 1fr;
       gap: var(--gap);
       min-height:0;
       overflow:hidden;
     }
 
-    .rightGrid{
+    .rightStack{
       display:grid;
       grid-template-columns: 1.25fr .95fr;
       gap: var(--gap);
@@ -131,6 +126,7 @@
       overflow:hidden;
     }
 
+    /* CARDS (dark) */
     .card{
       background: var(--card);
       border:1px solid var(--border);
@@ -178,6 +174,56 @@
     .badge.warn{ background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.22); }
     .badge.good{ background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.22); }
 
+    /* TOOLBAR (ordenar) */
+    .toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:-2px;
+      margin-bottom:10px;
+    }
+
+    .toolbar .left{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+    }
+
+    .toolbar label{
+      font-size:11px;
+      color: var(--muted);
+      font-weight:750;
+      letter-spacing:.2px;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+
+    .toolbar select{
+      background: var(--card2);
+      border:1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size:12px;
+      outline:none;
+    }
+
+    .btn{
+      background: rgba(56,189,248,.10);
+      border: 1px solid rgba(56,189,248,.20);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size:12px;
+      font-weight:750;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{ filter: brightness(1.08); }
+
+    /* TABLE WRAP (dark) */
     .tableWrap{
       border:1px solid var(--border);
       border-radius: 10px;
@@ -213,6 +259,87 @@
       border-bottom: 1px solid var(--border);
     }
 
+    /* ====== CARD BRANCO (STATUS DETALHADO) ====== */
+    .cardLight{
+      background:#ffffff;
+      border: 0;
+      border-radius: 16px;
+      padding: 0;
+      overflow:hidden;
+      box-shadow: 0 16px 30px rgba(0,0,0,.25);
+    }
+
+    .lightTop{
+      background: #ffffff;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom: 1px solid #e6e7ea;
+    }
+
+    .lightTop .title{
+      font-size: 16px;
+      font-weight: 800;
+      color:#0b1020;
+    }
+
+    .lightTop .pill{
+      font-size: 12px;
+      font-weight: 800;
+      color:#0b1020;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    .lightTableWrap{
+      background:#ffffff;
+      overflow:auto;
+      min-height:0;
+    }
+
+    .lightTable{
+      width:100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .lightTable thead th{
+      background: #0b1020;
+      color:#ffffff;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .35px;
+      font-size: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      border-bottom: 0;
+    }
+
+    .lightTable td, .lightTable th{
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      height: 40px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      color:#0b1020;
+    }
+
+    .lightTable tbody tr:nth-child(odd){ background:#f3f4f6; }
+    .lightTable tbody tr:nth-child(even){ background:#efefea; }
+
+    .rowGold{ background:#e8d7aa !important; }
+    .rowGreen{ background:#bfe7cf !important; }
+
+    .lightTable td.num{ text-align:center; font-weight:800; }
+    .lightTable td.val{ text-align:right; font-weight:900; }
+
+    /* FOOTER */
     .footer{
       margin-top: 10px;
       font-size: 11px;
@@ -220,18 +347,17 @@
       text-align: right;
     }
 
+    /* RESPONSIVO */
     @media (max-width: 1366px){
-      :root{ --padX:14px; --padY:12px; --gap:10px; --rowH:30px; --hLeftTop:112px; --hLeftMid:160px; }
-      .layout{ grid-template-columns: 390px 1fr; }
+      :root{ --padX:14px; --padY:12px; --gap:10px; --rowH:30px; --hLeftTop:112px; }
+      .layout{ grid-template-columns: 440px 1fr; }
       .kpi .value{ font-size:17px; }
     }
 
     @media (max-width: 1150px){
-      main{ grid-template-rows: auto 1fr; }
       .kpis{ grid-template-columns: repeat(2, 1fr); }
       .layout{ grid-template-columns: 1fr; }
-      .rightGrid{ grid-template-columns: 1fr; }
-      .leftStack{ grid-template-rows: auto auto auto; }
+      .rightStack{ grid-template-columns: 1fr; }
       .footer{ text-align:left; }
     }
   </style>
@@ -239,15 +365,13 @@
 <body>
 
 <header>
-  <div class="brand">
-    <h1>Painel Diário – Gestão de Pedidos</h1>
-  </div>
+  <h1>Painel Diário – Gestão de Pedidos</h1>
   <div class="meta">Atualizado em: <strong id="updatedAt">--/--/----</strong></div>
 </header>
 
 <main>
 
-  <!-- KPIs -->
+  <!-- KPIs (sem margem) -->
   <section class="kpis">
     <div class="kpi">
       <div class="label">Pedidos Faturados Hoje</div>
@@ -258,15 +382,11 @@
       <div class="value good" id="kpiValorFaturado">R$ 0,00</div>
     </div>
     <div class="kpi">
-      <div class="label">Margem Média Hoje</div>
-      <div class="value good" id="kpiMargemMedia">0%</div>
-    </div>
-    <div class="kpi">
       <div class="label">Pedidos em Aberto</div>
       <div class="value warn" id="kpiPedidosAbertos">0</div>
     </div>
     <div class="kpi">
-      <div class="label">Valor em Risco</div>
+      <div class="label">Valor em Risco (Crédito + Alvará + Bloqueio)</div>
       <div class="value bad" id="kpiValorRisco">R$ 0,00</div>
     </div>
   </section>
@@ -277,6 +397,7 @@
     <!-- ESQUERDA -->
     <div class="leftStack">
 
+      <!-- Histórico 3 dias -->
       <section class="card">
         <div class="cardHeader">
           <div class="cardTitle">Faturamento – últimos 3 dias</div>
@@ -292,54 +413,62 @@
         </div>
       </section>
 
-      <section class="card">
-        <div class="cardHeader">
-          <div class="cardTitle">Abertos – visão macro</div>
-          <div class="badge warn" id="badgeAbertos">0 abertos</div>
+      <!-- Status detalhado (DESTACADO / BRANCO) -->
+      <section class="cardLight" style="min-height:0;">
+        <div class="lightTop">
+          <div class="title">Gestão de Pedidos</div>
+          <div class="pill" id="pillItens">0 itens</div>
         </div>
-        <div class="tableWrap" aria-label="Tabela status macro">
-          <table>
+        <div class="lightTableWrap" aria-label="Tabela status detalhado">
+          <table class="lightTable">
             <thead>
-              <tr><th>Status</th><th style="width:18%">Qtd</th><th style="width:32%">Valor</th></tr>
+              <tr>
+                <th style="width:56%">Pedidos</th>
+                <th style="width:18%; text-align:center;">Quantidade</th>
+                <th style="width:26%; text-align:right;">Valor</th>
+              </tr>
             </thead>
-            <tbody id="tblStatusAbertosMacro"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="cardHeader">
-          <div class="cardTitle">Status detalhado (dia)</div>
-          <div class="badge" id="badgeTotalDia">0 pedidos</div>
-        </div>
-        <div class="tableWrap" aria-label="Tabela status detalhado">
-          <table>
-            <thead>
-              <tr><th>Status</th><th style="width:18%">Qtd</th><th style="width:32%">Valor</th></tr>
-            </thead>
-            <tbody id="tblStatusDetalhado"></tbody>
+            <tbody id="tblStatusDetalhadoLight"></tbody>
           </table>
         </div>
       </section>
 
     </div>
 
-    <!-- DIREITA -->
-    <section class="rightGrid">
+    <!-- DIREITA: RISCO -->
+    <section class="rightStack">
 
+      <!-- Crédito -->
       <section class="card">
         <div class="cardHeader">
           <div class="cardTitle">Risco – análise de crédito</div>
           <div class="badge bad" id="badgeCredito">0 pedidos</div>
         </div>
+
+        <div class="toolbar">
+          <div class="left">
+            <label for="sortCreditoBy">Ordenar por</label>
+            <select id="sortCreditoBy">
+              <option value="valor">Valor</option>
+              <option value="margem">Margem</option>
+              <option value="data_pedido">Data</option>
+              <option value="pedido">Pedido</option>
+              <option value="cliente">Cliente</option>
+            </select>
+            <button class="btn" id="sortCreditoDir" title="Alternar direção">Desc ↓</button>
+          </div>
+          <button class="btn" id="refreshBtn" title="Recarregar data.json">Recarregar</button>
+        </div>
+
         <div class="tableWrap" aria-label="Tabela análise de crédito">
           <table>
             <thead>
               <tr>
-                <th style="width:14%">Pedido</th>
+                <th style="width:12%">Pedido</th>
+                <th style="width:14%">Data</th>
                 <th>Cliente</th>
                 <th style="width:10%">UF</th>
-                <th style="width:18%">Valor</th>
+                <th style="width:16%">Valor</th>
                 <th style="width:12%">Margem</th>
                 <th style="width:18%">Vendedor</th>
               </tr>
@@ -349,19 +478,37 @@
         </div>
       </section>
 
+      <!-- Bloqueios / Alvará -->
       <section class="card">
         <div class="cardHeader">
           <div class="cardTitle">Risco – bloqueios / alvará</div>
           <div class="badge bad" id="badgeBloq">0 pedidos</div>
         </div>
+
+        <div class="toolbar">
+          <div class="left">
+            <label for="sortBloqBy">Ordenar por</label>
+            <select id="sortBloqBy">
+              <option value="valor">Valor</option>
+              <option value="margem">Margem</option>
+              <option value="data_pedido">Data</option>
+              <option value="pedido">Pedido</option>
+              <option value="cliente">Cliente</option>
+            </select>
+            <button class="btn" id="sortBloqDir" title="Alternar direção">Desc ↓</button>
+          </div>
+          <div></div>
+        </div>
+
         <div class="tableWrap" aria-label="Tabela bloqueios e alvará">
           <table>
             <thead>
               <tr>
-                <th style="width:14%">Pedido</th>
+                <th style="width:12%">Pedido</th>
+                <th style="width:14%">Data</th>
                 <th>Cliente</th>
-                <th style="width:24%">Motivo</th>
-                <th style="width:18%">Valor</th>
+                <th style="width:22%">Motivo</th>
+                <th style="width:16%">Valor</th>
                 <th style="width:12%">Margem</th>
                 <th style="width:18%">Vendedor</th>
               </tr>
@@ -376,25 +523,45 @@
   </section>
 
   <div class="footer">Painel de uso gerencial – visão diária</div>
-
 </main>
 
 <script>
-  // ====== Fallback local (se data.json falhar) ======
+  // ====== Fallback (se data.json falhar) ======
   const dashboardDataFallback = {
     updated_at: "— (fallback)",
-    kpis_dia: { pedidos_faturados: 0, valor_faturado: 0, margem_media: 0, pedidos_abertos: 0, valor_em_risco: 0 },
+    kpis_dia: { pedidos_faturados: 0, valor_faturado: 0, pedidos_abertos: 0, valor_em_risco: 0 },
     faturamento_ultimos_3_dias: [],
-    status_abertos_macro: [],
     status_detalhado: [],
     analise_credito: [],
     bloqueios_alvara: []
   };
 
+  // ====== ESTADO DE ORDENAÇÃO ======
+  const sortState = {
+    credito: { by: "valor", dir: "desc" },
+    bloq: { by: "valor", dir: "desc" }
+  };
+
   // ====== HELPERS ======
+  const el = (id) => document.getElementById(id);
+
   const fmtBRL = (n) => (isFinite(n) ? n : 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   const fmtPct = (n) => `${(isFinite(n) ? n : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`;
-  const el = (id) => document.getElementById(id);
+
+  function parseBRDate(d){
+    // "DD/MM/YYYY" -> número comparável
+    if(!d || typeof d !== "string") return 0;
+    const m = d.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    if(!m) return 0;
+    const dd = Number(m[1]), mm = Number(m[2]), yy = Number(m[3]);
+    return yy*10000 + mm*100 + dd;
+  }
+
+  function normalizeText(s){
+    return String(s ?? "")
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toUpperCase().trim();
+  }
 
   function rowHtml(cells){
     return `<tr>${cells.map(c => `<td title="${String(c).replaceAll('"','&quot;')}">${c}</td>`).join('')}</tr>`;
@@ -408,76 +575,138 @@
     if(tone) b.classList.add(tone);
   }
 
+  function sortArray(arr, by, dir){
+    const factor = dir === "asc" ? 1 : -1;
+    const copy = [...(arr || [])];
+
+    const getter = (x) => {
+      if(by === "valor") return Number(x.valor) || 0;
+      if(by === "margem") return Number(x.margem) || 0;
+      if(by === "data_pedido") return parseBRDate(x.data_pedido);
+      if(by === "pedido") return Number(x.pedido) || 0;
+      if(by === "cliente") return normalizeText(x.cliente);
+      return 0;
+    };
+
+    copy.sort((a,b) => {
+      const A = getter(a), B = getter(b);
+      if(typeof A === "string" && typeof B === "string") return A.localeCompare(B) * factor;
+      return (A === B ? 0 : (A > B ? 1 : -1)) * factor;
+    });
+
+    return copy;
+  }
+
   // ====== RENDER ======
   function render(data){
     el('updatedAt').textContent = data.updated_at || '--/--/----';
 
     el('kpiPedidosFaturados').textContent = data.kpis_dia?.pedidos_faturados ?? 0;
     el('kpiValorFaturado').textContent = fmtBRL(data.kpis_dia?.valor_faturado ?? 0);
-    el('kpiMargemMedia').textContent = fmtPct(data.kpis_dia?.margem_media ?? 0);
     el('kpiPedidosAbertos').textContent = data.kpis_dia?.pedidos_abertos ?? 0;
     el('kpiValorRisco').textContent = fmtBRL(data.kpis_dia?.valor_em_risco ?? 0);
 
-    setBadge('badgeAbertos', `${data.kpis_dia?.pedidos_abertos ?? 0} abertos`, 'warn');
-
-    // 3 dias
+    // Histórico 3 dias
     const fatBody = el('tblFaturamento3dias');
     fatBody.innerHTML = (data.faturamento_ultimos_3_dias || [])
+      .slice(-3)
       .map(x => rowHtml([x.data, fmtBRL(x.valor)])).join('') || rowHtml(['—', fmtBRL(0)]);
 
-    // macro abertos
-    const macroBody = el('tblStatusAbertosMacro');
-    macroBody.innerHTML = (data.status_abertos_macro || [])
-      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('') || rowHtml(['—', 0, fmtBRL(0)]);
+    // ===== Status detalhado (card branco) =====
+    const status = (data.status_detalhado || []);
+    el('pillItens').textContent = `${status.length} itens`;
 
-    // detalhado
-    const detBody = el('tblStatusDetalhado');
-    detBody.innerHTML = (data.status_detalhado || [])
-      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('') || rowHtml(['—', 0, fmtBRL(0)]);
+    const tbodyLight = el('tblStatusDetalhadoLight');
+    tbodyLight.innerHTML = status.map(x => {
+      const st = String(x.status ?? "");
+      const stN = normalizeText(st);
 
-    const totalDia = (data.status_detalhado || []).reduce((a,x)=>a+(Number(x.quantidade)||0),0);
-    setBadge('badgeTotalDia', `${totalDia} pedidos`, null);
+      let cls = "";
+      if(stN === "TOTAL EM DISPUTA") cls = "rowGold";
+      if(stN === "FATURADO") cls = "rowGold";
+      if(stN === "TOTAL FATURAMENTO PREVISTO") cls = "rowGreen";
 
-    // crédito
+      const qtd = Number(x.quantidade) || 0;
+      const val = fmtBRL(Number(x.valor) || 0);
+
+      return `
+        <tr class="${cls}">
+          <td>${st}</td>
+          <td class="num">${qtd}</td>
+          <td class="val">${val}</td>
+        </tr>
+      `;
+    }).join('') || `
+      <tr><td>—</td><td class="num">0</td><td class="val">${fmtBRL(0)}</td></tr>
+    `;
+
+    // ===== Crédito (ordenável) =====
+    const creditoSorted = sortArray(data.analise_credito || [], sortState.credito.by, sortState.credito.dir);
     const credBody = el('tblCredito');
-    credBody.innerHTML = (data.analise_credito || [])
-      .map(x => rowHtml([
-        x.pedido,
-        x.cliente,
-        x.uf,
-        fmtBRL(x.valor),
-        fmtPct(x.margem),
-        x.vendedor
-      ])).join('') || rowHtml(['—','—','—',fmtBRL(0),fmtPct(0),'—']);
+    credBody.innerHTML = creditoSorted.map(x => rowHtml([
+      x.pedido ?? "—",
+      x.data_pedido ?? "—",
+      x.cliente ?? "—",
+      x.uf ?? "—",
+      fmtBRL(x.valor),
+      fmtPct(x.margem),
+      x.vendedor ?? "—"
+    ])).join('') || rowHtml(['—','—','—','—',fmtBRL(0),fmtPct(0),'—']);
     setBadge('badgeCredito', `${(data.analise_credito||[]).length} pedidos`, 'bad');
 
-    // bloqueios/alvará
+    // ===== Bloqueios/Alvará (ordenável) =====
+    const bloqSorted = sortArray(data.bloqueios_alvara || [], sortState.bloq.by, sortState.bloq.dir);
     const bloqBody = el('tblBloqueiosAlvara');
-    bloqBody.innerHTML = (data.bloqueios_alvara || [])
-      .map(x => rowHtml([
-        x.pedido,
-        x.cliente,
-        x.motivo,
-        fmtBRL(x.valor),
-        fmtPct(x.margem),
-        x.vendedor
-      ])).join('') || rowHtml(['—','—','—',fmtBRL(0),fmtPct(0),'—']);
+    bloqBody.innerHTML = bloqSorted.map(x => rowHtml([
+      x.pedido ?? "—",
+      x.data_pedido ?? "—",
+      x.cliente ?? "—",
+      x.motivo ?? "—",
+      fmtBRL(x.valor),
+      fmtPct(x.margem),
+      x.vendedor ?? "—"
+    ])).join('') || rowHtml(['—','—','—','—',fmtBRL(0),fmtPct(0),'—']);
     setBadge('badgeBloq', `${(data.bloqueios_alvara||[]).length} pedidos`, 'bad');
   }
 
-  // ====== CARREGAR JSON EXTERNO ======
-  (function loadData(){
-    fetch('./data.json?v=' + Date.now())
-      .then(r => {
-        if(!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(data => render(data))
-      .catch(err => {
-        console.error('Falha ao carregar ./data.json:', err);
-        render(dashboardDataFallback);
-      });
-  })();
+  // ====== LOAD JSON EXTERNO ======
+  async function loadData(){
+    try{
+      const r = await fetch('./data.json?v=' + Date.now());
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      window.__dashboardData = data; // guarda pra reordenar sem novo fetch
+      render(data);
+    }catch(err){
+      console.error('Falha ao carregar ./data.json:', err);
+      window.__dashboardData = dashboardDataFallback;
+      render(dashboardDataFallback);
+    }
+  }
+
+  // ====== UI: ORDENAÇÃO ======
+  function toggleDir(btnId, key){
+    const btn = el(btnId);
+    sortState[key].dir = (sortState[key].dir === "desc") ? "asc" : "desc";
+    btn.textContent = sortState[key].dir === "desc" ? "Desc ↓" : "Asc ↑";
+    render(window.__dashboardData || dashboardDataFallback);
+  }
+
+  function setBy(selectId, key){
+    const sel = el(selectId);
+    sortState[key].by = sel.value;
+    render(window.__dashboardData || dashboardDataFallback);
+  }
+
+  // Binds
+  el('sortCreditoBy').addEventListener('change', () => setBy('sortCreditoBy', 'credito'));
+  el('sortBloqBy').addEventListener('change', () => setBy('sortBloqBy', 'bloq'));
+  el('sortCreditoDir').addEventListener('click', () => toggleDir('sortCreditoDir', 'credito'));
+  el('sortBloqDir').addEventListener('click', () => toggleDir('sortBloqDir', 'bloq'));
+  el('refreshBtn').addEventListener('click', loadData);
+
+  // Init
+  loadData();
 </script>
 
 </body>
