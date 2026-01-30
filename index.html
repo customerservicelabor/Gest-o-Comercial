@@ -24,7 +24,8 @@
       --radius:14px;
       --gap:14px;
       --headerH:58px;
-      --rowH:34px;
+      --rowH:34px;         /* padrão */
+      --riskRowH:32px;     /* (NOVO) riscos mais compactos */
       --padX:18px;
       --padY:14px;
 
@@ -74,7 +75,7 @@
     }
     header .meta strong{ color:var(--text); font-weight:750; }
 
-    /* APP GRID (agora 3 linhas: KPIs, conteúdo, rodapé faturamento cards) */
+    /* APP GRID (3 linhas: KPIs, conteúdo, rodapé) */
     main{
       height: calc(100vh - var(--headerH));
       padding: var(--padY) var(--padX);
@@ -117,7 +118,8 @@
       justify-content:center;
       flex: 0 0 auto;
     }
-    .kpiIcon svg{ width:22px; height:22px; opacity:.92; }
+    /* (MELHORIA) ícone maior: 24px */
+    .kpiIcon svg{ width:24px; height:24px; opacity:.92; }
 
     .kpiBody{ min-width:0; }
     .kpi .label{
@@ -126,11 +128,25 @@
       font-weight:750;
       letter-spacing:.15px;
     }
+
+    /* (MELHORIA) valor maior: 30px */
     .kpi .value{
       margin-top:10px;
-      font-size:26px;
+      font-size:30px;
       font-weight:900;
       line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* (NOVO) subtexto pequeno (opcional) */
+    .kpi .sub{
+      margin-top:6px;
+      font-size:11px;
+      color: rgba(238,241,255,.58);
+      font-weight:750;
+      letter-spacing:.18px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
@@ -177,7 +193,6 @@
       overflow:hidden;
     }
 
-    /* títulos menos “negrito” nos riscos */
     .cardHeader{
       display:flex;
       align-items:center;
@@ -191,7 +206,7 @@
 
     .cardTitle{
       font-size:12px;
-      font-weight:800; /* era 900, reduzimos */
+      font-weight:800;
       color: rgba(238,241,255,.66);
       text-transform: uppercase;
       letter-spacing: .35px;
@@ -240,7 +255,7 @@
     .toolbar label{
       font-size:11px;
       color: rgba(238,241,255,.66);
-      font-weight:800; /* reduz */
+      font-weight:800;
       letter-spacing:.2px;
       text-transform: uppercase;
       white-space:nowrap;
@@ -275,8 +290,6 @@
       border-radius: 12px;
       background: rgba(15,21,48,.94);
       min-height:0;
-
-      /* importante: evitar barra horizontal */
       overflow-x: hidden;
       overflow-y: auto;
     }
@@ -285,8 +298,6 @@
       width:100%;
       border-collapse: collapse;
       font-size:12px;
-
-      /* evita “estourar” e gerar rolagem horizontal */
       table-layout: fixed;
     }
 
@@ -303,12 +314,19 @@
     th{
       text-align:left;
       color: rgba(238,241,255,.64);
-      font-weight:800; /* menos forte */
+      font-weight:800;
       position: sticky;
       top: 0;
       z-index: 2;
       background: rgba(15,21,48,.98);
       border-bottom: 1px solid rgba(31,42,68,.95);
+    }
+
+    /* (MELHORIA) tabela de riscos mais “apertada” */
+    .riskTableWrap th, .riskTableWrap td{
+      height: var(--riskRowH);
+      padding-top:6px;
+      padding-bottom:6px;
     }
 
     /* ====== CARD BRANCO (GESTÃO) — SEM SCROLL ====== */
@@ -374,7 +392,6 @@
       white-space:nowrap;
     }
 
-    /* sem scroll aqui */
     .lightTableWrap{
       background:#ffffff;
       overflow:hidden;
@@ -421,15 +438,18 @@
     .lightTable td.num{ text-align:center; font-weight:900; }
     .lightTable td.val{ text-align:right; font-weight:950; }
 
-    /* BOTTOM — faturamento 5 dias em CARDS de ponta a ponta */
+    /* BOTTOM — faturamento (agora: mostrar somente dias existentes) */
     .bottomBar{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
+      display:flex;
       gap: var(--gap);
+      align-items:stretch;
+      justify-content:stretch;
       min-height:0;
+      overflow:hidden;
     }
 
     .fatCard{
+      flex:1 1 0;
       background: rgba(17,22,42,.92);
       border:1px solid rgba(31,42,68,.85);
       border-radius: 16px;
@@ -480,15 +500,13 @@
       main{ grid-template-rows: auto 1fr auto; }
       .layout{ grid-template-columns: 1fr; }
       .rightStack{ grid-template-columns: 1fr; }
-      .kpi .value{ font-size:24px; }
-      .bottomBar{ grid-template-columns: repeat(3, 1fr); }
+      .kpi .value{ font-size:28px; }
     }
 
     @media (max-width: 1100px){
       .kpis{ grid-template-columns: repeat(2, 1fr); }
-      .kpi .value{ font-size:22px; }
+      .kpi .value{ font-size:26px; }
       header h1{ max-width:55vw; }
-      .bottomBar{ grid-template-columns: repeat(2, 1fr); }
       .footer{ text-align:left; }
     }
   </style>
@@ -506,7 +524,6 @@
   <section class="kpis">
     <div class="kpi">
       <div class="kpiIcon" aria-hidden="true">
-        <!-- check / delivered -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20 6L9 17l-5-5"/>
         </svg>
@@ -514,12 +531,12 @@
       <div class="kpiBody">
         <div class="label">Pedidos Faturados Hoje</div>
         <div class="value good" id="kpiPedidosFaturados">0</div>
+        <div class="sub">Hoje</div>
       </div>
     </div>
 
     <div class="kpi">
       <div class="kpiIcon" aria-hidden="true">
-        <!-- invoice / note -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M6 2h9l3 3v17l-2-1-2 1-2-1-2 1-2-1-2 1V2z"/>
           <path d="M8 7h8M8 11h8M8 15h6"/>
@@ -528,12 +545,12 @@
       <div class="kpiBody">
         <div class="label">Valor Faturado Hoje</div>
         <div class="value good" id="kpiValorFaturado">R$ 0,00</div>
+        <div class="sub">Hoje</div>
       </div>
     </div>
 
     <div class="kpi">
       <div class="kpiIcon" aria-hidden="true">
-        <!-- open / queue -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 7h16M4 12h16M4 17h10"/>
         </svg>
@@ -541,12 +558,12 @@
       <div class="kpiBody">
         <div class="label">Pedidos em Aberto</div>
         <div class="value warn" id="kpiPedidosAbertos">0</div>
+        <div class="sub">Total aberto</div>
       </div>
     </div>
 
     <div class="kpi">
       <div class="kpiIcon" aria-hidden="true">
-        <!-- alert / risk -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 9v4"/>
           <path d="M12 17h.01"/>
@@ -556,6 +573,7 @@
       <div class="kpiBody">
         <div class="label">Valor em Risco (Crédito + Alvará + Bloqueio)</div>
         <div class="value bad" id="kpiValorRisco">R$ 0,00</div>
+        <div class="sub">Risco total</div>
       </div>
     </div>
   </section>
@@ -569,7 +587,6 @@
         <div class="lightTop">
           <div class="lightTitleWrap">
             <div class="lightIcon" aria-hidden="true">
-              <!-- clipboard/list -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 5h6"/>
                 <path d="M9 3h6a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
@@ -586,7 +603,8 @@
             <thead>
               <tr>
                 <th style="width:56%">Pedidos</th>
-                <th style="width:18%; text-align:center;">Quantidade</th>
+                <!-- (MELHORIA) QUANTIDADE -> QTD -->
+                <th style="width:18%; text-align:center;">QTD</th>
                 <th style="width:26%; text-align:right;">Valor</th>
               </tr>
             </thead>
@@ -621,7 +639,7 @@
           <button class="btn" id="refreshBtn" title="Recarregar data.json">Recarregar</button>
         </div>
 
-        <div class="tableWrap" aria-label="Tabela análise de crédito" style="height: var(--riskBodyH);">
+        <div class="tableWrap riskTableWrap" aria-label="Tabela análise de crédito" style="height: var(--riskBodyH);">
           <table>
             <thead>
               <tr>
@@ -661,7 +679,7 @@
           <div></div>
         </div>
 
-        <div class="tableWrap" aria-label="Tabela bloqueios e alvará" style="height: var(--riskBodyH);">
+        <div class="tableWrap riskTableWrap" aria-label="Tabela bloqueios e alvará" style="height: var(--riskBodyH);">
           <table>
             <thead>
               <tr>
@@ -682,14 +700,8 @@
 
   </section>
 
-  <!-- FATURAMENTO 5 DIAS EM CARDS (base, ponta a ponta) -->
-  <section class="bottomBar" aria-label="Faturamento últimos 5 dias">
-    <div class="fatCard"><div class="fatDate" id="fatD1">--/--/----</div><div class="fatValue muted" id="fatV1">R$ 0,00</div></div>
-    <div class="fatCard"><div class="fatDate" id="fatD2">--/--/----</div><div class="fatValue muted" id="fatV2">R$ 0,00</div></div>
-    <div class="fatCard"><div class="fatDate" id="fatD3">--/--/----</div><div class="fatValue muted" id="fatV3">R$ 0,00</div></div>
-    <div class="fatCard"><div class="fatDate" id="fatD4">--/--/----</div><div class="fatValue muted" id="fatV4">R$ 0,00</div></div>
-    <div class="fatCard"><div class="fatDate" id="fatD5">--/--/----</div><div class="fatValue good" id="fatV5">R$ 0,00</div></div>
-  </section>
+  <!-- FATURAMENTO (somente dias existentes, sem placeholders) -->
+  <section class="bottomBar" aria-label="Faturamento últimos dias" id="bottomBar"></section>
 
   <div class="footer">Painel de uso gerencial – visão diária</div>
 </main>
@@ -698,7 +710,6 @@
   const dashboardDataFallback = {
     updated_at: "— (fallback)",
     kpis_dia: { pedidos_faturados: 0, valor_faturado: 0, pedidos_abertos: 0, valor_em_risco: 0 },
-    faturamento_ultimos_3_dias: [],
     faturamento_ultimos_5_dias: [],
     status_detalhado: [],
     analise_credito: [],
@@ -754,32 +765,27 @@
     return copy;
   }
 
+  /* (MELHORIA A) Mostrar apenas os dias que existem */
   function renderFaturamentoCards(data){
-    const faturamento = (data.faturamento_ultimos_5_dias || data.faturamento_ultimos_3_dias || []);
-    const fat5 = faturamento.slice(-5);
+    const wrap = el('bottomBar');
+    const faturamento = (data.faturamento_ultimos_5_dias || []);
+    const fat = faturamento.slice(-5).filter(x => x && x.data && isFinite(Number(x.valor)));
 
-    const slots = [
-      { d: 'fatD1', v:'fatV1' },
-      { d: 'fatD2', v:'fatV2' },
-      { d: 'fatD3', v:'fatV3' },
-      { d: 'fatD4', v:'fatV4' },
-      { d: 'fatD5', v:'fatV5' },
-    ];
-
-    // limpa
-    slots.forEach(s => { el(s.d).textContent = '--/--/----'; el(s.v).textContent = fmtBRL(0); });
-
-    // preenche do fim pro começo (mantém “hoje” no final)
-    const padded = Array(5).fill(null);
-    for(let i=0;i<Math.min(5, fat5.length);i++){
-      padded[5 - fat5.length + i] = fat5[i];
+    if(!fat.length){
+      wrap.innerHTML = `<div class="fatCard"><div class="fatDate">Faturamento</div><div class="fatValue muted">Sem dados</div></div>`;
+      return;
     }
 
-    padded.forEach((x, i) => {
-      if(!x) return;
-      el(slots[i].d).textContent = x.data || '--/--/----';
-      el(slots[i].v).textContent = fmtBRL(Number(x.valor) || 0);
-    });
+    // “Hoje” (último item) ganha verde
+    wrap.innerHTML = fat.map((x, idx) => {
+      const isLast = idx === fat.length - 1;
+      return `
+        <div class="fatCard">
+          <div class="fatDate">${x.data}</div>
+          <div class="fatValue ${isLast ? 'good' : 'muted'}">${fmtBRL(Number(x.valor)||0)}</div>
+        </div>
+      `;
+    }).join('');
   }
 
   function render(data){
@@ -801,15 +807,17 @@
       const st = String(x.status ?? "");
       const stN = normalizeText(st);
 
-      // Destaques:
-      // - Faturado: SEM cor (fica como padrão)
-      // - Total Faturamento Previsto: destaque forte
-      // - Total em Disputa: dourado
+      // Destaques
       let cls = "";
       if(stN === "TOTAL EM DISPUTA") cls = "rowGold";
       if(stN === "TOTAL FATURAMENTO PREVISTO") cls = "rowGreenStrong";
 
-      const qtd = Number(x.quantidade) || 0;
+      // (MELHORIA) se quantidade vier vazia/null => "—"
+      const qtdRaw = x.quantidade;
+      const qtd = (qtdRaw === null || qtdRaw === undefined || String(qtdRaw).trim() === "")
+        ? "—"
+        : (Number(qtdRaw) || 0);
+
       const val = fmtBRL(Number(x.valor) || 0);
 
       return `
@@ -820,7 +828,7 @@
         </tr>
       `;
     }).join('') || `
-      <tr><td>—</td><td class="num">0</td><td class="val">${fmtBRL(0)}</td></tr>
+      <tr><td>—</td><td class="num">—</td><td class="val">${fmtBRL(0)}</td></tr>
     `;
 
     // Crédito
