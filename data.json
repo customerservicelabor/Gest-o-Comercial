@@ -1,40 +1,34 @@
 {
-  "updated_at": "30/01/2026",
+  "updated_at": "30/01/2026 14:45",
   "kpis_dia": {
     "pedidos_faturados": 4,
-    "valor_faturado": 30081.67,
-    "pedidos_abertos": 45,
-    "valor_em_risco": 120240.06
+    "valor_faturado": 29331.67,
+    "pedidos_abertos": 58,
+    "valor_em_risco": 119182.31
   },
-  "faturamento_ultimos_3_dias": [
+  "faturamento_ultimos_5_dias": [
+    { "data": "23/01/2026", "valor": 785233.58 },
+    { "data": "26/01/2026", "valor": 588574.42 },
+    { "data": "27/01/2026", "valor": 1031674.17 },
     { "data": "28/01/2026", "valor": 841918.13 },
     { "data": "29/01/2026", "valor": 1772211.99 },
-    { "data": "30/01/2026", "valor": 30081.67 }
+    { "data": "30/01/2026", "valor": 29331.67 }
   ],
   "status_detalhado": [
-    { "status": "Pedido incluido", "quantidade": 0, "valor": 0.0 },
-    { "status": "Ecommerce", "quantidade": 0, "valor": 0.0 },
-    { "status": "Aguardando Liberação", "quantidade": 2, "valor": 39897.73 },
+    { "status": "Pedido incluido", "quantidade": 0, "valor": 0 },
+    { "status": "Ecommerce", "quantidade": 0, "valor": 0 },
+    { "status": "Aguardando Liberação", "quantidade": 1, "valor": 25622.23 },
     { "status": "Alvará Sanitário", "quantidade": 2, "valor": 11581.6 },
-    { "status": "Bloqueado por regra", "quantidade": 0, "valor": 0.0 },
-    { "status": "Análise de Crédito", "quantidade": 11, "valor": 108658.46 },
-    { "status": "Total em Disputa", "quantidade": 0, "valor": 160137.79 },
-    { "status": "Aguard. Envio Separação", "quantidade": 2, "valor": 3134.4 },
-    { "status": "Em Separação", "quantidade": 28, "valor": 208685.7 },
-    { "status": "Separado", "quantidade": 0, "valor": 0.0 },
-    { "status": "Faturado", "quantidade": 4, "valor": 30081.67 },
-    { "status": "Total Faturamento Previsto", "quantidade": 49, "valor": 241901.77 }
+    { "status": "Bloqueado por regra", "quantidade": 0, "valor": 0 },
+    { "status": "Análise de Crédito", "quantidade": 11, "valor": 107600.71 },
+    { "status": "Total em Disputa", "quantidade": null, "valor": 144804.54 },
+    { "status": "Aguard. Envio Separação", "quantidade": 5, "valor": 8599.1 },
+    { "status": "Em Separação", "quantidade": 39, "valor": 238569.86 },
+    { "status": "Separado", "quantidade": 0, "valor": 0 },
+    { "status": "Faturado", "quantidade": 4, "valor": 29331.67 },
+    { "status": "Total Faturamento Previsto", "quantidade": 62, "valor": 276500.63 }
   ],
   "analise_credito": [
-    {
-      "pedido": 676688,
-      "data_pedido": "28/01/2026",
-      "cliente": "MONTALVAO COMERCIAL",
-      "uf": "SE",
-      "valor": 1980.0,
-      "margem": 19.3,
-      "vendedor": "JOELMA NUNES"
-    },
     {
       "pedido": 676696,
       "data_pedido": "28/01/2026",
@@ -67,7 +61,7 @@
       "data_pedido": "28/01/2026",
       "cliente": "SM HOSPITALAR",
       "uf": "GO",
-      "valor": 24510.0,
+      "valor": 24510,
       "margem": 22.59,
       "vendedor": "JOELMA NUNES"
     },
@@ -94,7 +88,7 @@
       "data_pedido": "29/01/2026",
       "cliente": "ESSENCIA SAUDE DISTR",
       "uf": "PR",
-      "valor": 14372.0,
+      "valor": 14372,
       "margem": 22.37,
       "vendedor": "LUCIA FLORESTA"
     },
@@ -108,15 +102,6 @@
       "vendedor": "REP. SUPREMO"
     },
     {
-      "pedido": 677227,
-      "data_pedido": "30/01/2026",
-      "cliente": "DESCARTAVEIS",
-      "uf": "RO",
-      "valor": 1014.02,
-      "margem": 24.16,
-      "vendedor": "REP. FEMA"
-    },
-    {
       "pedido": 677266,
       "data_pedido": "30/01/2026",
       "cliente": "FACIMED",
@@ -124,6 +109,24 @@
       "valor": 2286.76,
       "margem": 27.93,
       "vendedor": "ERICA BARNES"
+    },
+    {
+      "pedido": 677279,
+      "data_pedido": "30/01/2026",
+      "cliente": "ANDREOLI COMERCIO DE",
+      "uf": "SP",
+      "valor": 1196.4,
+      "margem": 13.97,
+      "vendedor": "REP. ML DANTE"
+    },
+    {
+      "pedido": 677281,
+      "data_pedido": "30/01/2026",
+      "cliente": "ZOOMEDI LTDA",
+      "uf": "MA",
+      "valor": 739.87,
+      "margem": 24.84,
+      "vendedor": "DENNYS SANTOS"
     }
   ],
   "bloqueios_alvara": [
@@ -141,7 +144,7 @@
       "data_pedido": "30/01/2026",
       "cliente": "PLAY PHARMA",
       "motivo": "ALVARA SANITARIO",
-      "valor": 8950.0,
+      "valor": 8950,
       "margem": 36.4,
       "vendedor": "FERNANDA MIRIAN"
     }
