@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Diário – Gestão de Pedidos</title>
+  <style>
+    :root{
+      --bg0:#060913;
+      --bg1:#0b1020;
+      --card:#11162a;
+      --card2:#0f1530;
+      --border:#1f2a44;
+      --muted:#9aa4bf;
+      --text:#eef1ff;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --accent:#38bdf8;
+
+      --radius:12px;
+      --gap:12px;
+      --headerH:56px;
+      --rowH:32px;
+      --padX:16px;
+      --padY:14px;
+
+      /* alturas para caber em notebook */
+      --hLeftTop:120px;
+      --hLeftMid:170px;
+    }
+
+    *{ box-sizing:border-box; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
+
+    body{
+      margin:0;
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(56,189,248,.14), transparent 55%),
+                  radial-gradient(1000px 650px at 85% -20%, rgba(34,197,94,.10), transparent 60%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+
+    /* HEADER */
+    header{
+      height:var(--headerH);
+      padding:0 var(--padX);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      background: rgba(6,9,19,.65);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      min-width:0;
+    }
+
+    header h1{
+      margin:0;
+      font-size:16px;
+      font-weight:750;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:60vw;
+    }
+
+    header .meta{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    header .meta strong{ color:var(--text); font-weight:650; }
+
+    /* APP GRID */
+    main{
+      height: calc(100vh - var(--headerH));
+      padding: var(--padY) var(--padX);
+      display:grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--gap);
+      overflow:hidden;
+    }
+
+    /* KPI STRIP */
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--gap);
+    }
+
+    .kpi{
+      background: linear-gradient(180deg, rgba(56,189,248,.06), transparent 42%), var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      min-width:0;
+    }
+
+    .kpi .label{ font-size:11px; color:var(--muted); font-weight:650; letter-spacing:.2px; }
+    .kpi .value{ margin-top:6px; font-size:18px; font-weight:800; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+    .good{ color:var(--good); }
+    .warn{ color:var(--warn); }
+    .bad{ color:var(--bad); }
+
+    /* BODY LAYOUT */
+    .layout{
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap: var(--gap);
+      min-height:0;
+      overflow:hidden;
+    }
+
+    .leftStack{
+      display:grid;
+      grid-template-rows: var(--hLeftTop) var(--hLeftMid) 1fr;
+      gap: var(--gap);
+      min-height:0;
+      overflow:hidden;
+    }
+
+    .rightGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .95fr;
+      gap: var(--gap);
+      min-height:0;
+      overflow:hidden;
+    }
+
+    /* CARDS */
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      display:flex;
+      flex-direction:column;
+      min-height:0;
+    }
+
+    .cardHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--border);
+      margin-bottom:10px;
+      min-width:0;
+    }
+
+    .cardTitle{
+      font-size:12px;
+      font-weight:800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .35px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .badge{
+      font-size:11px;
+      font-weight:750;
+      color: var(--text);
+      background: rgba(56,189,248,.10);
+      border: 1px solid rgba(56,189,248,.20);
+      padding: 4px 8px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    .badge.bad{ background: rgba(239,68,68,.10); border-color: rgba(239,68,68,.22); }
+    .badge.warn{ background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.22); }
+    .badge.good{ background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.22); }
+
+    /* TABLES */
+    .tableWrap{
+      border:1px solid var(--border);
+      border-radius: 10px;
+      overflow:auto;
+      background: var(--card2);
+      min-height:0;
+    }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      font-size:12px;
+    }
+
+    th, td{
+      padding: 6px 8px;
+      height: var(--rowH);
+      border-bottom: 1px solid rgba(31,42,68,.9);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      vertical-align: middle;
+    }
+
+    th{
+      text-align:left;
+      color: var(--muted);
+      font-weight:800;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--card2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* FOOTER */
+    .footer{
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1366px){
+      :root{ --padX:14px; --padY:12px; --gap:10px; --rowH:30px; --hLeftTop:112px; --hLeftMid:160px; }
+      .layout{ grid-template-columns: 390px 1fr; }
+      .kpi .value{ font-size:17px; }
+    }
+
+    @media (max-width: 1150px){
+      main{ grid-template-rows: auto 1fr; }
+      .kpis{ grid-template-columns: repeat(2, 1fr); }
+      .layout{ grid-template-columns: 1fr; }
+      .rightGrid{ grid-template-columns: 1fr; }
+      .leftStack{ grid-template-rows: auto auto auto; }
+      .footer{ text-align:left; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>Painel Diário – Gestão de Pedidos</h1>
+  </div>
+  <div class="meta">Atualizado em: <strong id="updatedAt">--/--/----</strong></div>
+</header>
+
+<main>
+
+  <!-- KPIs -->
+  <section class="kpis">
+    <div class="kpi">
+      <div class="label">Pedidos Faturados Hoje</div>
+      <div class="value good" id="kpiPedidosFaturados">0</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Valor Faturado Hoje</div>
+      <div class="value good" id="kpiValorFaturado">R$ 0,00</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Margem Média Hoje</div>
+      <div class="value good" id="kpiMargemMedia">0%</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Pedidos em Aberto</div>
+      <div class="value warn" id="kpiPedidosAbertos">0</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Valor em Risco</div>
+      <div class="value bad" id="kpiValorRisco">R$ 0,00</div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="layout">
+
+    <!-- ESQUERDA -->
+    <div class="leftStack">
+
+      <section class="card">
+        <div class="cardHeader">
+          <div class="cardTitle">Faturamento – últimos 3 dias</div>
+          <div class="badge" id="badgeFat3">3 dias</div>
+        </div>
+        <div class="tableWrap" aria-label="Tabela de faturamento 3 dias">
+          <table>
+            <thead>
+              <tr><th style="width:38%">Data</th><th>Valor</th></tr>
+            </thead>
+            <tbody id="tblFaturamento3dias"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="cardHeader">
+          <div class="cardTitle">Abertos – visão macro</div>
+          <div class="badge warn" id="badgeAbertos">0 abertos</div>
+        </div>
+        <div class="tableWrap" aria-label="Tabela status macro">
+          <table>
+            <thead>
+              <tr><th>Status</th><th style="width:18%">Qtd</th><th style="width:32%">Valor</th></tr>
+            </thead>
+            <tbody id="tblStatusAbertosMacro"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="cardHeader">
+          <div class="cardTitle">Status detalhado (dia)</div>
+          <div class="badge" id="badgeTotalDia">0 pedidos</div>
+        </div>
+        <div class="tableWrap" aria-label="Tabela status detalhado">
+          <table>
+            <thead>
+              <tr><th>Status</th><th style="width:18%">Qtd</th><th style="width:32%">Valor</th></tr>
+            </thead>
+            <tbody id="tblStatusDetalhado"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- DIREITA -->
+    <section class="rightGrid">
+
+      <section class="card">
+        <div class="cardHeader">
+          <div class="cardTitle">Risco – análise de crédito</div>
+          <div class="badge bad" id="badgeCredito">0 pedidos</div>
+        </div>
+        <div class="tableWrap" aria-label="Tabela análise de crédito">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:14%">Pedido</th>
+                <th>Cliente</th>
+                <th style="width:10%">UF</th>
+                <th style="width:18%">Valor</th>
+                <th style="width:12%">Margem</th>
+                <th style="width:18%">Vendedor</th>
+              </tr>
+            </thead>
+            <tbody id="tblCredito"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="cardHeader">
+          <div class="cardTitle">Risco – bloqueios / alvará</div>
+          <div class="badge bad" id="badgeBloq">0 pedidos</div>
+        </div>
+        <div class="tableWrap" aria-label="Tabela bloqueios e alvará">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:14%">Pedido</th>
+                <th>Cliente</th>
+                <th style="width:24%">Motivo</th>
+                <th style="width:18%">Valor</th>
+                <th style="width:12%">Margem</th>
+                <th style="width:18%">Vendedor</th>
+              </tr>
+            </thead>
+            <tbody id="tblBloqueiosAlvara"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+
+  </section>
+
+  <div class="footer">Painel de uso gerencial – visão diária</div>
+
+</main>
+
+<script>
+  // ====== DADOS (exemplo) – substitua pelo JSON do Protheus ======
+  const dashboardData = {
+    updated_at: "29/01/2026 10:00",
+    kpis_dia: {
+      pedidos_faturados: 13,
+      valor_faturado: 45899.81,
+      margem_media: 23.07,
+      pedidos_abertos: 53,
+      valor_em_risco: 461404.85
+    },
+    faturamento_ultimos_3_dias: [
+      { data: "27/01/2026", valor: 1031674.17 },
+      { data: "28/01/2026", valor: 841918.13 },
+      { data: "29/01/2026", valor: 45899.81 }
+    ],
+    status_abertos_macro: [
+      { status: "ANALISE DE CREDITO", quantidade: 24, valor: 434698.08 },
+      { status: "ALVARA SANITARIO", quantidade: 5, valor: 26706.77 },
+      { status: "BLOQUEADO", quantidade: 0, valor: 0.00 },
+      { status: "PROCESSUAIS", quantidade: 24, valor: 143299.24 }
+    ],
+    status_detalhado: [
+      { status: "Pedido incluido", quantidade: 1, valor: 33.29 },
+      { status: "Ecommerce", quantidade: 0, valor: 0.00 },
+      { status: "Aguardando Liberação", quantidade: 2, valor: 27987.50 },
+      { status: "Alvará Sanitário", quantidade: 5, valor: 26706.77 },
+      { status: "Bloqueado por regra", quantidade: 0, valor: 0.00 },
+      { status: "Análise de Crédito", quantidade: 24, valor: 434698.08 },
+      { status: "Aguard. Envio Separação", quantidade: 8, valor: 105377.81 },
+      { status: "Em Separação", quantidade: 11, valor: 138567.61 },
+      { status: "Separado", quantidade: 2, valor: 9900.64 },
+      { status: "Faturado", quantidade: 13, valor: 45899.81 }
+    ],
+    analise_credito: [
+      { pedido: 676346, cliente: "ACE DISTRIBUIDORA LT", uf: "GO", valor: 4740.00, margem: 19.79, vendedor: "ALICE RODRIGUES" },
+      { pedido: 676362, cliente: "GANEM SERVICOS MEDIC", uf: "AM", valor: 7680.00, margem: 21.83, vendedor: "REP. TURCATO" },
+      { pedido: 676449, cliente: "INSTITUTO-FLEURY", uf: "SP", valor: 802.75, margem: 28.22, vendedor: "JOAO NETO" },
+      { pedido: 676473, cliente: "CENTRO DE ANALISES C", uf: "SP", valor: 814.32, margem: 40.95, vendedor: "JONATHAN.SILVA" },
+      { pedido: 676522, cliente: "MEDSTAR DISTRIBUIDOR", uf: "RJ", valor: 7666.00, margem: 20.76, vendedor: "DIEGO RICARDO" },
+      { pedido: 676548, cliente: "B I O M E D", uf: "PA", valor: 49849.02, margem: 36.87, vendedor: "ALEXANDRA RIBEIRO" },
+      { pedido: 676681, cliente: "LINEHOSP MEDICAL COM", uf: "MG", valor: 139534.84, margem: 29.10, vendedor: "DIEGO RICARDO" },
+      { pedido: 676696, cliente: "AARAO MED", uf: "ES", valor: 46498.92, margem: 39.55, vendedor: "FLAVIA VELIS" },
+      { pedido: 676788, cliente: "M A DISTRIBUIDORA", uf: "CE", valor: 29414.96, margem: 21.83, vendedor: "ERICA BARNES" },
+      { pedido: 676887, cliente: "MULT HOSP DISTRIBUID", uf: "MA", valor: 1515.61, margem: 30.05, vendedor: "ERICA BARNES" }
+    ],
+    bloqueios_alvara: [
+      { pedido: 676675, cliente: "GRANVET CLINICA VETE", motivo: "ALVARA SANITARIO", valor: 922.30, margem: 35.86, vendedor: "LUCIA FLORESTA" },
+      { pedido: 676901, cliente: "HARTMANN IND COM PRO", motivo: "ALVARA SANITARIO", valor: 1984.50, margem: 31.42, vendedor: "APARECIDA BRESSAN" },
+      { pedido: 676911, cliente: "CUIDAR MED", motivo: "ALVARA SANITARIO", valor: 21146.54, margem: 21.25, vendedor: "FLAVIA VELIS" }
+    ]
+  };
+
+  // ====== HELPERS ======
+  const fmtBRL = (n) => (isFinite(n) ? n : 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const fmtPct = (n) => `${(isFinite(n) ? n : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`;
+  const el = (id) => document.getElementById(id);
+
+  function rowHtml(cells){
+    return `<tr>${cells.map(c => `<td title="${String(c).replaceAll('"','&quot;')}">${c}</td>`).join('')}</tr>`;
+  }
+
+  function setBadge(id, text, tone){
+    const b = el(id);
+    if(!b) return;
+    b.textContent = text;
+    b.classList.remove('good','warn','bad');
+    if(tone) b.classList.add(tone);
+  }
+
+  function render(data){
+    el('updatedAt').textContent = data.updated_at || '--/--/----';
+
+    el('kpiPedidosFaturados').textContent = data.kpis_dia?.pedidos_faturados ?? 0;
+    el('kpiValorFaturado').textContent = fmtBRL(data.kpis_dia?.valor_faturado ?? 0);
+    el('kpiMargemMedia').textContent = fmtPct(data.kpis_dia?.margem_media ?? 0);
+    el('kpiPedidosAbertos').textContent = data.kpis_dia?.pedidos_abertos ?? 0;
+    el('kpiValorRisco').textContent = fmtBRL(data.kpis_dia?.valor_em_risco ?? 0);
+
+    setBadge('badgeAbertos', `${data.kpis_dia?.pedidos_abertos ?? 0} abertos`, 'warn');
+
+    // 3 dias
+    const fatBody = el('tblFaturamento3dias');
+    fatBody.innerHTML = (data.faturamento_ultimos_3_dias || [])
+      .map(x => rowHtml([x.data, fmtBRL(x.valor)])).join('') || rowHtml(['—', fmtBRL(0)]);
+
+    // macro abertos
+    const macroBody = el('tblStatusAbertosMacro');
+    macroBody.innerHTML = (data.status_abertos_macro || [])
+      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('');
+
+    // detalhado
+    const detBody = el('tblStatusDetalhado');
+    detBody.innerHTML = (data.status_detalhado || [])
+      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('');
+
+    const totalDia = (data.status_detalhado || []).reduce((a,x)=>a+(Number(x.quantidade)||0),0);
+    setBadge('badgeTotalDia', `${totalDia} pedidos`, null);
+
+    // crédito
+    const credBody = el('tblCredito');
+    credBody.innerHTML = (data.analise_credito || [])
+      .map(x => rowHtml([
+        x.pedido,
+        x.cliente,
+        x.uf,
+        fmtBRL(x.valor),
+        fmtPct(x.margem),
+        x.vendedor
+      ])).join('') || rowHtml(['—','—','—',fmtBRL(0),fmtPct(0),'—']);
+    setBadge('badgeCredito', `${(data.analise_credito||[]).length} pedidos`, 'bad');
+
+    // bloqueios/alvará
+    const bloqBody = el('tblBloqueiosAlvara');
+    bloqBody.innerHTML = (data.bloqueios_alvara || [])
+      .map(x => rowHtml([
+        x.pedido,
+        x.cliente,
+        x.motivo,
+        fmtBRL(x.valor),
+        fmtPct(x.margem),
+        x.vendedor
+      ])).join('') || rowHtml(['—','—','—',fmtBRL(0),fmtPct(0),'—']);
+    setBadge('badgeBloq', `${(data.bloqueios_alvara||[]).length} pedidos`, 'bad');
+  }
+
+  render(dashboardData);
+</script>
+
+</body>
+</html>
