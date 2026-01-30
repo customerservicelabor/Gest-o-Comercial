@@ -40,7 +40,6 @@
                   linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
-    /* HEADER */
     header{
       height:var(--headerH);
       padding:0 var(--padX);
@@ -78,7 +77,6 @@
 
     header .meta strong{ color:var(--text); font-weight:650; }
 
-    /* APP GRID */
     main{
       height: calc(100vh - var(--headerH));
       padding: var(--padY) var(--padX);
@@ -88,7 +86,6 @@
       overflow:hidden;
     }
 
-    /* KPI STRIP */
     .kpis{
       display:grid;
       grid-template-columns: repeat(5, 1fr);
@@ -110,7 +107,6 @@
     .warn{ color:var(--warn); }
     .bad{ color:var(--bad); }
 
-    /* BODY LAYOUT */
     .layout{
       display:grid;
       grid-template-columns: 420px 1fr;
@@ -135,7 +131,6 @@
       overflow:hidden;
     }
 
-    /* CARDS */
     .card{
       background: var(--card);
       border:1px solid var(--border);
@@ -183,7 +178,6 @@
     .badge.warn{ background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.22); }
     .badge.good{ background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.22); }
 
-    /* TABLES */
     .tableWrap{
       border:1px solid var(--border);
       border-radius: 10px;
@@ -219,7 +213,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* FOOTER */
     .footer{
       margin-top: 10px;
       font-size: 11px;
@@ -227,7 +220,6 @@
       text-align: right;
     }
 
-    /* RESPONSIVO */
     @media (max-width: 1366px){
       :root{ --padX:14px; --padY:12px; --gap:10px; --rowH:30px; --hLeftTop:112px; --hLeftMid:160px; }
       .layout{ grid-template-columns: 390px 1fr; }
@@ -388,56 +380,15 @@
 </main>
 
 <script>
-  // ====== DADOS (exemplo) – substitua pelo JSON do Protheus ======
-  const dashboardData = {
-    updated_at: "29/01/2026 10:00",
-    kpis_dia: {
-      pedidos_faturados: 13,
-      valor_faturado: 45899.81,
-      margem_media: 23.07,
-      pedidos_abertos: 53,
-      valor_em_risco: 461404.85
-    },
-    faturamento_ultimos_3_dias: [
-      { data: "27/01/2026", valor: 1031674.17 },
-      { data: "28/01/2026", valor: 841918.13 },
-      { data: "29/01/2026", valor: 45899.81 }
-    ],
-    status_abertos_macro: [
-      { status: "ANALISE DE CREDITO", quantidade: 24, valor: 434698.08 },
-      { status: "ALVARA SANITARIO", quantidade: 5, valor: 26706.77 },
-      { status: "BLOQUEADO", quantidade: 0, valor: 0.00 },
-      { status: "PROCESSUAIS", quantidade: 24, valor: 143299.24 }
-    ],
-    status_detalhado: [
-      { status: "Pedido incluido", quantidade: 1, valor: 33.29 },
-      { status: "Ecommerce", quantidade: 0, valor: 0.00 },
-      { status: "Aguardando Liberação", quantidade: 2, valor: 27987.50 },
-      { status: "Alvará Sanitário", quantidade: 5, valor: 26706.77 },
-      { status: "Bloqueado por regra", quantidade: 0, valor: 0.00 },
-      { status: "Análise de Crédito", quantidade: 24, valor: 434698.08 },
-      { status: "Aguard. Envio Separação", quantidade: 8, valor: 105377.81 },
-      { status: "Em Separação", quantidade: 11, valor: 138567.61 },
-      { status: "Separado", quantidade: 2, valor: 9900.64 },
-      { status: "Faturado", quantidade: 13, valor: 45899.81 }
-    ],
-    analise_credito: [
-      { pedido: 676346, cliente: "ACE DISTRIBUIDORA LT", uf: "GO", valor: 4740.00, margem: 19.79, vendedor: "ALICE RODRIGUES" },
-      { pedido: 676362, cliente: "GANEM SERVICOS MEDIC", uf: "AM", valor: 7680.00, margem: 21.83, vendedor: "REP. TURCATO" },
-      { pedido: 676449, cliente: "INSTITUTO-FLEURY", uf: "SP", valor: 802.75, margem: 28.22, vendedor: "JOAO NETO" },
-      { pedido: 676473, cliente: "CENTRO DE ANALISES C", uf: "SP", valor: 814.32, margem: 40.95, vendedor: "JONATHAN.SILVA" },
-      { pedido: 676522, cliente: "MEDSTAR DISTRIBUIDOR", uf: "RJ", valor: 7666.00, margem: 20.76, vendedor: "DIEGO RICARDO" },
-      { pedido: 676548, cliente: "B I O M E D", uf: "PA", valor: 49849.02, margem: 36.87, vendedor: "ALEXANDRA RIBEIRO" },
-      { pedido: 676681, cliente: "LINEHOSP MEDICAL COM", uf: "MG", valor: 139534.84, margem: 29.10, vendedor: "DIEGO RICARDO" },
-      { pedido: 676696, cliente: "AARAO MED", uf: "ES", valor: 46498.92, margem: 39.55, vendedor: "FLAVIA VELIS" },
-      { pedido: 676788, cliente: "M A DISTRIBUIDORA", uf: "CE", valor: 29414.96, margem: 21.83, vendedor: "ERICA BARNES" },
-      { pedido: 676887, cliente: "MULT HOSP DISTRIBUID", uf: "MA", valor: 1515.61, margem: 30.05, vendedor: "ERICA BARNES" }
-    ],
-    bloqueios_alvara: [
-      { pedido: 676675, cliente: "GRANVET CLINICA VETE", motivo: "ALVARA SANITARIO", valor: 922.30, margem: 35.86, vendedor: "LUCIA FLORESTA" },
-      { pedido: 676901, cliente: "HARTMANN IND COM PRO", motivo: "ALVARA SANITARIO", valor: 1984.50, margem: 31.42, vendedor: "APARECIDA BRESSAN" },
-      { pedido: 676911, cliente: "CUIDAR MED", motivo: "ALVARA SANITARIO", valor: 21146.54, margem: 21.25, vendedor: "FLAVIA VELIS" }
-    ]
+  // ====== Fallback local (se data.json falhar) ======
+  const dashboardDataFallback = {
+    updated_at: "— (fallback)",
+    kpis_dia: { pedidos_faturados: 0, valor_faturado: 0, margem_media: 0, pedidos_abertos: 0, valor_em_risco: 0 },
+    faturamento_ultimos_3_dias: [],
+    status_abertos_macro: [],
+    status_detalhado: [],
+    analise_credito: [],
+    bloqueios_alvara: []
   };
 
   // ====== HELPERS ======
@@ -457,6 +408,7 @@
     if(tone) b.classList.add(tone);
   }
 
+  // ====== RENDER ======
   function render(data){
     el('updatedAt').textContent = data.updated_at || '--/--/----';
 
@@ -476,12 +428,12 @@
     // macro abertos
     const macroBody = el('tblStatusAbertosMacro');
     macroBody.innerHTML = (data.status_abertos_macro || [])
-      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('');
+      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('') || rowHtml(['—', 0, fmtBRL(0)]);
 
     // detalhado
     const detBody = el('tblStatusDetalhado');
     detBody.innerHTML = (data.status_detalhado || [])
-      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('');
+      .map(x => rowHtml([x.status, x.quantidade ?? 0, fmtBRL(x.valor ?? 0)])).join('') || rowHtml(['—', 0, fmtBRL(0)]);
 
     const totalDia = (data.status_detalhado || []).reduce((a,x)=>a+(Number(x.quantidade)||0),0);
     setBadge('badgeTotalDia', `${totalDia} pedidos`, null);
@@ -513,7 +465,19 @@
     setBadge('badgeBloq', `${(data.bloqueios_alvara||[]).length} pedidos`, 'bad');
   }
 
-  render(dashboardData);
+  // ====== CARREGAR JSON EXTERNO ======
+  (function loadData(){
+    fetch('./data.json?v=' + Date.now())
+      .then(r => {
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(data => render(data))
+      .catch(err => {
+        console.error('Falha ao carregar ./data.json:', err);
+        render(dashboardDataFallback);
+      });
+  })();
 </script>
 
 </body>
