@@ -8,25 +8,28 @@
     :root{
       --bg0:#060913;
       --bg1:#0b1020;
+
       --card:#11162a;
       --card2:#0f1530;
       --border:#1f2a44;
+
       --muted:#9aa4bf;
       --text:#eef1ff;
+
       --good:#22c55e;
       --warn:#f59e0b;
       --bad:#ef4444;
       --accent:#38bdf8;
 
-      --radius:12px;
-      --gap:12px;
-      --headerH:56px;
-      --rowH:32px;
-      --padX:16px;
+      --radius:14px;
+      --gap:14px;
+      --headerH:58px;
+      --rowH:34px;
+      --padX:18px;
       --padY:14px;
 
-      /* alturas para caber em notebook */
-      --hLeftTop:120px; /* histórico */
+      /* left area sizing */
+      --leftW: 520px;
     }
 
     *{ box-sizing:border-box; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
@@ -34,9 +37,10 @@
     body{
       margin:0;
       color:var(--text);
-      background: radial-gradient(1200px 700px at 20% -10%, rgba(56,189,248,.14), transparent 55%),
-                  radial-gradient(1000px 650px at 85% -20%, rgba(34,197,94,.10), transparent 60%),
-                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(56,189,248,.14), transparent 55%),
+        radial-gradient(1000px 650px at 85% -20%, rgba(34,197,94,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
     /* HEADER */
@@ -54,12 +58,12 @@
     header h1{
       margin:0;
       font-size:16px;
-      font-weight:750;
+      font-weight:800;
       letter-spacing:.2px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      max-width:60vw;
+      max-width:65vw;
     }
 
     header .meta{
@@ -67,7 +71,7 @@
       color:var(--muted);
       white-space:nowrap;
     }
-    header .meta strong{ color:var(--text); font-weight:650; }
+    header .meta strong{ color:var(--text); font-weight:750; }
 
     /* APP GRID */
     main{
@@ -79,7 +83,7 @@
       overflow:hidden;
     }
 
-    /* KPI STRIP (4 cards agora) */
+    /* KPI STRIP — maior */
     .kpis{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -87,15 +91,33 @@
     }
 
     .kpi{
-      background: linear-gradient(180deg, rgba(56,189,248,.06), transparent 42%), var(--card);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 10px 12px;
+      background:
+        radial-gradient(900px 200px at 20% -20%, rgba(56,189,248,.20), transparent 55%),
+        linear-gradient(180deg, rgba(56,189,248,.08), transparent 45%),
+        var(--card);
+      border:1px solid rgba(56,189,248,.18);
+      border-radius: 18px;
+      padding: 14px 14px;
       min-width:0;
+      box-shadow: 0 10px 26px rgba(0,0,0,.22);
     }
 
-    .kpi .label{ font-size:11px; color:var(--muted); font-weight:650; letter-spacing:.2px; }
-    .kpi .value{ margin-top:6px; font-size:18px; font-weight:800; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .kpi .label{
+      font-size:12px;
+      color:rgba(238,241,255,.72);
+      font-weight:750;
+      letter-spacing:.15px;
+    }
+
+    .kpi .value{
+      margin-top:10px;
+      font-size:26px;
+      font-weight:900;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
 
     .good{ color:var(--good); }
     .warn{ color:var(--warn); }
@@ -104,7 +126,7 @@
     /* BODY LAYOUT */
     .layout{
       display:grid;
-      grid-template-columns: 460px 1fr;
+      grid-template-columns: var(--leftW) 1fr;
       gap: var(--gap);
       min-height:0;
       overflow:hidden;
@@ -112,7 +134,7 @@
 
     .leftStack{
       display:grid;
-      grid-template-rows: var(--hLeftTop) 1fr;
+      grid-template-rows: 1fr auto; /* Gestão de pedidos (cresce) + Faturamento 5d (auto) */
       gap: var(--gap);
       min-height:0;
       overflow:hidden;
@@ -120,7 +142,7 @@
 
     .rightStack{
       display:grid;
-      grid-template-columns: 1.25fr .95fr;
+      grid-template-columns: 1.20fr .95fr;
       gap: var(--gap);
       min-height:0;
       overflow:hidden;
@@ -128,13 +150,14 @@
 
     /* CARDS (dark) */
     .card{
-      background: var(--card);
-      border:1px solid var(--border);
+      background: rgba(17,22,42,.92);
+      border:1px solid rgba(31,42,68,.85);
       border-radius: var(--radius);
       padding: 10px 12px;
       display:flex;
       flex-direction:column;
       min-height:0;
+      overflow:hidden;
     }
 
     .cardHeader{
@@ -142,16 +165,16 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding-bottom:8px;
-      border-bottom:1px solid var(--border);
+      padding-bottom:10px;
+      border-bottom:1px solid rgba(31,42,68,.75);
       margin-bottom:10px;
       min-width:0;
     }
 
     .cardTitle{
       font-size:12px;
-      font-weight:800;
-      color: var(--muted);
+      font-weight:900;
+      color: rgba(238,241,255,.70);
       text-transform: uppercase;
       letter-spacing: .35px;
       white-space:nowrap;
@@ -161,18 +184,29 @@
 
     .badge{
       font-size:11px;
-      font-weight:750;
+      font-weight:850;
       color: var(--text);
-      background: rgba(56,189,248,.10);
-      border: 1px solid rgba(56,189,248,.20);
-      padding: 4px 8px;
+      background: rgba(56,189,248,.12);
+      border: 1px solid rgba(56,189,248,.22);
+      padding: 5px 10px;
       border-radius: 999px;
       white-space:nowrap;
     }
 
-    .badge.bad{ background: rgba(239,68,68,.10); border-color: rgba(239,68,68,.22); }
-    .badge.warn{ background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.22); }
-    .badge.good{ background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.22); }
+    .badge.bad{ background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.25); }
+    .badge.warn{ background: rgba(245,158,11,.12); border-color: rgba(245,158,11,.25); }
+    .badge.good{ background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.25); }
+
+    /* SOFT PULSE (pisca-pisca suave) */
+    @keyframes softPulse {
+      0%   { box-shadow: 0 0 0 rgba(239,68,68,.0); filter: brightness(1); }
+      50%  { box-shadow: 0 0 22px rgba(239,68,68,.18); filter: brightness(1.05); }
+      100% { box-shadow: 0 0 0 rgba(239,68,68,.0); filter: brightness(1); }
+    }
+
+    .pulseRisk{
+      animation: softPulse 2.8s ease-in-out infinite;
+    }
 
     /* TOOLBAR (ordenar) */
     .toolbar{
@@ -193,43 +227,47 @@
 
     .toolbar label{
       font-size:11px;
-      color: var(--muted);
-      font-weight:750;
+      color: rgba(238,241,255,.70);
+      font-weight:900;
       letter-spacing:.2px;
       text-transform: uppercase;
       white-space:nowrap;
     }
 
     .toolbar select{
-      background: var(--card2);
-      border:1px solid var(--border);
+      background: rgba(15,21,48,.95);
+      border:1px solid rgba(31,42,68,.95);
       color: var(--text);
-      border-radius: 10px;
-      padding: 6px 10px;
+      border-radius: 12px;
+      padding: 7px 10px;
       font-size:12px;
       outline:none;
     }
 
     .btn{
-      background: rgba(56,189,248,.10);
-      border: 1px solid rgba(56,189,248,.20);
+      background: rgba(56,189,248,.14);
+      border: 1px solid rgba(56,189,248,.25);
       color: var(--text);
-      border-radius: 10px;
-      padding: 6px 10px;
+      border-radius: 12px;
+      padding: 7px 10px;
       font-size:12px;
-      font-weight:750;
+      font-weight:850;
       cursor:pointer;
       white-space:nowrap;
     }
     .btn:hover{ filter: brightness(1.08); }
 
-    /* TABLE WRAP (dark) */
+    /* TABLES (dark) */
     .tableWrap{
-      border:1px solid var(--border);
-      border-radius: 10px;
+      border:1px solid rgba(31,42,68,.90);
+      border-radius: 12px;
       overflow:auto;
-      background: var(--card2);
+      background: rgba(15,21,48,.94);
       min-height:0;
+    }
+
+    .tableWrap.noScroll{
+      overflow:hidden; /* sem barra de rolagem */
     }
 
     table{
@@ -239,9 +277,9 @@
     }
 
     th, td{
-      padding: 6px 8px;
+      padding: 7px 9px;
       height: var(--rowH);
-      border-bottom: 1px solid rgba(31,42,68,.9);
+      border-bottom: 1px solid rgba(31,42,68,.80);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
@@ -250,13 +288,13 @@
 
     th{
       text-align:left;
-      color: var(--muted);
-      font-weight:800;
+      color: rgba(238,241,255,.70);
+      font-weight:900;
       position: sticky;
       top: 0;
       z-index: 2;
-      background: var(--card2);
-      border-bottom: 1px solid var(--border);
+      background: rgba(15,21,48,.98);
+      border-bottom: 1px solid rgba(31,42,68,.95);
     }
 
     /* ====== CARD BRANCO (STATUS DETALHADO) ====== */
@@ -266,12 +304,15 @@
       border-radius: 16px;
       padding: 0;
       overflow:hidden;
-      box-shadow: 0 16px 30px rgba(0,0,0,.25);
+      box-shadow: 0 16px 34px rgba(0,0,0,.26);
+      min-height:0;
+      display:flex;
+      flex-direction:column;
     }
 
     .lightTop{
       background: #ffffff;
-      padding: 12px 14px;
+      padding: 14px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -279,18 +320,18 @@
     }
 
     .lightTop .title{
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 18px;
+      font-weight: 900;
       color:#0b1020;
     }
 
     .lightTop .pill{
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       color:#0b1020;
       background: #f3f4f6;
       border: 1px solid #e5e7eb;
-      padding: 6px 10px;
+      padding: 7px 12px;
       border-radius: 999px;
       white-space:nowrap;
     }
@@ -318,12 +359,13 @@
       top: 0;
       z-index: 3;
       border-bottom: 0;
+      height: 42px;
     }
 
     .lightTable td, .lightTable th{
-      padding: 10px 12px;
+      padding: 11px 12px;
       border-bottom: 1px solid #e5e7eb;
-      height: 40px;
+      height: 42px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
@@ -334,30 +376,42 @@
     .lightTable tbody tr:nth-child(even){ background:#efefea; }
 
     .rowGold{ background:#e8d7aa !important; }
-    .rowGreen{ background:#bfe7cf !important; }
+    .rowGreenStrong{
+      background:#bfe7cf !important;
+    }
+    .rowGreenStrong td{
+      font-size: 14px;
+      font-weight: 950;
+    }
 
-    .lightTable td.num{ text-align:center; font-weight:800; }
-    .lightTable td.val{ text-align:right; font-weight:900; }
+    .lightTable td.num{ text-align:center; font-weight:900; }
+    .lightTable td.val{ text-align:right; font-weight:950; }
 
     /* FOOTER */
     .footer{
       margin-top: 10px;
       font-size: 11px;
-      color: var(--muted);
+      color: rgba(238,241,255,.55);
       text-align: right;
     }
 
-    /* RESPONSIVO */
-    @media (max-width: 1366px){
-      :root{ --padX:14px; --padY:12px; --gap:10px; --rowH:30px; --hLeftTop:112px; }
-      .layout{ grid-template-columns: 440px 1fr; }
-      .kpi .value{ font-size:17px; }
-    }
-
-    @media (max-width: 1150px){
-      .kpis{ grid-template-columns: repeat(2, 1fr); }
+    /* RESPONSIVO — notebook vira 1 coluna (menos confuso) */
+    @media (max-width: 1400px){
+      :root{
+        --leftW: 1fr;
+        --padX:14px;
+        --padY:12px;
+        --gap:12px;
+      }
+      .kpi .value{ font-size:24px; }
       .layout{ grid-template-columns: 1fr; }
       .rightStack{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 1100px){
+      .kpis{ grid-template-columns: repeat(2, 1fr); }
+      .kpi .value{ font-size:22px; }
+      header h1{ max-width:55vw; }
       .footer{ text-align:left; }
     }
   </style>
@@ -371,7 +425,7 @@
 
 <main>
 
-  <!-- KPIs (sem margem) -->
+  <!-- KPIs (maiores) -->
   <section class="kpis">
     <div class="kpi">
       <div class="label">Pedidos Faturados Hoje</div>
@@ -397,24 +451,8 @@
     <!-- ESQUERDA -->
     <div class="leftStack">
 
-      <!-- Histórico 3 dias -->
-      <section class="card">
-        <div class="cardHeader">
-          <div class="cardTitle">Faturamento – últimos 3 dias</div>
-          <div class="badge" id="badgeFat3">3 dias</div>
-        </div>
-        <div class="tableWrap" aria-label="Tabela de faturamento 3 dias">
-          <table>
-            <thead>
-              <tr><th style="width:38%">Data</th><th>Valor</th></tr>
-            </thead>
-            <tbody id="tblFaturamento3dias"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Status detalhado (DESTACADO / BRANCO) -->
-      <section class="cardLight" style="min-height:0;">
+      <!-- Gestão de pedidos (sobe) -->
+      <section class="cardLight">
         <div class="lightTop">
           <div class="title">Gestão de Pedidos</div>
           <div class="pill" id="pillItens">0 itens</div>
@@ -433,13 +471,29 @@
         </div>
       </section>
 
+      <!-- Faturamento (desce) — 5 dias, sem rolagem -->
+      <section class="card">
+        <div class="cardHeader">
+          <div class="cardTitle">Faturamento – últimos 5 dias</div>
+          <div class="badge" id="badgeFat5">5 dias</div>
+        </div>
+        <div class="tableWrap noScroll" aria-label="Tabela de faturamento 5 dias">
+          <table>
+            <thead>
+              <tr><th style="width:38%">Data</th><th>Valor</th></tr>
+            </thead>
+            <tbody id="tblFaturamento5dias"></tbody>
+          </table>
+        </div>
+      </section>
+
     </div>
 
     <!-- DIREITA: RISCO -->
     <section class="rightStack">
 
-      <!-- Crédito -->
-      <section class="card">
+      <!-- Crédito (pisca suave) -->
+      <section class="card pulseRisk" id="cardCredito">
         <div class="cardHeader">
           <div class="cardTitle">Risco – análise de crédito</div>
           <div class="badge bad" id="badgeCredito">0 pedidos</div>
@@ -478,8 +532,8 @@
         </div>
       </section>
 
-      <!-- Bloqueios / Alvará -->
-      <section class="card">
+      <!-- Bloqueios / Alvará (pisca suave) -->
+      <section class="card pulseRisk" id="cardBloq">
         <div class="cardHeader">
           <div class="cardTitle">Risco – bloqueios / alvará</div>
           <div class="badge bad" id="badgeBloq">0 pedidos</div>
@@ -567,14 +621,6 @@
     return `<tr>${cells.map(c => `<td title="${String(c).replaceAll('"','&quot;')}">${c}</td>`).join('')}</tr>`;
   }
 
-  function setBadge(id, text, tone){
-    const b = el(id);
-    if(!b) return;
-    b.textContent = text;
-    b.classList.remove('good','warn','bad');
-    if(tone) b.classList.add(tone);
-  }
-
   function sortArray(arr, by, dir){
     const factor = dir === "asc" ? 1 : -1;
     const copy = [...(arr || [])];
@@ -606,10 +652,15 @@
     el('kpiPedidosAbertos').textContent = data.kpis_dia?.pedidos_abertos ?? 0;
     el('kpiValorRisco').textContent = fmtBRL(data.kpis_dia?.valor_em_risco ?? 0);
 
-    // Histórico 3 dias
-    const fatBody = el('tblFaturamento3dias');
-    fatBody.innerHTML = (data.faturamento_ultimos_3_dias || [])
-      .slice(-3)
+    // ===== Faturamento (até 5 dias) =====
+    // Suporta:
+    // - faturamento_ultimos_3_dias (se vier com 5 linhas, mostra 5)
+    // - futuramente faturamento_ultimos_5_dias (se você quiser renomear)
+    const faturamento = (data.faturamento_ultimos_5_dias || data.faturamento_ultimos_3_dias || []);
+    const fat5 = faturamento.slice(-5);
+
+    const fatBody = el('tblFaturamento5dias');
+    fatBody.innerHTML = fat5
       .map(x => rowHtml([x.data, fmtBRL(x.valor)])).join('') || rowHtml(['—', fmtBRL(0)]);
 
     // ===== Status detalhado (card branco) =====
@@ -621,10 +672,13 @@
       const st = String(x.status ?? "");
       const stN = normalizeText(st);
 
+      // Destaques pedidos:
+      // - FATURADO: sem cor
+      // - TOTAL FATURAMENTO PREVISTO: destaque forte
+      // - TOTAL EM DISPUTA: mantém dourado (como referência)
       let cls = "";
       if(stN === "TOTAL EM DISPUTA") cls = "rowGold";
-      if(stN === "FATURADO") cls = "rowGold";
-      if(stN === "TOTAL FATURAMENTO PREVISTO") cls = "rowGreen";
+      if(stN === "TOTAL FATURAMENTO PREVISTO") cls = "rowGreenStrong";
 
       const qtd = Number(x.quantidade) || 0;
       const val = fmtBRL(Number(x.valor) || 0);
@@ -652,7 +706,7 @@
       fmtPct(x.margem),
       x.vendedor ?? "—"
     ])).join('') || rowHtml(['—','—','—','—',fmtBRL(0),fmtPct(0),'—']);
-    setBadge('badgeCredito', `${(data.analise_credito||[]).length} pedidos`, 'bad');
+    el('badgeCredito').textContent = `${(data.analise_credito||[]).length} pedidos`;
 
     // ===== Bloqueios/Alvará (ordenável) =====
     const bloqSorted = sortArray(data.bloqueios_alvara || [], sortState.bloq.by, sortState.bloq.dir);
@@ -666,7 +720,13 @@
       fmtPct(x.margem),
       x.vendedor ?? "—"
     ])).join('') || rowHtml(['—','—','—','—',fmtBRL(0),fmtPct(0),'—']);
-    setBadge('badgeBloq', `${(data.bloqueios_alvara||[]).length} pedidos`, 'bad');
+    el('badgeBloq').textContent = `${(data.bloqueios_alvara||[]).length} pedidos`;
+
+    // ===== Pisca suave só quando houver risco =====
+    const hasCredito = (data.analise_credito || []).length > 0;
+    const hasBloq = (data.bloqueios_alvara || []).length > 0;
+    el('cardCredito').classList.toggle('pulseRisk', hasCredito);
+    el('cardBloq').classList.toggle('pulseRisk', hasBloq);
   }
 
   // ====== LOAD JSON EXTERNO ======
