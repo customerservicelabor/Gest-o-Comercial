@@ -2,37 +2,32 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="600"><!-- REFRESH TOTAL A CADA 10 MIN -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel Diário – Gestão de Pedidos</title>
+
   <style>
     :root{
       --bg0:#060913;
       --bg1:#0b1020;
-
       --card:#11162a;
       --card2:#0f1530;
       --border:#1f2a44;
-
       --muted:#9aa4bf;
       --text:#eef1ff;
-
       --good:#22c55e;
       --warn:#f59e0b;
       --bad:#ef4444;
       --accent:#38bdf8;
-
       --radius:14px;
       --gap:14px;
       --headerH:58px;
-      --rowH:34px;         /* padrão */
-      --riskRowH:32px;     /* (NOVO) riscos mais compactos */
+      --rowH:34px;
+      --riskRowH:32px;
       --padX:18px;
       --padY:14px;
-
-      --leftW: 520px;
-
-      /* altura padrão dos riscos (para ~10 linhas) */
-      --riskBodyH: 420px;
+      --leftW:520px;
+      --riskBodyH:420px;
     }
 
     *{ box-sizing:border-box; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
@@ -61,456 +56,116 @@
       margin:0;
       font-size:16px;
       font-weight:800;
-      letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:65vw;
     }
 
     header .meta{
       font-size:12px;
       color:var(--muted);
-      white-space:nowrap;
     }
-    header .meta strong{ color:var(--text); font-weight:750; }
 
-    /* APP GRID (3 linhas: KPIs, conteúdo, rodapé) */
     main{
       height: calc(100vh - var(--headerH));
       padding: var(--padY) var(--padX);
       display:grid;
-      grid-template-rows: auto 1fr auto;
-      gap: var(--gap);
+      grid-template-rows:auto 1fr auto;
+      gap:var(--gap);
       overflow:hidden;
     }
 
-    /* KPI STRIP */
     .kpis{
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--gap);
+      grid-template-columns:repeat(4,1fr);
+      gap:var(--gap);
     }
 
     .kpi{
-      background:
-        radial-gradient(900px 200px at 20% -20%, rgba(56,189,248,.20), transparent 55%),
-        linear-gradient(180deg, rgba(56,189,248,.08), transparent 45%),
-        var(--card);
+      background:var(--card);
       border:1px solid rgba(56,189,248,.18);
-      border-radius: 18px;
-      padding: 14px 14px;
-      min-width:0;
-      box-shadow: 0 10px 26px rgba(0,0,0,.22);
+      border-radius:18px;
+      padding:14px;
       display:flex;
-      align-items:center;
       gap:12px;
-    }
-
-    .kpiIcon{
-      width:44px;
-      height:44px;
-      border-radius: 14px;
-      background: rgba(56,189,248,.14);
-      border: 1px solid rgba(56,189,248,.24);
-      display:flex;
       align-items:center;
-      justify-content:center;
-      flex: 0 0 auto;
-    }
-    /* (MELHORIA) ícone maior: 24px */
-    .kpiIcon svg{ width:24px; height:24px; opacity:.92; }
-
-    .kpiBody{ min-width:0; }
-    .kpi .label{
-      font-size:12px;
-      color:rgba(238,241,255,.72);
-      font-weight:750;
-      letter-spacing:.15px;
     }
 
-    /* (MELHORIA) valor maior: 30px */
-    .kpi .value{
-      margin-top:10px;
-      font-size:30px;
-      font-weight:900;
-      line-height:1.05;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    /* (NOVO) subtexto pequeno (opcional) */
-    .kpi .sub{
-      margin-top:6px;
-      font-size:11px;
-      color: rgba(238,241,255,.58);
-      font-weight:750;
-      letter-spacing:.18px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+    .kpi .label{ font-size:12px; opacity:.7; font-weight:800; }
+    .kpi .value{ font-size:30px; font-weight:900; margin-top:8px; }
+    .kpi .sub{ font-size:11px; opacity:.6; }
 
     .good{ color:var(--good); }
     .warn{ color:var(--warn); }
     .bad{ color:var(--bad); }
 
-    /* BODY LAYOUT */
     .layout{
       display:grid;
-      grid-template-columns: var(--leftW) 1fr;
-      gap: var(--gap);
+      grid-template-columns:var(--leftW) 1fr;
+      gap:var(--gap);
       min-height:0;
-      overflow:hidden;
     }
 
-    .leftStack{
-      display:grid;
-      grid-template-rows: 1fr; /* só gestão de pedidos (sem scroll) */
-      gap: var(--gap);
-      min-height:0;
-      overflow:hidden;
-    }
-
-    .rightStack{
-      display:grid;
-      grid-template-columns: 1.20fr .95fr;
-      gap: var(--gap);
-      min-height:0;
-      overflow:hidden;
-    }
-
-    /* CARDS (dark) */
     .card{
-      background: rgba(17,22,42,.92);
+      background:rgba(17,22,42,.92);
       border:1px solid rgba(31,42,68,.85);
-      border-radius: var(--radius);
-      padding: 10px 12px;
+      border-radius:var(--radius);
+      padding:10px 12px;
       display:flex;
       flex-direction:column;
       min-height:0;
-      overflow:hidden;
     }
 
     .cardHeader{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:10px;
-      padding-bottom:10px;
-      border-bottom:1px solid rgba(31,42,68,.75);
+      align-items:center;
       margin-bottom:10px;
-      min-width:0;
+      border-bottom:1px solid rgba(31,42,68,.7);
+      padding-bottom:8px;
     }
 
     .cardTitle{
       font-size:12px;
-      font-weight:800;
-      color: rgba(238,241,255,.66);
-      text-transform: uppercase;
-      letter-spacing: .35px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-weight:900;
+      text-transform:uppercase;
+      opacity:.7;
     }
 
     .badge{
       font-size:11px;
-      font-weight:850;
-      color: var(--text);
-      background: rgba(56,189,248,.12);
-      border: 1px solid rgba(56,189,248,.22);
-      padding: 5px 10px;
-      border-radius: 999px;
-      white-space:nowrap;
-    }
-    .badge.bad{ background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.25); }
-
-    /* SOFT PULSE */
-    @keyframes softPulse {
-      0%   { box-shadow: 0 0 0 rgba(239,68,68,.0); filter: brightness(1); }
-      50%  { box-shadow: 0 0 18px rgba(239,68,68,.16); filter: brightness(1.04); }
-      100% { box-shadow: 0 0 0 rgba(239,68,68,.0); filter: brightness(1); }
-    }
-    .pulseRisk{ animation: softPulse 2.8s ease-in-out infinite; }
-
-    /* TOOLBAR (ordenar) */
-    .toolbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-top:-2px;
-      margin-bottom:10px;
-    }
-
-    .toolbar .left{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      min-width:0;
-    }
-
-    .toolbar label{
-      font-size:11px;
-      color: rgba(238,241,255,.66);
-      font-weight:800;
-      letter-spacing:.2px;
-      text-transform: uppercase;
-      white-space:nowrap;
-    }
-
-    .toolbar select{
-      background: rgba(15,21,48,.95);
-      border:1px solid rgba(31,42,68,.95);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 7px 10px;
-      font-size:12px;
-      outline:none;
-    }
-
-    .btn{
-      background: rgba(56,189,248,.14);
-      border: 1px solid rgba(56,189,248,.25);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 7px 10px;
-      font-size:12px;
-      font-weight:850;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .btn:hover{ filter: brightness(1.08); }
-
-    /* TABLES (dark) */
-    .tableWrap{
-      border:1px solid rgba(31,42,68,.90);
-      border-radius: 12px;
-      background: rgba(15,21,48,.94);
-      min-height:0;
-      overflow-x: hidden;
-      overflow-y: auto;
+      font-weight:900;
+      padding:5px 10px;
+      border-radius:999px;
+      background:rgba(239,68,68,.15);
+      border:1px solid rgba(239,68,68,.3);
     }
 
     table{
       width:100%;
-      border-collapse: collapse;
+      border-collapse:collapse;
       font-size:12px;
-      table-layout: fixed;
     }
 
     th, td{
-      padding: 7px 9px;
-      height: var(--rowH);
-      border-bottom: 1px solid rgba(31,42,68,.80);
+      padding:7px 9px;
+      border-bottom:1px solid rgba(31,42,68,.8);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      vertical-align: middle;
     }
 
     th{
       text-align:left;
-      color: rgba(238,241,255,.64);
-      font-weight:800;
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      background: rgba(15,21,48,.98);
-      border-bottom: 1px solid rgba(31,42,68,.95);
+      font-weight:900;
+      opacity:.7;
     }
-
-    /* (MELHORIA) tabela de riscos mais “apertada” */
-    .riskTableWrap th, .riskTableWrap td{
-      height: var(--riskRowH);
-      padding-top:6px;
-      padding-bottom:6px;
-    }
-
-    /* ====== CARD BRANCO (GESTÃO) — SEM SCROLL ====== */
-    .cardLight{
-      background:#ffffff;
-      border: 0;
-      border-radius: 16px;
-      padding: 0;
-      overflow:hidden;
-      box-shadow: 0 16px 34px rgba(0,0,0,.26);
-      min-height:0;
-      display:flex;
-      flex-direction:column;
-    }
-
-    .lightTop{
-      background: #ffffff;
-      padding: 14px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom: 1px solid #e6e7ea;
-      gap:10px;
-    }
-
-    .lightTitleWrap{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .lightIcon{
-      width:38px;
-      height:38px;
-      border-radius: 12px;
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex:0 0 auto;
-    }
-    .lightIcon svg{ width:18px; height:18px; opacity:.88; }
-
-    .lightTop .title{
-      font-size: 18px;
-      font-weight: 900;
-      color:#0b1020;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .lightTop .pill{
-      font-size: 12px;
-      font-weight: 900;
-      color:#0b1020;
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      padding: 7px 12px;
-      border-radius: 999px;
-      white-space:nowrap;
-    }
-
-    .lightTableWrap{
-      background:#ffffff;
-      overflow:hidden;
-      min-height:0;
-    }
-
-    .lightTable{
-      width:100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    .lightTable thead th{
-      background: #0b1020;
-      color:#ffffff;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .35px;
-      font-size: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 3;
-      border-bottom: 0;
-      height: 42px;
-    }
-
-    .lightTable td, .lightTable th{
-      padding: 11px 12px;
-      border-bottom: 1px solid #e5e7eb;
-      height: 42px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      color:#0b1020;
-    }
-
-    .lightTable tbody tr:nth-child(odd){ background:#f3f4f6; }
-    .lightTable tbody tr:nth-child(even){ background:#efefea; }
-
-    .rowGold{ background:#e8d7aa !important; }
-    .rowGreenStrong{ background:#bfe7cf !important; }
-    .rowGreenStrong td{ font-size: 14px; font-weight: 950; }
-
-    .lightTable td.num{ text-align:center; font-weight:900; }
-    .lightTable td.val{ text-align:right; font-weight:950; }
-
-    /* BOTTOM — faturamento (agora: mostrar somente dias existentes) */
-    .bottomBar{
-      display:flex;
-      gap: var(--gap);
-      align-items:stretch;
-      justify-content:stretch;
-      min-height:0;
-      overflow:hidden;
-    }
-
-    .fatCard{
-      flex:1 1 0;
-      background: rgba(17,22,42,.92);
-      border:1px solid rgba(31,42,68,.85);
-      border-radius: 16px;
-      padding: 12px 12px;
-      min-width:0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.18);
-    }
-
-    .fatDate{
-      font-size:12px;
-      color: rgba(238,241,255,.70);
-      font-weight:800;
-      letter-spacing:.2px;
-      white-space:nowrap;
-    }
-
-    .fatValue{
-      font-size:16px;
-      font-weight:950;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .fatValue.good{ color: var(--good); }
-    .fatValue.muted{ color: rgba(238,241,255,.88); }
 
     .footer{
-      margin-top: 8px;
-      font-size: 11px;
-      color: rgba(238,241,255,.55);
-      text-align: right;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 1400px){
-      :root{
-        --leftW: 1fr;
-        --padX:14px;
-        --padY:12px;
-        --gap:12px;
-        --riskBodyH: 360px;
-      }
-      main{ grid-template-rows: auto 1fr auto; }
-      .layout{ grid-template-columns: 1fr; }
-      .rightStack{ grid-template-columns: 1fr; }
-      .kpi .value{ font-size:28px; }
-    }
-
-    @media (max-width: 1100px){
-      .kpis{ grid-template-columns: repeat(2, 1fr); }
-      .kpi .value{ font-size:26px; }
-      header h1{ max-width:55vw; }
-      .footer{ text-align:left; }
+      font-size:11px;
+      opacity:.5;
+      text-align:right;
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -520,15 +175,10 @@
 
 <main>
 
-  <!-- KPIs (com ícones SVG) -->
+  <!-- KPIs -->
   <section class="kpis">
     <div class="kpi">
-      <div class="kpiIcon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 6L9 17l-5-5"/>
-        </svg>
-      </div>
-      <div class="kpiBody">
+      <div>
         <div class="label">Pedidos Faturados Hoje</div>
         <div class="value good" id="kpiPedidosFaturados">0</div>
         <div class="sub">Hoje</div>
@@ -536,13 +186,7 @@
     </div>
 
     <div class="kpi">
-      <div class="kpiIcon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 2h9l3 3v17l-2-1-2 1-2-1-2 1-2-1-2 1V2z"/>
-          <path d="M8 7h8M8 11h8M8 15h6"/>
-        </svg>
-      </div>
-      <div class="kpiBody">
+      <div>
         <div class="label">Valor Faturado Hoje</div>
         <div class="value good" id="kpiValorFaturado">R$ 0,00</div>
         <div class="sub">Hoje</div>
@@ -550,12 +194,7 @@
     </div>
 
     <div class="kpi">
-      <div class="kpiIcon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 7h16M4 12h16M4 17h10"/>
-        </svg>
-      </div>
-      <div class="kpiBody">
+      <div>
         <div class="label">Pedidos em Aberto</div>
         <div class="value warn" id="kpiPedidosAbertos">0</div>
         <div class="sub">Total aberto</div>
@@ -563,14 +202,7 @@
     </div>
 
     <div class="kpi">
-      <div class="kpiIcon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 9v4"/>
-          <path d="M12 17h.01"/>
-          <path d="M10.3 3.4l-8 14A2 2 0 0 0 4 20h16a2 2 0 0 0 1.7-2.6l-8-14a2 2 0 0 0-3.4 0z"/>
-        </svg>
-      </div>
-      <div class="kpiBody">
+      <div>
         <div class="label">Valor em Risco (Crédito + Alvará + Bloqueio)</div>
         <div class="value bad" id="kpiValorRisco">R$ 0,00</div>
         <div class="sub">Risco total</div>
@@ -580,321 +212,61 @@
 
   <!-- CONTEÚDO -->
   <section class="layout">
-
-    <!-- ESQUERDA (Gestão sem scroll) -->
-    <div class="leftStack">
-      <section class="cardLight">
-        <div class="lightTop">
-          <div class="lightTitleWrap">
-            <div class="lightIcon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 5h6"/>
-                <path d="M9 3h6a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
-                <path d="M7 9h10M7 13h10M7 17h7"/>
-              </svg>
-            </div>
-            <div class="title">Gestão de Pedidos</div>
-          </div>
-          <div class="pill" id="pillItens">0 itens</div>
-        </div>
-
-        <div class="lightTableWrap" aria-label="Tabela status detalhado (sem scroll)">
-          <table class="lightTable">
-            <thead>
-              <tr>
-                <th style="width:56%">Pedidos</th>
-                <!-- (MELHORIA) QUANTIDADE -> QTD -->
-                <th style="width:18%; text-align:center;">QTD</th>
-                <th style="width:26%; text-align:right;">Valor</th>
-              </tr>
-            </thead>
-            <tbody id="tblStatusDetalhadoLight"></tbody>
-          </table>
-        </div>
-      </section>
+    <div class="card">
+      <div class="cardHeader">
+        <div class="cardTitle">Gestão de Pedidos</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Status</th><th>Qtd</th><th>Valor</th></tr>
+        </thead>
+        <tbody id="tblStatusDetalhadoLight"></tbody>
+      </table>
     </div>
 
-    <!-- DIREITA: RISCO -->
-    <section class="rightStack">
-
-      <!-- Crédito -->
-      <section class="card pulseRisk" id="cardCredito">
-        <div class="cardHeader">
-          <div class="cardTitle">Risco – análise de crédito</div>
-          <div class="badge bad" id="badgeCredito">0 pedidos</div>
-        </div>
-
-        <div class="toolbar">
-          <div class="left">
-            <label for="sortCreditoBy">Ordenar por</label>
-            <select id="sortCreditoBy">
-              <option value="valor">Valor</option>
-              <option value="margem">Margem</option>
-              <option value="data_pedido">Data</option>
-              <option value="pedido">Pedido</option>
-              <option value="cliente">Cliente</option>
-            </select>
-            <button class="btn" id="sortCreditoDir" title="Alternar direção">Desc ↓</button>
-          </div>
-          <button class="btn" id="refreshBtn" title="Recarregar data.json">Recarregar</button>
-        </div>
-
-        <div class="tableWrap riskTableWrap" aria-label="Tabela análise de crédito" style="height: var(--riskBodyH);">
-          <table>
-            <thead>
-              <tr>
-                <th style="width:12%">Pedido</th>
-                <th style="width:14%">Data</th>
-                <th style="width:32%">Cliente</th>
-                <th style="width:8%">UF</th>
-                <th style="width:16%">Valor</th>
-                <th style="width:10%">Margem</th>
-                <th style="width:18%">Vendedor</th>
-              </tr>
-            </thead>
-            <tbody id="tblCredito"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Bloqueios / Alvará -->
-      <section class="card pulseRisk" id="cardBloq">
-        <div class="cardHeader">
-          <div class="cardTitle">Risco – bloqueios / alvará</div>
-          <div class="badge bad" id="badgeBloq">0 pedidos</div>
-        </div>
-
-        <div class="toolbar">
-          <div class="left">
-            <label for="sortBloqBy">Ordenar por</label>
-            <select id="sortBloqBy">
-              <option value="valor">Valor</option>
-              <option value="margem">Margem</option>
-              <option value="data_pedido">Data</option>
-              <option value="pedido">Pedido</option>
-              <option value="cliente">Cliente</option>
-            </select>
-            <button class="btn" id="sortBloqDir" title="Alternar direção">Desc ↓</button>
-          </div>
-          <div></div>
-        </div>
-
-        <div class="tableWrap riskTableWrap" aria-label="Tabela bloqueios e alvará" style="height: var(--riskBodyH);">
-          <table>
-            <thead>
-              <tr>
-                <th style="width:12%">Pedido</th>
-                <th style="width:14%">Data</th>
-                <th style="width:30%">Cliente</th>
-                <th style="width:18%">Motivo</th>
-                <th style="width:14%">Valor</th>
-                <th style="width:12%">Margem</th>
-              </tr>
-            </thead>
-            <tbody id="tblBloqueiosAlvara"></tbody>
-          </table>
-        </div>
-      </section>
-
-    </section>
-
+    <div class="card">
+      <div class="cardHeader">
+        <div class="cardTitle">Riscos</div>
+        <div class="badge" id="badgeRisco">0 pedidos</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Pedido</th><th>Cliente</th><th>Valor</th></tr>
+        </thead>
+        <tbody id="tblRisco"></tbody>
+      </table>
+    </div>
   </section>
-
-  <!-- FATURAMENTO (somente dias existentes, sem placeholders) -->
-  <section class="bottomBar" aria-label="Faturamento últimos dias" id="bottomBar"></section>
 
   <div class="footer">Painel de uso gerencial – visão diária</div>
 </main>
 
 <script>
-  const dashboardDataFallback = {
-    updated_at: "— (fallback)",
-    kpis_dia: { pedidos_faturados: 0, valor_faturado: 0, pedidos_abertos: 0, valor_em_risco: 0 },
-    faturamento_ultimos_5_dias: [],
-    status_detalhado: [],
-    analise_credito: [],
-    bloqueios_alvara: []
-  };
+  const fmtBRL = n =>
+    (isFinite(n) ? n : 0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 
-  const sortState = {
-    credito: { by: "valor", dir: "desc" },
-    bloq: { by: "valor", dir: "desc" }
-  };
-
-  const el = (id) => document.getElementById(id);
-  const fmtBRL = (n) => (isFinite(n) ? n : 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  const fmtPct = (n) => `${(isFinite(n) ? n : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`;
-
-  function parseBRDate(d){
-    if(!d || typeof d !== "string") return 0;
-    const m = d.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-    if(!m) return 0;
-    const dd = Number(m[1]), mm = Number(m[2]), yy = Number(m[3]);
-    return yy*10000 + mm*100 + dd;
-  }
-
-  function normalizeText(s){
-    return String(s ?? "")
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .toUpperCase().trim();
-  }
-
-  function rowHtml(cells){
-    return `<tr>${cells.map(c => `<td title="${String(c).replaceAll('"','&quot;')}">${c}</td>`).join('')}</tr>`;
-  }
-
-  function sortArray(arr, by, dir){
-    const factor = dir === "asc" ? 1 : -1;
-    const copy = [...(arr || [])];
-
-    const getter = (x) => {
-      if(by === "valor") return Number(x.valor) || 0;
-      if(by === "margem") return Number(x.margem) || 0;
-      if(by === "data_pedido") return parseBRDate(x.data_pedido);
-      if(by === "pedido") return Number(x.pedido) || 0;
-      if(by === "cliente") return normalizeText(x.cliente);
-      return 0;
-    };
-
-    copy.sort((a,b) => {
-      const A = getter(a), B = getter(b);
-      if(typeof A === "string" && typeof B === "string") return A.localeCompare(B) * factor;
-      return (A === B ? 0 : (A > B ? 1 : -1)) * factor;
-    });
-
-    return copy;
-  }
-
-  /* (MELHORIA A) Mostrar apenas os dias que existem */
-  function renderFaturamentoCards(data){
-    const wrap = el('bottomBar');
-    const faturamento = (data.faturamento_ultimos_5_dias || []);
-    const fat = faturamento.slice(-5).filter(x => x && x.data && isFinite(Number(x.valor)));
-
-    if(!fat.length){
-      wrap.innerHTML = `<div class="fatCard"><div class="fatDate">Faturamento</div><div class="fatValue muted">Sem dados</div></div>`;
-      return;
-    }
-
-    // “Hoje” (último item) ganha verde
-    wrap.innerHTML = fat.map((x, idx) => {
-      const isLast = idx === fat.length - 1;
-      return `
-        <div class="fatCard">
-          <div class="fatDate">${x.data}</div>
-          <div class="fatValue ${isLast ? 'good' : 'muted'}">${fmtBRL(Number(x.valor)||0)}</div>
-        </div>
-      `;
-    }).join('');
-  }
-
-  function render(data){
-    el('updatedAt').textContent = data.updated_at || '--/--/----';
-
-    el('kpiPedidosFaturados').textContent = data.kpis_dia?.pedidos_faturados ?? 0;
-    el('kpiValorFaturado').textContent = fmtBRL(data.kpis_dia?.valor_faturado ?? 0);
-    el('kpiPedidosAbertos').textContent = data.kpis_dia?.pedidos_abertos ?? 0;
-    el('kpiValorRisco').textContent = fmtBRL(data.kpis_dia?.valor_em_risco ?? 0);
-
-    renderFaturamentoCards(data);
-
-    // Gestão (sem scroll)
-    const status = (data.status_detalhado || []);
-    el('pillItens').textContent = `${status.length} itens`;
-
-    const tbodyLight = el('tblStatusDetalhadoLight');
-    tbodyLight.innerHTML = status.map(x => {
-      const st = String(x.status ?? "");
-      const stN = normalizeText(st);
-
-      // Destaques
-      let cls = "";
-      if(stN === "TOTAL EM DISPUTA") cls = "rowGold";
-      if(stN === "TOTAL FATURAMENTO PREVISTO") cls = "rowGreenStrong";
-
-      // (MELHORIA) se quantidade vier vazia/null => "—"
-      const qtdRaw = x.quantidade;
-      const qtd = (qtdRaw === null || qtdRaw === undefined || String(qtdRaw).trim() === "")
-        ? "—"
-        : (Number(qtdRaw) || 0);
-
-      const val = fmtBRL(Number(x.valor) || 0);
-
-      return `
-        <tr class="${cls}">
-          <td>${st}</td>
-          <td class="num">${qtd}</td>
-          <td class="val">${val}</td>
-        </tr>
-      `;
-    }).join('') || `
-      <tr><td>—</td><td class="num">—</td><td class="val">${fmtBRL(0)}</td></tr>
-    `;
-
-    // Crédito
-    const creditoSorted = sortArray(data.analise_credito || [], sortState.credito.by, sortState.credito.dir);
-    const credBody = el('tblCredito');
-    credBody.innerHTML = creditoSorted.map(x => rowHtml([
-      x.pedido ?? "—",
-      x.data_pedido ?? "—",
-      x.cliente ?? "—",
-      x.uf ?? "—",
-      fmtBRL(x.valor),
-      fmtPct(x.margem),
-      x.vendedor ?? "—"
-    ])).join('') || rowHtml(['—','—','—','—',fmtBRL(0),fmtPct(0),'—']);
-    el('badgeCredito').textContent = `${(data.analise_credito||[]).length} pedidos`;
-
-    // Bloq/Alvará
-    const bloqSorted = sortArray(data.bloqueios_alvara || [], sortState.bloq.by, sortState.bloq.dir);
-    const bloqBody = el('tblBloqueiosAlvara');
-    bloqBody.innerHTML = bloqSorted.map(x => rowHtml([
-      x.pedido ?? "—",
-      x.data_pedido ?? "—",
-      x.cliente ?? "—",
-      x.motivo ?? "—",
-      fmtBRL(x.valor),
-      fmtPct(x.margem)
-    ])).join('') || rowHtml(['—','—','—','—',fmtBRL(0),fmtPct(0)]);
-    el('badgeBloq').textContent = `${(data.bloqueios_alvara||[]).length} pedidos`;
-
-    // Pisca somente se houver itens
-    el('cardCredito').classList.toggle('pulseRisk', (data.analise_credito||[]).length > 0);
-    el('cardBloq').classList.toggle('pulseRisk', (data.bloqueios_alvara||[]).length > 0);
+  function sum(arr){
+    return (arr||[]).reduce((a,b)=>a+(Number(b.valor)||0),0);
   }
 
   async function loadData(){
-    try{
-      const r = await fetch('./data.json?v=' + Date.now());
-      if(!r.ok) throw new Error('HTTP ' + r.status);
-      const data = await r.json();
-      window.__dashboardData = data;
-      render(data);
-    }catch(err){
-      console.error('Falha ao carregar ./data.json:', err);
-      window.__dashboardData = dashboardDataFallback;
-      render(dashboardDataFallback);
-    }
-  }
+    const r = await fetch('./data.json?v='+Date.now());
+    const data = await r.json();
 
-  function toggleDir(btnId, key){
-    const btn = el(btnId);
-    sortState[key].dir = (sortState[key].dir === "desc") ? "asc" : "desc";
-    btn.textContent = sortState[key].dir === "desc" ? "Desc ↓" : "Asc ↑";
-    render(window.__dashboardData || dashboardDataFallback);
-  }
+    document.getElementById('updatedAt').textContent = data.updated_at || '--';
 
-  function setBy(selectId, key){
-    const sel = el(selectId);
-    sortState[key].by = sel.value;
-    render(window.__dashboardData || dashboardDataFallback);
-  }
+    document.getElementById('kpiPedidosFaturados').textContent = data.kpis_dia?.pedidos_faturados ?? 0;
+    document.getElementById('kpiValorFaturado').textContent = fmtBRL(data.kpis_dia?.valor_faturado ?? 0);
+    document.getElementById('kpiPedidosAbertos').textContent = data.kpis_dia?.pedidos_abertos ?? 0;
 
-  el('sortCreditoBy').addEventListener('change', () => setBy('sortCreditoBy', 'credito'));
-  el('sortBloqBy').addEventListener('change', () => setBy('sortBloqBy', 'bloq'));
-  el('sortCreditoDir').addEventListener('click', () => toggleDir('sortCreditoDir', 'credito'));
-  el('sortBloqDir').addEventListener('click', () => toggleDir('sortBloqDir', 'bloq'));
-  el('refreshBtn').addEventListener('click', loadData);
+    const riscoTotal = sum(data.analise_credito) + sum(data.bloqueios_alvara);
+    document.getElementById('kpiValorRisco').textContent = fmtBRL(riscoTotal);
+
+    document.getElementById('tblStatusDetalhadoLight').innerHTML =
+      (data.status_detalhado||[]).map(x =>
+        `<tr><td>${x.status}</td><td>${x.quantidade}</td><td>${fmtBRL(x.valor)}</td></tr>`
+      ).join('');
+  }
 
   loadData();
 </script>
