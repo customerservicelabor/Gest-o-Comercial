@@ -1,13 +1,12 @@
 {
-  "updated_at": "30/01/2026 14:45",
+  "updated_at": "02/02/2026 08:18",
   "kpis_dia": {
-    "pedidos_faturados": 4,
-    "valor_faturado": 29331.67,
-    "pedidos_abertos": 58,
-    "valor_em_risco": 119182.31
+    "pedidos_faturados": 0,
+    "valor_faturado": 0,
+    "pedidos_abertos": 121,
+    "valor_em_risco": 582626.72
   },
   "faturamento_ultimos_5_dias": [
-    { "data": "23/01/2026", "valor": 785233.58 },
     { "data": "26/01/2026", "valor": 588574.42 },
     { "data": "27/01/2026", "valor": 1031674.17 },
     { "data": "28/01/2026", "valor": 841918.13 },
@@ -17,88 +16,25 @@
   "status_detalhado": [
     { "status": "Pedido incluido", "quantidade": 0, "valor": 0 },
     { "status": "Ecommerce", "quantidade": 0, "valor": 0 },
-    { "status": "Aguardando Liberação", "quantidade": 1, "valor": 25622.23 },
-    { "status": "Alvará Sanitário", "quantidade": 2, "valor": 11581.6 },
+    { "status": "Aguardando Liberação", "quantidade": 1, "valor": 55.54 },
+    { "status": "Alvará Sanitário", "quantidade": 6, "valor": 23222.33 },
     { "status": "Bloqueado por regra", "quantidade": 0, "valor": 0 },
-    { "status": "Análise de Crédito", "quantidade": 11, "valor": 107600.71 },
-    { "status": "Total em Disputa", "quantidade": null, "valor": 144804.54 },
-    { "status": "Aguard. Envio Separação", "quantidade": 5, "valor": 8599.1 },
-    { "status": "Em Separação", "quantidade": 39, "valor": 238569.86 },
+    { "status": "Análise de Crédito", "quantidade": 5, "valor": 41426.66 },
+    { "status": "Total em Disputa", "quantidade": 12, "valor": 64704.53 },
+    { "status": "Aguard. Envio Separação", "quantidade": 8, "valor": 29843.3 },
+    { "status": "Em Separação", "quantidade": 89, "valor": 552783.42 },
     { "status": "Separado", "quantidade": 0, "valor": 0 },
-    { "status": "Faturado", "quantidade": 4, "valor": 29331.67 },
-    { "status": "Total Faturamento Previsto", "quantidade": 62, "valor": 276500.63 }
+    { "status": "Faturado", "quantidade": 0, "valor": 0 },
+    { "status": "Total Faturamento Previsto", "quantidade": 121, "valor": 582626.72 }
   ],
   "analise_credito": [
     {
-      "pedido": 676696,
-      "data_pedido": "28/01/2026",
-      "cliente": "AARAO MED",
-      "uf": "ES",
-      "valor": 46498.92,
-      "margem": 39.55,
-      "vendedor": "FLAVIA VELIS"
-    },
-    {
-      "pedido": 676748,
-      "data_pedido": "28/01/2026",
-      "cliente": "CONSUMERSLAB PRODUTO",
-      "uf": "RS",
-      "valor": 700.8,
-      "margem": 18.86,
-      "vendedor": "FLAVIA VELIS"
-    },
-    {
-      "pedido": 676774,
-      "data_pedido": "28/01/2026",
-      "cliente": "HOSPITAL DE CLINICAS",
-      "uf": "SP",
-      "valor": 4760.58,
-      "margem": 33.55,
-      "vendedor": "PRISCILA SOARES SILVA"
-    },
-    {
-      "pedido": 676799,
-      "data_pedido": "28/01/2026",
-      "cliente": "SM HOSPITALAR",
+      "pedido": 677255,
+      "data_pedido": "30/01/2026",
+      "cliente": "PREMIUM HOSPITALAR",
       "uf": "GO",
-      "valor": 24510,
-      "margem": 22.59,
-      "vendedor": "JOELMA NUNES"
-    },
-    {
-      "pedido": 676826,
-      "data_pedido": "28/01/2026",
-      "cliente": "CAPIXABA SAUDE SERRA",
-      "uf": "ES",
-      "valor": 2870.5,
-      "margem": 34.39,
-      "vendedor": "REP. BILLYMED REPRESENTAC"
-    },
-    {
-      "pedido": 676865,
-      "data_pedido": "28/01/2026",
-      "cliente": "JP MEDICAMENTOS E MA",
-      "uf": "SP",
-      "valor": 8898.96,
-      "margem": 40.22,
-      "vendedor": "DENNYS SANTOS"
-    },
-    {
-      "pedido": 677042,
-      "data_pedido": "29/01/2026",
-      "cliente": "ESSENCIA SAUDE DISTR",
-      "uf": "PR",
-      "valor": 14372,
-      "margem": 22.37,
-      "vendedor": "LUCIA FLORESTA"
-    },
-    {
-      "pedido": 677064,
-      "data_pedido": "29/01/2026",
-      "cliente": "ALPHAMED HOSPITALAR",
-      "uf": "GO",
-      "valor": 765.92,
-      "margem": 13.79,
+      "valor": 25622.23,
+      "margem": 2.05,
       "vendedor": "REP. SUPREMO"
     },
     {
@@ -111,15 +47,6 @@
       "vendedor": "ERICA BARNES"
     },
     {
-      "pedido": 677279,
-      "data_pedido": "30/01/2026",
-      "cliente": "ANDREOLI COMERCIO DE",
-      "uf": "SP",
-      "valor": 1196.4,
-      "margem": 13.97,
-      "vendedor": "REP. ML DANTE"
-    },
-    {
       "pedido": 677281,
       "data_pedido": "30/01/2026",
       "cliente": "ZOOMEDI LTDA",
@@ -127,6 +54,24 @@
       "valor": 739.87,
       "margem": 24.84,
       "vendedor": "DENNYS SANTOS"
+    },
+    {
+      "pedido": 677381,
+      "data_pedido": "30/01/2026",
+      "cliente": "SUDOESTE HOSPITALAR",
+      "uf": "BA",
+      "valor": 11325.0,
+      "margem": 23.78,
+      "vendedor": "REP. SCHIBELGS"
+    },
+    {
+      "pedido": 677403,
+      "data_pedido": "01/02/2026",
+      "cliente": "J F COMERCIO DE PROD",
+      "uf": "AM",
+      "valor": 1452.8,
+      "margem": 35.0,
+      "vendedor": "ELIZANGELA GRACA"
     }
   ],
   "bloqueios_alvara": [
@@ -137,16 +82,58 @@
       "motivo": "ALVARA SANITARIO",
       "valor": 2631.6,
       "margem": 2.7,
-      "vendedor": "ALICE RODRIGUES"
+      "vendedor": "ALICE RODRIGUES",
+      "status": "ALVARA SANITARIO"
     },
     {
-      "pedido": 677245,
+      "pedido": 677301,
       "data_pedido": "30/01/2026",
-      "cliente": "PLAY PHARMA",
+      "cliente": "PHAMED",
       "motivo": "ALVARA SANITARIO",
-      "valor": 8950,
-      "margem": 36.4,
-      "vendedor": "FERNANDA MIRIAN"
+      "valor": 2481.0,
+      "margem": 27.57,
+      "vendedor": "ALICE RODRIGUES",
+      "status": "ALVARA SANITARIO"
+    },
+    {
+      "pedido": 677328,
+      "data_pedido": "30/01/2026",
+      "cliente": "ALA ARTEFATOS",
+      "motivo": "ALVARA SANITARIO",
+      "valor": 12258.0,
+      "margem": 22.83,
+      "vendedor": "FERNANDA MIRIAN",
+      "status": "ALVARA SANITARIO"
+    },
+    {
+      "pedido": 677352,
+      "data_pedido": "30/01/2026",
+      "cliente": "ALAMEDA DO CAFE ARMA",
+      "motivo": "ALVARA SANITARIO",
+      "valor": 553.29,
+      "margem": 34.27,
+      "vendedor": "DENNYS SANTOS",
+      "status": "ALVARA SANITARIO"
+    },
+    {
+      "pedido": 677369,
+      "data_pedido": "30/01/2026",
+      "cliente": "VAMEDI MEDICAL PRODU",
+      "motivo": "ALVARA SANITARIO",
+      "valor": 537.86,
+      "margem": 41.01,
+      "vendedor": "DIEGO RICARDO",
+      "status": "ALVARA SANITARIO"
+    },
+    {
+      "pedido": 677405,
+      "data_pedido": "02/02/2026",
+      "cliente": "HOSPITAL DE CLINICAS",
+      "motivo": "ALVARA SANITARIO",
+      "valor": 4760.58,
+      "margem": 33.55,
+      "vendedor": "PRISCILA SOARES SILVA",
+      "status": "ALVARA SANITARIO"
     }
   ]
 }
