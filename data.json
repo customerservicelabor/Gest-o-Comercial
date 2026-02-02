@@ -4,7 +4,7 @@
     "pedidos_faturados": 0,
     "valor_faturado": 0,
     "pedidos_abertos": 121,
-    "valor_em_risco": 582626.72
+    "valor_em_risco": 64704.53
   },
   "faturamento_ultimos_5_dias": [
     { "data": "26/01/2026", "valor": 588574.42 },
@@ -137,3 +137,4 @@
     }
   ]
 }
+
