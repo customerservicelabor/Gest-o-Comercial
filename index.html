@@ -11,35 +11,35 @@
       --bg0:#050814;
       --bg1:#0b1020;
       --card:#10182b;
-      --cardSoft:#0d1426;
-      --cardStrong:#121d35;
+      --card2:#0f172a;
       --border:#1d2a45;
-      --muted:#97a3c2;
+      --muted:#94a3b8;
       --text:#eef2ff;
       --good:#22c55e;
       --warn:#f59e0b;
       --bad:#ef4444;
       --info:#38bdf8;
       --violet:#8b5cf6;
+      --lightBox:#f3f5f7;
+      --lightBorder:#d7dde5;
+      --darkText:#111827;
+      --darkMuted:#5b6472;
       --radius:16px;
       --gap:14px;
       --headerH:58px;
       --padX:18px;
       --padY:14px;
-      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --shadow:0 10px 28px rgba(0,0,0,.22);
     }
 
-    *{
-      box-sizing:border-box;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-    }
+    *{ box-sizing:border-box; font-family:Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
 
     body{
       margin:0;
       color:var(--text);
       background:
         radial-gradient(900px 500px at 15% -10%, rgba(56,189,248,.16), transparent 55%),
-        radial-gradient(900px 500px at 85% -15%, rgba(139,92,246,.14), transparent 55%),
+        radial-gradient(900px 500px at 85% -15%, rgba(139,92,246,.12), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
@@ -50,11 +50,11 @@
       align-items:center;
       justify-content:space-between;
       border-bottom:1px solid var(--border);
-      background:rgba(5,8,20,.72);
+      background:rgba(5,8,20,.75);
       backdrop-filter: blur(8px);
       position:sticky;
       top:0;
-      z-index:5;
+      z-index:8;
     }
 
     header h1{
@@ -73,16 +73,16 @@
       min-height:calc(100vh - var(--headerH));
       padding:var(--padY) var(--padX);
       display:grid;
-      grid-template-rows:auto auto 1fr auto;
+      grid-template-rows:auto auto auto 1fr auto;
       gap:var(--gap);
     }
 
     .card{
       background:rgba(16,24,43,.94);
-      border:1px solid rgba(29,42,69,.9);
+      border:1px solid rgba(29,42,69,.88);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      min-height:0;
+      overflow:hidden;
     }
 
     .cardHeader{
@@ -91,37 +91,34 @@
       justify-content:space-between;
       gap:12px;
       padding:14px 16px 10px;
-      border-bottom:1px solid rgba(29,42,69,.85);
+      border-bottom:1px solid rgba(29,42,69,.8);
     }
 
     .cardTitle{
       font-size:12px;
       font-weight:900;
       text-transform:uppercase;
-      letter-spacing:.7px;
-      color:rgba(238,242,255,.78);
+      letter-spacing:.6px;
+      color:rgba(255,255,255,.78);
     }
 
     .cardSubtitle{
       font-size:11px;
       color:var(--muted);
+      margin-top:4px;
     }
 
-    /* BLOCO PRINCIPAL */
     .hero{
-      padding:0;
-      overflow:hidden;
-      border:1px solid rgba(56,189,248,.22);
-      background:
-        linear-gradient(180deg, rgba(18,29,53,.98), rgba(13,20,38,.96));
+      border:1px solid rgba(56,189,248,.20);
+      background:linear-gradient(180deg, rgba(18,29,53,.98), rgba(13,20,38,.96));
     }
 
     .heroTop{
       padding:16px 18px 12px;
       display:flex;
-      align-items:flex-start;
       justify-content:space-between;
-      gap:16px;
+      align-items:flex-start;
+      gap:18px;
       border-bottom:1px solid rgba(56,189,248,.12);
     }
 
@@ -139,114 +136,171 @@
     }
 
     .heroBadge{
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(56,189,248,.25);
-      background:rgba(56,189,248,.08);
+      min-width:320px;
+      padding:16px 20px;
+      border-radius:18px;
+      border:1px solid rgba(56,189,248,.32);
+      background:linear-gradient(180deg, rgba(56,189,248,.16), rgba(56,189,248,.07));
+      color:#dff6ff;
+      text-align:right;
+    }
+
+    .heroBadge .small{
       font-size:12px;
-      font-weight:900;
-      color:#c9eeff;
-      white-space:nowrap;
+      font-weight:800;
+      opacity:.85;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+    }
+
+    .heroBadge .big{
+      margin-top:6px;
+      font-size:34px;
+      font-weight:950;
+      line-height:1;
     }
 
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.3fr .9fr;
+      grid-template-columns: 1.45fr .95fr;
       gap:14px;
       padding:14px 18px 18px;
+      align-items:start;
     }
 
-    .summaryBox{
-      background:rgba(7,12,24,.42);
-      border:1px solid rgba(255,255,255,.04);
-      border-radius:14px;
+    .resumoBox{
+      background:var(--lightBox);
+      border:1px solid var(--lightBorder);
+      border-radius:16px;
       overflow:hidden;
     }
 
-    .summaryMetrics{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      padding:12px;
+    .resumoHeader{
+      padding:14px 16px 10px;
+      border-bottom:1px solid var(--lightBorder);
+      background:linear-gradient(180deg, #fafbfc, #eef2f5);
     }
 
-    .miniMetric{
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:12px;
-      padding:12px;
-    }
-
-    .miniMetric .label{
-      font-size:11px;
-      color:var(--muted);
-      font-weight:800;
+    .resumoHeader .title{
+      color:var(--darkText);
+      font-size:13px;
+      font-weight:950;
       text-transform:uppercase;
-      letter-spacing:.4px;
+      letter-spacing:.6px;
     }
 
-    .miniMetric .value{
-      font-size:24px;
-      font-weight:900;
-      margin-top:6px;
+    .resumoHeader .subtitle{
+      margin-top:5px;
+      color:var(--darkMuted);
+      font-size:11px;
+      font-weight:600;
     }
 
-    .good{ color:var(--good); }
-    .warn{ color:var(--warn); }
-    .bad{ color:var(--bad); }
-    .info{ color:var(--info); }
-    .violet{ color:var(--violet); }
-
-    .tableWrap{
-      padding:0 12px 12px;
+    .resumoTableWrap{
+      padding:8px 12px 12px;
       overflow:auto;
     }
 
-    table{
+    .resumoTable{
       width:100%;
       border-collapse:collapse;
       font-size:12px;
+      color:var(--darkText);
     }
 
-    th, td{
+    .resumoTable th,
+    .resumoTable td{
       padding:10px 10px;
-      border-bottom:1px solid rgba(29,42,69,.72);
+      border-bottom:1px solid #dde3ea;
       text-align:left;
       white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
     }
 
-    th{
+    .resumoTable th{
       font-size:11px;
       text-transform:uppercase;
+      color:#667085;
+      font-weight:900;
       letter-spacing:.4px;
-      color:var(--muted);
+    }
+
+    .resumoTable tr.totalLine{
+      background:#eaf4ff;
       font-weight:900;
     }
 
-    .rowStrong{
-      background:rgba(56,189,248,.06);
+    .resumoTable tr.totalStrong{
+      background:#dff1ff;
+      font-weight:950;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:5px 10px;
-      border-radius:999px;
+    .resumoTable tr.alertBlink td:first-child{
+      font-weight:900;
+    }
+
+    .blink-soft{
+      animation: blinkSoft 1.8s infinite ease-in-out;
+    }
+
+    @keyframes blinkSoft{
+      0%,100%{ background:rgba(245, 210, 90, .18); }
+      50%{ background:rgba(245, 210, 90, .42); }
+    }
+
+    .sidePanel{
+      display:grid;
+      gap:14px;
+    }
+
+    .miniBox{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .miniBox .label{
       font-size:11px;
-      font-weight:800;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.5px;
     }
 
-    .pill.credito{ border-color:rgba(245,158,11,.24); background:rgba(245,158,11,.10); color:#ffd58a; }
-    .pill.alvara{ border-color:rgba(139,92,246,.24); background:rgba(139,92,246,.10); color:#dbc2ff; }
-    .pill.bloqueado{ border-color:rgba(239,68,68,.24); background:rgba(239,68,68,.10); color:#ffb0b0; }
-    .pill.separacao{ border-color:rgba(56,189,248,.24); background:rgba(56,189,248,.10); color:#b5ebff; }
+    .miniBox .value{
+      margin-top:8px;
+      font-size:22px;
+      font-weight:950;
+    }
 
-    /* CARDS */
+    .faturamento5dias{
+      display:grid;
+      gap:10px;
+    }
+
+    .dayRow{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      padding:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .dayRow .date{
+      font-size:12px;
+      color:#dbe7ff;
+      font-weight:800;
+    }
+
+    .dayRow .val{
+      font-size:18px;
+      font-weight:950;
+      color:#86efac;
+    }
+
     .kpis{
       display:grid;
       grid-template-columns:repeat(6, 1fr);
@@ -261,28 +315,6 @@
       min-width:0;
     }
 
-    .kpi .label{
-      font-size:11px;
-      color:var(--muted);
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.45px;
-      min-height:30px;
-    }
-
-    .kpi .value{
-      font-size:24px;
-      font-weight:900;
-      margin-top:10px;
-      line-height:1.1;
-    }
-
-    .kpi .sub{
-      font-size:11px;
-      color:rgba(255,255,255,.55);
-      margin-top:6px;
-    }
-
     .kpi.primary{
       background:linear-gradient(180deg, rgba(34,197,94,.16), rgba(16,24,43,.96));
       border-color:rgba(34,197,94,.22);
@@ -293,19 +325,42 @@
       border-color:rgba(56,189,248,.24);
     }
 
-    /* DETALHE */
-    .detailCard{
-      overflow:hidden;
+    .kpi .label{
+      font-size:11px;
+      color:var(--muted);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+      min-height:30px;
     }
+
+    .kpi .value{
+      margin-top:10px;
+      font-size:24px;
+      font-weight:950;
+      line-height:1.05;
+    }
+
+    .kpi .sub{
+      margin-top:7px;
+      font-size:11px;
+      color:rgba(255,255,255,.62);
+    }
+
+    .good{ color:var(--good); }
+    .warn{ color:var(--warn); }
+    .bad{ color:var(--bad); }
+    .info{ color:var(--info); }
+    .violet{ color:var(--violet); }
 
     .toolbar{
       padding:12px 16px;
       display:flex;
       flex-wrap:wrap;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
       gap:10px;
-      border-bottom:1px solid rgba(29,42,69,.85);
+      border-bottom:1px solid rgba(29,42,69,.82);
     }
 
     .toolbarLeft{
@@ -316,8 +371,8 @@
     }
 
     .toolbarRight{
-      color:var(--muted);
       font-size:12px;
+      color:var(--muted);
       font-weight:700;
     }
 
@@ -335,17 +390,60 @@
       min-width:220px;
     }
 
-    .detailTableWrap{
-      max-height:420px;
+    .detailWrap{
+      max-height:480px;
       overflow:auto;
       padding:0 12px 10px;
     }
 
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+    }
+
+    th, td{
+      padding:10px 10px;
+      border-bottom:1px solid rgba(29,42,69,.72);
+      text-align:left;
+      white-space:nowrap;
+    }
+
+    th{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+      color:var(--muted);
+      font-weight:900;
+      position:sticky;
+      top:0;
+      background:#0f172a;
+      z-index:1;
+    }
+
+    .statusPill{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+
+    .st-credito{ color:#ffdb85; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.22); }
+    .st-alvara{ color:#ffe8a3; background:rgba(250,204,21,.14); border-color:rgba(250,204,21,.26); }
+    .st-separacao{ color:#b8ecff; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
+    .st-bloqueado{ color:#ffb5b5; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
+    .st-outros{ color:#d9d9d9; background:rgba(255,255,255,.06); }
+
     .empty{
-      padding:26px 16px;
+      padding:24px 16px;
       text-align:center;
       color:var(--muted);
       font-size:13px;
+      display:none;
     }
 
     .footer{
@@ -354,26 +452,23 @@
       text-align:right;
     }
 
-    @media (max-width: 1500px){
+    @media (max-width: 1550px){
       .kpis{ grid-template-columns:repeat(3, 1fr); }
     }
 
-    @media (max-width: 1100px){
+    @media (max-width: 1180px){
       .heroGrid{ grid-template-columns:1fr; }
-      .summaryMetrics{ grid-template-columns:1fr; }
-      .kpis{ grid-template-columns:repeat(2, 1fr); }
+      .heroBadge{ min-width:unset; width:100%; text-align:left; }
     }
 
-    @media (max-width: 700px){
+    @media (max-width: 760px){
       .kpis{ grid-template-columns:1fr; }
-      .toolbar{ align-items:flex-start; }
       .toolbarLeft{ width:100%; }
-      select{ width:100%; }
-      .heroTop{ flex-direction:column; align-items:flex-start; }
+      select{ width:100%; min-width:unset; }
+      .heroTop{ flex-direction:column; }
     }
   </style>
 </head>
-
 <body>
 
 <header>
@@ -383,60 +478,54 @@
 
 <main>
 
-  <!-- BLOCO PRINCIPAL -->
   <section class="card hero">
     <div class="heroTop">
       <div class="heroTopLeft">
         <h2>Gestão de Pedidos</h2>
-        <p>Visão executiva do pipeline de faturamento e dos pedidos não faturados do dia.</p>
+        <p>Visão comercial do pipeline de faturamento, retenções e carteira do dia.</p>
       </div>
-      <div class="heroBadge" id="heroBadge">Potencial do dia: R$ 0,00</div>
+
+      <div class="heroBadge">
+        <div class="small">Potencial do dia</div>
+        <div class="big" id="heroBadgeValue">R$ 0,00</div>
+      </div>
     </div>
 
     <div class="heroGrid">
-      <div class="summaryBox">
-        <div class="cardHeader" style="padding-bottom:8px;">
-          <div>
-            <div class="cardTitle">Resumo Gerencial</div>
-            <div class="cardSubtitle">Leitura consolidada por estágio</div>
-          </div>
+      <div class="resumoBox">
+        <div class="resumoHeader">
+          <div class="title">Resumo Gerencial</div>
+          <div class="subtitle">Quadro principal para leitura executiva da carteira e do faturamento do dia</div>
         </div>
 
-        <div class="tableWrap">
-          <table>
+        <div class="resumoTableWrap">
+          <table class="resumoTable">
             <thead>
               <tr>
-                <th>Etapa</th>
+                <th>Status</th>
                 <th>Qtd</th>
                 <th>Valor</th>
-                <th>% do potencial</th>
               </tr>
             </thead>
-            <tbody id="tblGestaoPedidos"></tbody>
+            <tbody id="tblResumoGerencial"></tbody>
           </table>
         </div>
       </div>
 
-      <div class="summaryMetrics">
-        <div class="miniMetric">
-          <div class="label">Pedidos não faturados</div>
-          <div class="value warn" id="metricNaoFaturadosQtd">0</div>
-        </div>
-
-        <div class="miniMetric">
-          <div class="label">Maior pedido não faturado</div>
-          <div class="value bad" id="metricMaiorPedido">R$ 0,00</div>
-        </div>
-
-        <div class="miniMetric">
-          <div class="label">Status com maior valor retido</div>
-          <div class="value violet" id="metricStatusMaiorRisco">--</div>
+      <div class="sidePanel">
+        <div class="card" style="background:transparent; border:none; box-shadow:none;">
+          <div class="cardHeader" style="padding:0 0 10px; border:none;">
+            <div>
+              <div class="cardTitle">Faturamento bruto últimos 5 dias</div>
+              <div class="cardSubtitle">Leitura rápida da evolução do faturamento</div>
+            </div>
+          </div>
+          <div class="faturamento5dias" id="faturamento5dias"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CARDS -->
   <section class="kpis">
     <div class="kpi primary">
       <div class="label">Valor faturado do dia</div>
@@ -471,16 +560,15 @@
     <div class="kpi total">
       <div class="label">Potencial de faturamento do dia</div>
       <div class="value info" id="kpiPotencial">R$ 0,00</div>
-      <div class="sub">Soma de faturado + carteira do dia</div>
+      <div class="sub">Faturado + carteira em aberto</div>
     </div>
   </section>
 
-  <!-- LISTA DETALHADA -->
-  <section class="card detailCard">
+  <section class="card">
     <div class="cardHeader">
       <div>
-        <div class="cardTitle">Pedidos Não Faturados</div>
-        <div class="cardSubtitle">Filtro por status para análise imediata em reunião</div>
+        <div class="cardTitle">Pedidos não faturados</div>
+        <div class="cardSubtitle">Todos os pedidos abertos com filtro por status e ordenação analítica</div>
       </div>
     </div>
 
@@ -488,29 +576,47 @@
       <div class="toolbarLeft">
         <select id="filtroStatus">
           <option value="TODOS">Todos os status</option>
-          <option value="SEPARACAO">Separação</option>
-          <option value="CREDITO">Crédito</option>
-          <option value="ALVARA">Alvará</option>
+          <option value="AGUARDANDO_LIBERACAO">Aguardando Liberação</option>
+          <option value="ALVARA">Alvará Sanitário</option>
+          <option value="CREDITO">Análise de Crédito</option>
+          <option value="AGUARDANDO_ENVIO_SEPARACAO">Aguard. Envio Separação</option>
+          <option value="EM_SEPARACAO">Em Separação</option>
+          <option value="SEPARADO">Separado</option>
           <option value="BLOQUEADO">Bloqueado</option>
+          <option value="OUTROS">Outros</option>
+        </select>
+
+        <select id="ordenacao">
+          <option value="VALOR_DESC">Maior valor de produtos</option>
+          <option value="VALOR_ASC">Menor valor de produtos</option>
+          <option value="MARGEM_DESC">Maior margem</option>
+          <option value="MARGEM_ASC">Menor margem</option>
+          <option value="EMISSAO_ASC">PV mais antigo</option>
+          <option value="EMISSAO_DESC">PV mais recente</option>
         </select>
       </div>
 
       <div class="toolbarRight" id="contadorFiltrado">0 pedidos | R$ 0,00</div>
     </div>
 
-    <div class="detailTableWrap">
+    <div class="detailWrap">
       <table>
         <thead>
           <tr>
-            <th>Pedido</th>
-            <th>Cliente</th>
-            <th>Status</th>
-            <th>Valor</th>
+            <th>Número do pedido</th>
+            <th>Emissão do PV</th>
+            <th>Vlr.Total Produtos</th>
+            <th>Margem</th>
+            <th>Nome Cliente</th>
+            <th>UF Cliente</th>
+            <th>Tipo Cliente</th>
+            <th>Vendedor</th>
+            <th>Último Status</th>
           </tr>
         </thead>
         <tbody id="tblNaoFaturados"></tbody>
       </table>
-      <div id="emptyState" class="empty" style="display:none;">Nenhum pedido encontrado para o filtro selecionado.</div>
+      <div id="emptyState" class="empty">Nenhum pedido encontrado para o filtro selecionado.</div>
     </div>
   </section>
 
@@ -519,51 +625,110 @@
 
 <script>
   const fmtBRL = n =>
-    (Number.isFinite(Number(n)) ? Number(n) : 0).toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
+    (Number.isFinite(Number(n)) ? Number(n) : 0).toLocaleString('pt-BR',{
+      style:'currency',
+      currency:'BRL'
     });
 
-  function sum(arr){
-    return (arr || []).reduce((acc, item) => acc + (Number(item.valor) || 0), 0);
+  const fmtPct = n => `${(Number.isFinite(Number(n)) ? Number(n) : 0).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })}%`;
+
+  function sum(arr, field = 'valor'){
+    return (arr || []).reduce((acc, item) => acc + (Number(item[field]) || 0), 0);
   }
 
   function qtd(arr){
     return (arr || []).length;
   }
 
-  function normalizePedido(item, status){
-    return {
-      pedido: item.pedido || item.num_pedido || item.numero || '-',
-      cliente: item.cliente || item.nome_cliente || item.razao_social || '-',
-      valor: Number(item.valor) || 0,
-      status
-    };
+  function parseDateBR(v){
+    if(!v || typeof v !== 'string' || !v.includes('/')) return null;
+    const [d,m,y] = v.split('/');
+    return new Date(`${y}-${m}-${d}T00:00:00`);
   }
 
-  function statusPill(status){
+  function normalizeStatus(item){
+    const us = (item.ultimo_status || '').toUpperCase();
+
+    if (us === 'ALVARA SANITARIO') return 'ALVARA';
+    if (us === 'ANALISE DE CREDITO') return 'CREDITO';
+    if (us === 'AGUARDANDO ENVIO SEPARACAO') return 'AGUARDANDO_ENVIO_SEPARACAO';
+    if (us === 'ENVIADO PARA SEPARACAO') return 'EM_SEPARACAO';
+    if (us === 'PEDIDO SEPARADO') return 'SEPARADO';
+    if (us === 'PEDIDO BLOQUEADO POR REGRA' || us === 'BLOQUEIO PAGAMENTO') return 'BLOQUEADO';
+    if (us === 'PEDIDO INCLUIDO') return 'AGUARDANDO_LIBERACAO';
+
+    return item.status || 'OUTROS';
+  }
+
+  function labelStatus(code){
     const map = {
-      SEPARACAO: '<span class="pill separacao">Separação</span>',
-      CREDITO: '<span class="pill credito">Crédito</span>',
-      ALVARA: '<span class="pill alvara">Alvará</span>',
-      BLOQUEADO: '<span class="pill bloqueado">Bloqueado</span>'
+      AGUARDANDO_LIBERACAO: 'Aguardando Liberação',
+      ALVARA: 'Alvará Sanitário',
+      CREDITO: 'Análise de Crédito',
+      AGUARDANDO_ENVIO_SEPARACAO: 'Aguard. Envio Separação',
+      EM_SEPARACAO: 'Em Separação',
+      SEPARADO: 'Separado',
+      BLOQUEADO: 'Bloqueado',
+      OUTROS: 'Outros'
     };
-    return map[status] || `<span class="pill">${status}</span>`;
+    return map[code] || code;
+  }
+
+  function classStatus(code){
+    if (code === 'CREDITO') return 'st-credito';
+    if (code === 'ALVARA') return 'st-alvara';
+    if (code === 'AGUARDANDO_ENVIO_SEPARACAO' || code === 'EM_SEPARACAO' || code === 'SEPARADO') return 'st-separacao';
+    if (code === 'BLOQUEADO') return 'st-bloqueado';
+    return 'st-outros';
+  }
+
+  function pillStatus(code){
+    return `<span class="statusPill ${classStatus(code)}">${labelStatus(code)}</span>`;
   }
 
   let pedidosNaoFaturados = [];
 
-  function renderTabelaNaoFaturados(status = 'TODOS'){
+  function ordenarPedidos(lista, criterio){
+    const arr = [...lista];
+
+    switch(criterio){
+      case 'VALOR_ASC':
+        return arr.sort((a,b) => (a.valor_produtos || 0) - (b.valor_produtos || 0));
+      case 'MARGEM_DESC':
+        return arr.sort((a,b) => (b.margem || 0) - (a.margem || 0));
+      case 'MARGEM_ASC':
+        return arr.sort((a,b) => (a.margem || 0) - (b.margem || 0));
+      case 'EMISSAO_ASC':
+        return arr.sort((a,b) => (parseDateBR(a.emissao_pv)?.getTime() || 0) - (parseDateBR(b.emissao_pv)?.getTime() || 0));
+      case 'EMISSAO_DESC':
+        return arr.sort((a,b) => (parseDateBR(b.emissao_pv)?.getTime() || 0) - (parseDateBR(a.emissao_pv)?.getTime() || 0));
+      default:
+        return arr.sort((a,b) => (b.valor_produtos || 0) - (a.valor_produtos || 0));
+    }
+  }
+
+  function renderTabelaNaoFaturados(){
+    const filtro = document.getElementById('filtroStatus').value;
+    const ordenacao = document.getElementById('ordenacao').value;
     const tbody = document.getElementById('tblNaoFaturados');
     const empty = document.getElementById('emptyState');
 
-    const base = status === 'TODOS'
-      ? pedidosNaoFaturados
-      : pedidosNaoFaturados.filter(x => x.status === status);
+    let base = pedidosNaoFaturados.map(x => ({
+      ...x,
+      status_codigo: normalizeStatus(x)
+    }));
 
-    const total = sum(base);
+    if (filtro !== 'TODOS'){
+      base = base.filter(x => x.status_codigo === filtro);
+    }
+
+    base = ordenarPedidos(base, ordenacao);
+
     document.getElementById('contadorFiltrado').textContent =
-      `${base.length} pedidos | ${fmtBRL(total)}`;
+      `${base.length} pedidos | ${fmtBRL(sum(base, 'valor_produtos'))}`;
 
     if (!base.length){
       tbody.innerHTML = '';
@@ -573,16 +738,40 @@
 
     empty.style.display = 'none';
 
-    tbody.innerHTML = base
-      .sort((a,b) => b.valor - a.valor)
-      .map(x => `
-        <tr>
-          <td>${x.pedido}</td>
-          <td>${x.cliente}</td>
-          <td>${statusPill(x.status)}</td>
-          <td>${fmtBRL(x.valor)}</td>
-        </tr>
-      `).join('');
+    tbody.innerHTML = base.map(x => `
+      <tr>
+        <td>${x.pedido || '-'}</td>
+        <td>${x.emissao_pv || '-'}</td>
+        <td>${fmtBRL(x.valor_produtos)}</td>
+        <td>${fmtPct(x.margem)}</td>
+        <td>${x.cliente || '-'}</td>
+        <td>${x.estado || '-'}</td>
+        <td>${x.tipo_cliente || '-'}</td>
+        <td>${x.nome_vendedor || '-'}</td>
+        <td>${pillStatus(x.status_codigo)}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderFaturamento5Dias(arr){
+    const el = document.getElementById('faturamento5dias');
+
+    if (!Array.isArray(arr) || !arr.length){
+      el.innerHTML = `
+        <div class="dayRow">
+          <div class="date">Sem histórico carregado</div>
+          <div class="val">R$ 0,00</div>
+        </div>
+      `;
+      return;
+    }
+
+    el.innerHTML = arr.map(x => `
+      <div class="dayRow">
+        <div class="date">${x.data} - Faturamento do dia</div>
+        <div class="val">${fmtBRL(x.valor)}</div>
+      </div>
+    `).join('');
   }
 
   async function loadData(){
@@ -591,87 +780,95 @@
 
     document.getElementById('updatedAt').textContent = data.updated_at || '--';
 
-    // FONTES DE DADOS
     const faturadoQtd = Number(data.kpis_dia?.pedidos_faturados || 0);
     const faturadoValor = Number(data.kpis_dia?.valor_faturado || 0);
 
-    const separacao = (data.pedidos_em_separacao || data.separacao || []).map(x => normalizePedido(x, 'SEPARACAO'));
-    const credito = (data.analise_credito || data.credito || []).map(x => normalizePedido(x, 'CREDITO'));
-    const alvara = (data.bloqueios_alvara || data.alvara || []).map(x => normalizePedido(x, 'ALVARA'));
-    const bloqueados = (data.pedidos_bloqueados || data.bloqueados || []).map(x => normalizePedido(x, 'BLOQUEADO'));
+    const aguardandoLiberacao = data.aguardando_liberacao || [];
+    const alvara = data.bloqueios_alvara || [];
+    const credito = data.analise_credito || [];
+    const aguardandoEnvio = data.aguardando_envio_separacao || [];
+    const emSeparacao = data.pedidos_em_separacao || [];
+    const separado = data.pedidos_separados || [];
+    const bloqueados = data.pedidos_bloqueados || [];
+    const outros = data.outros_abertos || [];
 
-    const valorSeparacao = sum(separacao);
-    const valorCredito = sum(credito);
-    const valorAlvara = sum(alvara);
-    const valorBloqueados = sum(bloqueados);
+    const vAguardandoLiberacao = sum(aguardandoLiberacao);
+    const vAlvara = sum(alvara);
+    const vCredito = sum(credito);
+    const vAguardandoEnvio = sum(aguardandoEnvio);
+    const vEmSeparacao = sum(emSeparacao);
+    const vSeparado = sum(separado);
+    const vBloqueados = sum(bloqueados);
 
-    const potencialDia = faturadoValor + valorSeparacao + valorCredito + valorAlvara + valorBloqueados;
+    const totalEmDisputa = vAlvara + vCredito;
+    const totalFaturamentoPrevisto = faturadoValor + vAguardandoEnvio + vEmSeparacao + vSeparado;
+    const potencialDia = faturadoValor + vAguardandoLiberacao + vAlvara + vCredito + vAguardandoEnvio + vEmSeparacao + vSeparado + vBloqueados + sum(outros);
 
-    pedidosNaoFaturados = [...separacao, ...credito, ...alvara, ...bloqueados]
-      .sort((a,b) => b.valor - a.valor);
+    document.getElementById('heroBadgeValue').textContent = fmtBRL(potencialDia);
 
-    // CARDS
     document.getElementById('kpiValorFaturado').textContent = fmtBRL(faturadoValor);
     document.getElementById('subValorFaturado').textContent = `${faturadoQtd} pedidos faturados`;
 
-    document.getElementById('kpiSeparacao').textContent = fmtBRL(valorSeparacao);
-    document.getElementById('subSeparacao').textContent = `${qtd(separacao)} pedidos`;
+    document.getElementById('kpiSeparacao').textContent = fmtBRL(vAguardandoEnvio + vEmSeparacao + vSeparado);
+    document.getElementById('subSeparacao').textContent =
+      `${qtd(aguardandoEnvio) + qtd(emSeparacao) + qtd(separado)} pedidos entre aguardando, em separação e separado`;
 
-    document.getElementById('kpiCredito').textContent = fmtBRL(valorCredito);
+    document.getElementById('kpiCredito').textContent = fmtBRL(vCredito);
     document.getElementById('subCredito').textContent = `${qtd(credito)} pedidos`;
 
-    document.getElementById('kpiAlvara').textContent = fmtBRL(valorAlvara);
+    document.getElementById('kpiAlvara').textContent = fmtBRL(vAlvara);
     document.getElementById('subAlvara').textContent = `${qtd(alvara)} pedidos`;
 
-    document.getElementById('kpiBloqueados').textContent = fmtBRL(valorBloqueados);
+    document.getElementById('kpiBloqueados').textContent = fmtBRL(vBloqueados);
     document.getElementById('subBloqueados').textContent = `${qtd(bloqueados)} pedidos`;
 
     document.getElementById('kpiPotencial').textContent = fmtBRL(potencialDia);
-    document.getElementById('heroBadge').textContent = `Potencial do dia: ${fmtBRL(potencialDia)}`;
 
-    // BLOCO PRINCIPAL - RESUMO GERENCIAL
     const resumo = [
-      { etapa:'Faturado no dia', qtd:faturadoQtd, valor:faturadoValor },
-      { etapa:'Em separação', qtd:qtd(separacao), valor:valorSeparacao },
-      { etapa:'Em crédito', qtd:qtd(credito), valor:valorCredito },
-      { etapa:'Em alvará', qtd:qtd(alvara), valor:valorAlvara },
-      { etapa:'Bloqueados', qtd:qtd(bloqueados), valor:valorBloqueados },
-      { etapa:'Potencial de faturamento do dia', qtd:faturadoQtd + pedidosNaoFaturados.length, valor:potencialDia, strong:true }
+      { status:'Aguardando Liberação', qtd:qtd(aguardandoLiberacao), valor:vAguardandoLiberacao },
+      { status:'Alvará Sanitário', qtd:qtd(alvara), valor:vAlvara, blink:true },
+      { status:'Análise de Crédito', qtd:qtd(credito), valor:vCredito, blink:true },
+      { status:'Total em Disputa', qtd:qtd(alvara) + qtd(credito), valor:totalEmDisputa, total:true },
+      { status:'Aguard. Envio Separação', qtd:qtd(aguardandoEnvio), valor:vAguardandoEnvio },
+      { status:'Em Separação', qtd:qtd(emSeparacao), valor:vEmSeparacao },
+      { status:'Separado', qtd:qtd(separado), valor:vSeparado },
+      { status:'Faturado', qtd:faturadoQtd, valor:faturadoValor },
+      { status:'Total Faturamento Previsto', qtd:qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd, valor:totalFaturamentoPrevisto, total:true },
+      { status:'Potencial de faturamento dia', qtd:qtd(aguardandoLiberacao)+qtd(alvara)+qtd(credito)+qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd+qtd(bloqueados)+qtd(outros), valor:potencialDia, strong:true }
     ];
 
-    document.getElementById('tblGestaoPedidos').innerHTML = resumo.map(item => {
-      const pct = potencialDia > 0 ? ((item.valor / potencialDia) * 100).toFixed(1) + '%' : '0,0%';
+    document.getElementById('tblResumoGerencial').innerHTML = resumo.map(item => {
+      let cls = '';
+      if (item.strong) cls = 'totalStrong';
+      else if (item.total) cls = 'totalLine';
+      else if (item.blink) cls = 'alertBlink blink-soft';
+
       return `
-        <tr class="${item.strong ? 'rowStrong' : ''}">
-          <td><strong>${item.etapa}</strong></td>
+        <tr class="${cls}">
+          <td>${item.status}</td>
           <td>${item.qtd}</td>
           <td>${fmtBRL(item.valor)}</td>
-          <td>${pct}</td>
         </tr>
       `;
     }).join('');
 
-    // MINI MÉTRICAS
-    document.getElementById('metricNaoFaturadosQtd').textContent = pedidosNaoFaturados.length;
-    document.getElementById('metricMaiorPedido').textContent =
-      fmtBRL(pedidosNaoFaturados[0]?.valor || 0);
+    pedidosNaoFaturados = [
+      ...aguardandoLiberacao,
+      ...alvara,
+      ...credito,
+      ...aguardandoEnvio,
+      ...emSeparacao,
+      ...separado,
+      ...bloqueados,
+      ...outros
+    ];
 
-    const statusValores = [
-      { status:'Separação', valor:valorSeparacao },
-      { status:'Crédito', valor:valorCredito },
-      { status:'Alvará', valor:valorAlvara },
-      { status:'Bloqueado', valor:valorBloqueados }
-    ].sort((a,b) => b.valor - a.valor);
-
-    document.getElementById('metricStatusMaiorRisco').textContent =
-      statusValores[0]?.valor > 0 ? statusValores[0].status : '--';
-
-    renderTabelaNaoFaturados('TODOS');
+    renderTabelaNaoFaturados();
+    renderFaturamento5Dias(data.faturamento_ultimos_5_dias || []);
   }
 
-  document.getElementById('filtroStatus').addEventListener('change', e => {
-    renderTabelaNaoFaturados(e.target.value);
-  });
+  document.getElementById('filtroStatus').addEventListener('change', renderTabelaNaoFaturados);
+  document.getElementById('ordenacao').addEventListener('change', renderTabelaNaoFaturados);
 
   loadData();
 </script>
