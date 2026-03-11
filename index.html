@@ -268,6 +268,25 @@
     .sidePanel{
       display:grid;
       gap:14px;
+      align-self:stretch;
+    }
+
+    .faturamentoHeader{
+      padding:6px 0 8px 0;
+    }
+
+    .faturamentoHeader .title{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      color:rgba(255,255,255,.85);
+    }
+
+    .faturamentoHeader .subtitle{
+      margin-top:4px;
+      font-size:11px;
+      color:var(--muted);
     }
 
     .faturamento5dias{
@@ -279,23 +298,32 @@
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
       border-radius:12px;
-      padding:12px;
-      display:flex;
-      justify-content:space-between;
+      padding:12px 14px;
+      display:grid;
+      grid-template-columns: 1.1fr 1fr .9fr;
       align-items:center;
       gap:12px;
+      min-height:52px;
     }
 
-    .dayRow .date{
+    .dayDate{
       font-size:12px;
       color:#dbe7ff;
       font-weight:800;
     }
 
-    .dayRow .val{
+    .dayRevenue{
+      text-align:right;
       font-size:18px;
       font-weight:950;
       color:#86efac;
+    }
+
+    .dayMargin{
+      text-align:right;
+      font-size:13px;
+      font-weight:800;
+      color:#cfe0ff;
     }
 
     .kpis{
@@ -455,9 +483,9 @@
 
     .st-credito{ color:#ffdb85; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.22); }
     .st-alvara{ color:#b08900; background:rgba(250,204,21,.16); border-color:rgba(250,204,21,.26); }
-    .st-separacao{ color:#0f6c8f; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
-    .st-bloqueado{ color:#c0392b; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
-    .st-outros{ color:#555; background:rgba(0,0,0,.04); }
+    .st-separacao{ color:#b8ecff; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
+    .st-bloqueado{ color:#ffb5b5; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
+    .st-outros{ color:#d9d9d9; background:rgba(255,255,255,.06); }
 
     .empty{
       padding:24px 16px;
@@ -473,53 +501,6 @@
       text-align:right;
     }
 
-    .card.lightCard{
-      background:#f7f8fa;
-      border:1px solid #dde3ea;
-      color:#111827;
-    }
-
-    .card.lightCard .cardHeader{
-      border-bottom:1px solid #dde3ea;
-    }
-
-    .card.lightCard .cardTitle{
-      color:#111827;
-    }
-
-    .card.lightCard .cardSubtitle{
-      color:#5f6b7a;
-    }
-
-    .card.lightCard .toolbar{
-      border-bottom:1px solid #dde3ea;
-    }
-
-    .card.lightCard .toolbarRight{
-      color:#5f6b7a;
-    }
-
-    .card.lightCard select{
-      background:#ffffff;
-      color:#111827;
-      border:1px solid #cfd8e3;
-    }
-
-    .card.lightCard table th{
-      background:#eef2f6;
-      color:#475467;
-      border-bottom:1px solid #d9e0e7;
-    }
-
-    .card.lightCard table td{
-      color:#111827;
-      border-bottom:1px solid #e4e8ee;
-    }
-
-    .card.lightCard .empty{
-      color:#667085;
-    }
-
     @media (max-width: 1550px){
       .kpis{ grid-template-columns:repeat(3, 1fr); }
     }
@@ -527,6 +508,8 @@
     @media (max-width: 1180px){
       .heroGrid{ grid-template-columns:1fr; }
       .heroBadge{ min-width:unset; width:100%; text-align:left; }
+      .dayRow{ grid-template-columns:1fr; }
+      .dayRevenue, .dayMargin{ text-align:left; }
     }
 
     @media (max-width: 760px){
@@ -581,15 +564,11 @@
       </div>
 
       <div class="sidePanel">
-        <div class="card" style="background:transparent; border:none; box-shadow:none;">
-          <div class="cardHeader" style="padding:0 0 10px; border:none;">
-            <div>
-              <div class="cardTitle">Faturamento bruto últimos 5 dias</div>
-              <div class="cardSubtitle">Leitura rápida da evolução do faturamento</div>
-            </div>
-          </div>
-          <div class="faturamento5dias" id="faturamento5dias"></div>
+        <div class="faturamentoHeader">
+          <div class="title">Faturamento bruto últimos 5 dias</div>
+          <div class="subtitle">Leitura rápida do faturamento diário e da margem média</div>
         </div>
+        <div class="faturamento5dias" id="faturamento5dias"></div>
       </div>
     </div>
   </section>
@@ -632,7 +611,7 @@
     </div>
   </section>
 
-  <section class="card lightCard">
+  <section class="card">
     <div class="cardHeader">
       <div>
         <div class="cardTitle">Pedidos não faturados</div>
@@ -827,8 +806,9 @@
     if (!Array.isArray(arr) || !arr.length){
       el.innerHTML = `
         <div class="dayRow">
-          <div class="date">Sem histórico carregado</div>
-          <div class="val">R$ 0,00</div>
+          <div class="dayDate">Sem histórico carregado</div>
+          <div class="dayRevenue">R$ 0,00</div>
+          <div class="dayMargin">Margem média: 0,00%</div>
         </div>
       `;
       return;
@@ -836,8 +816,9 @@
 
     el.innerHTML = arr.map(x => `
       <div class="dayRow">
-        <div class="date">${x.data} - Faturamento do dia</div>
-        <div class="val">${fmtBRL(x.valor)}</div>
+        <div class="dayDate">${x.data} - Faturamento do dia</div>
+        <div class="dayRevenue">${fmtBRL(x.valor)}</div>
+        <div class="dayMargin">Margem média: ${fmtPct(x.margem_media || 0)}</div>
       </div>
     `).join('');
   }
