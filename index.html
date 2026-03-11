@@ -32,7 +32,10 @@
       --shadow:0 10px 28px rgba(0,0,0,.22);
     }
 
-    *{ box-sizing:border-box; font-family:Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
+    *{
+      box-sizing:border-box;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    }
 
     body{
       margin:0;
@@ -91,7 +94,7 @@
       justify-content:space-between;
       gap:12px;
       padding:14px 16px 10px;
-      border-bottom:1px solid rgba(29,42,69,.8);
+      border-bottom:1px solid rgba(29,42,69,.82);
     }
 
     .cardTitle{
@@ -114,48 +117,49 @@
     }
 
     .heroTop{
-      padding:16px 18px 12px;
+      padding:18px 20px 14px;
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
-      gap:18px;
+      gap:20px;
       border-bottom:1px solid rgba(56,189,248,.12);
     }
 
     .heroTopLeft h2{
       margin:0;
-      font-size:22px;
-      font-weight:900;
+      font-size:28px;
+      font-weight:950;
       letter-spacing:.2px;
     }
 
     .heroTopLeft p{
-      margin:6px 0 0;
-      font-size:12px;
-      color:var(--muted);
+      margin:8px 0 0;
+      font-size:15px;
+      color:#c9d4e8;
+      font-weight:600;
     }
 
     .heroBadge{
-      min-width:320px;
-      padding:16px 20px;
+      min-width:360px;
+      padding:18px 22px;
       border-radius:18px;
-      border:1px solid rgba(56,189,248,.32);
-      background:linear-gradient(180deg, rgba(56,189,248,.16), rgba(56,189,248,.07));
+      border:1px solid rgba(56,189,248,.36);
+      background:linear-gradient(180deg, rgba(56,189,248,.20), rgba(56,189,248,.08));
       color:#dff6ff;
       text-align:right;
     }
 
     .heroBadge .small{
-      font-size:12px;
-      font-weight:800;
-      opacity:.85;
+      font-size:13px;
+      font-weight:900;
+      opacity:.92;
       text-transform:uppercase;
-      letter-spacing:.6px;
+      letter-spacing:.8px;
     }
 
     .heroBadge .big{
-      margin-top:6px;
-      font-size:34px;
+      margin-top:8px;
+      font-size:40px;
       font-weight:950;
       line-height:1;
     }
@@ -183,16 +187,16 @@
 
     .resumoHeader .title{
       color:var(--darkText);
-      font-size:13px;
+      font-size:16px;
       font-weight:950;
       text-transform:uppercase;
-      letter-spacing:.6px;
+      letter-spacing:.7px;
     }
 
     .resumoHeader .subtitle{
-      margin-top:5px;
+      margin-top:6px;
       color:var(--darkMuted);
-      font-size:11px;
+      font-size:13px;
       font-weight:600;
     }
 
@@ -204,34 +208,48 @@
     .resumoTable{
       width:100%;
       border-collapse:collapse;
-      font-size:12px;
+      font-size:15px;
       color:var(--darkText);
     }
 
     .resumoTable th,
     .resumoTable td{
-      padding:10px 10px;
+      padding:12px 12px;
       border-bottom:1px solid #dde3ea;
       text-align:left;
       white-space:nowrap;
     }
 
     .resumoTable th{
-      font-size:11px;
+      font-size:12px;
       text-transform:uppercase;
       color:#667085;
       font-weight:900;
-      letter-spacing:.4px;
+      letter-spacing:.5px;
     }
 
-    .resumoTable tr.totalLine{
-      background:#eaf4ff;
+    .resumoTable td{
+      font-weight:700;
+    }
+
+    .resumoTable tr.totalDisputa{
+      background:#fff7da;
       font-weight:900;
     }
 
-    .resumoTable tr.totalStrong{
-      background:#dff1ff;
+    .resumoTable tr.totalPrevisto{
+      background:#e8f7eb;
       font-weight:950;
+    }
+
+    .resumoTable tr.totalStrong{
+      background:#e5f2ff;
+      font-weight:950;
+    }
+
+    .resumoTable tr.totalPrevisto td,
+    .resumoTable tr.totalStrong td{
+      font-size:16px;
     }
 
     .resumoTable tr.alertBlink td:first-child{
@@ -239,38 +257,17 @@
     }
 
     .blink-soft{
-      animation: blinkSoft 1.8s infinite ease-in-out;
+      animation: blinkSoft 2.2s infinite ease-in-out;
     }
 
     @keyframes blinkSoft{
-      0%,100%{ background:rgba(245, 210, 90, .18); }
-      50%{ background:rgba(245, 210, 90, .42); }
+      0%,100%{ background:#ffffff; }
+      50%{ background:rgba(250, 220, 110, .45); }
     }
 
     .sidePanel{
       display:grid;
       gap:14px;
-    }
-
-    .miniBox{
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:14px;
-      padding:14px;
-    }
-
-    .miniBox .label{
-      font-size:11px;
-      color:var(--muted);
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-    }
-
-    .miniBox .value{
-      margin-top:8px;
-      font-size:22px;
-      font-weight:950;
     }
 
     .faturamento5dias{
@@ -380,20 +377,44 @@
       appearance:none;
       border:none;
       outline:none;
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.08);
       color:var(--text);
       padding:10px 12px;
       border-radius:10px;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
       font-size:12px;
       font-weight:700;
       min-width:220px;
+    }
+
+    select option{
+      background:#ffffff;
+      color:#111827;
     }
 
     .detailWrap{
       max-height:480px;
       overflow:auto;
       padding:0 12px 10px;
+    }
+
+    .autoScrollWrap{
+      max-height:480px;
+      overflow:auto;
+      scroll-behavior:smooth;
+    }
+
+    .autoScrollWrap::-webkit-scrollbar{
+      width:10px;
+    }
+
+    .autoScrollWrap::-webkit-scrollbar-thumb{
+      background:rgba(120,120,120,.35);
+      border-radius:999px;
+    }
+
+    .autoScrollWrap::-webkit-scrollbar-track{
+      background:rgba(0,0,0,.04);
     }
 
     table{
@@ -433,10 +454,10 @@
     }
 
     .st-credito{ color:#ffdb85; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.22); }
-    .st-alvara{ color:#ffe8a3; background:rgba(250,204,21,.14); border-color:rgba(250,204,21,.26); }
-    .st-separacao{ color:#b8ecff; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
-    .st-bloqueado{ color:#ffb5b5; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
-    .st-outros{ color:#d9d9d9; background:rgba(255,255,255,.06); }
+    .st-alvara{ color:#b08900; background:rgba(250,204,21,.16); border-color:rgba(250,204,21,.26); }
+    .st-separacao{ color:#0f6c8f; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
+    .st-bloqueado{ color:#c0392b; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
+    .st-outros{ color:#555; background:rgba(0,0,0,.04); }
 
     .empty{
       padding:24px 16px;
@@ -450,6 +471,53 @@
       font-size:11px;
       opacity:.5;
       text-align:right;
+    }
+
+    .card.lightCard{
+      background:#f7f8fa;
+      border:1px solid #dde3ea;
+      color:#111827;
+    }
+
+    .card.lightCard .cardHeader{
+      border-bottom:1px solid #dde3ea;
+    }
+
+    .card.lightCard .cardTitle{
+      color:#111827;
+    }
+
+    .card.lightCard .cardSubtitle{
+      color:#5f6b7a;
+    }
+
+    .card.lightCard .toolbar{
+      border-bottom:1px solid #dde3ea;
+    }
+
+    .card.lightCard .toolbarRight{
+      color:#5f6b7a;
+    }
+
+    .card.lightCard select{
+      background:#ffffff;
+      color:#111827;
+      border:1px solid #cfd8e3;
+    }
+
+    .card.lightCard table th{
+      background:#eef2f6;
+      color:#475467;
+      border-bottom:1px solid #d9e0e7;
+    }
+
+    .card.lightCard table td{
+      color:#111827;
+      border-bottom:1px solid #e4e8ee;
+    }
+
+    .card.lightCard .empty{
+      color:#667085;
     }
 
     @media (max-width: 1550px){
@@ -564,7 +632,7 @@
     </div>
   </section>
 
-  <section class="card">
+  <section class="card lightCard">
     <div class="cardHeader">
       <div>
         <div class="cardTitle">Pedidos não faturados</div>
@@ -599,7 +667,7 @@
       <div class="toolbarRight" id="contadorFiltrado">0 pedidos | R$ 0,00</div>
     </div>
 
-    <div class="detailWrap">
+    <div class="detailWrap autoScrollWrap" id="autoScrollWrap">
       <table>
         <thead>
           <tr>
@@ -658,7 +726,7 @@
     if (us === 'ENVIADO PARA SEPARACAO') return 'EM_SEPARACAO';
     if (us === 'PEDIDO SEPARADO') return 'SEPARADO';
     if (us === 'PEDIDO BLOQUEADO POR REGRA' || us === 'BLOQUEIO PAGAMENTO') return 'BLOQUEADO';
-    if (us === 'PEDIDO INCLUIDO') return 'AGUARDANDO_LIBERACAO';
+    if (us === 'PEDIDO INCLUIDO' || us === 'AGUARDANDO LIBERACAO') return 'AGUARDANDO_LIBERACAO';
 
     return item.status || 'OUTROS';
   }
@@ -774,6 +842,42 @@
     `).join('');
   }
 
+  let autoScrollInterval = null;
+  let autoScrollPaused = false;
+
+  function startAutoScroll(){
+    const wrap = document.getElementById('autoScrollWrap');
+    if (!wrap) return;
+
+    if (autoScrollInterval) clearInterval(autoScrollInterval);
+
+    autoScrollInterval = setInterval(() => {
+      if (autoScrollPaused) return;
+
+      const maxScroll = wrap.scrollHeight - wrap.clientHeight;
+      if (maxScroll <= 0) return;
+
+      if (wrap.scrollTop >= maxScroll - 2){
+        wrap.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        wrap.scrollBy({ top: 1, behavior: 'smooth' });
+      }
+    }, 120);
+  }
+
+  function bindAutoScrollPause(){
+    const wrap = document.getElementById('autoScrollWrap');
+    if (!wrap) return;
+
+    wrap.addEventListener('mouseenter', () => {
+      autoScrollPaused = true;
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      autoScrollPaused = false;
+    });
+  }
+
   async function loadData(){
     const r = await fetch('./data.json?v=' + Date.now());
     const data = await r.json();
@@ -799,10 +903,11 @@
     const vEmSeparacao = sum(emSeparacao);
     const vSeparado = sum(separado);
     const vBloqueados = sum(bloqueados);
+    const vOutros = sum(outros);
 
     const totalEmDisputa = vAlvara + vCredito;
     const totalFaturamentoPrevisto = faturadoValor + vAguardandoEnvio + vEmSeparacao + vSeparado;
-    const potencialDia = faturadoValor + vAguardandoLiberacao + vAlvara + vCredito + vAguardandoEnvio + vEmSeparacao + vSeparado + vBloqueados + sum(outros);
+    const potencialDia = faturadoValor + vAguardandoLiberacao + vAlvara + vCredito + vAguardandoEnvio + vEmSeparacao + vSeparado + vBloqueados + vOutros;
 
     document.getElementById('heroBadgeValue').textContent = fmtBRL(potencialDia);
 
@@ -828,19 +933,20 @@
       { status:'Aguardando Liberação', qtd:qtd(aguardandoLiberacao), valor:vAguardandoLiberacao },
       { status:'Alvará Sanitário', qtd:qtd(alvara), valor:vAlvara, blink:true },
       { status:'Análise de Crédito', qtd:qtd(credito), valor:vCredito, blink:true },
-      { status:'Total em Disputa', qtd:qtd(alvara) + qtd(credito), valor:totalEmDisputa, total:true },
+      { status:'Total em Disputa', qtd:qtd(alvara) + qtd(credito), valor:totalEmDisputa, totalType:'disputa' },
       { status:'Aguard. Envio Separação', qtd:qtd(aguardandoEnvio), valor:vAguardandoEnvio },
       { status:'Em Separação', qtd:qtd(emSeparacao), valor:vEmSeparacao },
       { status:'Separado', qtd:qtd(separado), valor:vSeparado },
       { status:'Faturado', qtd:faturadoQtd, valor:faturadoValor },
-      { status:'Total Faturamento Previsto', qtd:qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd, valor:totalFaturamentoPrevisto, total:true },
+      { status:'Total Faturamento Previsto', qtd:qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd, valor:totalFaturamentoPrevisto, totalType:'previsto' },
       { status:'Potencial de faturamento dia', qtd:qtd(aguardandoLiberacao)+qtd(alvara)+qtd(credito)+qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd+qtd(bloqueados)+qtd(outros), valor:potencialDia, strong:true }
     ];
 
     document.getElementById('tblResumoGerencial').innerHTML = resumo.map(item => {
       let cls = '';
       if (item.strong) cls = 'totalStrong';
-      else if (item.total) cls = 'totalLine';
+      else if (item.totalType === 'disputa') cls = 'totalDisputa';
+      else if (item.totalType === 'previsto') cls = 'totalPrevisto';
       else if (item.blink) cls = 'alertBlink blink-soft';
 
       return `
@@ -870,7 +976,10 @@
   document.getElementById('filtroStatus').addEventListener('change', renderTabelaNaoFaturados);
   document.getElementById('ordenacao').addEventListener('change', renderTabelaNaoFaturados);
 
-  loadData();
+  loadData().then(() => {
+    bindAutoScrollPause();
+    startAutoScroll();
+  });
 </script>
 
 </body>
