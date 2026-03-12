@@ -11,7 +11,6 @@
       --bg0:#050814;
       --bg1:#0b1020;
       --card:#10182b;
-      --card2:#0f172a;
       --border:#1d2a45;
       --muted:#94a3b8;
       --text:#eef2ff;
@@ -232,28 +231,13 @@
       font-weight:700;
     }
 
-    .resumoTable tr.totalDisputa{
-      background:#fff7da;
-      font-weight:900;
-    }
-
-    .resumoTable tr.totalPrevisto{
-      background:#e8f7eb;
-      font-weight:950;
-    }
-
-    .resumoTable tr.totalStrong{
-      background:#e5f2ff;
-      font-weight:950;
-    }
+    .resumoTable tr.totalDisputa{ background:#fff7da; font-weight:900; }
+    .resumoTable tr.totalPrevisto{ background:#e8f7eb; font-weight:950; }
+    .resumoTable tr.totalStrong{ background:#e5f2ff; font-weight:950; }
 
     .resumoTable tr.totalPrevisto td,
     .resumoTable tr.totalStrong td{
       font-size:16px;
-    }
-
-    .resumoTable tr.alertBlink td:first-child{
-      font-weight:900;
     }
 
     .blink-soft{
@@ -289,7 +273,7 @@
       color:var(--muted);
     }
 
-    .faturamento5dias{
+    .faturamentoDias{
       display:grid;
       gap:10px;
     }
@@ -300,7 +284,7 @@
       border-radius:12px;
       padding:12px 14px;
       display:grid;
-      grid-template-columns: 1.1fr 1fr .9fr;
+      grid-template-columns:1.1fr 1fr .9fr;
       align-items:center;
       gap:12px;
       min-height:52px;
@@ -424,24 +408,15 @@
       max-height:480px;
       overflow:auto;
       padding:0 12px 10px;
-    }
-
-    .autoScrollWrap{
-      max-height:480px;
-      overflow:auto;
       scroll-behavior:smooth;
     }
 
-    .autoScrollWrap::-webkit-scrollbar{
-      width:10px;
-    }
-
-    .autoScrollWrap::-webkit-scrollbar-thumb{
+    .detailWrap::-webkit-scrollbar{ width:10px; }
+    .detailWrap::-webkit-scrollbar-thumb{
       background:rgba(120,120,120,.35);
       border-radius:999px;
     }
-
-    .autoScrollWrap::-webkit-scrollbar-track{
+    .detailWrap::-webkit-scrollbar-track{
       background:rgba(0,0,0,.04);
     }
 
@@ -528,7 +503,6 @@
 </header>
 
 <main>
-
   <section class="card hero">
     <div class="heroTop">
       <div class="heroTopLeft">
@@ -565,10 +539,10 @@
 
       <div class="sidePanel">
         <div class="faturamentoHeader">
-          <div class="title">Faturamento bruto últimos 5 dias</div>
+          <div class="title">Faturamento bruto últimos 7 dias</div>
           <div class="subtitle">Leitura rápida do faturamento diário e da margem média</div>
         </div>
-        <div class="faturamento5dias" id="faturamento5dias"></div>
+        <div class="faturamentoDias" id="faturamentoDias"></div>
       </div>
     </div>
   </section>
@@ -623,13 +597,12 @@
       <div class="toolbarLeft">
         <select id="filtroStatus">
           <option value="TODOS">Todos os status</option>
-          <option value="AGUARDANDO_LIBERACAO">Aguardando Liberação</option>
+          <option value="BLOQUEADO">Pedidos Bloqueados</option>
           <option value="ALVARA">Alvará Sanitário</option>
           <option value="CREDITO">Análise de Crédito</option>
           <option value="AGUARDANDO_ENVIO_SEPARACAO">Aguard. Envio Separação</option>
           <option value="EM_SEPARACAO">Em Separação</option>
           <option value="SEPARADO">Separado</option>
-          <option value="BLOQUEADO">Bloqueado</option>
           <option value="OUTROS">Outros</option>
         </select>
 
@@ -646,7 +619,7 @@
       <div class="toolbarRight" id="contadorFiltrado">0 pedidos | R$ 0,00</div>
     </div>
 
-    <div class="detailWrap autoScrollWrap" id="autoScrollWrap">
+    <div class="detailWrap" id="autoScrollWrap">
       <table>
         <thead>
           <tr>
@@ -671,54 +644,61 @@
 </main>
 
 <script>
+  function parseBRNumber(value){
+    if (value === null || value === undefined) return 0;
+    if (typeof value === 'number') return value;
+    const s = String(value).trim();
+    if (!s) return 0;
+    return Number(s.replace(/\./g, '').replace(',', '.')) || 0;
+  }
+
   const fmtBRL = n =>
-    (Number.isFinite(Number(n)) ? Number(n) : 0).toLocaleString('pt-BR',{
+    parseBRNumber(n).toLocaleString('pt-BR', {
       style:'currency',
       currency:'BRL'
     });
 
-  const fmtPct = n => `${(Number.isFinite(Number(n)) ? Number(n) : 0).toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  })}%`;
-
-  function sum(arr, field = 'valor'){
-    return (arr || []).reduce((acc, item) => acc + (Number(item[field]) || 0), 0);
-  }
-
-  function qtd(arr){
-    return (arr || []).length;
-  }
+  const fmtPct = n =>
+    `${parseBRNumber(n).toLocaleString('pt-BR', {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    })}%`;
 
   function parseDateBR(v){
-    if(!v || typeof v !== 'string' || !v.includes('/')) return null;
-    const [d,m,y] = v.split('/');
+    if(!v) return null;
+    const s = String(v).trim();
+    if (!s.includes('/')) return null;
+    const [d,m,y] = s.split('/');
     return new Date(`${y}-${m}-${d}T00:00:00`);
   }
 
+  function getPedidoStatusValue(statusName, field = 'valor'){
+    const arr = window._data?.pedidos_status || [];
+    const item = arr.find(x => (x.status || '').trim().toUpperCase() === statusName.trim().toUpperCase());
+    if (!item) return field === 'quantidade' ? 0 : 0;
+    return field === 'quantidade' ? Number(item.quantidade || 0) : parseBRNumber(item.valor);
+  }
+
   function normalizeStatus(item){
-    const us = (item.ultimo_status || '').toUpperCase();
+    const us = String(item.ultimo_status || '').trim().toUpperCase();
 
-    if (us === 'ALVARA SANITARIO') return 'ALVARA';
-    if (us === 'ANALISE DE CREDITO') return 'CREDITO';
-    if (us === 'AGUARDANDO ENVIO SEPARACAO') return 'AGUARDANDO_ENVIO_SEPARACAO';
-    if (us === 'ENVIADO PARA SEPARACAO') return 'EM_SEPARACAO';
-    if (us === 'PEDIDO SEPARADO') return 'SEPARADO';
-    if (us === 'PEDIDO BLOQUEADO POR REGRA' || us === 'BLOQUEIO PAGAMENTO') return 'BLOQUEADO';
-    if (us === 'PEDIDO INCLUIDO' || us === 'AGUARDANDO LIBERACAO') return 'AGUARDANDO_LIBERACAO';
-
-    return item.status || 'OUTROS';
+    if (us === 'ALVARÁ SANITÁRIO' || us === 'ALVARA SANITÁRIO' || us === 'ALVARA SANITARIO') return 'ALVARA';
+    if (us === 'ANÁLISE DE CRÉDITO' || us === 'ANALISE DE CREDITO') return 'CREDITO';
+    if (us === 'AGUARD. ENVIO SEPARAÇÃO' || us === 'AGUARD. ENVIO SEPARACAO') return 'AGUARDANDO_ENVIO_SEPARACAO';
+    if (us === 'EM SEPARAÇÃO' || us === 'EM SEPARACAO') return 'EM_SEPARACAO';
+    if (us === 'SEPARADO') return 'SEPARADO';
+    if (us === 'PEDIDOS BLOQUEADOS' || us === 'BLOQUEADO' || us === 'BLOQUEADO POR REGRA') return 'BLOQUEADO';
+    return 'OUTROS';
   }
 
   function labelStatus(code){
     const map = {
-      AGUARDANDO_LIBERACAO: 'Aguardando Liberação',
+      BLOQUEADO: 'Pedidos Bloqueados',
       ALVARA: 'Alvará Sanitário',
       CREDITO: 'Análise de Crédito',
       AGUARDANDO_ENVIO_SEPARACAO: 'Aguard. Envio Separação',
       EM_SEPARACAO: 'Em Separação',
       SEPARADO: 'Separado',
-      BLOQUEADO: 'Bloqueado',
       OUTROS: 'Outros'
     };
     return map[code] || code;
@@ -737,23 +717,25 @@
   }
 
   let pedidosNaoFaturados = [];
+  let autoScrollInterval = null;
+  let autoScrollPaused = false;
 
   function ordenarPedidos(lista, criterio){
     const arr = [...lista];
 
     switch(criterio){
       case 'VALOR_ASC':
-        return arr.sort((a,b) => (a.valor_produtos || 0) - (b.valor_produtos || 0));
+        return arr.sort((a,b) => parseBRNumber(a.vlr_total_produtos) - parseBRNumber(b.vlr_total_produtos));
       case 'MARGEM_DESC':
-        return arr.sort((a,b) => (b.margem || 0) - (a.margem || 0));
+        return arr.sort((a,b) => parseBRNumber(b.margem) - parseBRNumber(a.margem));
       case 'MARGEM_ASC':
-        return arr.sort((a,b) => (a.margem || 0) - (b.margem || 0));
+        return arr.sort((a,b) => parseBRNumber(a.margem) - parseBRNumber(b.margem));
       case 'EMISSAO_ASC':
         return arr.sort((a,b) => (parseDateBR(a.emissao_pv)?.getTime() || 0) - (parseDateBR(b.emissao_pv)?.getTime() || 0));
       case 'EMISSAO_DESC':
         return arr.sort((a,b) => (parseDateBR(b.emissao_pv)?.getTime() || 0) - (parseDateBR(a.emissao_pv)?.getTime() || 0));
       default:
-        return arr.sort((a,b) => (b.valor_produtos || 0) - (a.valor_produtos || 0));
+        return arr.sort((a,b) => parseBRNumber(b.vlr_total_produtos) - parseBRNumber(a.vlr_total_produtos));
     }
   }
 
@@ -774,8 +756,8 @@
 
     base = ordenarPedidos(base, ordenacao);
 
-    document.getElementById('contadorFiltrado').textContent =
-      `${base.length} pedidos | ${fmtBRL(sum(base, 'valor_produtos'))}`;
+    const total = base.reduce((acc, item) => acc + parseBRNumber(item.vlr_total_produtos), 0);
+    document.getElementById('contadorFiltrado').textContent = `${base.length} pedidos | ${fmtBRL(total)}`;
 
     if (!base.length){
       tbody.innerHTML = '';
@@ -787,21 +769,21 @@
 
     tbody.innerHTML = base.map(x => `
       <tr>
-        <td>${x.pedido || '-'}</td>
-        <td>${x.emissao_pv || '-'}</td>
-        <td>${fmtBRL(x.valor_produtos)}</td>
+        <td>${(x.numero_pedido || '-').trim()}</td>
+        <td>${(x.emissao_pv || '-').trim()}</td>
+        <td>${fmtBRL(x.vlr_total_produtos)}</td>
         <td>${fmtPct(x.margem)}</td>
-        <td>${x.cliente || '-'}</td>
-        <td>${x.estado || '-'}</td>
-        <td>${x.tipo_cliente || '-'}</td>
-        <td>${x.nome_vendedor || '-'}</td>
+        <td>${(x.nome_cliente || '-').trim()}</td>
+        <td>${(x.uf_cliente || '-').trim()}</td>
+        <td>${(x.tipo_cliente || '-').trim()}</td>
+        <td>${(x.vendedor || '-').trim()}</td>
         <td>${pillStatus(x.status_codigo)}</td>
       </tr>
     `).join('');
   }
 
-  function renderFaturamento5Dias(arr){
-    const el = document.getElementById('faturamento5dias');
+  function renderFaturamentoDias(arr){
+    const el = document.getElementById('faturamentoDias');
 
     if (!Array.isArray(arr) || !arr.length){
       el.innerHTML = `
@@ -816,15 +798,12 @@
 
     el.innerHTML = arr.map(x => `
       <div class="dayRow">
-        <div class="dayDate">${x.data} - Faturamento do dia</div>
+        <div class="dayDate">${(x.data || '').trim()} - ${(x.descricao || 'Faturamento do dia').trim()}</div>
         <div class="dayRevenue">${fmtBRL(x.valor)}</div>
-        <div class="dayMargin">Margem média: ${fmtPct(x.margem_media || 0)}</div>
+        <div class="dayMargin">Margem média: ${fmtPct(x.margem_media)}</div>
       </div>
     `).join('');
   }
-
-  let autoScrollInterval = null;
-  let autoScrollPaused = false;
 
   function startAutoScroll(){
     const wrap = document.getElementById('autoScrollWrap');
@@ -834,7 +813,6 @@
 
     autoScrollInterval = setInterval(() => {
       if (autoScrollPaused) return;
-
       const maxScroll = wrap.scrollHeight - wrap.clientHeight;
       if (maxScroll <= 0) return;
 
@@ -849,119 +827,94 @@
   function bindAutoScrollPause(){
     const wrap = document.getElementById('autoScrollWrap');
     if (!wrap) return;
-
-    wrap.addEventListener('mouseenter', () => {
-      autoScrollPaused = true;
-    });
-
-    wrap.addEventListener('mouseleave', () => {
-      autoScrollPaused = false;
-    });
+    wrap.addEventListener('mouseenter', () => autoScrollPaused = true);
+    wrap.addEventListener('mouseleave', () => autoScrollPaused = false);
   }
 
   async function loadData(){
-    const r = await fetch('./data.json?v=' + Date.now());
-    const data = await r.json();
+    const response = await fetch('./data.json?v=' + Date.now());
+    const data = await response.json();
+    window._data = data;
 
     document.getElementById('updatedAt').textContent = data.updated_at || '--';
 
-    const faturadoQtd = Number(data.kpis_dia?.pedidos_faturados || 0);
-    const faturadoValor = Number(data.kpis_dia?.valor_faturado || 0);
+    // Cards
+    const valorFaturadoDia = parseBRNumber(data.cards?.valor_faturado_dia);
+    const valorSeparacao = parseBRNumber(data.cards?.valor_pedidos_em_separacao);
+    const valorCredito = parseBRNumber(data.cards?.valor_pedidos_em_credito);
+    const valorAlvara = parseBRNumber(data.cards?.valor_pedidos_em_alvara);
+    const valorBloqueados = parseBRNumber(data.cards?.valor_pedidos_bloqueados);
+    const potencialDia = parseBRNumber(data.cards?.potencial_faturamento_dia);
 
-    const aguardandoLiberacao = data.aguardando_liberacao || [];
-    const alvara = data.bloqueios_alvara || [];
-    const credito = data.analise_credito || [];
-    const aguardandoEnvio = data.aguardando_envio_separacao || [];
-    const emSeparacao = data.pedidos_em_separacao || [];
-    const separado = data.pedidos_separados || [];
-    const bloqueados = data.pedidos_bloqueados || [];
-    const outros = data.outros_abertos || [];
-
-    const vAguardandoLiberacao = sum(aguardandoLiberacao);
-    const vAlvara = sum(alvara);
-    const vCredito = sum(credito);
-    const vAguardandoEnvio = sum(aguardandoEnvio);
-    const vEmSeparacao = sum(emSeparacao);
-    const vSeparado = sum(separado);
-    const vBloqueados = sum(bloqueados);
-    const vOutros = sum(outros);
-
-    const totalEmDisputa = vAlvara + vCredito;
-    const totalFaturamentoPrevisto = faturadoValor + vAguardandoEnvio + vEmSeparacao + vSeparado;
-    const potencialDia = faturadoValor + vAguardandoLiberacao + vAlvara + vCredito + vAguardandoEnvio + vEmSeparacao + vSeparado + vBloqueados + vOutros;
+    const qtdFaturado = getPedidoStatusValue('Faturado', 'quantidade');
+    const qtdSeparacao = getPedidoStatusValue('Aguard. Envio Separação', 'quantidade')
+      + getPedidoStatusValue('Em Separação', 'quantidade')
+      + getPedidoStatusValue('Separado', 'quantidade');
+    const qtdCredito = getPedidoStatusValue('Análise de Crédito', 'quantidade');
+    const qtdAlvara = getPedidoStatusValue('Alvará Sanitário', 'quantidade');
+    const qtdBloqueados = getPedidoStatusValue('Pedidos Bloqueados', 'quantidade');
 
     document.getElementById('heroBadgeValue').textContent = fmtBRL(potencialDia);
 
-    document.getElementById('kpiValorFaturado').textContent = fmtBRL(faturadoValor);
-    document.getElementById('subValorFaturado').textContent = `${faturadoQtd} pedidos faturados`;
+    document.getElementById('kpiValorFaturado').textContent = fmtBRL(valorFaturadoDia);
+    document.getElementById('subValorFaturado').textContent = `${qtdFaturado} pedidos faturados`;
 
-    document.getElementById('kpiSeparacao').textContent = fmtBRL(vAguardandoEnvio + vEmSeparacao + vSeparado);
-    document.getElementById('subSeparacao').textContent =
-      `${qtd(aguardandoEnvio) + qtd(emSeparacao) + qtd(separado)} pedidos entre aguardando, em separação e separado`;
+    document.getElementById('kpiSeparacao').textContent = fmtBRL(valorSeparacao);
+    document.getElementById('subSeparacao').textContent = `${qtdSeparacao} pedidos`;
 
-    document.getElementById('kpiCredito').textContent = fmtBRL(vCredito);
-    document.getElementById('subCredito').textContent = `${qtd(credito)} pedidos`;
+    document.getElementById('kpiCredito').textContent = fmtBRL(valorCredito);
+    document.getElementById('subCredito').textContent = `${qtdCredito} pedidos`;
 
-    document.getElementById('kpiAlvara').textContent = fmtBRL(vAlvara);
-    document.getElementById('subAlvara').textContent = `${qtd(alvara)} pedidos`;
+    document.getElementById('kpiAlvara').textContent = fmtBRL(valorAlvara);
+    document.getElementById('subAlvara').textContent = `${qtdAlvara} pedidos`;
 
-    document.getElementById('kpiBloqueados').textContent = fmtBRL(vBloqueados);
-    document.getElementById('subBloqueados').textContent = `${qtd(bloqueados)} pedidos`;
+    document.getElementById('kpiBloqueados').textContent = fmtBRL(valorBloqueados);
+    document.getElementById('subBloqueados').textContent = `${qtdBloqueados} pedidos`;
 
     document.getElementById('kpiPotencial').textContent = fmtBRL(potencialDia);
 
-    const resumo = [
-      { status:'Aguardando Liberação', qtd:qtd(aguardandoLiberacao), valor:vAguardandoLiberacao },
-      { status:'Alvará Sanitário', qtd:qtd(alvara), valor:vAlvara, blink:true },
-      { status:'Análise de Crédito', qtd:qtd(credito), valor:vCredito, blink:true },
-      { status:'Total em Disputa', qtd:qtd(alvara) + qtd(credito), valor:totalEmDisputa, totalType:'disputa' },
-      { status:'Aguard. Envio Separação', qtd:qtd(aguardandoEnvio), valor:vAguardandoEnvio },
-      { status:'Em Separação', qtd:qtd(emSeparacao), valor:vEmSeparacao },
-      { status:'Separado', qtd:qtd(separado), valor:vSeparado },
-      { status:'Faturado', qtd:faturadoQtd, valor:faturadoValor },
-      { status:'Total Faturamento Previsto', qtd:qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd, valor:totalFaturamentoPrevisto, totalType:'previsto' },
-      { status:'Potencial de faturamento dia', qtd:qtd(aguardandoLiberacao)+qtd(alvara)+qtd(credito)+qtd(aguardandoEnvio)+qtd(emSeparacao)+qtd(separado)+faturadoQtd+qtd(bloqueados)+qtd(outros), valor:potencialDia, strong:true }
-    ];
-
-    document.getElementById('tblResumoGerencial').innerHTML = resumo.map(item => {
+    // Resumo Gerencial
+    const resumo = (data.pedidos_status || []).map(item => {
+      const status = (item.status || '').trim().toUpperCase();
       let cls = '';
-      if (item.strong) cls = 'totalStrong';
-      else if (item.totalType === 'disputa') cls = 'totalDisputa';
-      else if (item.totalType === 'previsto') cls = 'totalPrevisto';
-      else if (item.blink) cls = 'alertBlink blink-soft';
+      if (status === 'ALVARÁ SANITÁRIO' || status === 'ALVARA SANITÁRIO' || status === 'ANÁLISE DE CRÉDITO' || status === 'ANALISE DE CREDITO'){
+        cls = 'blink-soft';
+      }
+      if (status === 'TOTAL EM DISPUTA') cls = 'totalDisputa';
+      if (status === 'TOTAL FATURAMENTO PREVISTO') cls = 'totalPrevisto';
+      if (status === 'POTENCIAL DE FATURAMENTO DIA') cls = 'totalStrong';
 
       return `
         <tr class="${cls}">
-          <td>${item.status}</td>
-          <td>${item.qtd}</td>
+          <td>${item.status || '-'}</td>
+          <td>${Number(item.quantidade || 0)}</td>
           <td>${fmtBRL(item.valor)}</td>
         </tr>
       `;
     }).join('');
 
-    pedidosNaoFaturados = [
-      ...aguardandoLiberacao,
-      ...alvara,
-      ...credito,
-      ...aguardandoEnvio,
-      ...emSeparacao,
-      ...separado,
-      ...bloqueados,
-      ...outros
-    ];
+    document.getElementById('tblResumoGerencial').innerHTML = resumo;
 
+    // Tabela
+    pedidosNaoFaturados = Array.isArray(data.pedidos_nao_faturados) ? data.pedidos_nao_faturados : [];
     renderTabelaNaoFaturados();
-    renderFaturamento5Dias(data.faturamento_ultimos_5_dias || []);
+
+    // Faturamento últimos 7 dias
+    renderFaturamentoDias(data.faturamento_bruto_ultimos_7_dias || []);
   }
 
   document.getElementById('filtroStatus').addEventListener('change', renderTabelaNaoFaturados);
   document.getElementById('ordenacao').addEventListener('change', renderTabelaNaoFaturados);
 
-  loadData().then(() => {
-    bindAutoScrollPause();
-    startAutoScroll();
-  });
+  loadData()
+    .then(() => {
+      bindAutoScrollPause();
+      startAutoScroll();
+    })
+    .catch(err => {
+      console.error('Erro ao carregar data.json:', err);
+      document.getElementById('updatedAt').textContent = 'Erro ao carregar JSON';
+    });
 </script>
-
 </body>
 </html>
