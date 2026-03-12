@@ -1,5 +1,5 @@
 {
-  "updated_at": "12/03/2026 19:34",
+  "updated_at": "12/03/2026 20:02",
 
 "pedidos_status": [
 { "status": "Pedidos Bloqueados", "quantidade": 1, "valor": "2388,42" },
@@ -7,9 +7,9 @@
 { "status": "Análise de Crédito", "quantidade": 12, "valor": "141246,58" },
 { "status": "Total em Disputa", "quantidade": 27, "valor": "245426,84" },
 { "status": "Aguard. Envio Separação", "quantidade": 0, "valor": "0" },
-{ "status": "Em Separação", "quantidade": 6, "valor": "138586,51" },
+{ "status": "Em Separação", "quantidade": 3, "valor": "64790,46" },
 { "status": "Separado", "quantidade": 2, "valor": "3,9" },
-{ "status": "Faturado", "quantidade": 111, "valor": "903568,29" },
+{ "status": "Faturado", "quantidade": 114, "valor": "977364,34" },
 { "status": "Total Faturamento Previsto", "quantidade": 119, "valor": "1042158,7" },
 { "status": "Potencial de faturamento dia", "quantidade": 147, "valor": "1289973,96" }
 ],
@@ -23,8 +23,8 @@
 { "data": "03/03/2026", "descricao": "Faturamento do dia", "valor": "645604,01", "margem_media": "21,44" }
 ],
 "cards": {
-"valor_faturado_dia": "903568,29",
-"valor_pedidos_em_separacao": "138590,41",
+"valor_faturado_dia": "977364,34",
+"valor_pedidos_em_separacao": "64794,36",
 "valor_pedidos_em_credito": "141246,58",
 "valor_pedidos_em_alvara": "104180,26",
 "valor_pedidos_bloqueados": "2388,42",
@@ -100,3 +100,4 @@
 "ttl_minutes": 720
 }
 }
+
