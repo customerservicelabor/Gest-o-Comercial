@@ -1,6 +1,6 @@
 {
-  "updated_at": "12/03/2026 19:23",
-},
+  "updated_at": "12/03/2026 19:34",
+
 "pedidos_status": [
 { "status": "Pedidos Bloqueados", "quantidade": 1, "valor": "2388,42" },
 { "status": "Alvará Sanitário", "quantidade": 15, "valor": "104180,26" },
@@ -31,7 +31,7 @@
 "potencial_faturamento_dia": "1289973,96"
 },
 "pedidos_nao_faturados": [
-0
+
   {"numero_pedido":"681789 ", "emissao_pv": "05/03/2026 ", "vlr_total_produtos": "2480,1 ", "margem": "19,36 ", "nome_cliente": "M   H PRODUTOS MEDIC ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Alvará Sanitário" },
   {"numero_pedido":"681849 ", "emissao_pv": "05/03/2026 ", "vlr_total_produtos": "1200 ", "margem": "36,58 ", "nome_cliente": "VETEX ", "uf_cliente": "SC ", "tipo_cliente": "CONS.FINAL ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Alvará Sanitário" },
   {"numero_pedido":"682029 ", "emissao_pv": "06/03/2026 ", "vlr_total_produtos": "4527,8 ", "margem": "25,01 ", "nome_cliente": "ISEMAIS PRODUTOS DE ", "uf_cliente": "RJ ", "tipo_cliente": "REVENDEDOR ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Alvará Sanitário" },
@@ -99,6 +99,3 @@
 "created_at": "",
 "ttl_minutes": 720
 }
-
-
-
