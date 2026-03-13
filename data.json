@@ -1,5 +1,5 @@
 {
-  "updated_at": "13/03/2026 08:59",
+  "updated_at": "13/03/2026 09:02",
 
 "pedidos_status": [
 { "status": "Pedidos Bloqueados", "quantidade": 0, "valor": "0" },
@@ -63,8 +63,8 @@
   {"numero_pedido":"682996 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "742,83 ", "margem": "0 ", "nome_cliente": "LABORATORIO SANTA MO ", "uf_cliente": "SP ", "tipo_cliente": "CONS.FINAL ","vendedor": "E-COMMERCE ", "ultimo_status": "Em Separação" },
   {"numero_pedido":"682998 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "8867,6 ", "margem": "39,09 ", "nome_cliente": "A R DISTRIB LOG ", "uf_cliente": "PE ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Análise de Crédito" },
   {"numero_pedido":"683000 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "2793,02 ", "margem": "37,04 ", "nome_cliente": "WAINER FERREIRA PAUL ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "APARECIDA BRESSAN ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683002 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "5039,2 ", "margem": "37,02 ", "nome_cliente": "CIRUFARMA ", "uf_cliente": "RN ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" }
-  {"numero_pedido":"683004 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "600 ", "margem": "-9,15 ", "nome_cliente": "FAYNE HOSPITALAR
+  {"numero_pedido":"683002 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "5039,2 ", "margem": "37,02 ", "nome_cliente": "CIRUFARMA ", "uf_cliente": "RN ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683004 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "600 ", "margem": "-9,15 ", "nome_cliente": "FAYNE HOSPITALAR ", "uf_cliente": "RJ ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Análise de Crédito" }
 
 
 
@@ -100,4 +100,3 @@
 "ttl_minutes": 720
 }
 }
-
