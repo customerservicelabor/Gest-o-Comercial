@@ -1,103 +1,920 @@
-{
-  "updated_at": "13/03/2026 08:55",
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="600" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Diário – Gestão de Pedidos</title>
 
-"pedidos_status": [
-{ "status": "Pedidos Bloqueados", "quantidade": 0, "valor": "0" },
-{ "status": "Alvará Sanitário", "quantidade": 12, "valor": "92806,01" },
-{ "status": "Análise de Crédito", "quantidade": 11, "valor": "141828,69" },
-{ "status": "Total em Disputa", "quantidade": 23, "valor": "234634,7" },
-{ "status": "Aguard. Envio Separação", "quantidade": 0, "valor": "0" },
-{ "status": "Em Separação", "quantidade": 10, "valor": "29529,73" },
-{ "status": "Separado", "quantidade": 2, "valor": "3,9" },
-{ "status": "Faturado", "quantidade": 0, "valor": "0" },
-{ "status": "Total Faturamento Previsto", "quantidade": 12, "valor": "29533,63" },
-{ "status": "Potencial de faturamento dia", "quantidade": 35, "valor": "264168,33" }
-],
-"faturamento_bruto_ultimos_7_dias": [
-{ "data": "12/03/2026", "descricao": "Faturamento do dia", "valor": "1040183,24", "margem_media": "24,07" },
-{ "data": "11/03/2026", "descricao": "Faturamento do dia", "valor": "664909,9", "margem_media": "24,65" },
-{ "data": "10/03/2026", "descricao": "Faturamento do dia", "valor": "174040,06", "margem_media": "27,48" },
-{ "data": "09/03/2026", "descricao": "Faturamento do dia", "valor": "547703,56", "margem_media": "20,29" },
-{ "data": "06/03/2026", "descricao": "Faturamento do dia", "valor": "513835,69", "margem_media": "26,14" },
-{ "data": "05/03/2026", "descricao": "Faturamento do dia", "valor": "460368,63", "margem_media": "19,95" },
-{ "data": "04/03/2026", "descricao": "Faturamento do dia", "valor": "645083,8", "margem_media": "22,00" }
-],
-"cards": {
-"valor_faturado_dia": "0",
-"valor_pedidos_em_separacao": "29533,63",
-"valor_pedidos_em_credito": "141828,69",
-"valor_pedidos_em_alvara": "92806,01",
-"valor_pedidos_bloqueados": "0",
-"potencial_faturamento_dia": "264168,33"
-},
-"pedidos_nao_faturados": [
+  <style>
+    :root{
+      --bg0:#050814;
+      --bg1:#0b1020;
+      --card:#10182b;
+      --border:#1d2a45;
+      --muted:#94a3b8;
+      --text:#eef2ff;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --info:#38bdf8;
+      --violet:#8b5cf6;
+      --lightBox:#f3f5f7;
+      --lightBorder:#d7dde5;
+      --darkText:#111827;
+      --darkMuted:#5b6472;
+      --radius:16px;
+      --gap:14px;
+      --headerH:58px;
+      --padX:18px;
+      --padY:14px;
+      --shadow:0 10px 28px rgba(0,0,0,.22);
+    }
 
-  {"numero_pedido":"681789 ", "emissao_pv": "05/03/2026 ", "vlr_total_produtos": "2480,1 ", "margem": "19,36 ", "nome_cliente": "M   H PRODUTOS MEDIC ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"681849 ", "emissao_pv": "05/03/2026 ", "vlr_total_produtos": "1200 ", "margem": "36,58 ", "nome_cliente": "VETEX ", "uf_cliente": "SC ", "tipo_cliente": "CONS.FINAL ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682029 ", "emissao_pv": "06/03/2026 ", "vlr_total_produtos": "4527,8 ", "margem": "25,01 ", "nome_cliente": "ISEMAIS PRODUTOS DE ", "uf_cliente": "RJ ", "tipo_cliente": "REVENDEDOR ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682040 ", "emissao_pv": "06/03/2026 ", "vlr_total_produtos": "4994,2 ", "margem": "25,88 ", "nome_cliente": "CF CARE MATERIAL HOS ", "uf_cliente": "RJ ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682468 ", "emissao_pv": "10/03/2026 ", "vlr_total_produtos": "1150 ", "margem": "20,43 ", "nome_cliente": "NETMED DISTRIB MEDIC ", "uf_cliente": "RS ", "tipo_cliente": "REVENDEDOR ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682482 ", "emissao_pv": "10/03/2026 ", "vlr_total_produtos": "821,56 ", "margem": "24,04 ", "nome_cliente": "MEDIK PHARMA ", "uf_cliente": "BA ", "tipo_cliente": "REVENDEDOR ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682506 ", "emissao_pv": "10/03/2026 ", "vlr_total_produtos": "7659,6 ", "margem": "12,58 ", "nome_cliente": "PR VID PR DIAGNOSTIC ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682560 ", "emissao_pv": "11/03/2026 ", "vlr_total_produtos": "5417,64 ", "margem": "33,63 ", "nome_cliente": "LABMED ", "uf_cliente": "CE ", "tipo_cliente": "REVENDEDOR ","vendedor": "FERNANDA MIRIAN ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682613 ", "emissao_pv": "11/03/2026 ", "vlr_total_produtos": "1300 ", "margem": "-98,31 ", "nome_cliente": "LACIC ", "uf_cliente": "RN ", "tipo_cliente": "CONS.FINAL ","vendedor": "ERICA BARNES ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682633 ", "emissao_pv": "11/03/2026 ", "vlr_total_produtos": "1107,95 ", "margem": "-37,52 ", "nome_cliente": "PATOLOGIA LAB ANALIS ", "uf_cliente": "MS ", "tipo_cliente": "CONS.FINAL ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682672 ", "emissao_pv": "11/03/2026 ", "vlr_total_produtos": "12074,9 ", "margem": "40,1 ", "nome_cliente": "EMPORIO MIX ATACAREJ ", "uf_cliente": "DF ", "tipo_cliente": "REVENDEDOR ","vendedor": "FERNANDA GUIMARAES ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682766 ", "emissao_pv": "11/03/2026 ", "vlr_total_produtos": "1200 ", "margem": "23,37 ", "nome_cliente": "MAIS VIDA CLINICA ME ", "uf_cliente": "AM ", "tipo_cliente": "CONS.FINAL ","vendedor": "REP. TURCATO ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682780 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "37218,76 ", "margem": "6,04 ", "nome_cliente": "LEMED ", "uf_cliente": "SC ", "tipo_cliente": "REVENDEDOR ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682818 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "3106,95 ", "margem": "20,33 ", "nome_cliente": "BARUCH LABORATORIO ", "uf_cliente": "MA ", "tipo_cliente": "CONS.FINAL ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682883 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "7960 ", "margem": "8,63 ", "nome_cliente": "JS DIAGNOSTICOS LTDA ", "uf_cliente": "MG ", "tipo_cliente": "REVENDEDOR ","vendedor": "ERICA BARNES ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682893 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "1085,05 ", "margem": "40,05 ", "nome_cliente": "LOCAMED CIRURGICA LT ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682907 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "808,84 ", "margem": "31,74 ", "nome_cliente": "SEVEN COMERCIO DE PR ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682913 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "2280,12 ", "margem": "21,19 ", "nome_cliente": "LUIS CARLOS SILVA SO ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682953 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "3420,2 ", "margem": "9,33 ", "nome_cliente": "INSTITUTO GLOBAL ", "uf_cliente": "SP ", "tipo_cliente": "CONS.FINAL ","vendedor": "ALEXANDRA RIBEIRO ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682955 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "61226 ", "margem": "27,66 ", "nome_cliente": "SHOPPING DA SAUDE ", "uf_cliente": "AM ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. TURCATO ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682961 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "55463 ", "margem": "5,87 ", "nome_cliente": "RENATO FARMA DISTRIB ", "uf_cliente": "RN ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. ALFA ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682963 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "8186,3 ", "margem": "26,86 ", "nome_cliente": "SEMPRE HOSPITALAR ", "uf_cliente": "GO ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. SUPREMO ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682967 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "6764,04 ", "margem": "16,26 ", "nome_cliente": "LOGUMED HOSPITALAR E ", "uf_cliente": "SE ", "tipo_cliente": "REVENDEDOR ","vendedor": "DIEGO RICARDO ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682973 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "3858,87 ", "margem": "27,82 ", "nome_cliente": "SALLUS LTDA ", "uf_cliente": "CE ", "tipo_cliente": "REVENDEDOR ","vendedor": "FERNANDA GUIMARAES ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682984 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "956,4 ", "margem": "11,22 ", "nome_cliente": "DENTAL MORAES ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. HELEIDA ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"682990 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "2080 ", "margem": "24,42 ", "nome_cliente": "GM FARMA ", "uf_cliente": "SE ", "tipo_cliente": "REVENDEDOR ","vendedor": "JOAO NETO ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682992 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "3750 ", "margem": "39,8 ", "nome_cliente": "LABORATORIO GENESIS ", "uf_cliente": "PR ", "tipo_cliente": "CONS.FINAL ","vendedor": "FERNANDA GUIMARAES ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682994 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "4023,5 ", "margem": "31,75 ", "nome_cliente": "BRX MEDICAL DISTRIBU ", "uf_cliente": "RJ ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"682996 ", "emissao_pv": "12/03/2026 ", "vlr_total_produtos": "742,83 ", "margem": "0 ", "nome_cliente": "LABORATORIO SANTA MO ", "uf_cliente": "SP ", "tipo_cliente": "CONS.FINAL ","vendedor": "E-COMMERCE ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"682998 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "8867,6 ", "margem": "39,09 ", "nome_cliente": "A R DISTRIB LOG ", "uf_cliente": "PE ", "tipo_cliente": "REVENDEDOR ","vendedor": "FLAVIA VELIS ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"683000 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "2793,02 ", "margem": "37,04 ", "nome_cliente": "WAINER FERREIRA PAUL ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "APARECIDA BRESSAN ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683002 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "5039,2 ", "margem": "37,02 ", "nome_cliente": "CIRUFARMA ", "uf_cliente": "RN ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" }
-  {"numero_pedido":"683004 ", "emissao_pv": "13/03/2026 ", "vlr_total_produtos": "600 ", "margem": "-9,15 ", "nome_cliente": "FAYNE HOSPITALAR
+    *{
+      box-sizing:border-box;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    }
 
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% -10%, rgba(56,189,248,.16), transparent 55%),
+        radial-gradient(900px 500px at 85% -15%, rgba(139,92,246,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
 
+    header{
+      height:var(--headerH);
+      padding:0 var(--padX);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      background:rgba(5,8,20,.75);
+      backdrop-filter: blur(8px);
+      position:sticky;
+      top:0;
+      z-index:8;
+    }
 
+    header h1{
+      margin:0;
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
 
+    header .meta{
+      font-size:12px;
+      color:var(--muted);
+    }
 
+    main{
+      min-height:calc(100vh - var(--headerH));
+      padding:var(--padY) var(--padX);
+      display:grid;
+      grid-template-rows:auto auto auto 1fr auto;
+      gap:var(--gap);
+    }
 
+    .card{
+      background:rgba(16,24,43,.94);
+      border:1px solid rgba(29,42,69,.88);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
 
+    .cardHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px 10px;
+      border-bottom:1px solid rgba(29,42,69,.82);
+    }
 
+    .cardTitle{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      color:rgba(255,255,255,.78);
+    }
 
+    .cardSubtitle{
+      font-size:11px;
+      color:var(--muted);
+      margin-top:4px;
+    }
 
+    .hero{
+      border:1px solid rgba(56,189,248,.20);
+      background:linear-gradient(180deg, rgba(18,29,53,.98), rgba(13,20,38,.96));
+    }
 
+    .heroTop{
+      padding:18px 20px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:20px;
+      border-bottom:1px solid rgba(56,189,248,.12);
+    }
 
+    .heroTopLeft h2{
+      margin:0;
+      font-size:28px;
+      font-weight:950;
+      letter-spacing:.2px;
+    }
 
+    .heroTopLeft p{
+      margin:8px 0 0;
+      font-size:15px;
+      color:#c9d4e8;
+      font-weight:600;
+    }
 
+    .heroBadge{
+      min-width:360px;
+      padding:18px 22px;
+      border-radius:18px;
+      border:1px solid rgba(56,189,248,.36);
+      background:linear-gradient(180deg, rgba(56,189,248,.20), rgba(56,189,248,.08));
+      color:#dff6ff;
+      text-align:right;
+    }
 
+    .heroBadge .small{
+      font-size:13px;
+      font-weight:900;
+      opacity:.92;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
 
+    .heroBadge .big{
+      margin-top:8px;
+      font-size:40px;
+      font-weight:950;
+      line-height:1;
+    }
 
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.45fr .95fr;
+      gap:14px;
+      padding:14px 18px 18px;
+      align-items:start;
+    }
 
+    .resumoBox{
+      background:var(--lightBox);
+      border:1px solid var(--lightBorder);
+      border-radius:16px;
+      overflow:hidden;
+    }
 
+    .resumoHeader{
+      padding:14px 16px 10px;
+      border-bottom:1px solid var(--lightBorder);
+      background:linear-gradient(180deg, #fafbfc, #eef2f5);
+    }
 
+    .resumoHeader .title{
+      color:var(--darkText);
+      font-size:16px;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+    }
 
-],
-"performance_transportadoras": [],
-"notas_em_atraso": [],
-"notas_previstas_hoje": [],
-"tv_alert": {
-"enabled": false,
-"id": "",
-"title": "",
-"message": "",
-"duration_seconds": 25,
-"created_at": "",
-"ttl_minutes": 720
-}
-}
+    .resumoHeader .subtitle{
+      margin-top:6px;
+      color:var(--darkMuted);
+      font-size:13px;
+      font-weight:600;
+    }
 
+    .resumoTableWrap{
+      padding:8px 12px 12px;
+      overflow:auto;
+    }
+
+    .resumoTable{
+      width:100%;
+      border-collapse:collapse;
+      font-size:15px;
+      color:var(--darkText);
+    }
+
+    .resumoTable th,
+    .resumoTable td{
+      padding:12px 12px;
+      border-bottom:1px solid #dde3ea;
+      text-align:left;
+      white-space:nowrap;
+    }
+
+    .resumoTable th{
+      font-size:12px;
+      text-transform:uppercase;
+      color:#667085;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .resumoTable td{
+      font-weight:700;
+    }
+
+    .resumoTable tr.totalDisputa{ background:#fff7da; font-weight:900; }
+    .resumoTable tr.totalPrevisto{ background:#e8f7eb; font-weight:950; }
+    .resumoTable tr.totalStrong{ background:#e5f2ff; font-weight:950; }
+
+    .resumoTable tr.totalPrevisto td,
+    .resumoTable tr.totalStrong td{
+      font-size:16px;
+    }
+
+    .blink-soft{
+      animation: blinkSoft 2.2s infinite ease-in-out;
+    }
+
+    @keyframes blinkSoft{
+      0%,100%{ background:#ffffff; }
+      50%{ background:rgba(250, 220, 110, .45); }
+    }
+
+    .sidePanel{
+      display:grid;
+      gap:14px;
+      align-self:stretch;
+    }
+
+    .faturamentoHeader{
+      padding:6px 0 8px 0;
+    }
+
+    .faturamentoHeader .title{
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      color:rgba(255,255,255,.85);
+    }
+
+    .faturamentoHeader .subtitle{
+      margin-top:4px;
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .faturamentoDias{
+      display:grid;
+      gap:10px;
+    }
+
+    .dayRow{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      padding:12px 14px;
+      display:grid;
+      grid-template-columns:1.1fr 1fr .9fr;
+      align-items:center;
+      gap:12px;
+      min-height:52px;
+    }
+
+    .dayDate{
+      font-size:12px;
+      color:#dbe7ff;
+      font-weight:800;
+    }
+
+    .dayRevenue{
+      text-align:right;
+      font-size:18px;
+      font-weight:950;
+      color:#86efac;
+    }
+
+    .dayMargin{
+      text-align:right;
+      font-size:13px;
+      font-weight:800;
+      color:#cfe0ff;
+    }
+
+    .kpis{
+      display:grid;
+      grid-template-columns:repeat(6, 1fr);
+      gap:var(--gap);
+    }
+
+    .kpi{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:14px;
+      min-width:0;
+    }
+
+    .kpi.primary{
+      background:linear-gradient(180deg, rgba(34,197,94,.16), rgba(16,24,43,.96));
+      border-color:rgba(34,197,94,.22);
+    }
+
+    .kpi.total{
+      background:linear-gradient(180deg, rgba(56,189,248,.18), rgba(16,24,43,.96));
+      border-color:rgba(56,189,248,.24);
+    }
+
+    .kpi .label{
+      font-size:11px;
+      color:var(--muted);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+      min-height:30px;
+    }
+
+    .kpi .value{
+      margin-top:10px;
+      font-size:24px;
+      font-weight:950;
+      line-height:1.05;
+    }
+
+    .kpi .sub{
+      margin-top:7px;
+      font-size:11px;
+      color:rgba(255,255,255,.62);
+    }
+
+    .good{ color:var(--good); }
+    .warn{ color:var(--warn); }
+    .bad{ color:var(--bad); }
+    .info{ color:var(--info); }
+    .violet{ color:var(--violet); }
+
+    .toolbar{
+      padding:12px 16px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      border-bottom:1px solid rgba(29,42,69,.82);
+    }
+
+    .toolbarLeft{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .toolbarRight{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    select{
+      appearance:none;
+      border:none;
+      outline:none;
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.10);
+      font-size:12px;
+      font-weight:700;
+      min-width:220px;
+    }
+
+    select option{
+      background:#ffffff;
+      color:#111827;
+    }
+
+    .detailWrap{
+      max-height:480px;
+      overflow:auto;
+      padding:0 12px 10px;
+      scroll-behavior:smooth;
+    }
+
+    .detailWrap::-webkit-scrollbar{ width:10px; }
+    .detailWrap::-webkit-scrollbar-thumb{
+      background:rgba(120,120,120,.35);
+      border-radius:999px;
+    }
+    .detailWrap::-webkit-scrollbar-track{
+      background:rgba(0,0,0,.04);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+    }
+
+    th, td{
+      padding:10px 10px;
+      border-bottom:1px solid rgba(29,42,69,.72);
+      text-align:left;
+      white-space:nowrap;
+    }
+
+    th{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+      color:var(--muted);
+      font-weight:900;
+      position:sticky;
+      top:0;
+      background:#0f172a;
+      z-index:1;
+    }
+
+    .statusPill{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+
+    .st-credito{ color:#ffdb85; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.22); }
+    .st-alvara{ color:#b08900; background:rgba(250,204,21,.16); border-color:rgba(250,204,21,.26); }
+    .st-separacao{ color:#b8ecff; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
+    .st-bloqueado{ color:#ffb5b5; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
+    .st-outros{ color:#d9d9d9; background:rgba(255,255,255,.06); }
+
+    .empty{
+      padding:24px 16px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      display:none;
+    }
+
+    .footer{
+      font-size:11px;
+      opacity:.5;
+      text-align:right;
+    }
+
+    @media (max-width: 1550px){
+      .kpis{ grid-template-columns:repeat(3, 1fr); }
+    }
+
+    @media (max-width: 1180px){
+      .heroGrid{ grid-template-columns:1fr; }
+      .heroBadge{ min-width:unset; width:100%; text-align:left; }
+      .dayRow{ grid-template-columns:1fr; }
+      .dayRevenue, .dayMargin{ text-align:left; }
+    }
+
+    @media (max-width: 760px){
+      .kpis{ grid-template-columns:1fr; }
+      .toolbarLeft{ width:100%; }
+      select{ width:100%; min-width:unset; }
+      .heroTop{ flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Painel Diário – Gestão de Pedidos</h1>
+  <div class="meta">Atualizado em: <strong id="updatedAt">--/--/----</strong></div>
+</header>
+
+<main>
+  <section class="card hero">
+    <div class="heroTop">
+      <div class="heroTopLeft">
+        <h2>Gestão de Pedidos</h2>
+        <p>Visão comercial do pipeline de faturamento, retenções e carteira do dia.</p>
+      </div>
+
+      <div class="heroBadge">
+        <div class="small">Potencial do dia</div>
+        <div class="big" id="heroBadgeValue">R$ 0,00</div>
+      </div>
+    </div>
+
+    <div class="heroGrid">
+      <div class="resumoBox">
+        <div class="resumoHeader">
+          <div class="title">Resumo Gerencial</div>
+          <div class="subtitle">Quadro principal para leitura executiva da carteira e do faturamento do dia</div>
+        </div>
+
+        <div class="resumoTableWrap">
+          <table class="resumoTable">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Qtd</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody id="tblResumoGerencial"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sidePanel">
+        <div class="faturamentoHeader">
+          <div class="title">Faturamento bruto últimos 7 dias</div>
+          <div class="subtitle">Leitura rápida do faturamento diário e da margem média</div>
+        </div>
+        <div class="faturamentoDias" id="faturamentoDias"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kpis">
+    <div class="kpi primary">
+      <div class="label">Valor faturado do dia</div>
+      <div class="value good" id="kpiValorFaturado">R$ 0,00</div>
+      <div class="sub" id="subValorFaturado">0 pedidos faturados</div>
+    </div>
+
+    <div class="kpi">
+      <div class="label">Valor pedidos em separação</div>
+      <div class="value info" id="kpiSeparacao">R$ 0,00</div>
+      <div class="sub" id="subSeparacao">0 pedidos</div>
+    </div>
+
+    <div class="kpi">
+      <div class="label">Valor pedidos em crédito</div>
+      <div class="value warn" id="kpiCredito">R$ 0,00</div>
+      <div class="sub" id="subCredito">0 pedidos</div>
+    </div>
+
+    <div class="kpi">
+      <div class="label">Valor pedidos em alvará</div>
+      <div class="value violet" id="kpiAlvara">R$ 0,00</div>
+      <div class="sub" id="subAlvara">0 pedidos</div>
+    </div>
+
+    <div class="kpi">
+      <div class="label">Valor pedidos bloqueados</div>
+      <div class="value bad" id="kpiBloqueados">R$ 0,00</div>
+      <div class="sub" id="subBloqueados">0 pedidos</div>
+    </div>
+
+    <div class="kpi total">
+      <div class="label">Potencial de faturamento do dia</div>
+      <div class="value info" id="kpiPotencial">R$ 0,00</div>
+      <div class="sub">Faturado + carteira em aberto</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="cardHeader">
+      <div>
+        <div class="cardTitle">Pedidos não faturados</div>
+        <div class="cardSubtitle">Todos os pedidos abertos com filtro por status e ordenação analítica</div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="toolbarLeft">
+        <select id="filtroStatus">
+          <option value="TODOS">Todos os status</option>
+          <option value="BLOQUEADO">Pedidos Bloqueados</option>
+          <option value="ALVARA">Alvará Sanitário</option>
+          <option value="CREDITO">Análise de Crédito</option>
+          <option value="AGUARDANDO_ENVIO_SEPARACAO">Aguard. Envio Separação</option>
+          <option value="EM_SEPARACAO">Em Separação</option>
+          <option value="SEPARADO">Separado</option>
+          <option value="OUTROS">Outros</option>
+        </select>
+
+        <select id="ordenacao">
+          <option value="VALOR_DESC">Maior valor de produtos</option>
+          <option value="VALOR_ASC">Menor valor de produtos</option>
+          <option value="MARGEM_DESC">Maior margem</option>
+          <option value="MARGEM_ASC">Menor margem</option>
+          <option value="EMISSAO_ASC">PV mais antigo</option>
+          <option value="EMISSAO_DESC">PV mais recente</option>
+        </select>
+      </div>
+
+      <div class="toolbarRight" id="contadorFiltrado">0 pedidos | R$ 0,00</div>
+    </div>
+
+    <div class="detailWrap" id="autoScrollWrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Número do pedido</th>
+            <th>Emissão do PV</th>
+            <th>Vlr.Total Produtos</th>
+            <th>Margem</th>
+            <th>Nome Cliente</th>
+            <th>UF Cliente</th>
+            <th>Tipo Cliente</th>
+            <th>Vendedor</th>
+            <th>Último Status</th>
+          </tr>
+        </thead>
+        <tbody id="tblNaoFaturados"></tbody>
+      </table>
+      <div id="emptyState" class="empty">Nenhum pedido encontrado para o filtro selecionado.</div>
+    </div>
+  </section>
+
+  <div class="footer">Painel de uso gerencial – visão comercial diária</div>
+</main>
+
+<script>
+  function parseBRNumber(value){
+    if (value === null || value === undefined) return 0;
+    if (typeof value === 'number') return value;
+    const s = String(value).trim();
+    if (!s) return 0;
+    return Number(s.replace(/\./g, '').replace(',', '.')) || 0;
+  }
+
+  const fmtBRL = n =>
+    parseBRNumber(n).toLocaleString('pt-BR', {
+      style:'currency',
+      currency:'BRL'
+    });
+
+  const fmtPct = n =>
+    `${parseBRNumber(n).toLocaleString('pt-BR', {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    })}%`;
+
+  function parseDateBR(v){
+    if(!v) return null;
+    const s = String(v).trim();
+    if (!s.includes('/')) return null;
+    const [d,m,y] = s.split('/');
+    return new Date(`${y}-${m}-${d}T00:00:00`);
+  }
+
+  function getPedidoStatusValue(statusName, field = 'valor'){
+    const arr = window._data?.pedidos_status || [];
+    const item = arr.find(x => (x.status || '').trim().toUpperCase() === statusName.trim().toUpperCase());
+    if (!item) return field === 'quantidade' ? 0 : 0;
+    return field === 'quantidade' ? Number(item.quantidade || 0) : parseBRNumber(item.valor);
+  }
+
+  function normalizeStatus(item){
+    const us = String(item.ultimo_status || '').trim().toUpperCase();
+
+    if (us === 'ALVARÁ SANITÁRIO' || us === 'ALVARA SANITÁRIO' || us === 'ALVARA SANITARIO') return 'ALVARA';
+    if (us === 'ANÁLISE DE CRÉDITO' || us === 'ANALISE DE CREDITO') return 'CREDITO';
+    if (us === 'AGUARD. ENVIO SEPARAÇÃO' || us === 'AGUARD. ENVIO SEPARACAO') return 'AGUARDANDO_ENVIO_SEPARACAO';
+    if (us === 'EM SEPARAÇÃO' || us === 'EM SEPARACAO') return 'EM_SEPARACAO';
+    if (us === 'SEPARADO') return 'SEPARADO';
+    if (us === 'PEDIDOS BLOQUEADOS' || us === 'BLOQUEADO' || us === 'BLOQUEADO POR REGRA') return 'BLOQUEADO';
+    return 'OUTROS';
+  }
+
+  function labelStatus(code){
+    const map = {
+      BLOQUEADO: 'Pedidos Bloqueados',
+      ALVARA: 'Alvará Sanitário',
+      CREDITO: 'Análise de Crédito',
+      AGUARDANDO_ENVIO_SEPARACAO: 'Aguard. Envio Separação',
+      EM_SEPARACAO: 'Em Separação',
+      SEPARADO: 'Separado',
+      OUTROS: 'Outros'
+    };
+    return map[code] || code;
+  }
+
+  function classStatus(code){
+    if (code === 'CREDITO') return 'st-credito';
+    if (code === 'ALVARA') return 'st-alvara';
+    if (code === 'AGUARDANDO_ENVIO_SEPARACAO' || code === 'EM_SEPARACAO' || code === 'SEPARADO') return 'st-separacao';
+    if (code === 'BLOQUEADO') return 'st-bloqueado';
+    return 'st-outros';
+  }
+
+  function pillStatus(code){
+    return `<span class="statusPill ${classStatus(code)}">${labelStatus(code)}</span>`;
+  }
+
+  let pedidosNaoFaturados = [];
+  let autoScrollInterval = null;
+  let autoScrollPaused = false;
+
+  function ordenarPedidos(lista, criterio){
+    const arr = [...lista];
+
+    switch(criterio){
+      case 'VALOR_ASC':
+        return arr.sort((a,b) => parseBRNumber(a.vlr_total_produtos) - parseBRNumber(b.vlr_total_produtos));
+      case 'MARGEM_DESC':
+        return arr.sort((a,b) => parseBRNumber(b.margem) - parseBRNumber(a.margem));
+      case 'MARGEM_ASC':
+        return arr.sort((a,b) => parseBRNumber(a.margem) - parseBRNumber(b.margem));
+      case 'EMISSAO_ASC':
+        return arr.sort((a,b) => (parseDateBR(a.emissao_pv)?.getTime() || 0) - (parseDateBR(b.emissao_pv)?.getTime() || 0));
+      case 'EMISSAO_DESC':
+        return arr.sort((a,b) => (parseDateBR(b.emissao_pv)?.getTime() || 0) - (parseDateBR(a.emissao_pv)?.getTime() || 0));
+      default:
+        return arr.sort((a,b) => parseBRNumber(b.vlr_total_produtos) - parseBRNumber(a.vlr_total_produtos));
+    }
+  }
+
+  function renderTabelaNaoFaturados(){
+    const filtro = document.getElementById('filtroStatus').value;
+    const ordenacao = document.getElementById('ordenacao').value;
+    const tbody = document.getElementById('tblNaoFaturados');
+    const empty = document.getElementById('emptyState');
+
+    let base = pedidosNaoFaturados.map(x => ({
+      ...x,
+      status_codigo: normalizeStatus(x)
+    }));
+
+    if (filtro !== 'TODOS'){
+      base = base.filter(x => x.status_codigo === filtro);
+    }
+
+    base = ordenarPedidos(base, ordenacao);
+
+    const total = base.reduce((acc, item) => acc + parseBRNumber(item.vlr_total_produtos), 0);
+    document.getElementById('contadorFiltrado').textContent = `${base.length} pedidos | ${fmtBRL(total)}`;
+
+    if (!base.length){
+      tbody.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+
+    tbody.innerHTML = base.map(x => `
+      <tr>
+        <td>${(x.numero_pedido || '-').trim()}</td>
+        <td>${(x.emissao_pv || '-').trim()}</td>
+        <td>${fmtBRL(x.vlr_total_produtos)}</td>
+        <td>${fmtPct(x.margem)}</td>
+        <td>${(x.nome_cliente || '-').trim()}</td>
+        <td>${(x.uf_cliente || '-').trim()}</td>
+        <td>${(x.tipo_cliente || '-').trim()}</td>
+        <td>${(x.vendedor || '-').trim()}</td>
+        <td>${pillStatus(x.status_codigo)}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderFaturamentoDias(arr){
+    const el = document.getElementById('faturamentoDias');
+
+    if (!Array.isArray(arr) || !arr.length){
+      el.innerHTML = `
+        <div class="dayRow">
+          <div class="dayDate">Sem histórico carregado</div>
+          <div class="dayRevenue">R$ 0,00</div>
+          <div class="dayMargin">Margem média: 0,00%</div>
+        </div>
+      `;
+      return;
+    }
+
+    el.innerHTML = arr.map(x => `
+      <div class="dayRow">
+        <div class="dayDate">${(x.data || '').trim()} - ${(x.descricao || 'Faturamento do dia').trim()}</div>
+        <div class="dayRevenue">${fmtBRL(x.valor)}</div>
+        <div class="dayMargin">Margem média: ${fmtPct(x.margem_media)}</div>
+      </div>
+    `).join('');
+  }
+
+  function startAutoScroll(){
+    const wrap = document.getElementById('autoScrollWrap');
+    if (!wrap) return;
+
+    if (autoScrollInterval) clearInterval(autoScrollInterval);
+
+    autoScrollInterval = setInterval(() => {
+      if (autoScrollPaused) return;
+      const maxScroll = wrap.scrollHeight - wrap.clientHeight;
+      if (maxScroll <= 0) return;
+
+      if (wrap.scrollTop >= maxScroll - 2){
+        wrap.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        wrap.scrollBy({ top: 1, behavior: 'smooth' });
+      }
+    }, 120);
+  }
+
+  function bindAutoScrollPause(){
+    const wrap = document.getElementById('autoScrollWrap');
+    if (!wrap) return;
+    wrap.addEventListener('mouseenter', () => autoScrollPaused = true);
+    wrap.addEventListener('mouseleave', () => autoScrollPaused = false);
+  }
+
+  async function loadData(){
+    const response = await fetch('./data.json?v=' + Date.now());
+    const data = await response.json();
+    window._data = data;
+
+    document.getElementById('updatedAt').textContent = data.updated_at || '--';
+
+    // Cards
+    const valorFaturadoDia = parseBRNumber(data.cards?.valor_faturado_dia);
+    const valorSeparacao = parseBRNumber(data.cards?.valor_pedidos_em_separacao);
+    const valorCredito = parseBRNumber(data.cards?.valor_pedidos_em_credito);
+    const valorAlvara = parseBRNumber(data.cards?.valor_pedidos_em_alvara);
+    const valorBloqueados = parseBRNumber(data.cards?.valor_pedidos_bloqueados);
+    const potencialDia = parseBRNumber(data.cards?.potencial_faturamento_dia);
+
+    const qtdFaturado = getPedidoStatusValue('Faturado', 'quantidade');
+    const qtdSeparacao = getPedidoStatusValue('Aguard. Envio Separação', 'quantidade')
+      + getPedidoStatusValue('Em Separação', 'quantidade')
+      + getPedidoStatusValue('Separado', 'quantidade');
+    const qtdCredito = getPedidoStatusValue('Análise de Crédito', 'quantidade');
+    const qtdAlvara = getPedidoStatusValue('Alvará Sanitário', 'quantidade');
+    const qtdBloqueados = getPedidoStatusValue('Pedidos Bloqueados', 'quantidade');
+
+    document.getElementById('heroBadgeValue').textContent = fmtBRL(potencialDia);
+
+    document.getElementById('kpiValorFaturado').textContent = fmtBRL(valorFaturadoDia);
+    document.getElementById('subValorFaturado').textContent = `${qtdFaturado} pedidos faturados`;
+
+    document.getElementById('kpiSeparacao').textContent = fmtBRL(valorSeparacao);
+    document.getElementById('subSeparacao').textContent = `${qtdSeparacao} pedidos`;
+
+    document.getElementById('kpiCredito').textContent = fmtBRL(valorCredito);
+    document.getElementById('subCredito').textContent = `${qtdCredito} pedidos`;
+
+    document.getElementById('kpiAlvara').textContent = fmtBRL(valorAlvara);
+    document.getElementById('subAlvara').textContent = `${qtdAlvara} pedidos`;
+
+    document.getElementById('kpiBloqueados').textContent = fmtBRL(valorBloqueados);
+    document.getElementById('subBloqueados').textContent = `${qtdBloqueados} pedidos`;
+
+    document.getElementById('kpiPotencial').textContent = fmtBRL(potencialDia);
+
+    // Resumo Gerencial
+    const resumo = (data.pedidos_status || []).map(item => {
+      const status = (item.status || '').trim().toUpperCase();
+      let cls = '';
+      if (status === 'ALVARÁ SANITÁRIO' || status === 'ALVARA SANITÁRIO' || status === 'ANÁLISE DE CRÉDITO' || status === 'ANALISE DE CREDITO'){
+        cls = 'blink-soft';
+      }
+      if (status === 'TOTAL EM DISPUTA') cls = 'totalDisputa';
+      if (status === 'TOTAL FATURAMENTO PREVISTO') cls = 'totalPrevisto';
+      if (status === 'POTENCIAL DE FATURAMENTO DIA') cls = 'totalStrong';
+
+      return `
+        <tr class="${cls}">
+          <td>${item.status || '-'}</td>
+          <td>${Number(item.quantidade || 0)}</td>
+          <td>${fmtBRL(item.valor)}</td>
+        </tr>
+      `;
+    }).join('');
+
+    document.getElementById('tblResumoGerencial').innerHTML = resumo;
+
+    // Tabela
+    pedidosNaoFaturados = Array.isArray(data.pedidos_nao_faturados) ? data.pedidos_nao_faturados : [];
+    renderTabelaNaoFaturados();
+
+    // Faturamento últimos 7 dias
+    renderFaturamentoDias(data.faturamento_bruto_ultimos_7_dias || []);
+  }
+
+  document.getElementById('filtroStatus').addEventListener('change', renderTabelaNaoFaturados);
+  document.getElementById('ordenacao').addEventListener('change', renderTabelaNaoFaturados);
+
+  loadData()
+    .then(() => {
+      bindAutoScrollPause();
+      startAutoScroll();
+    })
+    .catch(err => {
+      console.error('Erro ao carregar data.json:', err);
+      document.getElementById('updatedAt').textContent = 'Erro ao carregar JSON';
+    });
+</script>
+</body>
+</html>
