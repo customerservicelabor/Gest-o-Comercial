@@ -1,17 +1,17 @@
 {
-  "updated_at": "17/03/2026 16:27",
+  "updated_at": "17/03/2026 17:10",
 
 "pedidos_status": [
-{ "status": "Pedidos Bloqueados", "quantidade": 2, "valor": "2986,02" },
-{ "status": "Alvará Sanitário", "quantidade": 12, "valor": "60720,03" },
-{ "status": "Análise de Crédito", "quantidade": 15, "valor": "118534,19" },
-{ "status": "Total em Disputa", "quantidade": 27, "valor": "179254,22" },
-{ "status": "Aguard. Envio Separação", "quantidade": 2, "valor": "2772,36" },
-{ "status": "Em Separação", "quantidade": 23, "valor": "181005,56" },
-{ "status": "Separado", "quantidade": 4, "valor": "4893,5" },
-{ "status": "Faturado", "quantidade": 60, "valor": "194626,45" },
-{ "status": "Total Faturamento Previsto", "quantidade": 89, "valor": "383297,87" },
-{ "status": "Potencial de faturamento dia", "quantidade": 118, "valor": "565538,11" }
+{ "status": "Pedidos Bloqueados", "quantidade": 2, "valor": "9019,84" },
+{ "status": "Alvará Sanitário", "quantidade": 12, "valor": "55084,48" },
+{ "status": "Análise de Crédito", "quantidade": 18, "valor": "134437,88" },
+{ "status": "Total em Disputa", "quantidade": 30, "valor": "189522,36" },
+{ "status": "Aguard. Envio Separação", "quantidade": 2, "valor": "16,96" },
+{ "status": "Em Separação", "quantidade": 17, "valor": "113328,29" },
+{ "status": "Separado", "quantidade": 12, "valor": "67396,56" },
+{ "status": "Faturado", "quantidade": 65, "valor": "212237,82" },
+{ "status": "Total Faturamento Previsto", "quantidade": 96, "valor": "392979,63" },
+{ "status": "Potencial de faturamento dia", "quantidade": 128, "valor": "591521,83" }
 ],
 "faturamento_bruto_ultimos_7_dias": [
 { "data": "16/03/2026", "descricao": "Faturamento do dia", "valor": "538900,57", "margem_media": "21,21" },
@@ -23,12 +23,12 @@
 { "data": "06/03/2026", "descricao": "Faturamento do dia", "valor": "513835,69", "margem_media": "26,14" }
 ],
 "cards": {
-"valor_faturado_dia": "194626,45",
-"valor_pedidos_em_separacao": "188671,42",
-"valor_pedidos_em_credito": "118534,19",
-"valor_pedidos_em_alvara": "60720,03",
-"valor_pedidos_bloqueados": "2986,02",
-"potencial_faturamento_dia": "565538,11"
+"valor_faturado_dia": "212237,82",
+"valor_pedidos_em_separacao": "180741,81",
+"valor_pedidos_em_credito": "134437,88",
+"valor_pedidos_em_alvara": "55084,48",
+"valor_pedidos_bloqueados": "9019,84",
+"potencial_faturamento_dia": "591521,83"
 },
 "pedidos_nao_faturados": [
 
@@ -58,25 +58,25 @@
   {"numero_pedido":"683541 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "4571,66 ", "margem": "32,4 ", "nome_cliente": "SOCIEDADE EM HEMATOL ", "uf_cliente": "SP ", "tipo_cliente": "CONS.FINAL ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Alvará Sanitário" },
   {"numero_pedido":"683545 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "845 ", "margem": "45,78 ", "nome_cliente": "NC COMERCIO ", "uf_cliente": "TO ", "tipo_cliente": "REVENDEDOR ","vendedor": "FERNANDA MIRIAN ", "ultimo_status": "Análise de Crédito" },
   {"numero_pedido":"683560 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "8406,8 ", "margem": "17,37 ", "nome_cliente": "CEMED ITU ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683564 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "21946,35 ", "margem": "19,29 ", "nome_cliente": "FARMATEX DO BRASIL ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "ALEXANDRA RIBEIRO ", "ultimo_status": "Em Separação" },
   {"numero_pedido":"683566 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1690,04 ", "margem": "22,36 ", "nome_cliente": "EXCELLAB ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "JOELMA NUNES ", "ultimo_status": "Alvará Sanitário" },
   {"numero_pedido":"683568 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "3819,56 ", "margem": "35,5 ", "nome_cliente": "DIMED ", "uf_cliente": "PA ", "tipo_cliente": "REVENDEDOR ","vendedor": "ALEXANDRA RIBEIRO ", "ultimo_status": "Alvará Sanitário" },
   {"numero_pedido":"683574 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "23975,91 ", "margem": "20,07 ", "nome_cliente": "COMPRATES COMERCIAL ", "uf_cliente": "BA ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. SCHIBELGS ", "ultimo_status": "Alvará Sanitário" },
-  {"numero_pedido":"683576 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "4380 ", "margem": "28,79 ", "nome_cliente": "PLANET PET ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "ERICA BARNES ", "ultimo_status": "Em Separação" },
   {"numero_pedido":"683578 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1370,66 ", "margem": "0 ", "nome_cliente": "BIOOESTE LABORATORIO ", "uf_cliente": "BA ", "tipo_cliente": "CONS.FINAL ","vendedor": "E-COMMERCE ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"683580 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "2867,2 ", "margem": "19,59 ", "nome_cliente": "PR VID PR DIAGNOSTIC ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683582 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1809,77 ", "margem": "31,34 ", "nome_cliente": "EMEDAL MEDVET COML M ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "ALEXANDRA RIBEIRO ", "ultimo_status": "Em Separação" },
   {"numero_pedido":"683584 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "691,68 ", "margem": "0 ", "nome_cliente": "XLAB  SUPRIMENTOS PA ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
   {"numero_pedido":"683586 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1109,5 ", "margem": "25,7 ", "nome_cliente": "LABORCARE ", "uf_cliente": "SP ", "tipo_cliente": "CONS.FINAL ","vendedor": "APARECIDA BRESSAN ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683588 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "2173,96 ", "margem": "0 ", "nome_cliente": "CENTERLAB ", "uf_cliente": "BA ", "tipo_cliente": "CONS.FINAL ","vendedor": "E-COMMERCE ", "ultimo_status": "Pedidos Bloqueados" },
+  {"numero_pedido":"683588 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "2173,96 ", "margem": "0 ", "nome_cliente": "CENTERLAB ", "uf_cliente": "BA ", "tipo_cliente": "CONS.FINAL ","vendedor": "E-COMMERCE ", "ultimo_status": "Em Separação" },
   {"numero_pedido":"683590 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1985,08 ", "margem": "29,24 ", "nome_cliente": "HOSP GERAL UNIMED ", "uf_cliente": "PR ", "tipo_cliente": "CONS.FINAL ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683592 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "18476 ", "margem": "26,59 ", "nome_cliente": "JOAOMED COMERCIO MAT ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683594 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1763,51 ", "margem": "29,38 ", "nome_cliente": "DIAGNOSE VET ", "uf_cliente": "RS ", "tipo_cliente": "CONS.FINAL ","vendedor": "ALICE RODRIGUES ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683596 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "3040 ", "margem": "9,04 ", "nome_cliente": "DOMINIUS ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683598 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "5580 ", "margem": "18,44 ", "nome_cliente": "C  E  CARVALHO COMER ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "ALEXANDRA RIBEIRO ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683600 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "6480 ", "margem": "33,45 ", "nome_cliente": "CASMED ", "uf_cliente": "PA ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Em Separação" },
-  {"numero_pedido":"683602 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "814 ", "margem": "30,92 ", "nome_cliente": "PHD LABORATORIO CLIN ", "uf_cliente": "TO ", "tipo_cliente": "CONS.FINAL ","vendedor": "JOICE MENDES ", "ultimo_status": "Análise de Crédito" },
-  {"numero_pedido":"683604 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "4248,22 ", "margem": "28,93 ", "nome_cliente": "MIX HOSPITALAR ", "uf_cliente": "MA ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. H.F ", "ultimo_status": "Em Separação" }
+  {"numero_pedido":"683602 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "814 ", "margem": "30,92 ", "nome_cliente": "PHD LABORATORIO CLIN ", "uf_cliente": "TO ", "tipo_cliente": "CONS.FINAL ","vendedor": "JOICE MENDES ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683604 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "4248,22 ", "margem": "28,93 ", "nome_cliente": "MIX HOSPITALAR ", "uf_cliente": "MA ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. H.F ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683608 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "2299,49 ", "margem": "23,22 ", "nome_cliente": "CIRUPAR ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. CAOBIANCO ", "ultimo_status": "Análise de Crédito" },
+  {"numero_pedido":"683610 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "826,2 ", "margem": "26,15 ", "nome_cliente": "NOVAMED PRODUTOS PAR ", "uf_cliente": "PR ", "tipo_cliente": "REVENDEDOR ","vendedor": "ELIZANGELA GRACA ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683616 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "5325 ", "margem": "22,34 ", "nome_cliente": "X3 MED DISTRIBUIDORA ", "uf_cliente": "GO ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. SUPREMO ", "ultimo_status": "Análise de Crédito" },
+  {"numero_pedido":"683618 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "1240 ", "margem": "19,22 ", "nome_cliente": "RIO FARMA ", "uf_cliente": "RJ ", "tipo_cliente": "REVENDEDOR ","vendedor": "DENNYS SANTOS ", "ultimo_status": "Análise de Crédito" },
+  {"numero_pedido":"683620 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "2760 ", "margem": "14,99 ", "nome_cliente": "DAFMED COM MAT CIRUR ", "uf_cliente": "SP ", "tipo_cliente": "REVENDEDOR ","vendedor": "LUCIA FLORESTA ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683624 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "517,55 ", "margem": "40,46 ", "nome_cliente": "ANASMED ", "uf_cliente": "BA ", "tipo_cliente": "REVENDEDOR ","vendedor": "LUCIA FLORESTA ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683626 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "4502,2 ", "margem": "34,22 ", "nome_cliente": "STAR DISTRIBUIDORA ", "uf_cliente": "GO ", "tipo_cliente": "REVENDEDOR ","vendedor": "REP. SUPREMO ", "ultimo_status": "Em Separação" },
+  {"numero_pedido":"683628 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "931,94 ", "margem": "16,18 ", "nome_cliente": "LAB SEABRA ", "uf_cliente": "BA ", "tipo_cliente": "CONS.FINAL ","vendedor": "FERNANDA GUIMARAES ", "ultimo_status": "Alvará Sanitário" },
+  {"numero_pedido":"683630 ", "emissao_pv": "17/03/2026 ", "vlr_total_produtos": "8213,1 ", "margem": "23 ", "nome_cliente": "JEC COMERCIO E REPRE ", "uf_cliente": "MA ", "tipo_cliente": "REVENDEDOR ","vendedor": "ERICA BARNES ", "ultimo_status": "Análise de Crédito" }
 
 
 
