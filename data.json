@@ -1,17 +1,17 @@
 {
-  "updated_at": "18/03/2026 17:16",
+  "updated_at": "18/03/2026 17:28",
 
 "pedidos_status": [
-{ "status": "Pedidos Bloqueados", "quantidade": 3, "valor": "7195,94" },
+{ "status": "Pedidos Bloqueados", "quantidade": 3, "valor": "7443,74" },
 { "status": "Alvará Sanitário", "quantidade": 8, "valor": "25277,95" },
-{ "status": "Análise de Crédito", "quantidade": 9, "valor": "69814,89" },
-{ "status": "Total em Disputa", "quantidade": 17, "valor": "95092,84" },
-{ "status": "Aguard. Envio Separação", "quantidade": 1, "valor": "56,26" },
-{ "status": "Em Separação", "quantidade": 30, "valor": "320416,37" },
-{ "status": "Separado", "quantidade": 5, "valor": "4976,6" },
-{ "status": "Faturado", "quantidade": 68, "valor": "437363,36" },
-{ "status": "Total Faturamento Previsto", "quantidade": 104, "valor": "762812,59" },
-{ "status": "Potencial de faturamento dia", "quantidade": 124, "valor": "865101,37" }
+{ "status": "Análise de Crédito", "quantidade": 10, "valor": "93814,89" },
+{ "status": "Total em Disputa", "quantidade": 18, "valor": "119092,84" },
+{ "status": "Aguard. Envio Separação", "quantidade": 3, "valor": "976,5" },
+{ "status": "Em Separação", "quantidade": 33, "valor": "350596,52" },
+{ "status": "Separado", "quantidade": 3, "valor": "2091,9" },
+{ "status": "Faturado", "quantidade": 70, "valor": "440248,06" },
+{ "status": "Total Faturamento Previsto", "quantidade": 109, "valor": "793912,98" },
+{ "status": "Potencial de faturamento dia", "quantidade": 130, "valor": "920449,56" }
 ],
 "faturamento_bruto_ultimos_7_dias": [
 { "data": "17/03/2026", "descricao": "Faturamento do dia", "valor": "433605,13", "margem_media": "26,61" },
@@ -23,12 +23,12 @@
 { "data": "09/03/2026", "descricao": "Faturamento do dia", "valor": "547703,56", "margem_media": "20,29" }
 ],
 "cards": {
-"valor_faturado_dia": "437363,36",
-"valor_pedidos_em_separacao": "325449,23",
-"valor_pedidos_em_credito": "69814,89",
+"valor_faturado_dia": "440248,06",
+"valor_pedidos_em_separacao": "353664,92",
+"valor_pedidos_em_credito": "93814,89",
 "valor_pedidos_em_alvara": "25277,95",
-"valor_pedidos_bloqueados": "7195,94",
-"potencial_faturamento_dia": "865101,37"
+"valor_pedidos_bloqueados": "7443,74",
+"potencial_faturamento_dia": "920449,56"
 },
 "pedidos_nao_faturados": [
 
