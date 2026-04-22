@@ -2,919 +2,406 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="600" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Diário – Gestão de Pedidos</title>
-
+  <title>Painel Operacional CD</title>
   <style>
-    :root{
-      --bg0:#050814;
-      --bg1:#0b1020;
-      --card:#10182b;
-      --border:#1d2a45;
-      --muted:#94a3b8;
-      --text:#eef2ff;
-      --good:#22c55e;
-      --warn:#f59e0b;
-      --bad:#ef4444;
-      --info:#38bdf8;
-      --violet:#8b5cf6;
-      --lightBox:#f3f5f7;
-      --lightBorder:#d7dde5;
-      --darkText:#111827;
-      --darkMuted:#5b6472;
-      --radius:16px;
-      --gap:14px;
-      --headerH:58px;
-      --padX:18px;
-      --padY:14px;
-      --shadow:0 10px 28px rgba(0,0,0,.22);
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --card: #1e293b;
+      --border: rgba(255,255,255,0.08);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --blue: #38bdf8;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --cyan: #06b6d4;
+      --violet: #8b5cf6;
     }
 
-    *{
-      box-sizing:border-box;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0b1220 0%, var(--bg) 100%);
+      color: var(--text);
     }
 
-    body{
-      margin:0;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 15% -10%, rgba(56,189,248,.16), transparent 55%),
-        radial-gradient(900px 500px at 85% -15%, rgba(139,92,246,.12), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 22px;
+      display: grid;
+      gap: 18px;
     }
 
-    header{
-      height:var(--headerH);
-      padding:0 var(--padX);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid var(--border);
-      background:rgba(5,8,20,.75);
-      backdrop-filter: blur(8px);
-      position:sticky;
-      top:0;
-      z-index:8;
+    .topbar {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr auto;
+      gap: 16px;
+      align-items: center;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 22px;
     }
 
-    header h1{
-      margin:0;
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:.2px;
+    .title h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 0.4px;
     }
 
-    header .meta{
-      font-size:12px;
-      color:var(--muted);
+    .title p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 16px;
     }
 
-    main{
-      min-height:calc(100vh - var(--headerH));
-      padding:var(--padY) var(--padX);
-      display:grid;
-      grid-template-rows:auto auto auto 1fr auto;
-      gap:var(--gap);
+    .update-box {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 18px;
+      text-align: center;
     }
 
-    .card{
-      background:rgba(16,24,43,.94);
-      border:1px solid rgba(29,42,69,.88);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
+    .update-box .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
 
-    .cardHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 16px 10px;
-      border-bottom:1px solid rgba(29,42,69,.82);
+    .update-box .time {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--blue);
     }
 
-    .cardTitle{
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.6px;
-      color:rgba(255,255,255,.78);
+    .nav-btn {
+      background: linear-gradient(135deg, var(--violet), #6366f1);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 22px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(99,102,241,0.25);
     }
 
-    .cardSubtitle{
-      font-size:11px;
-      color:var(--muted);
-      margin-top:4px;
+    .grid-main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
     }
 
-    .hero{
-      border:1px solid rgba(56,189,248,.20);
-      background:linear-gradient(180deg, rgba(18,29,53,.98), rgba(13,20,38,.96));
+    .panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
     }
 
-    .heroTop{
-      padding:18px 20px 14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:20px;
-      border-bottom:1px solid rgba(56,189,248,.12);
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
     }
 
-    .heroTopLeft h2{
-      margin:0;
-      font-size:28px;
-      font-weight:950;
-      letter-spacing:.2px;
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
     }
 
-    .heroTopLeft p{
-      margin:8px 0 0;
-      font-size:15px;
-      color:#c9d4e8;
-      font-weight:600;
+    .kpi {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .heroBadge{
-      min-width:360px;
-      padding:18px 22px;
-      border-radius:18px;
-      border:1px solid rgba(56,189,248,.36);
-      background:linear-gradient(180deg, rgba(56,189,248,.20), rgba(56,189,248,.08));
-      color:#dff6ff;
-      text-align:right;
+    .kpi .label {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.25;
     }
 
-    .heroBadge .small{
-      font-size:13px;
-      font-weight:900;
-      opacity:.92;
-      text-transform:uppercase;
-      letter-spacing:.8px;
+    .kpi .value {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1;
     }
 
-    .heroBadge .big{
-      margin-top:8px;
-      font-size:40px;
-      font-weight:950;
-      line-height:1;
+    .blue { border-left: 6px solid var(--blue); }
+    .amber { border-left: 6px solid var(--amber); }
+    .green { border-left: 6px solid var(--green); }
+    .red { border-left: 6px solid var(--red); }
+    .cyan { border-left: 6px solid var(--cyan); }
+
+    .summary-box {
+      margin-top: 14px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.45fr .95fr;
-      gap:14px;
-      padding:14px 18px 18px;
-      align-items:start;
+    .summary-box .big {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--green);
     }
 
-    .resumoBox{
-      background:var(--lightBox);
-      border:1px solid var(--lightBorder);
-      border-radius:16px;
-      overflow:hidden;
+    .section-stack {
+      display: grid;
+      gap: 18px;
     }
 
-    .resumoHeader{
-      padding:14px 16px 10px;
-      border-bottom:1px solid var(--lightBorder);
-      background:linear-gradient(180deg, #fafbfc, #eef2f5);
+    .list-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
     }
 
-    .resumoHeader .title{
-      color:var(--darkText);
-      font-size:16px;
-      font-weight:950;
-      text-transform:uppercase;
-      letter-spacing:.7px;
+    .list-card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
     }
 
-    .resumoHeader .subtitle{
-      margin-top:6px;
-      color:var(--darkMuted);
-      font-size:13px;
-      font-weight:600;
+    .simple-list {
+      display: grid;
+      gap: 10px;
+      font-size: 18px;
     }
 
-    .resumoTableWrap{
-      padding:8px 12px 12px;
-      overflow:auto;
+    .simple-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
     }
 
-    .resumoTable{
-      width:100%;
-      border-collapse:collapse;
-      font-size:15px;
-      color:var(--darkText);
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .resumoTable th,
-    .resumoTable td{
-      padding:12px 12px;
-      border-bottom:1px solid #dde3ea;
-      text-align:left;
-      white-space:nowrap;
+    .tag.green { background: rgba(34,197,94,0.15); color: #86efac; border-left: none; }
+    .tag.amber { background: rgba(245,158,11,0.15); color: #fcd34d; border-left: none; }
+    .tag.red { background: rgba(239,68,68,0.15); color: #fca5a5; border-left: none; }
+    .tag.blue { background: rgba(56,189,248,0.15); color: #7dd3fc; border-left: none; }
+
+    .tables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
-    .resumoTable th{
-      font-size:12px;
-      text-transform:uppercase;
-      color:#667085;
-      font-weight:900;
-      letter-spacing:.5px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
     }
 
-    .resumoTable td{
-      font-weight:700;
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 15px;
     }
 
-    .resumoTable tr.totalDisputa{ background:#fff7da; font-weight:900; }
-    .resumoTable tr.totalPrevisto{ background:#e8f7eb; font-weight:950; }
-    .resumoTable tr.totalStrong{ background:#e5f2ff; font-weight:950; }
-
-    .resumoTable tr.totalPrevisto td,
-    .resumoTable tr.totalStrong td{
-      font-size:16px;
+    th {
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .blink-soft{
-      animation: blinkSoft 2.2s infinite ease-in-out;
+    tr:last-child td { border-bottom: none; }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: right;
+      padding-top: 4px;
     }
 
-    @keyframes blinkSoft{
-      0%,100%{ background:#ffffff; }
-      50%{ background:rgba(250, 220, 110, .45); }
-    }
-
-    .sidePanel{
-      display:grid;
-      gap:14px;
-      align-self:stretch;
-    }
-
-    .faturamentoHeader{
-      padding:6px 0 8px 0;
-    }
-
-    .faturamentoHeader .title{
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.6px;
-      color:rgba(255,255,255,.85);
-    }
-
-    .faturamentoHeader .subtitle{
-      margin-top:4px;
-      font-size:11px;
-      color:var(--muted);
-    }
-
-    .faturamentoDias{
-      display:grid;
-      gap:10px;
-    }
-
-    .dayRow{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:12px;
-      padding:12px 14px;
-      display:grid;
-      grid-template-columns:1.1fr 1fr .9fr;
-      align-items:center;
-      gap:12px;
-      min-height:52px;
-    }
-
-    .dayDate{
-      font-size:12px;
-      color:#dbe7ff;
-      font-weight:800;
-    }
-
-    .dayRevenue{
-      text-align:right;
-      font-size:18px;
-      font-weight:950;
-      color:#86efac;
-    }
-
-    .dayMargin{
-      text-align:right;
-      font-size:13px;
-      font-weight:800;
-      color:#cfe0ff;
-    }
-
-    .kpis{
-      display:grid;
-      grid-template-columns:repeat(6, 1fr);
-      gap:var(--gap);
-    }
-
-    .kpi{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:16px;
-      padding:14px;
-      min-width:0;
-    }
-
-    .kpi.primary{
-      background:linear-gradient(180deg, rgba(34,197,94,.16), rgba(16,24,43,.96));
-      border-color:rgba(34,197,94,.22);
-    }
-
-    .kpi.total{
-      background:linear-gradient(180deg, rgba(56,189,248,.18), rgba(16,24,43,.96));
-      border-color:rgba(56,189,248,.24);
-    }
-
-    .kpi .label{
-      font-size:11px;
-      color:var(--muted);
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.45px;
-      min-height:30px;
-    }
-
-    .kpi .value{
-      margin-top:10px;
-      font-size:24px;
-      font-weight:950;
-      line-height:1.05;
-    }
-
-    .kpi .sub{
-      margin-top:7px;
-      font-size:11px;
-      color:rgba(255,255,255,.62);
-    }
-
-    .good{ color:var(--good); }
-    .warn{ color:var(--warn); }
-    .bad{ color:var(--bad); }
-    .info{ color:var(--info); }
-    .violet{ color:var(--violet); }
-
-    .toolbar{
-      padding:12px 16px;
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      border-bottom:1px solid rgba(29,42,69,.82);
-    }
-
-    .toolbarLeft{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .toolbarRight{
-      font-size:12px;
-      color:var(--muted);
-      font-weight:700;
-    }
-
-    select{
-      appearance:none;
-      border:none;
-      outline:none;
-      background:rgba(255,255,255,.08);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.10);
-      font-size:12px;
-      font-weight:700;
-      min-width:220px;
-    }
-
-    select option{
-      background:#ffffff;
-      color:#111827;
-    }
-
-    .detailWrap{
-      max-height:480px;
-      overflow:auto;
-      padding:0 12px 10px;
-      scroll-behavior:smooth;
-    }
-
-    .detailWrap::-webkit-scrollbar{ width:10px; }
-    .detailWrap::-webkit-scrollbar-thumb{
-      background:rgba(120,120,120,.35);
-      border-radius:999px;
-    }
-    .detailWrap::-webkit-scrollbar-track{
-      background:rgba(0,0,0,.04);
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:12px;
-    }
-
-    th, td{
-      padding:10px 10px;
-      border-bottom:1px solid rgba(29,42,69,.72);
-      text-align:left;
-      white-space:nowrap;
-    }
-
-    th{
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.45px;
-      color:var(--muted);
-      font-weight:900;
-      position:sticky;
-      top:0;
-      background:#0f172a;
-      z-index:1;
-    }
-
-    .statusPill{
-      display:inline-flex;
-      align-items:center;
-      padding:5px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.04);
-    }
-
-    .st-credito{ color:#ffdb85; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.22); }
-    .st-alvara{ color:#b08900; background:rgba(250,204,21,.16); border-color:rgba(250,204,21,.26); }
-    .st-separacao{ color:#b8ecff; background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.22); }
-    .st-bloqueado{ color:#ffb5b5; background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.24); }
-    .st-outros{ color:#d9d9d9; background:rgba(255,255,255,.06); }
-
-    .empty{
-      padding:24px 16px;
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-      display:none;
-    }
-
-    .footer{
-      font-size:11px;
-      opacity:.5;
-      text-align:right;
-    }
-
-    @media (max-width: 1550px){
-      .kpis{ grid-template-columns:repeat(3, 1fr); }
-    }
-
-    @media (max-width: 1180px){
-      .heroGrid{ grid-template-columns:1fr; }
-      .heroBadge{ min-width:unset; width:100%; text-align:left; }
-      .dayRow{ grid-template-columns:1fr; }
-      .dayRevenue, .dayMargin{ text-align:left; }
-    }
-
-    @media (max-width: 760px){
-      .kpis{ grid-template-columns:1fr; }
-      .toolbarLeft{ width:100%; }
-      select{ width:100%; min-width:unset; }
-      .heroTop{ flex-direction:column; }
+    @media (max-width: 1200px) {
+      .grid-main, .tables, .topbar, .kpi-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Painel Diário – Gestão de Pedidos</h1>
-  <div class="meta">Atualizado em: <strong id="updatedAt">--/--/----</strong></div>
-</header>
-
-<main>
-  <section class="card hero">
-    <div class="heroTop">
-      <div class="heroTopLeft">
-        <h2>Gestão de Pedidos</h2>
-        <p>Visão comercial do pipeline de faturamento, retenções e carteira do dia.</p>
+  <div class="container">
+    <div class="topbar">
+      <div class="title">
+        <h1>Painel Operacional do CD</h1>
+        <p>Visão rápida para TV: pedidos, recebimento e expedição</p>
       </div>
-
-      <div class="heroBadge">
-        <div class="small">Potencial do dia</div>
-        <div class="big" id="heroBadgeValue">R$ 0,00</div>
+      <div class="update-box">
+        <div class="label">Última atualização</div>
+        <div class="time">22/04/2026 15:40</div>
       </div>
+      <button class="nav-btn" onclick="alert('Visão estratégica em desenvolvimento')">Visão Estratégica</button>
     </div>
 
-    <div class="heroGrid">
-      <div class="resumoBox">
-        <div class="resumoHeader">
-          <div class="title">Resumo Gerencial</div>
-          <div class="subtitle">Quadro principal para leitura executiva da carteira e do faturamento do dia</div>
+    <div class="grid-main">
+      <div class="panel">
+        <h2>Pedidos</h2>
+        <div class="kpi-grid">
+          <div class="kpi red">
+            <div class="label">Pedidos no Comercial</div>
+            <div class="value">18</div>
+          </div>
+          <div class="kpi amber">
+            <div class="label">Aguardando Separação</div>
+            <div class="value">5</div>
+          </div>
+          <div class="kpi blue">
+            <div class="label">Em Separação</div>
+            <div class="value">3</div>
+          </div>
+          <div class="kpi cyan">
+            <div class="label">Separado</div>
+            <div class="value">0</div>
+          </div>
+          <div class="kpi amber">
+            <div class="label">Aguardando Conferência</div>
+            <div class="value">1</div>
+          </div>
+          <div class="kpi blue">
+            <div class="label">Em Conferência</div>
+            <div class="value">3</div>
+          </div>
+          <div class="kpi green">
+            <div class="label">Conferido</div>
+            <div class="value">51</div>
+          </div>
+          <div class="kpi green">
+            <div class="label">Previsto Operação</div>
+            <div class="value">66</div>
+          </div>
+        </div>
+        <div class="summary-box">
+          <div>
+            <div class="label">Pedidos já integrados na operação</div>
+            <div class="big">63</div>
+          </div>
+          <div>
+            <div class="label">Pedidos em aberto no fluxo operacional</div>
+            <div class="big" style="color:#f59e0b;">12</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-stack">
+        <div class="list-card">
+          <h3>Expedição - Chegadas</h3>
+          <div class="simple-list">
+            <div class="simple-item"><span>Patrus</span><strong>16:02</strong></div>
+            <div class="simple-item"><span>Jamef</span><strong>17:01</strong></div>
+          </div>
         </div>
 
-        <div class="resumoTableWrap">
-          <table class="resumoTable">
-            <thead>
-              <tr>
-                <th>Status</th>
-                <th>Qtd</th>
-                <th>Valor</th>
-              </tr>
-            </thead>
-            <tbody id="tblResumoGerencial"></tbody>
-          </table>
+        <div class="list-card">
+          <h3>Não se apresentou</h3>
+          <div class="simple-list">
+            <div class="simple-item"><span>Arlete</span><span class="tag red">Pendente</span></div>
+            <div class="simple-item"><span>Ativa</span><span class="tag red">Pendente</span></div>
+            <div class="simple-item"><span>Schreiber</span><span class="tag red">Pendente</span></div>
+          </div>
+        </div>
+
+        <div class="list-card">
+          <h3>Recebimento</h3>
+          <div class="simple-list">
+            <div class="simple-item"><span>Em descarregamento</span><strong>2</strong></div>
+            <div class="simple-item"><span>Em estoque</span><strong>3</strong></div>
+            <div class="simple-item"><span>Próximo container</span><strong>23/04</strong></div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="sidePanel">
-        <div class="faturamentoHeader">
-          <div class="title">Faturamento bruto últimos 7 dias</div>
-          <div class="subtitle">Leitura rápida do faturamento diário e da margem média</div>
-        </div>
-        <div class="faturamentoDias" id="faturamentoDias"></div>
+    <div class="tables">
+      <div class="panel">
+        <h2>Pedidos que precisam de atenção</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Integrado</th>
+              <th>Linhas</th>
+              <th>Último registro</th>
+              <th>Status final</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>688743</td><td>10:06</td><td>7</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
+            <tr><td>688810</td><td>15:14</td><td>3</td><td>15:37</td><td><span class="tag amber">Em Separação</span></td></tr>
+            <tr><td>688842</td><td>15:14</td><td>2</td><td>15:34</td><td><span class="tag blue">Aguardando Conferência</span></td></tr>
+            <tr><td>688844</td><td>15:16</td><td>6</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
+            <tr><td>688850</td><td>15:31</td><td>3</td><td>15:39</td><td><span class="tag amber">Em Separação</span></td></tr>
+            <tr><td>688827</td><td>15:32</td><td>2</td><td>15:39</td><td><span class="tag amber">Em Separação</span></td></tr>
+            <tr><td>688854</td><td>15:36</td><td>5</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
+            <tr><td>688852</td><td>15:36</td><td>3</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
+            <tr><td>688768</td><td>11:17</td><td>48</td><td>12:00</td><td><span class="tag blue">Em Conferência</span></td></tr>
+            <tr><td>688808</td><td>14:14</td><td>217</td><td>14:43</td><td><span class="tag blue">Em Conferência</span></td></tr>
+            <tr><td>688829</td><td>14:50</td><td>6</td><td>15:21</td><td><span class="tag blue">Em Conferência</span></td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
 
-  <section class="kpis">
-    <div class="kpi primary">
-      <div class="label">Valor faturado do dia</div>
-      <div class="value good" id="kpiValorFaturado">R$ 0,00</div>
-      <div class="sub" id="subValorFaturado">0 pedidos faturados</div>
-    </div>
-
-    <div class="kpi">
-      <div class="label">Valor pedidos em separação</div>
-      <div class="value info" id="kpiSeparacao">R$ 0,00</div>
-      <div class="sub" id="subSeparacao">0 pedidos</div>
-    </div>
-
-    <div class="kpi">
-      <div class="label">Valor pedidos em crédito</div>
-      <div class="value warn" id="kpiCredito">R$ 0,00</div>
-      <div class="sub" id="subCredito">0 pedidos</div>
-    </div>
-
-    <div class="kpi">
-      <div class="label">Valor pedidos em alvará</div>
-      <div class="value violet" id="kpiAlvara">R$ 0,00</div>
-      <div class="sub" id="subAlvara">0 pedidos</div>
-    </div>
-
-    <div class="kpi">
-      <div class="label">Valor pedidos bloqueados</div>
-      <div class="value bad" id="kpiBloqueados">R$ 0,00</div>
-      <div class="sub" id="subBloqueados">0 pedidos</div>
-    </div>
-
-    <div class="kpi total">
-      <div class="label">Potencial de faturamento do dia</div>
-      <div class="value info" id="kpiPotencial">R$ 0,00</div>
-      <div class="sub">Faturado + carteira em aberto</div>
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="cardHeader">
-      <div>
-        <div class="cardTitle">Pedidos não faturados</div>
-        <div class="cardSubtitle">Todos os pedidos abertos com filtro por status e ordenação analítica</div>
+      <div class="panel">
+        <h2>Recebimento e previsão</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Processo</th>
+              <th>Data</th>
+              <th>Tipo</th>
+              <th>Qtd</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>25.06 weigao</td><td>22/04/2026</td><td>Container</td><td>2</td><td><span class="tag amber">Em descarregamento</span></td></tr>
+            <tr><td>2026088 (SR)</td><td>22/04/2026</td><td>Carreta</td><td>3</td><td><span class="tag green">Em estoque</span></td></tr>
+            <tr><td>25.06 weigao</td><td>23/04/2025</td><td>Container</td><td>2</td><td><span class="tag blue">Desembaraço</span></td></tr>
+            <tr><td>2026088 (SR)</td><td>30/04/2025</td><td>Carreta</td><td>3</td><td><span class="tag blue">Em viagem</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <div class="toolbar">
-      <div class="toolbarLeft">
-        <select id="filtroStatus">
-          <option value="TODOS">Todos os status</option>
-          <option value="BLOQUEADO">Pedidos Bloqueados</option>
-          <option value="ALVARA">Alvará Sanitário</option>
-          <option value="CREDITO">Análise de Crédito</option>
-          <option value="AGUARDANDO_ENVIO_SEPARACAO">Aguard. Envio Separação</option>
-          <option value="EM_SEPARACAO">Em Separação</option>
-          <option value="SEPARADO">Separado</option>
-          <option value="OUTROS">Outros</option>
-        </select>
-
-        <select id="ordenacao">
-          <option value="VALOR_DESC">Maior valor de produtos</option>
-          <option value="VALOR_ASC">Menor valor de produtos</option>
-          <option value="MARGEM_DESC">Maior margem</option>
-          <option value="MARGEM_ASC">Menor margem</option>
-          <option value="EMISSAO_ASC">PV mais antigo</option>
-          <option value="EMISSAO_DESC">PV mais recente</option>
-        </select>
-      </div>
-
-      <div class="toolbarRight" id="contadorFiltrado">0 pedidos | R$ 0,00</div>
-    </div>
-
-    <div class="detailWrap" id="autoScrollWrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Número do pedido</th>
-            <th>Emissão do PV</th>
-            <th>Vlr.Total Produtos</th>
-            <th>Margem</th>
-            <th>Nome Cliente</th>
-            <th>UF Cliente</th>
-            <th>Tipo Cliente</th>
-            <th>Vendedor</th>
-            <th>Último Status</th>
-          </tr>
-        </thead>
-        <tbody id="tblNaoFaturados"></tbody>
-      </table>
-      <div id="emptyState" class="empty">Nenhum pedido encontrado para o filtro selecionado.</div>
-    </div>
-  </section>
-
-  <div class="footer">Painel de uso gerencial – visão comercial diária</div>
-</main>
-
-<script>
-  function parseBRNumber(value){
-    if (value === null || value === undefined) return 0;
-    if (typeof value === 'number') return value;
-    const s = String(value).trim();
-    if (!s) return 0;
-    return Number(s.replace(/\./g, '').replace(',', '.')) || 0;
-  }
-
-  const fmtBRL = n =>
-    parseBRNumber(n).toLocaleString('pt-BR', {
-      style:'currency',
-      currency:'BRL'
-    });
-
-  const fmtPct = n =>
-    `${parseBRNumber(n).toLocaleString('pt-BR', {
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    })}%`;
-
-  function parseDateBR(v){
-    if(!v) return null;
-    const s = String(v).trim();
-    if (!s.includes('/')) return null;
-    const [d,m,y] = s.split('/');
-    return new Date(`${y}-${m}-${d}T00:00:00`);
-  }
-
-  function getPedidoStatusValue(statusName, field = 'valor'){
-    const arr = window._data?.pedidos_status || [];
-    const item = arr.find(x => (x.status || '').trim().toUpperCase() === statusName.trim().toUpperCase());
-    if (!item) return field === 'quantidade' ? 0 : 0;
-    return field === 'quantidade' ? Number(item.quantidade || 0) : parseBRNumber(item.valor);
-  }
-
-  function normalizeStatus(item){
-    const us = String(item.ultimo_status || '').trim().toUpperCase();
-
-    if (us === 'ALVARÁ SANITÁRIO' || us === 'ALVARA SANITÁRIO' || us === 'ALVARA SANITARIO') return 'ALVARA';
-    if (us === 'ANÁLISE DE CRÉDITO' || us === 'ANALISE DE CREDITO') return 'CREDITO';
-    if (us === 'AGUARD. ENVIO SEPARAÇÃO' || us === 'AGUARD. ENVIO SEPARACAO') return 'AGUARDANDO_ENVIO_SEPARACAO';
-    if (us === 'EM SEPARAÇÃO' || us === 'EM SEPARACAO') return 'EM_SEPARACAO';
-    if (us === 'SEPARADO') return 'SEPARADO';
-    if (us === 'PEDIDOS BLOQUEADOS' || us === 'BLOQUEADO' || us === 'BLOQUEADO POR REGRA') return 'BLOQUEADO';
-    return 'OUTROS';
-  }
-
-  function labelStatus(code){
-    const map = {
-      BLOQUEADO: 'Pedidos Bloqueados',
-      ALVARA: 'Alvará Sanitário',
-      CREDITO: 'Análise de Crédito',
-      AGUARDANDO_ENVIO_SEPARACAO: 'Aguard. Envio Separação',
-      EM_SEPARACAO: 'Em Separação',
-      SEPARADO: 'Separado',
-      OUTROS: 'Outros'
-    };
-    return map[code] || code;
-  }
-
-  function classStatus(code){
-    if (code === 'CREDITO') return 'st-credito';
-    if (code === 'ALVARA') return 'st-alvara';
-    if (code === 'AGUARDANDO_ENVIO_SEPARACAO' || code === 'EM_SEPARACAO' || code === 'SEPARADO') return 'st-separacao';
-    if (code === 'BLOQUEADO') return 'st-bloqueado';
-    return 'st-outros';
-  }
-
-  function pillStatus(code){
-    return `<span class="statusPill ${classStatus(code)}">${labelStatus(code)}</span>`;
-  }
-
-  let pedidosNaoFaturados = [];
-  let autoScrollInterval = null;
-  let autoScrollPaused = false;
-
-  function ordenarPedidos(lista, criterio){
-    const arr = [...lista];
-
-    switch(criterio){
-      case 'VALOR_ASC':
-        return arr.sort((a,b) => parseBRNumber(a.vlr_total_produtos) - parseBRNumber(b.vlr_total_produtos));
-      case 'MARGEM_DESC':
-        return arr.sort((a,b) => parseBRNumber(b.margem) - parseBRNumber(a.margem));
-      case 'MARGEM_ASC':
-        return arr.sort((a,b) => parseBRNumber(a.margem) - parseBRNumber(b.margem));
-      case 'EMISSAO_ASC':
-        return arr.sort((a,b) => (parseDateBR(a.emissao_pv)?.getTime() || 0) - (parseDateBR(b.emissao_pv)?.getTime() || 0));
-      case 'EMISSAO_DESC':
-        return arr.sort((a,b) => (parseDateBR(b.emissao_pv)?.getTime() || 0) - (parseDateBR(a.emissao_pv)?.getTime() || 0));
-      default:
-        return arr.sort((a,b) => parseBRNumber(b.vlr_total_produtos) - parseBRNumber(a.vlr_total_produtos));
-    }
-  }
-
-  function renderTabelaNaoFaturados(){
-    const filtro = document.getElementById('filtroStatus').value;
-    const ordenacao = document.getElementById('ordenacao').value;
-    const tbody = document.getElementById('tblNaoFaturados');
-    const empty = document.getElementById('emptyState');
-
-    let base = pedidosNaoFaturados.map(x => ({
-      ...x,
-      status_codigo: normalizeStatus(x)
-    }));
-
-    if (filtro !== 'TODOS'){
-      base = base.filter(x => x.status_codigo === filtro);
-    }
-
-    base = ordenarPedidos(base, ordenacao);
-
-    const total = base.reduce((acc, item) => acc + parseBRNumber(item.vlr_total_produtos), 0);
-    document.getElementById('contadorFiltrado').textContent = `${base.length} pedidos | ${fmtBRL(total)}`;
-
-    if (!base.length){
-      tbody.innerHTML = '';
-      empty.style.display = 'block';
-      return;
-    }
-
-    empty.style.display = 'none';
-
-    tbody.innerHTML = base.map(x => `
-      <tr>
-        <td>${(x.numero_pedido || '-').trim()}</td>
-        <td>${(x.emissao_pv || '-').trim()}</td>
-        <td>${fmtBRL(x.vlr_total_produtos)}</td>
-        <td>${fmtPct(x.margem)}</td>
-        <td>${(x.nome_cliente || '-').trim()}</td>
-        <td>${(x.uf_cliente || '-').trim()}</td>
-        <td>${(x.tipo_cliente || '-').trim()}</td>
-        <td>${(x.vendedor || '-').trim()}</td>
-        <td>${pillStatus(x.status_codigo)}</td>
-      </tr>
-    `).join('');
-  }
-
-  function renderFaturamentoDias(arr){
-    const el = document.getElementById('faturamentoDias');
-
-    if (!Array.isArray(arr) || !arr.length){
-      el.innerHTML = `
-        <div class="dayRow">
-          <div class="dayDate">Sem histórico carregado</div>
-          <div class="dayRevenue">R$ 0,00</div>
-          <div class="dayMargin">Margem média: 0,00%</div>
-        </div>
-      `;
-      return;
-    }
-
-    el.innerHTML = arr.map(x => `
-      <div class="dayRow">
-        <div class="dayDate">${(x.data || '').trim()} - ${(x.descricao || 'Faturamento do dia').trim()}</div>
-        <div class="dayRevenue">${fmtBRL(x.valor)}</div>
-        <div class="dayMargin">Margem média: ${fmtPct(x.margem_media)}</div>
-      </div>
-    `).join('');
-  }
-
-  function startAutoScroll(){
-    const wrap = document.getElementById('autoScrollWrap');
-    if (!wrap) return;
-
-    if (autoScrollInterval) clearInterval(autoScrollInterval);
-
-    autoScrollInterval = setInterval(() => {
-      if (autoScrollPaused) return;
-      const maxScroll = wrap.scrollHeight - wrap.clientHeight;
-      if (maxScroll <= 0) return;
-
-      if (wrap.scrollTop >= maxScroll - 2){
-        wrap.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        wrap.scrollBy({ top: 1, behavior: 'smooth' });
-      }
-    }, 120);
-  }
-
-  function bindAutoScrollPause(){
-    const wrap = document.getElementById('autoScrollWrap');
-    if (!wrap) return;
-    wrap.addEventListener('mouseenter', () => autoScrollPaused = true);
-    wrap.addEventListener('mouseleave', () => autoScrollPaused = false);
-  }
-
-  async function loadData(){
-    const response = await fetch('./data.json?v=' + Date.now());
-    const data = await response.json();
-    window._data = data;
-
-    document.getElementById('updatedAt').textContent = data.updated_at || '--';
-
-    // Cards
-    const valorFaturadoDia = parseBRNumber(data.cards?.valor_faturado_dia);
-    const valorSeparacao = parseBRNumber(data.cards?.valor_pedidos_em_separacao);
-    const valorCredito = parseBRNumber(data.cards?.valor_pedidos_em_credito);
-    const valorAlvara = parseBRNumber(data.cards?.valor_pedidos_em_alvara);
-    const valorBloqueados = parseBRNumber(data.cards?.valor_pedidos_bloqueados);
-    const potencialDia = parseBRNumber(data.cards?.potencial_faturamento_dia);
-
-    const qtdFaturado = getPedidoStatusValue('Faturado', 'quantidade');
-    const qtdSeparacao = getPedidoStatusValue('Aguard. Envio Separação', 'quantidade')
-      + getPedidoStatusValue('Em Separação', 'quantidade')
-      + getPedidoStatusValue('Separado', 'quantidade');
-    const qtdCredito = getPedidoStatusValue('Análise de Crédito', 'quantidade');
-    const qtdAlvara = getPedidoStatusValue('Alvará Sanitário', 'quantidade');
-    const qtdBloqueados = getPedidoStatusValue('Pedidos Bloqueados', 'quantidade');
-
-    document.getElementById('heroBadgeValue').textContent = fmtBRL(potencialDia);
-
-    document.getElementById('kpiValorFaturado').textContent = fmtBRL(valorFaturadoDia);
-    document.getElementById('subValorFaturado').textContent = `${qtdFaturado} pedidos faturados`;
-
-    document.getElementById('kpiSeparacao').textContent = fmtBRL(valorSeparacao);
-    document.getElementById('subSeparacao').textContent = `${qtdSeparacao} pedidos`;
-
-    document.getElementById('kpiCredito').textContent = fmtBRL(valorCredito);
-    document.getElementById('subCredito').textContent = `${qtdCredito} pedidos`;
-
-    document.getElementById('kpiAlvara').textContent = fmtBRL(valorAlvara);
-    document.getElementById('subAlvara').textContent = `${qtdAlvara} pedidos`;
-
-    document.getElementById('kpiBloqueados').textContent = fmtBRL(valorBloqueados);
-    document.getElementById('subBloqueados').textContent = `${qtdBloqueados} pedidos`;
-
-    document.getElementById('kpiPotencial').textContent = fmtBRL(potencialDia);
-
-    // Resumo Gerencial
-    const resumo = (data.pedidos_status || []).map(item => {
-      const status = (item.status || '').trim().toUpperCase();
-      let cls = '';
-      if (status === 'ALVARÁ SANITÁRIO' || status === 'ALVARA SANITÁRIO' || status === 'ANÁLISE DE CRÉDITO' || status === 'ANALISE DE CREDITO'){
-        cls = 'blink-soft';
-      }
-      if (status === 'TOTAL EM DISPUTA') cls = 'totalDisputa';
-      if (status === 'TOTAL FATURAMENTO PREVISTO') cls = 'totalPrevisto';
-      if (status === 'POTENCIAL DE FATURAMENTO DIA') cls = 'totalStrong';
-
-      return `
-        <tr class="${cls}">
-          <td>${item.status || '-'}</td>
-          <td>${Number(item.quantidade || 0)}</td>
-          <td>${fmtBRL(item.valor)}</td>
-        </tr>
-      `;
-    }).join('');
-
-    document.getElementById('tblResumoGerencial').innerHTML = resumo;
-
-    // Tabela
-    pedidosNaoFaturados = Array.isArray(data.pedidos_nao_faturados) ? data.pedidos_nao_faturados : [];
-    renderTabelaNaoFaturados();
-
-    // Faturamento últimos 7 dias
-    renderFaturamentoDias(data.faturamento_bruto_ultimos_7_dias || []);
-  }
-
-  document.getElementById('filtroStatus').addEventListener('change', renderTabelaNaoFaturados);
-  document.getElementById('ordenacao').addEventListener('change', renderTabelaNaoFaturados);
-
-  loadData()
-    .then(() => {
-      bindAutoScrollPause();
-      startAutoScroll();
-    })
-    .catch(err => {
-      console.error('Erro ao carregar data.json:', err);
-      document.getElementById('updatedAt').textContent = 'Erro ao carregar JSON';
-    });
-</script>
+    <div class="footer-note">Tela operacional estática para TV. Próximo passo: ligar com JSON e atualização automática.</div>
+  </div>
 </body>
 </html>
