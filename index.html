@@ -6,20 +6,21 @@
   <title>Painel Operacional CD</title>
   <style>
     :root {
-      --bg: #f4f7fb;
+      --bg: #eaf0f7;
+      --bg-soft: #f4f7fb;
       --panel: #ffffff;
-      --panel-soft: #eef3f9;
-      --border: #d9e2ec;
-      --text: #16324f;
-      --muted: #5b7088;
-      --primary: #3154e7;
-      --blue: #2f80ed;
-      --green: #1faa59;
-      --amber: #f59e0b;
-      --red: #e55353;
-      --cyan: #00a8cc;
-      --purple: #7c4dff;
-      --shadow: 0 8px 24px rgba(22, 50, 79, 0.08);
+      --panel-soft: #f7f9fc;
+      --border: #d7e1ee;
+      --text: #001e50;
+      --muted: #5f7391;
+      --brand: #001e50;
+      --brand-2: #2858f0;
+      --success: #64e678;
+      --warning: #f5b301;
+      --danger: #df4c4c;
+      --info: #3f8cff;
+      --pink-soft: #ffd2f0;
+      --shadow: 0 10px 28px rgba(0, 30, 80, 0.08);
     }
 
     * {
@@ -29,7 +30,7 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
       color: var(--text);
     }
 
@@ -46,9 +47,9 @@
       grid-template-columns: 1.6fr 0.8fr auto;
       gap: 16px;
       align-items: center;
-      background: var(--panel);
+      background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 18px 22px;
       box-shadow: var(--shadow);
     }
@@ -60,28 +61,31 @@
     }
 
     .brand img {
-      height: 58px;
+      height: 62px;
       width: auto;
       object-fit: contain;
       display: block;
+      background: transparent;
     }
 
     .title h1 {
       margin: 0;
       font-size: 34px;
       line-height: 1;
-      color: var(--primary);
+      color: var(--brand);
+      letter-spacing: 0.2px;
     }
 
     .title p {
       margin: 8px 0 0;
       color: var(--muted);
       font-size: 16px;
+      font-weight: 700;
     }
 
     .update-box {
-      background: var(--panel-soft);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(40, 88, 240, 0.08), rgba(255, 210, 240, 0.22));
+      border: 1px solid #cfe0ff;
       border-radius: 16px;
       padding: 14px 16px;
       text-align: center;
@@ -99,11 +103,11 @@
     .update-box .time {
       font-size: 26px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--brand-2);
     }
 
     .nav-btn {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--brand-2), #3d6bff);
       color: white;
       border: none;
       border-radius: 14px;
@@ -111,110 +115,111 @@
       font-size: 18px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 8px 18px rgba(49, 84, 231, 0.18);
+      box-shadow: 0 10px 22px rgba(40, 88, 240, 0.2);
     }
 
-    .grid-main {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
+      border: 1px solid var(--border);
+      border-top: 8px solid var(--brand-2);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-card.open {
+      border-top-color: var(--warning);
+    }
+
+    .hero-card .label {
+      font-size: 18px;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .hero-card .value {
+      font-size: 68px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .hero-card.open .value {
+      color: #b7791f;
+    }
+
+    .hero-card .note {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 16px;
     }
 
     .panel {
-      background: var(--panel);
+      background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 18px;
       box-shadow: var(--shadow);
     }
 
     .panel h2 {
       margin: 0 0 14px;
-      font-size: 26px;
-      color: var(--text);
+      font-size: 24px;
+      color: var(--brand);
     }
 
-    .kpi-grid {
+    .mini-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
 
-    .kpi {
-      background: #fff;
+    .mini-kpi {
+      background: var(--panel-soft);
       border: 1px solid var(--border);
-      border-left: 6px solid var(--primary);
+      border-left: 6px solid var(--brand-2);
       border-radius: 16px;
       padding: 14px;
-      min-height: 118px;
+      min-height: 96px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .kpi .label {
-      font-size: 14px;
+    .mini-kpi.warning { border-left-color: var(--warning); }
+    .mini-kpi.info { border-left-color: var(--info); }
+    .mini-kpi.success { border-left-color: var(--success); }
+    .mini-kpi.danger { border-left-color: var(--danger); }
+
+    .mini-kpi .label {
       color: var(--muted);
-      line-height: 1.25;
+      font-size: 14px;
       font-weight: 700;
+      line-height: 1.25;
     }
 
-    .kpi .value {
-      font-size: 42px;
+    .mini-kpi .value {
+      font-size: 40px;
       font-weight: 700;
       line-height: 1;
-    }
-
-    .red { border-left-color: var(--red); }
-    .amber { border-left-color: var(--amber); }
-    .blue { border-left-color: var(--blue); }
-    .green { border-left-color: var(--green); }
-    .cyan { border-left-color: var(--cyan); }
-    .purple { border-left-color: var(--purple); }
-
-    .summary-box {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .summary-item {
-      background: var(--panel-soft);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
-
-    .summary-item .label {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 700;
-    }
-
-    .summary-item .big {
-      font-size: 34px;
-      font-weight: 700;
-    }
-
-    .section-stack {
-      display: grid;
-      gap: 16px;
-    }
-
-    .list-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: var(--shadow);
-    }
-
-    .list-card h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      color: var(--text);
+      color: var(--brand);
     }
 
     .simple-list {
@@ -226,58 +231,67 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 14px;
+      gap: 10px;
+      padding: 14px;
       background: var(--panel-soft);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       font-size: 18px;
     }
 
     .simple-item strong {
-      color: var(--primary);
-      font-size: 20px;
+      color: var(--brand-2);
+      font-size: 22px;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 110px;
       padding: 6px 12px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
       text-align: center;
+      white-space: nowrap;
     }
 
     .tag.red {
-      background: rgba(229, 83, 83, 0.12);
-      color: var(--red);
-      border: 1px solid rgba(229, 83, 83, 0.2);
+      background: rgba(223, 76, 76, 0.12);
+      color: var(--danger);
+      border: 1px solid rgba(223, 76, 76, 0.2);
     }
 
     .tag.amber {
-      background: rgba(245, 158, 11, 0.12);
-      color: #a16207;
-      border: 1px solid rgba(245, 158, 11, 0.2);
+      background: rgba(245, 179, 1, 0.14);
+      color: #9a6a00;
+      border: 1px solid rgba(245, 179, 1, 0.22);
     }
 
     .tag.blue {
-      background: rgba(47, 128, 237, 0.12);
-      color: var(--blue);
-      border: 1px solid rgba(47, 128, 237, 0.2);
+      background: rgba(63, 140, 255, 0.12);
+      color: var(--info);
+      border: 1px solid rgba(63, 140, 255, 0.2);
     }
 
     .tag.green {
-      background: rgba(31, 170, 89, 0.12);
-      color: var(--green);
-      border: 1px solid rgba(31, 170, 89, 0.2);
+      background: rgba(100, 230, 120, 0.18);
+      color: #1b7b33;
+      border: 1px solid rgba(100, 230, 120, 0.25);
     }
 
-    .tables {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 16px;
+    .attention-panel {
+      background: linear-gradient(135deg, #ffffff 0%, #fffaff 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .attention-panel h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: var(--brand);
     }
 
     table {
@@ -297,7 +311,7 @@
     }
 
     th {
-      background: var(--panel-soft);
+      background: linear-gradient(135deg, #eef4ff, #f7f9fc);
       color: var(--muted);
       font-size: 13px;
       text-transform: uppercase;
@@ -313,14 +327,13 @@
       color: var(--muted);
       font-size: 13px;
       padding-top: 2px;
+      font-weight: 700;
     }
 
     @media (max-width: 1280px) {
       .topbar,
-      .grid-main,
-      .tables,
-      .kpi-grid,
-      .summary-box {
+      .hero-grid,
+      .main-grid {
         grid-template-columns: 1fr;
       }
 
@@ -330,7 +343,7 @@
       }
 
       .brand img {
-        height: 48px;
+        height: 52px;
       }
     }
   </style>
@@ -355,261 +368,180 @@
       <button class="nav-btn">Visão Estratégica</button>
     </div>
 
-    <div class="grid-main">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <div class="label">Pedidos já integrados</div>
+        <div class="value">66</div>
+        <div class="note">Pedidos que entraram no fluxo operacional</div>
+      </div>
+
+      <div class="hero-card open">
+        <div class="label">Pedidos ainda em aberto</div>
+        <div class="value">12</div>
+        <div class="note">Pedidos que ainda exigem ação da operação</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
       <div class="panel">
         <h2>Processo de Pedidos</h2>
-
-        <div class="kpi-grid">
-          <div class="kpi red">
+        <div class="mini-grid">
+          <div class="mini-kpi danger">
             <div class="label">Pedidos no Comercial</div>
             <div class="value">18</div>
           </div>
-
-          <div class="kpi amber">
+          <div class="mini-kpi warning">
             <div class="label">Aguardando Separação</div>
             <div class="value">5</div>
           </div>
-
-          <div class="kpi blue">
+          <div class="mini-kpi info">
             <div class="label">Em Separação</div>
             <div class="value">3</div>
           </div>
-
-          <div class="kpi cyan">
-            <div class="label">Separado</div>
-            <div class="value">0</div>
-          </div>
-
-          <div class="kpi purple">
+          <div class="mini-kpi purple" style="border-left-color:#b673ff;">
             <div class="label">Aguardando Conferência</div>
             <div class="value">1</div>
           </div>
-
-          <div class="kpi blue">
+          <div class="mini-kpi info">
             <div class="label">Em Conferência</div>
             <div class="value">3</div>
           </div>
-
-          <div class="kpi green">
+          <div class="mini-kpi success">
             <div class="label">Conferido</div>
             <div class="value">51</div>
           </div>
-
-          <div class="kpi green">
-            <div class="label">Previsto Operação</div>
-            <div class="value">66</div>
-          </div>
         </div>
+      </div>
 
-        <div class="summary-box">
-          <div class="summary-item">
-            <div class="label">Pedidos já integrados</div>
-            <div class="big" style="color: var(--primary);">66</div>
+      <div class="panel">
+        <h2>Expedição</h2>
+        <div class="simple-list">
+          <div class="simple-item">
+            <span>Patrus</span>
+            <strong>16:02</strong>
           </div>
-
-          <div class="summary-item">
-            <div class="label">Pedidos ainda em aberto na operação</div>
-            <div class="big" style="color: var(--amber);">12</div>
+          <div class="simple-item">
+            <span>Jamef</span>
+            <strong>17:01</strong>
           </div>
         </div>
       </div>
 
-      <div class="section-stack">
-        <div class="list-card">
-          <h3>Expedição - Chegadas</h3>
-          <div class="simple-list">
-            <div class="simple-item">
-              <span>Patrus</span>
-              <strong>16:02</strong>
-            </div>
-            <div class="simple-item">
-              <span>Jamef</span>
-              <strong>17:01</strong>
-            </div>
+      <div class="panel">
+        <h2>Não se Apresentou</h2>
+        <div class="simple-list">
+          <div class="simple-item">
+            <span>Arlete</span>
+            <span class="tag red">Pendente</span>
           </div>
-        </div>
-
-        <div class="list-card">
-          <h3>Não se apresentou</h3>
-          <div class="simple-list">
-            <div class="simple-item">
-              <span>Arlete</span>
-              <span class="tag red">Pendente</span>
-            </div>
-            <div class="simple-item">
-              <span>Ativa</span>
-              <span class="tag red">Pendente</span>
-            </div>
-            <div class="simple-item">
-              <span>Schreiber</span>
-              <span class="tag red">Pendente</span>
-            </div>
+          <div class="simple-item">
+            <span>Ativa</span>
+            <span class="tag red">Pendente</span>
           </div>
-        </div>
-
-        <div class="list-card">
-          <h3>Recebimento</h3>
-          <div class="simple-list">
-            <div class="simple-item">
-              <span>Processos confirmados</span>
-              <strong>2</strong>
-            </div>
-            <div class="simple-item">
-              <span>Em descarregamento</span>
-              <strong>1</strong>
-            </div>
-            <div class="simple-item">
-              <span>Em estoque</span>
-              <strong>1</strong>
-            </div>
+          <div class="simple-item">
+            <span>Schreiber</span>
+            <span class="tag red">Pendente</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="tables">
-      <div class="panel">
-        <h2>Pedidos que precisam de atenção</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Pedido</th>
-              <th>Integrado</th>
-              <th>Linhas</th>
-              <th>Último registro</th>
-              <th>Status final</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>688743</td>
-              <td>10:06</td>
-              <td>7</td>
-              <td>-</td>
-              <td><span class="tag red">Aguardando Separação</span></td>
-            </tr>
-            <tr>
-              <td>688810</td>
-              <td>15:14</td>
-              <td>3</td>
-              <td>15:37</td>
-              <td><span class="tag amber">Em Separação</span></td>
-            </tr>
-            <tr>
-              <td>688842</td>
-              <td>15:14</td>
-              <td>2</td>
-              <td>15:34</td>
-              <td><span class="tag blue">Aguardando Conferência</span></td>
-            </tr>
-            <tr>
-              <td>688844</td>
-              <td>15:16</td>
-              <td>6</td>
-              <td>-</td>
-              <td><span class="tag red">Aguardando Separação</span></td>
-            </tr>
-            <tr>
-              <td>688850</td>
-              <td>15:31</td>
-              <td>3</td>
-              <td>15:39</td>
-              <td><span class="tag amber">Em Separação</span></td>
-            </tr>
-            <tr>
-              <td>688827</td>
-              <td>15:32</td>
-              <td>2</td>
-              <td>15:39</td>
-              <td><span class="tag amber">Em Separação</span></td>
-            </tr>
-            <tr>
-              <td>688854</td>
-              <td>15:36</td>
-              <td>5</td>
-              <td>-</td>
-              <td><span class="tag red">Aguardando Separação</span></td>
-            </tr>
-            <tr>
-              <td>688852</td>
-              <td>15:36</td>
-              <td>3</td>
-              <td>-</td>
-              <td><span class="tag red">Aguardando Separação</span></td>
-            </tr>
-            <tr>
-              <td>688768</td>
-              <td>11:17</td>
-              <td>48</td>
-              <td>12:00</td>
-              <td><span class="tag blue">Em Conferência</span></td>
-            </tr>
-            <tr>
-              <td>688808</td>
-              <td>14:14</td>
-              <td>217</td>
-              <td>14:43</td>
-              <td><span class="tag blue">Em Conferência</span></td>
-            </tr>
-            <tr>
-              <td>688829</td>
-              <td>14:50</td>
-              <td>6</td>
-              <td>15:21</td>
-              <td><span class="tag blue">Em Conferência</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="panel">
-        <h2>Recebimento e Previsão</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Processo</th>
-              <th>Data</th>
-              <th>Tipo</th>
-              <th>Quantidade</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>25.06 weigao</td>
-              <td>22/04/2026</td>
-              <td>Container</td>
-              <td>2</td>
-              <td><span class="tag amber">Em descarregamento</span></td>
-            </tr>
-            <tr>
-              <td>2026088 (SR)</td>
-              <td>22/04/2026</td>
-              <td>Carreta</td>
-              <td>3</td>
-              <td><span class="tag green">Em estoque</span></td>
-            </tr>
-            <tr>
-              <td>25.06 weigao</td>
-              <td>23/04/2025</td>
-              <td>Container</td>
-              <td>2</td>
-              <td><span class="tag blue">Desembaraço</span></td>
-            </tr>
-            <tr>
-              <td>2026088 (SR)</td>
-              <td>30/04/2025</td>
-              <td>Carreta</td>
-              <td>3</td>
-              <td><span class="tag blue">Em viagem</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="attention-panel">
+      <h2>Pedidos que precisam de atenção</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Integrado</th>
+            <th>Linhas</th>
+            <th>Último registro</th>
+            <th>Status final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>688743</td>
+            <td>10:06</td>
+            <td>7</td>
+            <td>-</td>
+            <td><span class="tag red">Aguardando Separação</span></td>
+          </tr>
+          <tr>
+            <td>688810</td>
+            <td>15:14</td>
+            <td>3</td>
+            <td>15:37</td>
+            <td><span class="tag amber">Em Separação</span></td>
+          </tr>
+          <tr>
+            <td>688842</td>
+            <td>15:14</td>
+            <td>2</td>
+            <td>15:34</td>
+            <td><span class="tag blue">Aguardando Conferência</span></td>
+          </tr>
+          <tr>
+            <td>688844</td>
+            <td>15:16</td>
+            <td>6</td>
+            <td>-</td>
+            <td><span class="tag red">Aguardando Separação</span></td>
+          </tr>
+          <tr>
+            <td>688850</td>
+            <td>15:31</td>
+            <td>3</td>
+            <td>15:39</td>
+            <td><span class="tag amber">Em Separação</span></td>
+          </tr>
+          <tr>
+            <td>688827</td>
+            <td>15:32</td>
+            <td>2</td>
+            <td>15:39</td>
+            <td><span class="tag amber">Em Separação</span></td>
+          </tr>
+          <tr>
+            <td>688854</td>
+            <td>15:36</td>
+            <td>5</td>
+            <td>-</td>
+            <td><span class="tag red">Aguardando Separação</span></td>
+          </tr>
+          <tr>
+            <td>688852</td>
+            <td>15:36</td>
+            <td>3</td>
+            <td>-</td>
+            <td><span class="tag red">Aguardando Separação</span></td>
+          </tr>
+          <tr>
+            <td>688768</td>
+            <td>11:17</td>
+            <td>48</td>
+            <td>12:00</td>
+            <td><span class="tag blue">Em Conferência</span></td>
+          </tr>
+          <tr>
+            <td>688808</td>
+            <td>14:14</td>
+            <td>217</td>
+            <td>14:43</td>
+            <td><span class="tag blue">Em Conferência</span></td>
+          </tr>
+          <tr>
+            <td>688829</td>
+            <td>14:50</td>
+            <td>6</td>
+            <td>15:21</td>
+            <td><span class="tag blue">Em Conferência</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="footer-note">
-      Painel operacional estático para TV. Próximo passo: conectar com JSON.
+      Logo no index: coloque o arquivo na mesma pasta do HTML com o nome <strong>logo-labor.png</strong>.
     </div>
   </div>
 </body>
