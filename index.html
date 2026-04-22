@@ -6,53 +6,71 @@
   <title>Painel Operacional CD</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --panel-2: #1f2937;
-      --card: #1e293b;
-      --border: rgba(255,255,255,0.08);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --blue: #38bdf8;
-      --green: #22c55e;
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --panel-soft: #eef3f9;
+      --border: #d9e2ec;
+      --text: #16324f;
+      --muted: #5b7088;
+      --primary: #3154e7;
+      --blue: #2f80ed;
+      --green: #1faa59;
       --amber: #f59e0b;
-      --red: #ef4444;
-      --cyan: #06b6d4;
-      --violet: #8b5cf6;
+      --red: #e55353;
+      --cyan: #00a8cc;
+      --purple: #7c4dff;
+      --shadow: 0 8px 24px rgba(22, 50, 79, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0b1220 0%, var(--bg) 100%);
+      background: var(--bg);
       color: var(--text);
     }
 
     .container {
       width: 100%;
       min-height: 100vh;
-      padding: 22px;
+      padding: 18px;
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .topbar {
       display: grid;
-      grid-template-columns: 1.4fr 1fr auto;
+      grid-template-columns: 1.6fr 0.8fr auto;
       gap: 16px;
       align-items: center;
-      background: rgba(255,255,255,0.03);
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 18px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand img {
+      height: 58px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     .title h1 {
       margin: 0;
       font-size: 34px;
       line-height: 1;
-      letter-spacing: 0.4px;
+      color: var(--primary);
     }
 
     .title p {
@@ -62,29 +80,30 @@
     }
 
     .update-box {
-      background: var(--panel-2);
+      background: var(--panel-soft);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 14px 18px;
+      padding: 14px 16px;
       text-align: center;
     }
 
     .update-box .label {
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 1px;
       color: var(--muted);
       margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     .update-box .time {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
-      color: var(--blue);
+      color: var(--primary);
     }
 
     .nav-btn {
-      background: linear-gradient(135deg, var(--violet), #6366f1);
+      background: var(--primary);
       color: white;
       border: none;
       border-radius: 14px;
@@ -92,25 +111,27 @@
       font-size: 18px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(99,102,241,0.25);
+      box-shadow: 0 8px 18px rgba(49, 84, 231, 0.18);
     }
 
     .grid-main {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 18px;
+      gap: 16px;
     }
 
     .panel {
-      background: rgba(255,255,255,0.03);
+      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 18px;
+      box-shadow: var(--shadow);
     }
 
     .panel h2 {
       margin: 0 0 14px;
-      font-size: 24px;
+      font-size: 26px;
+      color: var(--text);
     }
 
     .kpi-grid {
@@ -120,20 +141,22 @@
     }
 
     .kpi {
-      background: var(--card);
+      background: #fff;
       border: 1px solid var(--border);
+      border-left: 6px solid var(--primary);
       border-radius: 16px;
-      padding: 16px;
-      min-height: 112px;
+      padding: 14px;
+      min-height: 118px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .kpi .label {
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
       line-height: 1.25;
+      font-weight: 700;
     }
 
     .kpi .value {
@@ -142,181 +165,251 @@
       line-height: 1;
     }
 
-    .blue { border-left: 6px solid var(--blue); }
-    .amber { border-left: 6px solid var(--amber); }
-    .green { border-left: 6px solid var(--green); }
-    .red { border-left: 6px solid var(--red); }
-    .cyan { border-left: 6px solid var(--cyan); }
+    .red { border-left-color: var(--red); }
+    .amber { border-left-color: var(--amber); }
+    .blue { border-left-color: var(--blue); }
+    .green { border-left-color: var(--green); }
+    .cyan { border-left-color: var(--cyan); }
+    .purple { border-left-color: var(--purple); }
 
     .summary-box {
       margin-top: 14px;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .summary-box .big {
-      font-size: 36px;
+    .summary-item {
+      background: var(--panel-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .summary-item .label {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
       font-weight: 700;
-      color: var(--green);
+    }
+
+    .summary-item .big {
+      font-size: 34px;
+      font-weight: 700;
     }
 
     .section-stack {
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .list-card {
-      background: var(--card);
+      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
+      box-shadow: var(--shadow);
     }
 
     .list-card h3 {
       margin: 0 0 12px;
-      font-size: 18px;
+      font-size: 20px;
+      color: var(--text);
     }
 
     .simple-list {
       display: grid;
       gap: 10px;
-      font-size: 18px;
     }
 
     .simple-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
-      background: rgba(255,255,255,0.04);
+      padding: 12px 14px;
+      background: var(--panel-soft);
+      border: 1px solid var(--border);
       border-radius: 12px;
+      font-size: 18px;
+    }
+
+    .simple-item strong {
+      color: var(--primary);
+      font-size: 20px;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 5px 10px;
+      min-width: 110px;
+      padding: 6px 12px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
+      text-align: center;
     }
 
-    .tag.green { background: rgba(34,197,94,0.15); color: #86efac; border-left: none; }
-    .tag.amber { background: rgba(245,158,11,0.15); color: #fcd34d; border-left: none; }
-    .tag.red { background: rgba(239,68,68,0.15); color: #fca5a5; border-left: none; }
-    .tag.blue { background: rgba(56,189,248,0.15); color: #7dd3fc; border-left: none; }
+    .tag.red {
+      background: rgba(229, 83, 83, 0.12);
+      color: var(--red);
+      border: 1px solid rgba(229, 83, 83, 0.2);
+    }
+
+    .tag.amber {
+      background: rgba(245, 158, 11, 0.12);
+      color: #a16207;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .tag.blue {
+      background: rgba(47, 128, 237, 0.12);
+      color: var(--blue);
+      border: 1px solid rgba(47, 128, 237, 0.2);
+    }
+
+    .tag.green {
+      background: rgba(31, 170, 89, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(31, 170, 89, 0.2);
+    }
 
     .tables {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 16px;
-      background: var(--card);
       border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
     }
 
     th, td {
       padding: 12px 14px;
       text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid #e8eef5;
       font-size: 15px;
     }
 
     th {
-      background: rgba(255,255,255,0.06);
+      background: var(--panel-soft);
       color: var(--muted);
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    tr:last-child td { border-bottom: none; }
-
-    .footer-note {
-      color: var(--muted);
-      font-size: 13px;
-      text-align: right;
-      padding-top: 4px;
+    tr:last-child td {
+      border-bottom: none;
     }
 
-    @media (max-width: 1200px) {
-      .grid-main, .tables, .topbar, .kpi-grid {
+    .footer-note {
+      text-align: right;
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 2px;
+    }
+
+    @media (max-width: 1280px) {
+      .topbar,
+      .grid-main,
+      .tables,
+      .kpi-grid,
+      .summary-box {
         grid-template-columns: 1fr;
+      }
+
+      .brand {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .brand img {
+        height: 48px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
     <div class="topbar">
-      <div class="title">
-        <h1>Painel Operacional do CD</h1>
-        <p>Visão rápida para TV: pedidos, recebimento e expedição</p>
+      <div class="brand">
+        <img src="logo-labor.png" alt="Labor Health Supply">
+        <div class="title">
+          <h1>Painel Operacional do CD</h1>
+          <p>Visão operacional simplificada para TV</p>
+        </div>
       </div>
+
       <div class="update-box">
         <div class="label">Última atualização</div>
         <div class="time">22/04/2026 15:40</div>
       </div>
-      <button class="nav-btn" onclick="alert('Visão estratégica em desenvolvimento')">Visão Estratégica</button>
+
+      <button class="nav-btn">Visão Estratégica</button>
     </div>
 
     <div class="grid-main">
       <div class="panel">
-        <h2>Pedidos</h2>
+        <h2>Processo de Pedidos</h2>
+
         <div class="kpi-grid">
           <div class="kpi red">
             <div class="label">Pedidos no Comercial</div>
             <div class="value">18</div>
           </div>
+
           <div class="kpi amber">
             <div class="label">Aguardando Separação</div>
             <div class="value">5</div>
           </div>
+
           <div class="kpi blue">
             <div class="label">Em Separação</div>
             <div class="value">3</div>
           </div>
+
           <div class="kpi cyan">
             <div class="label">Separado</div>
             <div class="value">0</div>
           </div>
-          <div class="kpi amber">
+
+          <div class="kpi purple">
             <div class="label">Aguardando Conferência</div>
             <div class="value">1</div>
           </div>
+
           <div class="kpi blue">
             <div class="label">Em Conferência</div>
             <div class="value">3</div>
           </div>
+
           <div class="kpi green">
             <div class="label">Conferido</div>
             <div class="value">51</div>
           </div>
+
           <div class="kpi green">
             <div class="label">Previsto Operação</div>
             <div class="value">66</div>
           </div>
         </div>
+
         <div class="summary-box">
-          <div>
-            <div class="label">Pedidos já integrados na operação</div>
-            <div class="big">63</div>
+          <div class="summary-item">
+            <div class="label">Pedidos já integrados</div>
+            <div class="big" style="color: var(--primary);">66</div>
           </div>
-          <div>
-            <div class="label">Pedidos em aberto no fluxo operacional</div>
-            <div class="big" style="color:#f59e0b;">12</div>
+
+          <div class="summary-item">
+            <div class="label">Pedidos ainda em aberto na operação</div>
+            <div class="big" style="color: var(--amber);">12</div>
           </div>
         </div>
       </div>
@@ -325,26 +418,50 @@
         <div class="list-card">
           <h3>Expedição - Chegadas</h3>
           <div class="simple-list">
-            <div class="simple-item"><span>Patrus</span><strong>16:02</strong></div>
-            <div class="simple-item"><span>Jamef</span><strong>17:01</strong></div>
+            <div class="simple-item">
+              <span>Patrus</span>
+              <strong>16:02</strong>
+            </div>
+            <div class="simple-item">
+              <span>Jamef</span>
+              <strong>17:01</strong>
+            </div>
           </div>
         </div>
 
         <div class="list-card">
           <h3>Não se apresentou</h3>
           <div class="simple-list">
-            <div class="simple-item"><span>Arlete</span><span class="tag red">Pendente</span></div>
-            <div class="simple-item"><span>Ativa</span><span class="tag red">Pendente</span></div>
-            <div class="simple-item"><span>Schreiber</span><span class="tag red">Pendente</span></div>
+            <div class="simple-item">
+              <span>Arlete</span>
+              <span class="tag red">Pendente</span>
+            </div>
+            <div class="simple-item">
+              <span>Ativa</span>
+              <span class="tag red">Pendente</span>
+            </div>
+            <div class="simple-item">
+              <span>Schreiber</span>
+              <span class="tag red">Pendente</span>
+            </div>
           </div>
         </div>
 
         <div class="list-card">
           <h3>Recebimento</h3>
           <div class="simple-list">
-            <div class="simple-item"><span>Em descarregamento</span><strong>2</strong></div>
-            <div class="simple-item"><span>Em estoque</span><strong>3</strong></div>
-            <div class="simple-item"><span>Próximo container</span><strong>23/04</strong></div>
+            <div class="simple-item">
+              <span>Processos confirmados</span>
+              <strong>2</strong>
+            </div>
+            <div class="simple-item">
+              <span>Em descarregamento</span>
+              <strong>1</strong>
+            </div>
+            <div class="simple-item">
+              <span>Em estoque</span>
+              <strong>1</strong>
+            </div>
           </div>
         </div>
       </div>
@@ -364,44 +481,136 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>688743</td><td>10:06</td><td>7</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
-            <tr><td>688810</td><td>15:14</td><td>3</td><td>15:37</td><td><span class="tag amber">Em Separação</span></td></tr>
-            <tr><td>688842</td><td>15:14</td><td>2</td><td>15:34</td><td><span class="tag blue">Aguardando Conferência</span></td></tr>
-            <tr><td>688844</td><td>15:16</td><td>6</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
-            <tr><td>688850</td><td>15:31</td><td>3</td><td>15:39</td><td><span class="tag amber">Em Separação</span></td></tr>
-            <tr><td>688827</td><td>15:32</td><td>2</td><td>15:39</td><td><span class="tag amber">Em Separação</span></td></tr>
-            <tr><td>688854</td><td>15:36</td><td>5</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
-            <tr><td>688852</td><td>15:36</td><td>3</td><td>-</td><td><span class="tag red">Aguardando Separação</span></td></tr>
-            <tr><td>688768</td><td>11:17</td><td>48</td><td>12:00</td><td><span class="tag blue">Em Conferência</span></td></tr>
-            <tr><td>688808</td><td>14:14</td><td>217</td><td>14:43</td><td><span class="tag blue">Em Conferência</span></td></tr>
-            <tr><td>688829</td><td>14:50</td><td>6</td><td>15:21</td><td><span class="tag blue">Em Conferência</span></td></tr>
+            <tr>
+              <td>688743</td>
+              <td>10:06</td>
+              <td>7</td>
+              <td>-</td>
+              <td><span class="tag red">Aguardando Separação</span></td>
+            </tr>
+            <tr>
+              <td>688810</td>
+              <td>15:14</td>
+              <td>3</td>
+              <td>15:37</td>
+              <td><span class="tag amber">Em Separação</span></td>
+            </tr>
+            <tr>
+              <td>688842</td>
+              <td>15:14</td>
+              <td>2</td>
+              <td>15:34</td>
+              <td><span class="tag blue">Aguardando Conferência</span></td>
+            </tr>
+            <tr>
+              <td>688844</td>
+              <td>15:16</td>
+              <td>6</td>
+              <td>-</td>
+              <td><span class="tag red">Aguardando Separação</span></td>
+            </tr>
+            <tr>
+              <td>688850</td>
+              <td>15:31</td>
+              <td>3</td>
+              <td>15:39</td>
+              <td><span class="tag amber">Em Separação</span></td>
+            </tr>
+            <tr>
+              <td>688827</td>
+              <td>15:32</td>
+              <td>2</td>
+              <td>15:39</td>
+              <td><span class="tag amber">Em Separação</span></td>
+            </tr>
+            <tr>
+              <td>688854</td>
+              <td>15:36</td>
+              <td>5</td>
+              <td>-</td>
+              <td><span class="tag red">Aguardando Separação</span></td>
+            </tr>
+            <tr>
+              <td>688852</td>
+              <td>15:36</td>
+              <td>3</td>
+              <td>-</td>
+              <td><span class="tag red">Aguardando Separação</span></td>
+            </tr>
+            <tr>
+              <td>688768</td>
+              <td>11:17</td>
+              <td>48</td>
+              <td>12:00</td>
+              <td><span class="tag blue">Em Conferência</span></td>
+            </tr>
+            <tr>
+              <td>688808</td>
+              <td>14:14</td>
+              <td>217</td>
+              <td>14:43</td>
+              <td><span class="tag blue">Em Conferência</span></td>
+            </tr>
+            <tr>
+              <td>688829</td>
+              <td>14:50</td>
+              <td>6</td>
+              <td>15:21</td>
+              <td><span class="tag blue">Em Conferência</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <div class="panel">
-        <h2>Recebimento e previsão</h2>
+        <h2>Recebimento e Previsão</h2>
         <table>
           <thead>
             <tr>
               <th>Processo</th>
               <th>Data</th>
               <th>Tipo</th>
-              <th>Qtd</th>
+              <th>Quantidade</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>25.06 weigao</td><td>22/04/2026</td><td>Container</td><td>2</td><td><span class="tag amber">Em descarregamento</span></td></tr>
-            <tr><td>2026088 (SR)</td><td>22/04/2026</td><td>Carreta</td><td>3</td><td><span class="tag green">Em estoque</span></td></tr>
-            <tr><td>25.06 weigao</td><td>23/04/2025</td><td>Container</td><td>2</td><td><span class="tag blue">Desembaraço</span></td></tr>
-            <tr><td>2026088 (SR)</td><td>30/04/2025</td><td>Carreta</td><td>3</td><td><span class="tag blue">Em viagem</span></td></tr>
+            <tr>
+              <td>25.06 weigao</td>
+              <td>22/04/2026</td>
+              <td>Container</td>
+              <td>2</td>
+              <td><span class="tag amber">Em descarregamento</span></td>
+            </tr>
+            <tr>
+              <td>2026088 (SR)</td>
+              <td>22/04/2026</td>
+              <td>Carreta</td>
+              <td>3</td>
+              <td><span class="tag green">Em estoque</span></td>
+            </tr>
+            <tr>
+              <td>25.06 weigao</td>
+              <td>23/04/2025</td>
+              <td>Container</td>
+              <td>2</td>
+              <td><span class="tag blue">Desembaraço</span></td>
+            </tr>
+            <tr>
+              <td>2026088 (SR)</td>
+              <td>30/04/2025</td>
+              <td>Carreta</td>
+              <td>3</td>
+              <td><span class="tag blue">Em viagem</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="footer-note">Tela operacional estática para TV. Próximo passo: ligar com JSON e atualização automática.</div>
+    <div class="footer-note">
+      Painel operacional estático para TV. Próximo passo: conectar com JSON.
+    </div>
   </div>
 </body>
 </html>
