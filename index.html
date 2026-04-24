@@ -10,7 +10,6 @@
       --azul-escuro: #001E50;
       --azul: #2858F0;
       --verde: #64E678;
-      --rosa: #FFD2F0;
       --fundo: #edf3f8;
       --card: #ffffff;
       --borda: #d7e1ee;
@@ -42,13 +41,13 @@
       gap: 14px;
     }
 
+    /* TOPO */
     .topbar {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: 16px;
       background: linear-gradient(135deg, var(--azul-escuro) 0%, #07316f 58%, #164a98 100%);
-      border: 1px solid rgba(255,255,255,.12);
       border-radius: 18px;
       padding: 14px 18px;
       box-shadow: var(--shadow);
@@ -56,39 +55,29 @@
     }
 
     .brand { display: flex; align-items: center; gap: 14px; }
+
     .brand img {
-      height: 52px;
+      height: 55px;
       background: #fff;
-      padding: 6px 10px;
-      border-radius: 12px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
-    .title h1 {
-      margin: 0;
-      font-size: 30px;
-      color: #fff;
-      letter-spacing: .2px;
-    }
-
-    .title p {
-      margin: 5px 0 0;
-      font-size: 15px;
-      color: #dce8ff;
-      font-weight: 700;
-    }
+    .title h1 { margin: 0; font-size: 30px; }
+    .title p { margin: 5px 0 0; font-size: 15px; color: #dce8ff; font-weight: 700; }
 
     .update-box {
       background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.22);
       border-radius: 14px;
       padding: 10px 16px;
       text-align: center;
-      min-width: 190px;
     }
 
-    .update-box .label { font-size: 11px; color: #dce8ff; font-weight: 800; text-transform: uppercase; }
-    .update-box .time { font-size: 20px; color: #fff; font-weight: 900; }
+    .update-box .label { font-size: 11px; text-transform: uppercase; }
+    .update-box .time { font-size: 20px; font-weight: 900; }
 
+    /* CARDS */
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -97,22 +86,21 @@
 
     .hero-card {
       background: var(--card);
-      border: 1px solid var(--borda);
-      border-top: 7px solid var(--azul);
       border-radius: 16px;
       padding: 12px;
+      border-top: 7px solid var(--azul);
       box-shadow: var(--shadow);
-      display: flex; flex-direction: column; justify-content: space-between;
     }
 
-    .hero-card.separar { border-top-color: var(--vermelho); background: linear-gradient(180deg,#fff,#fff7f7); }
-    .hero-card.conferir { border-top-color: var(--roxo); background: linear-gradient(180deg,#fff,#f8f5ff); }
-    .hero-card.pendente { border-top-color: var(--laranja); }
-    .hero-card.concluido { border-top-color: var(--verde); }
+    .separar { border-top-color: var(--vermelho); }
+    .conferir { border-top-color: var(--roxo); }
+    .pendente { border-top-color: var(--laranja); }
+    .concluido { border-top-color: var(--verde); }
 
-    .hero-card .label { font-size: 12px; font-weight: 900; color: var(--muted); text-transform: uppercase; }
+    .hero-card .label { font-size: 12px; font-weight: 900; color: var(--muted); }
     .hero-card .value { font-size: 42px; font-weight: 900; }
 
+    /* GRID */
     .content-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -122,97 +110,86 @@
 
     .panel {
       background: var(--card);
-      border: 1px solid var(--borda);
       border-radius: 16px;
       padding: 14px;
       box-shadow: var(--shadow);
-      display: flex; flex-direction: column;
-      min-height: 0;
+      display: flex;
+      flex-direction: column;
     }
 
-    .panel h2 { margin: 0 0 10px; font-size: 20px; color: var(--azul-escuro); }
+    .panel h2 { margin: 0 0 10px; }
 
-    .table-shell { flex: 1; overflow: hidden; border-radius: 12px; border: 1px solid var(--borda); }
+    .table-shell {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--borda);
+    }
 
-    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    table { width: 100%; border-collapse: collapse; }
 
     thead { background: #eef4ff; }
 
-    th { font-size: 12px; text-transform: uppercase; padding: 10px; color: var(--muted); font-weight: 900; }
-    td { padding: 10px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #e8eef5; color: var(--azul-escuro); }
+    th, td { padding: 10px; font-size: 14px; }
+    th { color: var(--muted); text-transform: uppercase; }
+    td { border-bottom: 1px solid #eee; }
 
-    th.center, td.center { text-align: center; }
-    th.left, td.left { text-align: left; }
+    .center { text-align: center; }
+    .left { text-align: left; }
 
     .top3 { background: var(--top3); }
-    .top3 td:first-child { font-weight: 900; }
 
-    .scroll { height: 100%; overflow: hidden; }
-
-    .scroll-body.auto-scroll { animation: scroll 30s linear infinite; }
-
-    @keyframes scroll { 0%{transform:translateY(0);}100%{transform:translateY(-50%);} }
-
-    .pill { padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 900; display: inline-flex; justify-content: center; min-width: 112px; }
-
-    .separar-pill {
-      background: rgba(223,76,76,.16);
-      color: #b91c1c;
-      border: 1px solid rgba(223,76,76,.28);
+    /* STATUS */
+    .pill {
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 12px;
     }
 
-    .conferir-pill {
-      background: rgba(124,58,237,.14);
-      color: #6d28d9;
-      border: 1px solid rgba(124,58,237,.26);
+    .separar-pill { background:#ffe5e5; color:#b91c1c; }
+    .conferir-pill { background:#ede9fe; color:#6d28d9; }
+
+    /* SCROLL */
+    .scroll { height:100%; overflow:hidden; }
+
+    .scroll-body.auto-scroll {
+      animation: scroll 30s linear infinite;
     }
 
-    .pedido { color: var(--azul); font-weight: 900; }
-
-    .small-table td { font-size: 13px; }
-
-    .erro-dados {
-      padding: 16px;
-      background: #fff7f7;
-      color: #b91c1c;
-      border: 1px solid rgba(223,76,76,.25);
-      border-radius: 12px;
-      font-weight: 800;
-      margin-top: 10px;
+    @keyframes scroll {
+      0%{transform:translateY(0);}
+      100%{transform:translateY(-50%);}
     }
 
-    @media (max-width: 1200px){
-      body{overflow:auto}
-      .container{height:auto}
-      .hero-grid, .content-grid{grid-template-columns:1fr}
-      .scroll-body.auto-scroll{animation:none}
-    }
   </style>
 </head>
 
 <body>
+
 <div class="container">
 
   <div class="topbar">
     <div class="brand">
-      <img src="logo-labor.png" alt="Labor Health Supply">
+      <img src="logo-labor.png" alt="Labor">
       <div class="title">
         <h1>Painel Operacional</h1>
-        <p>Separação e Conferência • acompanhamento em tempo real</p>
+        <p>Separação e Conferência • tempo real</p>
       </div>
     </div>
+
     <div class="update-box">
       <div class="label">Atualização</div>
-      <div class="time" id="atualizacao">--/-- --:--</div>
+      <div class="time" id="atualizacao">--</div>
     </div>
   </div>
 
   <div class="hero-grid">
-    <div class="hero-card separar"><div class="label">Falta separar</div><div class="value" id="card-falta-separar">0</div></div>
-    <div class="hero-card conferir"><div class="label">Falta conferir</div><div class="value" id="card-falta-conferir">0</div></div>
-    <div class="hero-card pendente"><div class="label">Total pendente</div><div class="value" id="card-total-pendente">0</div></div>
-    <div class="hero-card concluido"><div class="label">Concluído</div><div class="value" id="card-concluido">0</div></div>
-    <div class="hero-card"><div class="label">Total pedidos</div><div class="value" id="card-total-pedidos">0</div></div>
+    <div class="hero-card separar"><div class="label">Falta separar</div><div id="faltaSeparar" class="value">0</div></div>
+    <div class="hero-card conferir"><div class="label">Falta conferir</div><div id="faltaConferir" class="value">0</div></div>
+    <div class="hero-card pendente"><div class="label">Total pendente</div><div id="totalPendente" class="value">0</div></div>
+    <div class="hero-card concluido"><div class="label">Concluído</div><div id="concluido" class="value">0</div></div>
+    <div class="hero-card"><div class="label">Total pedidos</div><div id="totalPedidos" class="value">0</div></div>
   </div>
 
   <div class="content-grid">
@@ -220,7 +197,7 @@
     <div class="panel">
       <h2>Produtividade Separadores</h2>
       <div class="table-shell">
-        <table class="small-table">
+        <table>
           <thead>
             <tr>
               <th class="left">Separador</th>
@@ -229,7 +206,7 @@
               <th class="center">%</th>
             </tr>
           </thead>
-          <tbody id="tbody-produtividade"></tbody>
+          <tbody id="produtividade"></tbody>
         </table>
       </div>
     </div>
@@ -251,7 +228,7 @@
 
         <div class="scroll" id="scrollArea">
           <table>
-            <tbody class="scroll-body" id="scrollBody"></tbody>
+            <tbody id="pedidos" class="scroll-body"></tbody>
           </table>
         </div>
       </div>
@@ -262,124 +239,57 @@
 </div>
 
 <script>
-  const CAMINHO_JSON = 'data.json';
+async function carregar() {
+  const res = await fetch('data.json?t=' + Date.now());
+  const data = await res.json();
 
-  const medalhas = ['🥇', '🥈', '🥉'];
+  document.getElementById('atualizacao').innerText = data.atualizacao;
 
-  function valorSeguro(valor, padrao = 0) {
-    return valor === undefined || valor === null || valor === '' ? padrao : valor;
+  document.getElementById('faltaSeparar').innerText = data.cards.falta_separar;
+  document.getElementById('faltaConferir').innerText = data.cards.falta_conferir;
+  document.getElementById('totalPendente').innerText = data.cards.total_pendente;
+  document.getElementById('concluido').innerText = data.cards.concluido;
+  document.getElementById('totalPedidos').innerText = data.cards.total_pedidos;
+
+  const prod = document.getElementById('produtividade');
+  prod.innerHTML = '';
+
+  data.produtividade.forEach((p,i)=>{
+    prod.innerHTML += `
+      <tr class="${i<3?'top3':''}">
+        <td>${i<3?['🥇','🥈','🥉'][i]+' ':''}${p.separador}</td>
+        <td class="center">${p.pedidos}</td>
+        <td class="center">${p.enderecos}</td>
+        <td class="center">${p.percentual}</td>
+      </tr>`;
+  });
+
+  const ped = document.getElementById('pedidos');
+  ped.innerHTML = '';
+
+  data.pedidos_pendentes.forEach(p=>{
+    ped.innerHTML += `
+      <tr>
+        <td class="center">${p.pedido}</td>
+        <td class="center">${p.integrado}</td>
+        <td class="center">
+          <span class="pill ${p.status==='falta_separar'?'separar-pill':'conferir-pill'}">
+            ${p.status==='falta_separar'?'Falta Separar':'Falta Conferir'}
+          </span>
+        </td>
+        <td>${p.cliente}</td>
+      </tr>`;
+  });
+
+  const scrollArea = document.getElementById('scrollArea');
+  if(ped.scrollHeight > scrollArea.clientHeight){
+    ped.classList.add('auto-scroll');
   }
+}
 
-  function textoStatus(status) {
-    if (status === 'falta_separar') return 'Falta Separar';
-    if (status === 'falta_conferir') return 'Falta Conferir';
-    return status || '-';
-  }
-
-  function classeStatus(status) {
-    if (status === 'falta_separar') return 'separar-pill';
-    if (status === 'falta_conferir') return 'conferir-pill';
-    return 'conferir-pill';
-  }
-
-  function atualizarCards(dados) {
-    const cards = dados.cards || {};
-
-    document.getElementById('atualizacao').textContent = valorSeguro(dados.atualizacao, '--/-- --:--');
-    document.getElementById('card-falta-separar').textContent = valorSeguro(cards.falta_separar);
-    document.getElementById('card-falta-conferir').textContent = valorSeguro(cards.falta_conferir);
-    document.getElementById('card-total-pendente').textContent = valorSeguro(cards.total_pendente);
-    document.getElementById('card-concluido').textContent = valorSeguro(cards.concluido);
-    document.getElementById('card-total-pedidos').textContent = valorSeguro(cards.total_pedidos);
-  }
-
-  function atualizarProdutividade(dados) {
-    const tbody = document.getElementById('tbody-produtividade');
-    tbody.innerHTML = '';
-
-    const lista = Array.isArray(dados.produtividade) ? dados.produtividade : [];
-
-    lista.forEach((item, index) => {
-      const tr = document.createElement('tr');
-      if (index < 3) tr.classList.add('top3');
-
-      const nome = index < 3 ? `${medalhas[index]} ${item.separador}` : item.separador;
-
-      tr.innerHTML = `
-        <td class="left">${valorSeguro(nome, '-')}</td>
-        <td class="center">${valorSeguro(item.pedidos)}</td>
-        <td class="center">${valorSeguro(item.enderecos)}</td>
-        <td class="center">${valorSeguro(item.percentual, '0%')}</td>
-      `;
-
-      tbody.appendChild(tr);
-    });
-  }
-
-  function atualizarPedidosPendentes(dados) {
-    const tbody = document.getElementById('scrollBody');
-    tbody.innerHTML = '';
-    tbody.classList.remove('auto-scroll');
-
-    const lista = Array.isArray(dados.pedidos_pendentes) ? dados.pedidos_pendentes : [];
-
-    lista.forEach((item) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td class="pedido center">${valorSeguro(item.pedido, '-')}</td>
-        <td class="center">${valorSeguro(item.integrado, '-')}</td>
-        <td class="center"><span class="pill ${classeStatus(item.status)}">${textoStatus(item.status)}</span></td>
-        <td class="left">${valorSeguro(item.cliente, '-')}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-
-    ativarScrollSeNecessario();
-  }
-
-  function ativarScrollSeNecessario() {
-    const scrollArea = document.getElementById('scrollArea');
-    const scrollBody = document.getElementById('scrollBody');
-
-    if (!scrollArea || !scrollBody) return;
-
-    requestAnimationFrame(() => {
-      const precisaScroll = scrollBody.scrollHeight > scrollArea.clientHeight;
-
-      if (precisaScroll) {
-        scrollBody.classList.add('auto-scroll');
-      } else {
-        scrollBody.classList.remove('auto-scroll');
-      }
-    });
-  }
-
-  async function carregarDados() {
-    try {
-      const resposta = await fetch(`${CAMINHO_JSON}?t=${Date.now()}`, { cache: 'no-store' });
-
-      if (!resposta.ok) {
-        throw new Error('Não foi possível carregar o arquivo dados.json');
-      }
-
-      const dados = await resposta.json();
-
-      atualizarCards(dados);
-      atualizarProdutividade(dados);
-      atualizarPedidosPendentes(dados);
-    } catch (erro) {
-      console.error(erro);
-      const container = document.querySelector('.container');
-      const aviso = document.createElement('div');
-      aviso.className = 'erro-dados';
-      aviso.textContent = 'Erro ao carregar data.json. Verifique se o arquivo está na mesma pasta do index.html e se o JSON está válido.';
-      container.appendChild(aviso);
-    }
-  }
-
-  carregarDados();
-  setInterval(carregarDados, 60000);
-  window.addEventListener('resize', ativarScrollSeNecessario);
+carregar();
+setInterval(carregar,60000);
 </script>
+
 </body>
 </html>
