@@ -16,9 +16,10 @@
       --borda: #d7e1ee;
       --texto: #001E50;
       --muted: #65758b;
-      --amarelo: #f5b301;   /* Falta Separar (alto alerta) */
-      --laranja: #f97316;   /* Falta Conferir (meio caminho) */
       --vermelho: #df4c4c;
+      --roxo: #7c3aed;
+      --laranja: #f97316;
+      --top3: #fff7d6;
       --shadow: 0 12px 28px rgba(0, 30, 80, 0.10);
     }
 
@@ -46,31 +47,48 @@
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: 16px;
-      background: var(--card);
-      border: 1px solid var(--borda);
+      background: linear-gradient(135deg, var(--azul-escuro) 0%, #07316f 58%, #164a98 100%);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 18px;
       padding: 14px 18px;
       box-shadow: var(--shadow);
+      color: #fff;
     }
 
     .brand { display: flex; align-items: center; gap: 14px; }
-    .brand img { height: 52px; }
+    .brand img {
+      height: 52px;
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 12px;
+    }
 
-    .title h1 { margin: 0; font-size: 28px; color: var(--azul-escuro); }
-    .title p { margin: 4px 0 0; font-size: 14px; color: var(--muted); font-weight: 700; }
+    .title h1 {
+      margin: 0;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: .2px;
+    }
+
+    .title p {
+      margin: 5px 0 0;
+      font-size: 15px;
+      color: #dce8ff;
+      font-weight: 700;
+    }
 
     .update-box {
-      background: linear-gradient(135deg, rgba(40,88,240,.1), rgba(255,210,240,.25));
-      border: 1px solid #cadbff;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
       border-radius: 14px;
       padding: 10px 16px;
       text-align: center;
+      min-width: 190px;
     }
 
-    .update-box .label { font-size: 11px; color: var(--muted); font-weight: 800; text-transform: uppercase; }
-    .update-box .time { font-size: 20px; color: var(--azul); font-weight: 900; }
+    .update-box .label { font-size: 11px; color: #dce8ff; font-weight: 800; text-transform: uppercase; }
+    .update-box .time { font-size: 20px; color: #fff; font-weight: 900; }
 
-    /* ORDEM CRONOLÓGICA */
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -87,9 +105,9 @@
       display: flex; flex-direction: column; justify-content: space-between;
     }
 
-    .hero-card.separar { border-top-color: var(--amarelo); }
-    .hero-card.conferir { border-top-color: var(--laranja); }
-    .hero-card.pendente { border-top-color: var(--vermelho); }
+    .hero-card.separar { border-top-color: var(--vermelho); background: linear-gradient(180deg,#fff,#fff7f7); }
+    .hero-card.conferir { border-top-color: var(--roxo); background: linear-gradient(180deg,#fff,#f8f5ff); }
+    .hero-card.pendente { border-top-color: var(--laranja); }
     .hero-card.concluido { border-top-color: var(--verde); }
 
     .hero-card .label { font-size: 12px; font-weight: 900; color: var(--muted); text-transform: uppercase; }
@@ -112,39 +130,53 @@
       min-height: 0;
     }
 
-    .panel h2 { margin: 0 0 10px; font-size: 20px; }
+    .panel h2 { margin: 0 0 10px; font-size: 20px; color: var(--azul-escuro); }
 
-    /* TABELA FIX HEADER */
     .table-shell { flex: 1; overflow: hidden; border-radius: 12px; border: 1px solid var(--borda); }
 
-    table { width: 100%; border-collapse: collapse; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 
-    thead { background: #eef4ff; position: sticky; top: 0; }
+    thead { background: #eef4ff; }
 
-    th { font-size: 12px; text-transform: uppercase; padding: 10px; color: var(--muted); }
-    td { padding: 10px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #e8eef5; }
+    th { font-size: 12px; text-transform: uppercase; padding: 10px; color: var(--muted); font-weight: 900; }
+    td { padding: 10px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #e8eef5; color: var(--azul-escuro); }
+
+    th.center, td.center { text-align: center; }
+    th.left, td.left { text-align: left; }
+
+    .top3 { background: var(--top3); }
+    .top3 td:first-child { font-weight: 900; }
 
     .scroll { height: 100%; overflow: hidden; }
-    .scroll-body { animation: scroll 30s linear infinite; }
+
+    /* Para ativar rolagem: adicione a classe "auto-scroll" no tbody quando houver mais pedidos do que o quadro comporta */
+    .scroll-body.auto-scroll { animation: scroll 30s linear infinite; }
 
     @keyframes scroll { 0%{transform:translateY(0);}100%{transform:translateY(-50%);} }
 
-    /* STATUS */
-    .pill { padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 900; }
+    .pill { padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 900; display: inline-flex; justify-content: center; min-width: 112px; }
 
-    .separar-pill { background: rgba(245,179,1,.2); color:#9a6a00; }
-    .conferir-pill { background: rgba(249,115,22,.2); color:#b45309; }
+    .separar-pill {
+      background: rgba(223,76,76,.16);
+      color: #b91c1c;
+      border: 1px solid rgba(223,76,76,.28);
+    }
+
+    .conferir-pill {
+      background: rgba(124,58,237,.14);
+      color: #6d28d9;
+      border: 1px solid rgba(124,58,237,.26);
+    }
 
     .pedido { color: var(--azul); font-weight: 900; }
 
-    /* TABELA RESUMO */
     .small-table td { font-size: 13px; }
 
     @media (max-width: 1200px){
       body{overflow:auto}
       .container{height:auto}
       .hero-grid, .content-grid{grid-template-columns:1fr}
-      .scroll-body{animation:none}
+      .scroll-body.auto-scroll{animation:none}
     }
   </style>
 </head>
@@ -154,10 +186,10 @@
 
   <div class="topbar">
     <div class="brand">
-      <img src="logo-labor.png">
+      <img src="logo-labor.png" alt="Labor Health Supply">
       <div class="title">
         <h1>Painel Operacional</h1>
-        <p>Separação e Conferência</p>
+        <p>Separação e Conferência • acompanhamento em tempo real</p>
       </div>
     </div>
     <div class="update-box">
@@ -166,7 +198,6 @@
     </div>
   </div>
 
-  <!-- ORDEM CORRETA -->
   <div class="hero-grid">
     <div class="hero-card separar"><div class="label">Falta separar</div><div class="value">5</div></div>
     <div class="hero-card conferir"><div class="label">Falta conferir</div><div class="value">1</div></div>
@@ -177,32 +208,34 @@
 
   <div class="content-grid">
 
-    <!-- RESUMO SEPARADORES -->
     <div class="panel">
       <h2>Produtividade Separadores</h2>
       <div class="table-shell">
         <table class="small-table">
           <thead>
             <tr>
-              <th>Separador</th>
-              <th>Pedidos</th>
-              <th>Endereços</th>
-              <th>%</th>
+              <th class="left">Separador</th>
+              <th class="center">Pedidos</th>
+              <th class="center">Endereços</th>
+              <th class="center">%</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Debora Correa</td><td>12</td><td>544</td><td>19,67%</td></tr>
-            <tr><td>Karina A. Souza</td><td>10</td><td>151</td><td>16,39%</td></tr>
-            <tr><td>Rosana Morais</td><td>10</td><td>477</td><td>16,39%</td></tr>
-            <tr><td>Waldenice Brito</td><td>9</td><td>72</td><td>14,75%</td></tr>
-            <tr><td>Maria Rosinete</td><td>9</td><td>121</td><td>14,75%</td></tr>
-            <tr><td>Gabriel</td><td>4</td><td>21</td><td>6,56%</td></tr>
+            <tr class="top3"><td class="left">🥇 Debora Correa</td><td class="center">12</td><td class="center">544</td><td class="center">19,67%</td></tr>
+            <tr class="top3"><td class="left">🥈 Karina A. Souza</td><td class="center">10</td><td class="center">151</td><td class="center">16,39%</td></tr>
+            <tr class="top3"><td class="left">🥉 Rosana Morais</td><td class="center">10</td><td class="center">477</td><td class="center">16,39%</td></tr>
+            <tr><td class="left">Waldenice Brito</td><td class="center">9</td><td class="center">72</td><td class="center">14,75%</td></tr>
+            <tr><td class="left">Maria Rosinete</td><td class="center">9</td><td class="center">121</td><td class="center">14,75%</td></tr>
+            <tr><td class="left">Gabriel Fernando</td><td class="center">4</td><td class="center">21</td><td class="center">6,56%</td></tr>
+            <tr><td class="left">Jhonatan Pessoa</td><td class="center">2</td><td class="center">29</td><td class="center">3,28%</td></tr>
+            <tr><td class="left">SYTHEX</td><td class="center">2</td><td class="center">13</td><td class="center">3,28%</td></tr>
+            <tr><td class="left">Rafael S. Francisco</td><td class="center">2</td><td class="center">5</td><td class="center">3,28%</td></tr>
+            <tr><td class="left">Rafael P. Santos</td><td class="center">1</td><td class="center">4</td><td class="center">1,64%</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- PEDIDOS PENDENTES -->
     <div class="panel">
       <h2>Pedidos Pendentes</h2>
 
@@ -210,10 +243,10 @@
         <table>
           <thead>
             <tr>
-              <th>Pedido</th>
-              <th>Integrado</th>
-              <th>Status</th>
-              <th>Cliente</th>
+              <th class="center">Pedido</th>
+              <th class="center">Integrado</th>
+              <th class="center">Status</th>
+              <th class="left">Cliente</th>
             </tr>
           </thead>
         </table>
@@ -221,12 +254,11 @@
         <div class="scroll">
           <table>
             <tbody class="scroll-body">
-              <tr><td class="pedido">688743</td><td>10:06</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
-              <tr><td class="pedido">688844</td><td>15:16</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
-              <tr><td class="pedido">688842</td><td>15:14</td><td><span class="pill conferir-pill">Falta Conferir</span></td><td>Cliente</td></tr>
-              <tr><td class="pedido">688743</td><td>10:06</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
-              <tr><td class="pedido">688844</td><td>15:16</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
-              <tr><td class="pedido">688842</td><td>15:14</td><td><span class="pill conferir-pill">Falta Conferir</span></td><td>Cliente</td></tr>
+              <tr><td class="pedido center">688743</td><td class="center">10:06</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
+              <tr><td class="pedido center">688844</td><td class="center">15:16</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
+              <tr><td class="pedido center">688854</td><td class="center">15:36</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
+              <tr><td class="pedido center">688852</td><td class="center">15:36</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
+              <tr><td class="pedido center">688842</td><td class="center">15:14</td><td class="center"><span class="pill conferir-pill">Falta Conferir</span></td><td class="left">Cliente</td></tr>
             </tbody>
           </table>
         </div>
