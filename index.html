@@ -16,15 +16,13 @@
       --borda: #d7e1ee;
       --texto: #001E50;
       --muted: #65758b;
-      --amarelo: #f5b301;
+      --amarelo: #f5b301;   /* Falta Separar (alto alerta) */
+      --laranja: #f97316;   /* Falta Conferir (meio caminho) */
       --vermelho: #df4c4c;
-      --laranja: #f97316;
       --shadow: 0 12px 28px rgba(0, 30, 80, 0.10);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -37,10 +35,10 @@
     .container {
       width: 100vw;
       height: 100vh;
-      padding: 18px;
+      padding: 16px;
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 16px;
+      grid-template-rows: auto auto 1fr;
+      gap: 14px;
     }
 
     .topbar {
@@ -50,553 +48,193 @@
       gap: 16px;
       background: var(--card);
       border: 1px solid var(--borda);
-      border-radius: 22px;
-      padding: 16px 22px;
+      border-radius: 18px;
+      padding: 14px 18px;
       box-shadow: var(--shadow);
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand img { height: 52px; }
 
-    .brand img {
-      height: 58px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .title h1 {
-      margin: 0;
-      font-size: 34px;
-      line-height: 1;
-      color: var(--azul-escuro);
-      letter-spacing: 0.2px;
-    }
-
-    .title p {
-      margin: 7px 0 0;
-      font-size: 16px;
-      color: var(--muted);
-      font-weight: 700;
-    }
+    .title h1 { margin: 0; font-size: 28px; color: var(--azul-escuro); }
+    .title p { margin: 4px 0 0; font-size: 14px; color: var(--muted); font-weight: 700; }
 
     .update-box {
-      background: linear-gradient(135deg, rgba(40, 88, 240, 0.10), rgba(255, 210, 240, 0.28));
+      background: linear-gradient(135deg, rgba(40,88,240,.1), rgba(255,210,240,.25));
       border: 1px solid #cadbff;
-      border-radius: 16px;
-      padding: 12px 18px;
-      min-width: 265px;
+      border-radius: 14px;
+      padding: 10px 16px;
       text-align: center;
     }
 
-    .update-box .label {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 4px;
-    }
+    .update-box .label { font-size: 11px; color: var(--muted); font-weight: 800; text-transform: uppercase; }
+    .update-box .time { font-size: 20px; color: var(--azul); font-weight: 900; }
 
-    .update-box .time {
-      font-size: 25px;
-      color: var(--azul);
-      font-weight: 800;
-    }
-
+    /* ORDEM CRONOLÓGICA */
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr 1fr 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
     }
 
     .hero-card {
       background: var(--card);
       border: 1px solid var(--borda);
-      border-top: 8px solid var(--azul);
-      border-radius: 20px;
-      padding: 18px;
+      border-top: 7px solid var(--azul);
+      border-radius: 16px;
+      padding: 12px;
       box-shadow: var(--shadow);
-      min-height: 135px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: flex; flex-direction: column; justify-content: space-between;
     }
 
-    .hero-card.concluido {
-      border-top-color: var(--verde);
-    }
+    .hero-card.separar { border-top-color: var(--amarelo); }
+    .hero-card.conferir { border-top-color: var(--laranja); }
+    .hero-card.pendente { border-top-color: var(--vermelho); }
+    .hero-card.concluido { border-top-color: var(--verde); }
 
-    .hero-card.execucao {
-      border-top-color: var(--azul);
-    }
-
-    .hero-card.separar {
-      border-top-color: var(--amarelo);
-    }
-
-    .hero-card.conferir {
-      border-top-color: var(--laranja);
-    }
-
-    .hero-card.pendente {
-      border-top-color: var(--vermelho);
-      background: linear-gradient(135deg, #ffffff 0%, #fff7f7 100%);
-    }
-
-    .hero-card .label {
-      font-size: 15px;
-      color: var(--muted);
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1.25;
-    }
-
-    .hero-card .value {
-      font-size: 58px;
-      font-weight: 900;
-      line-height: 1;
-      color: var(--azul-escuro);
-    }
-
-    .hero-card .note {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 700;
-    }
+    .hero-card .label { font-size: 12px; font-weight: 900; color: var(--muted); text-transform: uppercase; }
+    .hero-card .value { font-size: 42px; font-weight: 900; }
 
     .content-grid {
       display: grid;
-      grid-template-columns: 0.85fr 1.65fr;
-      gap: 16px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       min-height: 0;
     }
 
     .panel {
       background: var(--card);
       border: 1px solid var(--borda);
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-      min-height: 0;
-    }
-
-    .panel h2 {
-      margin: 0 0 14px;
-      font-size: 24px;
-      color: var(--azul-escuro);
-    }
-
-    .process-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .process-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 12px;
-      background: #f7f9fc;
-      border: 1px solid var(--borda);
-      border-left: 7px solid var(--azul);
       border-radius: 16px;
-      padding: 16px;
-      min-height: 82px;
-    }
-
-    .process-item.concluido {
-      border-left-color: var(--verde);
-    }
-
-    .process-item.execucao {
-      border-left-color: var(--azul);
-    }
-
-    .process-item.separar {
-      border-left-color: var(--amarelo);
-    }
-
-    .process-item.conferir {
-      border-left-color: var(--laranja);
-    }
-
-    .process-item .name {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--azul-escuro);
-    }
-
-    .process-item .desc {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 700;
-      margin-top: 4px;
-    }
-
-    .process-item .qty {
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--azul-escuro);
-      line-height: 1;
-    }
-
-    .pending-panel {
-      display: grid;
-      grid-template-rows: auto 1fr;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
       min-height: 0;
     }
 
-    .pending-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 12px;
-    }
+    .panel h2 { margin: 0 0 10px; font-size: 20px; }
 
-    .pending-header h2 {
-      margin: 0;
-      font-size: 26px;
-      color: var(--azul-escuro);
-    }
+    /* TABELA FIX HEADER */
+    .table-shell { flex: 1; overflow: hidden; border-radius: 12px; border: 1px solid var(--borda); }
 
-    .pending-header p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
+    table { width: 100%; border-collapse: collapse; }
 
-    .legend {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+    thead { background: #eef4ff; position: sticky; top: 0; }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 13px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
+    th { font-size: 12px; text-transform: uppercase; padding: 10px; color: var(--muted); }
+    td { padding: 10px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #e8eef5; }
 
-    .pill.separar {
-      background: rgba(245, 179, 1, 0.16);
-      color: #9a6a00;
-      border: 1px solid rgba(245, 179, 1, 0.26);
-    }
+    .scroll { height: 100%; overflow: hidden; }
+    .scroll-body { animation: scroll 30s linear infinite; }
 
-    .pill.conferir {
-      background: rgba(249, 115, 22, 0.14);
-      color: #b45309;
-      border: 1px solid rgba(249, 115, 22, 0.24);
-    }
+    @keyframes scroll { 0%{transform:translateY(0);}100%{transform:translateY(-50%);} }
 
-    .table-shell {
-      min-height: 0;
-      overflow: hidden;
-      border: 1px solid var(--borda);
-      border-radius: 18px;
-      background: #ffffff;
-    }
+    /* STATUS */
+    .pill { padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 900; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    .separar-pill { background: rgba(245,179,1,.2); color:#9a6a00; }
+    .conferir-pill { background: rgba(249,115,22,.2); color:#b45309; }
 
-    thead {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-    }
+    .pedido { color: var(--azul); font-weight: 900; }
 
-    th {
-      background: linear-gradient(135deg, #eef4ff, #f7f9fc);
-      color: var(--muted);
-      text-align: left;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 14px;
-      border-bottom: 1px solid var(--borda);
-      font-weight: 900;
-    }
+    /* TABELA RESUMO */
+    .small-table td { font-size: 13px; }
 
-    td {
-      padding: 14px;
-      border-bottom: 1px solid #e8eef5;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--azul-escuro);
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .pedido {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--azul);
-    }
-
-    .cliente {
-      color: var(--azul-escuro);
-      font-weight: 800;
-    }
-
-    .scroll-area {
-      max-height: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .scroll-content {
-      animation: scrollSlow 35s linear infinite;
-    }
-
-    .scroll-area:hover .scroll-content {
-      animation-play-state: paused;
-    }
-
-    @keyframes scrollSlow {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-35%); }
-    }
-
-    .footer-note {
-      text-align: right;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--muted);
-    }
-
-    @media (max-width: 1280px) {
-      body { overflow: auto; }
-      .container { height: auto; }
-      .topbar,
-      .hero-grid,
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-      .scroll-content {
-        animation: none;
-      }
-      .brand img {
-        height: 52px;
-      }
-      .title h1 {
-        font-size: 28px;
-      }
+    @media (max-width: 1200px){
+      body{overflow:auto}
+      .container{height:auto}
+      .hero-grid, .content-grid{grid-template-columns:1fr}
+      .scroll-body{animation:none}
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <header class="topbar">
-      <div class="brand">
-        <img src="logo-labor.png" alt="Labor Health Supply" />
-        <div class="title">
-          <h1>Painel Operacional — Separação e Conferência</h1>
-          <p>O que concluímos, o que estamos concluindo e o que falta concluir</p>
+  <div class="topbar">
+    <div class="brand">
+      <img src="logo-labor.png">
+      <div class="title">
+        <h1>Painel Operacional</h1>
+        <p>Separação e Conferência</p>
+      </div>
+    </div>
+    <div class="update-box">
+      <div class="label">Atualização</div>
+      <div class="time">22/04 15:40</div>
+    </div>
+  </div>
+
+  <!-- ORDEM CORRETA -->
+  <div class="hero-grid">
+    <div class="hero-card separar"><div class="label">Falta separar</div><div class="value">5</div></div>
+    <div class="hero-card conferir"><div class="label">Falta conferir</div><div class="value">1</div></div>
+    <div class="hero-card pendente"><div class="label">Total pendente</div><div class="value">6</div></div>
+    <div class="hero-card concluido"><div class="label">Concluído</div><div class="value">51</div></div>
+    <div class="hero-card"><div class="label">Total pedidos</div><div class="value">66</div></div>
+  </div>
+
+  <div class="content-grid">
+
+    <!-- RESUMO SEPARADORES -->
+    <div class="panel">
+      <h2>Produtividade Separadores</h2>
+      <div class="table-shell">
+        <table class="small-table">
+          <thead>
+            <tr>
+              <th>Separador</th>
+              <th>Pedidos</th>
+              <th>Endereços</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Debora Correa</td><td>12</td><td>544</td><td>19,67%</td></tr>
+            <tr><td>Karina A. Souza</td><td>10</td><td>151</td><td>16,39%</td></tr>
+            <tr><td>Rosana Morais</td><td>10</td><td>477</td><td>16,39%</td></tr>
+            <tr><td>Waldenice Brito</td><td>9</td><td>72</td><td>14,75%</td></tr>
+            <tr><td>Maria Rosinete</td><td>9</td><td>121</td><td>14,75%</td></tr>
+            <tr><td>Gabriel</td><td>4</td><td>21</td><td>6,56%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PEDIDOS PENDENTES -->
+    <div class="panel">
+      <h2>Pedidos Pendentes</h2>
+
+      <div class="table-shell">
+        <table>
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Integrado</th>
+              <th>Status</th>
+              <th>Cliente</th>
+            </tr>
+          </thead>
+        </table>
+
+        <div class="scroll">
+          <table>
+            <tbody class="scroll-body">
+              <tr><td class="pedido">688743</td><td>10:06</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
+              <tr><td class="pedido">688844</td><td>15:16</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
+              <tr><td class="pedido">688842</td><td>15:14</td><td><span class="pill conferir-pill">Falta Conferir</span></td><td>Cliente</td></tr>
+              <tr><td class="pedido">688743</td><td>10:06</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
+              <tr><td class="pedido">688844</td><td>15:16</td><td><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
+              <tr><td class="pedido">688842</td><td>15:14</td><td><span class="pill conferir-pill">Falta Conferir</span></td><td>Cliente</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
-
-      <div class="update-box">
-        <div class="label">Última atualização</div>
-        <div class="time">22/04/2026 15:40</div>
-      </div>
-    </header>
-
-    <section class="hero-grid">
-      <div class="hero-card concluido">
-        <div class="label">Concluído</div>
-        <div class="value">51</div>
-        <div class="note">Pedidos conferidos</div>
-      </div>
-
-      <div class="hero-card execucao">
-        <div class="label">Em execução</div>
-        <div class="value">6</div>
-        <div class="note">Separação + Conferência</div>
-      </div>
-
-      <div class="hero-card separar">
-        <div class="label">Falta separar</div>
-        <div class="value">5</div>
-        <div class="note">Pedidos não iniciados</div>
-      </div>
-
-      <div class="hero-card conferir">
-        <div class="label">Falta conferir</div>
-        <div class="value">1</div>
-        <div class="note">Separados sem conferência</div>
-      </div>
-
-      <div class="hero-card pendente">
-        <div class="label">Total pendente</div>
-        <div class="value">6</div>
-        <div class="note">Falta separar + falta conferir</div>
-      </div>
-    </section>
-
-    <main class="content-grid">
-      <section class="panel">
-        <h2>Resumo da Operação</h2>
-
-        <div class="process-list">
-          <div class="process-item concluido">
-            <div>
-              <div class="name">Pedidos concluídos</div>
-              <div class="desc">Já passaram por conferência</div>
-            </div>
-            <div class="qty">51</div>
-          </div>
-
-          <div class="process-item execucao">
-            <div>
-              <div class="name">Em separação</div>
-              <div class="desc">Pedidos em execução pelo time de separação</div>
-            </div>
-            <div class="qty">3</div>
-          </div>
-
-          <div class="process-item execucao">
-            <div>
-              <div class="name">Em conferência</div>
-              <div class="desc">Pedidos em execução pelo time de conferência</div>
-            </div>
-            <div class="qty">3</div>
-          </div>
-
-          <div class="process-item separar">
-            <div>
-              <div class="name">Falta separar</div>
-              <div class="desc">Pedidos integrados ainda não iniciados</div>
-            </div>
-            <div class="qty">5</div>
-          </div>
-
-          <div class="process-item conferir">
-            <div>
-              <div class="name">Falta conferir</div>
-              <div class="desc">Pedidos separados aguardando conferência</div>
-            </div>
-            <div class="qty">1</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel pending-panel">
-        <div class="pending-header">
-          <div>
-            <h2>Pedidos Pendentes de Ação</h2>
-            <p>Somente pedidos que ainda não foram separados ou ainda não foram conferidos.</p>
-          </div>
-          <div class="legend">
-            <span class="pill separar">Falta Separar</span>
-            <span class="pill conferir">Falta Conferir</span>
-          </div>
-        </div>
-
-        <div class="table-shell scroll-area">
-          <div class="scroll-content">
-            <table>
-              <thead>
-                <tr>
-                  <th>Pedido Origem</th>
-                  <th>Integrado</th>
-                  <th>Status</th>
-                  <th>Cliente</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="pedido">688743</td>
-                  <td>22/04/2026 10:06</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688844</td>
-                  <td>22/04/2026 15:16</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688854</td>
-                  <td>22/04/2026 15:36</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688852</td>
-                  <td>22/04/2026 15:36</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688842</td>
-                  <td>22/04/2026 15:14</td>
-                  <td><span class="pill conferir">Falta Conferir</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-
-                <!-- Linhas duplicadas apenas para permitir rolagem contínua suave na TV -->
-                <tr>
-                  <td class="pedido">688743</td>
-                  <td>22/04/2026 10:06</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688844</td>
-                  <td>22/04/2026 15:16</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688854</td>
-                  <td>22/04/2026 15:36</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688852</td>
-                  <td>22/04/2026 15:36</td>
-                  <td><span class="pill separar">Falta Separar</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-                <tr>
-                  <td class="pedido">688842</td>
-                  <td>22/04/2026 15:14</td>
-                  <td><span class="pill conferir">Falta Conferir</span></td>
-                  <td class="cliente">Cliente não informado</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer-note">
-      Para exibir o logo, coloque o arquivo <strong>logo-labor.png</strong> na mesma pasta deste index.html.
-    </footer>
+    </div>
 
   </div>
+
+</div>
 </body>
 </html>
