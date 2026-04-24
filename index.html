@@ -1,240 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Operacional - Separação e Conferência</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Operacional</title>
 
-  <style>
-    :root {
-      --azul-escuro: #001E50;
-      --azul: #2858F0;
-      --verde: #64E678;
-      --fundo: #edf3f8;
-      --card: #ffffff;
-      --borda: #d7e1ee;
-      --texto: #001E50;
-      --muted: #65758b;
-      --vermelho: #df4c4c;
-      --roxo: #7c3aed;
-      --laranja: #f97316;
-      --top3: #fff7d6;
-      --shadow: 0 12px 28px rgba(0, 30, 80, 0.10);
-    }
+<style>
+:root {
+  --azul-escuro:#001E50;
+  --azul:#2858F0;
+  --verde:#64E678;
+  --fundo:#edf3f8;
+  --card:#ffffff;
+  --borda:#d7e1ee;
+  --muted:#65758b;
+  --vermelho:#df4c4c;
+  --roxo:#7c3aed;
+  --laranja:#f97316;
+}
 
-    * { box-sizing: border-box; }
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(180deg,#f7faff,#edf3f8);
+  overflow:hidden;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #f7faff 0%, var(--fundo) 100%);
-      color: var(--texto);
-      overflow: hidden;
-    }
+.container{
+  height:100vh;
+  display:grid;
+  grid-template-rows:auto auto 1fr;
+  gap:14px;
+  padding:16px;
+}
 
-    .container {
-      width: 100vw;
-      height: 100vh;
-      padding: 16px;
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 14px;
-    }
+/* TOPO */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(135deg,#001E50,#164a98);
+  padding:14px 18px;
+  border-radius:16px;
+  color:#fff;
+}
 
-    /* TOPO */
-    .topbar {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 16px;
-      background: linear-gradient(135deg, var(--azul-escuro) 0%, #07316f 58%, #164a98 100%);
-      border-radius: 18px;
-      padding: 14px 18px;
-      box-shadow: var(--shadow);
-      color: #fff;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
 
-    .brand { display: flex; align-items: center; gap: 14px; }
+.brand img{
+  height:55px;
+  background:#fff;
+  padding:6px 12px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}
 
-    .brand img {
-      height: 55px;
-      background: #fff;
-      padding: 6px 12px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
+.title h1{margin:0;font-size:28px;}
+.title p{margin:4px 0 0;font-size:13px;opacity:.8;}
 
-    .title h1 { margin: 0; font-size: 30px; }
-    .title p { margin: 5px 0 0; font-size: 15px; color: #dce8ff; font-weight: 700; }
+.update-box{
+  background:rgba(255,255,255,.15);
+  padding:10px 16px;
+  border-radius:12px;
+}
 
-    .update-box {
-      background: rgba(255,255,255,.12);
-      border-radius: 14px;
-      padding: 10px 16px;
-      text-align: center;
-    }
+.update-box .time{
+  font-size:18px;
+  font-weight:bold;
+}
 
-    .update-box .label { font-size: 11px; text-transform: uppercase; }
-    .update-box .time { font-size: 20px; font-weight: 900; }
+/* CARDS */
+.hero{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
 
-    /* CARDS */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-    }
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:12px;
+  border-top:6px solid var(--azul);
+}
 
-    .hero-card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 12px;
-      border-top: 7px solid var(--azul);
-      box-shadow: var(--shadow);
-    }
+.separar{border-color:var(--vermelho);}
+.conferir{border-color:var(--roxo);}
+.pendente{border-color:var(--laranja);}
+.concluido{border-color:var(--verde);}
 
-    .separar { border-top-color: var(--vermelho); }
-    .conferir { border-top-color: var(--roxo); }
-    .pendente { border-top-color: var(--laranja); }
-    .concluido { border-top-color: var(--verde); }
+.card .label{
+  font-size:11px;
+  color:var(--muted);
+  font-weight:bold;
+}
 
-    .hero-card .label { font-size: 12px; font-weight: 900; color: var(--muted); }
-    .hero-card .value { font-size: 42px; font-weight: 900; }
+.card .value{
+  font-size:36px;
+  font-weight:bold;
+}
 
-    /* GRID */
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      min-height: 0;
-    }
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  height:100%;
+}
 
-    .panel {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 14px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-    }
+.panel{
+  background:#fff;
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+}
 
-    .panel h2 { margin: 0 0 10px; }
+.panel h2{
+  margin:0 0 10px;
+  font-size:16px;
+}
 
-    .table-shell {
-      flex: 1;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid var(--borda);
-    }
+/* TABELA */
+.table-box{
+  flex:1;
+  overflow:hidden;
+  border:1px solid var(--borda);
+  border-radius:10px;
+}
 
-    table { width: 100%; border-collapse: collapse; }
+table{
+  width:100%;
+  border-collapse:collapse;
+}
 
-    thead { background: #eef4ff; }
+thead{
+  background:#eef4ff;
+  position:sticky;
+  top:0;
+}
 
-    th, td { padding: 10px; font-size: 14px; }
-    th { color: var(--muted); text-transform: uppercase; }
-    td { border-bottom: 1px solid #eee; }
+th,td{
+  padding:9px;
+  font-size:13px;
+}
 
-    .center { text-align: center; }
-    .left { text-align: left; }
+th{
+  color:var(--muted);
+  text-transform:uppercase;
+}
 
-    .top3 { background: var(--top3); }
+td{
+  border-bottom:1px solid #eee;
+}
 
-    /* STATUS */
-    .pill {
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 12px;
-    }
+.center{text-align:center;}
+.left{text-align:left;}
 
-    .separar-pill { background:#ffe5e5; color:#b91c1c; }
-    .conferir-pill { background:#ede9fe; color:#6d28d9; }
+/* STATUS */
+.pill{
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+}
 
-    /* SCROLL */
-    .scroll { height:100%; overflow:hidden; }
+.separar-pill{background:#ffe5e5;color:#b91c1c;}
+.conferir-pill{background:#ede9fe;color:#6d28d9;}
 
-    .scroll-body.auto-scroll {
-      animation: scroll 30s linear infinite;
-    }
+/* SCROLL */
+.scroll{
+  height:100%;
+  overflow:hidden;
+}
 
-    @keyframes scroll {
-      0%{transform:translateY(0);}
-      100%{transform:translateY(-50%);}
-    }
+.scroll-body.auto-scroll{
+  animation:scroll 30s linear infinite;
+}
 
-  </style>
+@keyframes scroll{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-50%);}
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <div class="topbar">
-    <div class="brand">
-      <img src="logo-labor.png" alt="Labor">
-      <div class="title">
-        <h1>Painel Operacional</h1>
-        <p>Separação e Conferência • tempo real</p>
-      </div>
-    </div>
-
-    <div class="update-box">
-      <div class="label">Atualização</div>
-      <div class="time" id="atualizacao">--</div>
+<div class="topbar">
+  <div class="brand">
+    <img src="logo-labor.png">
+    <div class="title">
+      <h1>Painel Operacional</h1>
+      <p>Separação e Conferência</p>
     </div>
   </div>
 
-  <div class="hero-grid">
-    <div class="hero-card separar"><div class="label">Falta separar</div><div id="faltaSeparar" class="value">0</div></div>
-    <div class="hero-card conferir"><div class="label">Falta conferir</div><div id="faltaConferir" class="value">0</div></div>
-    <div class="hero-card pendente"><div class="label">Total pendente</div><div id="totalPendente" class="value">0</div></div>
-    <div class="hero-card concluido"><div class="label">Concluído</div><div id="concluido" class="value">0</div></div>
-    <div class="hero-card"><div class="label">Total pedidos</div><div id="totalPedidos" class="value">0</div></div>
+  <div class="update-box">
+    <div class="time" id="atualizacao">--</div>
   </div>
+</div>
 
-  <div class="content-grid">
+<div class="hero">
+  <div class="card separar"><div class="label">Falta separar</div><div id="faltaSeparar" class="value">0</div></div>
+  <div class="card conferir"><div class="label">Falta conferir</div><div id="faltaConferir" class="value">0</div></div>
+  <div class="card pendente"><div class="label">Total pendente</div><div id="totalPendente" class="value">0</div></div>
+  <div class="card concluido"><div class="label">Concluído</div><div id="concluido" class="value">0</div></div>
+  <div class="card"><div class="label">Total pedidos</div><div id="totalPedidos" class="value">0</div></div>
+</div>
 
-    <div class="panel">
-      <h2>Produtividade Separadores</h2>
-      <div class="table-shell">
-        <table>
-          <thead>
-            <tr>
-              <th class="left">Separador</th>
-              <th class="center">Pedidos</th>
-              <th class="center">Endereços</th>
-              <th class="center">%</th>
-            </tr>
-          </thead>
-          <tbody id="produtividade"></tbody>
-        </table>
-      </div>
-    </div>
+<div class="grid">
 
-    <div class="panel">
-      <h2>Pedidos Pendentes</h2>
+<div class="panel">
+<h2>Produtividade do Time</h2>
+<div class="table-box">
+<table>
+<thead>
+<tr>
+<th class="left">Separador</th>
+<th class="center">Pedidos</th>
+<th class="center">Endereços</th>
+<th class="center">%</th>
+</tr>
+</thead>
+<tbody id="produtividade"></tbody>
+</table>
+</div>
+</div>
 
-      <div class="table-shell">
-        <table>
-          <thead>
-            <tr>
-              <th class="center">Pedido</th>
-              <th class="center">Integrado</th>
-              <th class="center">Status</th>
-              <th class="left">Cliente</th>
-            </tr>
-          </thead>
-        </table>
+<div class="panel">
+<h2>Pedidos Pendentes</h2>
 
-        <div class="scroll" id="scrollArea">
-          <table>
-            <tbody id="pedidos" class="scroll-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+<div class="table-box">
+<table>
+<thead>
+<tr>
+<th class="center">Pedido</th>
+<th class="center">Integrado</th>
+<th class="center">Status</th>
+<th class="left">Cliente</th>
+</tr>
+</thead>
+</table>
 
-  </div>
+<div class="scroll" id="scrollArea">
+<table>
+<tbody id="pedidos" class="scroll-body"></tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -254,10 +278,10 @@ async function carregar() {
   const prod = document.getElementById('produtividade');
   prod.innerHTML = '';
 
-  data.produtividade.forEach((p,i)=>{
+  data.produtividade.forEach(p=>{
     prod.innerHTML += `
-      <tr class="${i<3?'top3':''}">
-        <td>${i<3?['🥇','🥈','🥉'][i]+' ':''}${p.separador}</td>
+      <tr>
+        <td>${p.separador}</td>
         <td class="center">${p.pedidos}</td>
         <td class="center">${p.enderecos}</td>
         <td class="center">${p.percentual}</td>
