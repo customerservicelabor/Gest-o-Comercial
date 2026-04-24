@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Operacional CD</title>
+  <title>Painel Operacional - Separação e Conferência</title>
+
   <style>
     :root {
-      --bg: #eaf0f7;
-      --bg-soft: #f4f7fb;
-      --panel: #ffffff;
-      --panel-soft: #f7f9fc;
-      --border: #d7e1ee;
-      --text: #001e50;
-      --muted: #5f7391;
-      --brand: #001e50;
-      --brand-2: #2858f0;
-      --success: #64e678;
-      --warning: #f5b301;
-      --danger: #df4c4c;
-      --info: #3f8cff;
-      --pink-soft: #ffd2f0;
-      --shadow: 0 10px 28px rgba(0, 30, 80, 0.08);
+      --azul-escuro: #001E50;
+      --azul: #2858F0;
+      --verde: #64E678;
+      --rosa: #FFD2F0;
+      --fundo: #edf3f8;
+      --card: #ffffff;
+      --borda: #d7e1ee;
+      --texto: #001E50;
+      --muted: #65758b;
+      --amarelo: #f5b301;
+      --vermelho: #df4c4c;
+      --laranja: #f97316;
+      --shadow: 0 12px 28px rgba(0, 30, 80, 0.10);
     }
 
     * {
@@ -30,27 +29,29 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
-      color: var(--text);
+      background: linear-gradient(180deg, #f7faff 0%, var(--fundo) 100%);
+      color: var(--texto);
+      overflow: hidden;
     }
 
     .container {
-      width: 100%;
-      min-height: 100vh;
+      width: 100vw;
+      height: 100vh;
       padding: 18px;
       display: grid;
+      grid-template-rows: auto auto 1fr auto;
       gap: 16px;
     }
 
     .topbar {
       display: grid;
-      grid-template-columns: 1.6fr 0.8fr auto;
-      gap: 16px;
+      grid-template-columns: 1fr auto;
       align-items: center;
-      background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 18px 22px;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      padding: 16px 22px;
       box-shadow: var(--shadow);
     }
 
@@ -61,302 +62,356 @@
     }
 
     .brand img {
-      height: 62px;
+      height: 58px;
       width: auto;
       object-fit: contain;
       display: block;
-      background: transparent;
     }
 
     .title h1 {
       margin: 0;
       font-size: 34px;
       line-height: 1;
-      color: var(--brand);
+      color: var(--azul-escuro);
       letter-spacing: 0.2px;
     }
 
     .title p {
-      margin: 8px 0 0;
-      color: var(--muted);
+      margin: 7px 0 0;
       font-size: 16px;
+      color: var(--muted);
       font-weight: 700;
     }
 
     .update-box {
-      background: linear-gradient(135deg, rgba(40, 88, 240, 0.08), rgba(255, 210, 240, 0.22));
-      border: 1px solid #cfe0ff;
+      background: linear-gradient(135deg, rgba(40, 88, 240, 0.10), rgba(255, 210, 240, 0.28));
+      border: 1px solid #cadbff;
       border-radius: 16px;
-      padding: 14px 16px;
+      padding: 12px 18px;
+      min-width: 265px;
       text-align: center;
     }
 
     .update-box .label {
-      font-size: 13px;
-      text-transform: uppercase;
+      font-size: 12px;
       color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
     }
 
     .update-box .time {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--brand-2);
-    }
-
-    .nav-btn {
-      background: linear-gradient(135deg, var(--brand-2), #3d6bff);
-      color: white;
-      border: none;
-      border-radius: 14px;
-      padding: 16px 22px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(40, 88, 240, 0.2);
+      font-size: 25px;
+      color: var(--azul);
+      font-weight: 800;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr 1fr;
+      gap: 14px;
     }
 
     .hero-card {
-      background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
-      border: 1px solid var(--border);
-      border-top: 8px solid var(--brand-2);
-      border-radius: 22px;
-      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-top: 8px solid var(--azul);
+      border-radius: 20px;
+      padding: 18px;
       box-shadow: var(--shadow);
-      min-height: 150px;
+      min-height: 135px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .hero-card.open {
-      border-top-color: var(--warning);
+    .hero-card.concluido {
+      border-top-color: var(--verde);
+    }
+
+    .hero-card.execucao {
+      border-top-color: var(--azul);
+    }
+
+    .hero-card.separar {
+      border-top-color: var(--amarelo);
+    }
+
+    .hero-card.conferir {
+      border-top-color: var(--laranja);
+    }
+
+    .hero-card.pendente {
+      border-top-color: var(--vermelho);
+      background: linear-gradient(135deg, #ffffff 0%, #fff7f7 100%);
     }
 
     .hero-card .label {
-      font-size: 18px;
+      font-size: 15px;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      line-height: 1.25;
     }
 
     .hero-card .value {
-      font-size: 68px;
+      font-size: 58px;
+      font-weight: 900;
       line-height: 1;
-      font-weight: 700;
-      color: var(--brand);
-    }
-
-    .hero-card.open .value {
-      color: #b7791f;
+      color: var(--azul-escuro);
     }
 
     .hero-card .note {
-      font-size: 16px;
+      font-size: 13px;
       color: var(--muted);
       font-weight: 700;
     }
 
-    .main-grid {
+    .content-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 0.85fr 1.65fr;
       gap: 16px;
+      min-height: 0;
     }
 
     .panel {
-      background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
-      border: 1px solid var(--border);
-      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 22px;
       padding: 18px;
       box-shadow: var(--shadow);
+      min-height: 0;
     }
 
     .panel h2 {
       margin: 0 0 14px;
       font-size: 24px;
-      color: var(--brand);
+      color: var(--azul-escuro);
     }
 
-    .mini-grid {
+    .process-list {
       display: grid;
       gap: 12px;
     }
 
-    .mini-kpi {
-      background: var(--panel-soft);
-      border: 1px solid var(--border);
-      border-left: 6px solid var(--brand-2);
+    .process-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      background: #f7f9fc;
+      border: 1px solid var(--borda);
+      border-left: 7px solid var(--azul);
       border-radius: 16px;
-      padding: 14px;
-      min-height: 96px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      padding: 16px;
+      min-height: 82px;
     }
 
-    .mini-kpi.warning { border-left-color: var(--warning); }
-    .mini-kpi.info { border-left-color: var(--info); }
-    .mini-kpi.success { border-left-color: var(--success); }
-    .mini-kpi.danger { border-left-color: var(--danger); }
+    .process-item.concluido {
+      border-left-color: var(--verde);
+    }
 
-    .mini-kpi .label {
+    .process-item.execucao {
+      border-left-color: var(--azul);
+    }
+
+    .process-item.separar {
+      border-left-color: var(--amarelo);
+    }
+
+    .process-item.conferir {
+      border-left-color: var(--laranja);
+    }
+
+    .process-item .name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--azul-escuro);
+    }
+
+    .process-item .desc {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .process-item .qty {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--azul-escuro);
+      line-height: 1;
+    }
+
+    .pending-panel {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 0;
+    }
+
+    .pending-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .pending-header h2 {
+      margin: 0;
+      font-size: 26px;
+      color: var(--azul-escuro);
+    }
+
+    .pending-header p {
+      margin: 4px 0 0;
       color: var(--muted);
       font-size: 14px;
       font-weight: 700;
-      line-height: 1.25;
     }
 
-    .mini-kpi .value {
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--brand);
-    }
-
-    .simple-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .simple-item {
+    .legend {
       display: flex;
-      justify-content: space-between;
+      gap: 8px;
       align-items: center;
-      gap: 10px;
-      padding: 14px;
-      background: var(--panel-soft);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      font-size: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    .simple-item strong {
-      color: var(--brand-2);
-      font-size: 22px;
-    }
-
-    .tag {
+    .pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 6px 12px;
       border-radius: 999px;
+      padding: 7px 12px;
       font-size: 13px;
-      font-weight: 700;
-      text-align: center;
+      font-weight: 900;
       white-space: nowrap;
     }
 
-    .tag.red {
-      background: rgba(223, 76, 76, 0.12);
-      color: var(--danger);
-      border: 1px solid rgba(223, 76, 76, 0.2);
-    }
-
-    .tag.amber {
-      background: rgba(245, 179, 1, 0.14);
+    .pill.separar {
+      background: rgba(245, 179, 1, 0.16);
       color: #9a6a00;
-      border: 1px solid rgba(245, 179, 1, 0.22);
+      border: 1px solid rgba(245, 179, 1, 0.26);
     }
 
-    .tag.blue {
-      background: rgba(63, 140, 255, 0.12);
-      color: var(--info);
-      border: 1px solid rgba(63, 140, 255, 0.2);
+    .pill.conferir {
+      background: rgba(249, 115, 22, 0.14);
+      color: #b45309;
+      border: 1px solid rgba(249, 115, 22, 0.24);
     }
 
-    .tag.green {
-      background: rgba(100, 230, 120, 0.18);
-      color: #1b7b33;
-      border: 1px solid rgba(100, 230, 120, 0.25);
-    }
-
-    .attention-panel {
-      background: linear-gradient(135deg, #ffffff 0%, #fffaff 100%);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .attention-panel h2 {
-      margin: 0 0 14px;
-      font-size: 24px;
-      color: var(--brand);
+    .table-shell {
+      min-height: 0;
+      overflow: hidden;
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      background: #ffffff;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      background: #fff;
     }
 
-    th, td {
-      padding: 12px 14px;
-      text-align: left;
-      border-bottom: 1px solid #e8eef5;
-      font-size: 15px;
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 5;
     }
 
     th {
       background: linear-gradient(135deg, #eef4ff, #f7f9fc);
       color: var(--muted);
+      text-align: left;
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      padding: 14px;
+      border-bottom: 1px solid var(--borda);
+      font-weight: 900;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #e8eef5;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--azul-escuro);
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
+    .pedido {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--azul);
+    }
+
+    .cliente {
+      color: var(--azul-escuro);
+      font-weight: 800;
+    }
+
+    .scroll-area {
+      max-height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scroll-content {
+      animation: scrollSlow 35s linear infinite;
+    }
+
+    .scroll-area:hover .scroll-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollSlow {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-35%); }
+    }
+
     .footer-note {
       text-align: right;
-      color: var(--muted);
       font-size: 13px;
-      padding-top: 2px;
-      font-weight: 700;
+      font-weight: 800;
+      color: var(--muted);
     }
 
     @media (max-width: 1280px) {
+      body { overflow: auto; }
+      .container { height: auto; }
       .topbar,
       .hero-grid,
-      .main-grid {
+      .content-grid {
         grid-template-columns: 1fr;
       }
-
-      .brand {
-        flex-direction: column;
-        align-items: flex-start;
+      .scroll-content {
+        animation: none;
       }
-
       .brand img {
         height: 52px;
+      }
+      .title h1 {
+        font-size: 28px;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
 
-    <div class="topbar">
+    <header class="topbar">
       <div class="brand">
-        <img src="logo-labor.png" alt="Labor Health Supply">
+        <img src="logo-labor.png" alt="Labor Health Supply" />
         <div class="title">
-          <h1>Painel Operacional do CD</h1>
-          <p>Visão operacional simplificada para TV</p>
+          <h1>Painel Operacional — Separação e Conferência</h1>
+          <p>O que concluímos, o que estamos concluindo e o que falta concluir</p>
         </div>
       </div>
 
@@ -364,185 +419,184 @@
         <div class="label">Última atualização</div>
         <div class="time">22/04/2026 15:40</div>
       </div>
+    </header>
 
-      <button class="nav-btn">Visão Estratégica</button>
-    </div>
-
-    <div class="hero-grid">
-      <div class="hero-card">
-        <div class="label">Pedidos já integrados</div>
-        <div class="value">66</div>
-        <div class="note">Pedidos que entraram no fluxo operacional</div>
+    <section class="hero-grid">
+      <div class="hero-card concluido">
+        <div class="label">Concluído</div>
+        <div class="value">51</div>
+        <div class="note">Pedidos conferidos</div>
       </div>
 
-      <div class="hero-card open">
-        <div class="label">Pedidos ainda em aberto</div>
-        <div class="value">12</div>
-        <div class="note">Pedidos que ainda exigem ação da operação</div>
+      <div class="hero-card execucao">
+        <div class="label">Em execução</div>
+        <div class="value">6</div>
+        <div class="note">Separação + Conferência</div>
       </div>
-    </div>
 
-    <div class="main-grid">
-      <div class="panel">
-        <h2>Processo de Pedidos</h2>
-        <div class="mini-grid">
-          <div class="mini-kpi danger">
-            <div class="label">Pedidos no Comercial</div>
-            <div class="value">18</div>
+      <div class="hero-card separar">
+        <div class="label">Falta separar</div>
+        <div class="value">5</div>
+        <div class="note">Pedidos não iniciados</div>
+      </div>
+
+      <div class="hero-card conferir">
+        <div class="label">Falta conferir</div>
+        <div class="value">1</div>
+        <div class="note">Separados sem conferência</div>
+      </div>
+
+      <div class="hero-card pendente">
+        <div class="label">Total pendente</div>
+        <div class="value">6</div>
+        <div class="note">Falta separar + falta conferir</div>
+      </div>
+    </section>
+
+    <main class="content-grid">
+      <section class="panel">
+        <h2>Resumo da Operação</h2>
+
+        <div class="process-list">
+          <div class="process-item concluido">
+            <div>
+              <div class="name">Pedidos concluídos</div>
+              <div class="desc">Já passaram por conferência</div>
+            </div>
+            <div class="qty">51</div>
           </div>
-          <div class="mini-kpi warning">
-            <div class="label">Aguardando Separação</div>
-            <div class="value">5</div>
+
+          <div class="process-item execucao">
+            <div>
+              <div class="name">Em separação</div>
+              <div class="desc">Pedidos em execução pelo time de separação</div>
+            </div>
+            <div class="qty">3</div>
           </div>
-          <div class="mini-kpi info">
-            <div class="label">Em Separação</div>
-            <div class="value">3</div>
+
+          <div class="process-item execucao">
+            <div>
+              <div class="name">Em conferência</div>
+              <div class="desc">Pedidos em execução pelo time de conferência</div>
+            </div>
+            <div class="qty">3</div>
           </div>
-          <div class="mini-kpi purple" style="border-left-color:#b673ff;">
-            <div class="label">Aguardando Conferência</div>
-            <div class="value">1</div>
+
+          <div class="process-item separar">
+            <div>
+              <div class="name">Falta separar</div>
+              <div class="desc">Pedidos integrados ainda não iniciados</div>
+            </div>
+            <div class="qty">5</div>
           </div>
-          <div class="mini-kpi info">
-            <div class="label">Em Conferência</div>
-            <div class="value">3</div>
-          </div>
-          <div class="mini-kpi success">
-            <div class="label">Conferido</div>
-            <div class="value">51</div>
+
+          <div class="process-item conferir">
+            <div>
+              <div class="name">Falta conferir</div>
+              <div class="desc">Pedidos separados aguardando conferência</div>
+            </div>
+            <div class="qty">1</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="panel">
-        <h2>Expedição</h2>
-        <div class="simple-list">
-          <div class="simple-item">
-            <span>Patrus</span>
-            <strong>16:02</strong>
+      <section class="panel pending-panel">
+        <div class="pending-header">
+          <div>
+            <h2>Pedidos Pendentes de Ação</h2>
+            <p>Somente pedidos que ainda não foram separados ou ainda não foram conferidos.</p>
           </div>
-          <div class="simple-item">
-            <span>Jamef</span>
-            <strong>17:01</strong>
+          <div class="legend">
+            <span class="pill separar">Falta Separar</span>
+            <span class="pill conferir">Falta Conferir</span>
           </div>
         </div>
-      </div>
 
-      <div class="panel">
-        <h2>Não se Apresentou</h2>
-        <div class="simple-list">
-          <div class="simple-item">
-            <span>Arlete</span>
-            <span class="tag red">Pendente</span>
-          </div>
-          <div class="simple-item">
-            <span>Ativa</span>
-            <span class="tag red">Pendente</span>
-          </div>
-          <div class="simple-item">
-            <span>Schreiber</span>
-            <span class="tag red">Pendente</span>
+        <div class="table-shell scroll-area">
+          <div class="scroll-content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pedido Origem</th>
+                  <th>Integrado</th>
+                  <th>Status</th>
+                  <th>Cliente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="pedido">688743</td>
+                  <td>22/04/2026 10:06</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688844</td>
+                  <td>22/04/2026 15:16</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688854</td>
+                  <td>22/04/2026 15:36</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688852</td>
+                  <td>22/04/2026 15:36</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688842</td>
+                  <td>22/04/2026 15:14</td>
+                  <td><span class="pill conferir">Falta Conferir</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+
+                <!-- Linhas duplicadas apenas para permitir rolagem contínua suave na TV -->
+                <tr>
+                  <td class="pedido">688743</td>
+                  <td>22/04/2026 10:06</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688844</td>
+                  <td>22/04/2026 15:16</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688854</td>
+                  <td>22/04/2026 15:36</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688852</td>
+                  <td>22/04/2026 15:36</td>
+                  <td><span class="pill separar">Falta Separar</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+                <tr>
+                  <td class="pedido">688842</td>
+                  <td>22/04/2026 15:14</td>
+                  <td><span class="pill conferir">Falta Conferir</span></td>
+                  <td class="cliente">Cliente não informado</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
 
-    <div class="attention-panel">
-      <h2>Pedidos que precisam de atenção</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Pedido</th>
-            <th>Integrado</th>
-            <th>Linhas</th>
-            <th>Último registro</th>
-            <th>Status final</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>688743</td>
-            <td>10:06</td>
-            <td>7</td>
-            <td>-</td>
-            <td><span class="tag red">Aguardando Separação</span></td>
-          </tr>
-          <tr>
-            <td>688810</td>
-            <td>15:14</td>
-            <td>3</td>
-            <td>15:37</td>
-            <td><span class="tag amber">Em Separação</span></td>
-          </tr>
-          <tr>
-            <td>688842</td>
-            <td>15:14</td>
-            <td>2</td>
-            <td>15:34</td>
-            <td><span class="tag blue">Aguardando Conferência</span></td>
-          </tr>
-          <tr>
-            <td>688844</td>
-            <td>15:16</td>
-            <td>6</td>
-            <td>-</td>
-            <td><span class="tag red">Aguardando Separação</span></td>
-          </tr>
-          <tr>
-            <td>688850</td>
-            <td>15:31</td>
-            <td>3</td>
-            <td>15:39</td>
-            <td><span class="tag amber">Em Separação</span></td>
-          </tr>
-          <tr>
-            <td>688827</td>
-            <td>15:32</td>
-            <td>2</td>
-            <td>15:39</td>
-            <td><span class="tag amber">Em Separação</span></td>
-          </tr>
-          <tr>
-            <td>688854</td>
-            <td>15:36</td>
-            <td>5</td>
-            <td>-</td>
-            <td><span class="tag red">Aguardando Separação</span></td>
-          </tr>
-          <tr>
-            <td>688852</td>
-            <td>15:36</td>
-            <td>3</td>
-            <td>-</td>
-            <td><span class="tag red">Aguardando Separação</span></td>
-          </tr>
-          <tr>
-            <td>688768</td>
-            <td>11:17</td>
-            <td>48</td>
-            <td>12:00</td>
-            <td><span class="tag blue">Em Conferência</span></td>
-          </tr>
-          <tr>
-            <td>688808</td>
-            <td>14:14</td>
-            <td>217</td>
-            <td>14:43</td>
-            <td><span class="tag blue">Em Conferência</span></td>
-          </tr>
-          <tr>
-            <td>688829</td>
-            <td>14:50</td>
-            <td>6</td>
-            <td>15:21</td>
-            <td><span class="tag blue">Em Conferência</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <footer class="footer-note">
+      Para exibir o logo, coloque o arquivo <strong>logo-labor.png</strong> na mesma pasta deste index.html.
+    </footer>
 
-    <div class="footer-note">
-      Logo no index: coloque o arquivo na mesma pasta do HTML com o nome <strong>logo-labor.png</strong>.
-    </div>
   </div>
 </body>
 </html>
