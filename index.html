@@ -1,272 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Operacional - Separação e Conferência</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Operacional</title>
 
-  <style>
-    :root {
-      --azul-escuro: #001E50;
-      --azul: #2858F0;
-      --verde: #64E678;
-      --rosa: #FFD2F0;
-      --fundo: #edf3f8;
-      --card: #ffffff;
-      --borda: #d7e1ee;
-      --texto: #001E50;
-      --muted: #65758b;
-      --vermelho: #df4c4c;
-      --roxo: #7c3aed;
-      --laranja: #f97316;
-      --top3: #fff7d6;
-      --shadow: 0 12px 28px rgba(0, 30, 80, 0.10);
-    }
+<style>
+:root {
+  --azul-escuro:#001E50;
+  --azul:#2858F0;
+  --verde:#64E678;
+  --fundo:#edf3f8;
+  --card:#ffffff;
+  --borda:#d7e1ee;
+  --muted:#65758b;
+  --vermelho:#df4c4c;
+  --roxo:#7c3aed;
+  --laranja:#f97316;
+  --top3:#fff7d6;
+}
 
-    * { box-sizing: border-box; }
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--fundo);
+  overflow:hidden;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #f7faff 0%, var(--fundo) 100%);
-      color: var(--texto);
-      overflow: hidden;
-    }
+.container{
+  height:100vh;
+  display:grid;
+  grid-template-rows:auto auto 1fr;
+  gap:12px;
+  padding:12px;
+}
 
-    .container {
-      width: 100vw;
-      height: 100vh;
-      padding: 16px;
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 14px;
-    }
+/* TOPO */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(135deg,#001E50,#1d4ed8);
+  color:#fff;
+  padding:12px 16px;
+  border-radius:14px;
+}
 
-    .topbar {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 16px;
-      background: linear-gradient(135deg, var(--azul-escuro) 0%, #07316f 58%, #164a98 100%);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      padding: 14px 18px;
-      box-shadow: var(--shadow);
-      color: #fff;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .brand img {
-      height: 52px;
-      background: #fff;
-      padding: 6px 10px;
-      border-radius: 12px;
-    }
+.brand img{
+  height:48px;
+  background:#fff;
+  padding:4px;
+  border-radius:8px;
+}
 
-    .title h1 {
-      margin: 0;
-      font-size: 30px;
-      color: #fff;
-      letter-spacing: .2px;
-    }
+.title h1{margin:0;font-size:24px;}
+.title p{margin:0;font-size:13px;opacity:.8;}
 
-    .title p {
-      margin: 5px 0 0;
-      font-size: 15px;
-      color: #dce8ff;
-      font-weight: 700;
-    }
+.update{
+  font-weight:bold;
+}
 
-    .update-box {
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 14px;
-      padding: 10px 16px;
-      text-align: center;
-      min-width: 190px;
-    }
+/* KPIs */
+.hero{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
 
-    .update-box .label { font-size: 11px; color: #dce8ff; font-weight: 800; text-transform: uppercase; }
-    .update-box .time { font-size: 20px; color: #fff; font-weight: 900; }
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:10px;
+  border-top:5px solid var(--azul);
+  text-align:center;
+}
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-    }
+.separar{border-color:var(--vermelho);}
+.conferir{border-color:var(--roxo);}
+.pendente{border-color:var(--laranja);}
+.concluido{border-color:var(--verde);}
 
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--borda);
-      border-top: 7px solid var(--azul);
-      border-radius: 16px;
-      padding: 12px;
-      box-shadow: var(--shadow);
-      display: flex; flex-direction: column; justify-content: space-between;
-    }
+.card .label{
+  font-size:11px;
+  font-weight:bold;
+  color:var(--muted);
+}
 
-    .hero-card.separar { border-top-color: var(--vermelho); background: linear-gradient(180deg,#fff,#fff7f7); }
-    .hero-card.conferir { border-top-color: var(--roxo); background: linear-gradient(180deg,#fff,#f8f5ff); }
-    .hero-card.pendente { border-top-color: var(--laranja); }
-    .hero-card.concluido { border-top-color: var(--verde); }
+.card .value{
+  font-size:32px;
+  font-weight:bold;
+}
 
-    .hero-card .label { font-size: 12px; font-weight: 900; color: var(--muted); text-transform: uppercase; }
-    .hero-card .value { font-size: 42px; font-weight: 900; }
+/* CONTEÚDO */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  height:100%;
+}
 
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      min-height: 0;
-    }
+/* TABELAS */
+.panel{
+  background:#fff;
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+}
 
-    .panel {
-      background: var(--card);
-      border: 1px solid var(--borda);
-      border-radius: 16px;
-      padding: 14px;
-      box-shadow: var(--shadow);
-      display: flex; flex-direction: column;
-      min-height: 0;
-    }
+.panel h2{
+  margin:0 0 8px;
+  font-size:16px;
+}
 
-    .panel h2 { margin: 0 0 10px; font-size: 20px; color: var(--azul-escuro); }
+.table-box{
+  flex:1;
+  overflow:hidden;
+  border:1px solid var(--borda);
+  border-radius:8px;
+}
 
-    .table-shell { flex: 1; overflow: hidden; border-radius: 12px; border: 1px solid var(--borda); }
+table{
+  width:100%;
+  border-collapse:collapse;
+}
 
-    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+thead{
+  background:#eef4ff;
+  position:sticky;
+  top:0;
+}
 
-    thead { background: #eef4ff; }
+th,td{
+  padding:8px;
+  font-size:12px;
+}
 
-    th { font-size: 12px; text-transform: uppercase; padding: 10px; color: var(--muted); font-weight: 900; }
-    td { padding: 10px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #e8eef5; color: var(--azul-escuro); }
+th{
+  text-transform:uppercase;
+  color:var(--muted);
+}
 
-    th.center, td.center { text-align: center; }
-    th.left, td.left { text-align: left; }
+td{
+  border-bottom:1px solid #eee;
+}
 
-    .top3 { background: var(--top3); }
-    .top3 td:first-child { font-weight: 900; }
+.center{text-align:center;}
+.left{text-align:left;}
 
-    .scroll { height: 100%; overflow: hidden; }
+/* TOP 3 */
+.top3{
+  background:var(--top3);
+}
 
-    /* Para ativar rolagem: adicione a classe "auto-scroll" no tbody quando houver mais pedidos do que o quadro comporta */
-    .scroll-body.auto-scroll { animation: scroll 30s linear infinite; }
+/* STATUS */
+.pill{
+  padding:4px 8px;
+  border-radius:20px;
+  font-weight:bold;
+  font-size:11px;
+}
 
-    @keyframes scroll { 0%{transform:translateY(0);}100%{transform:translateY(-50%);} }
+.separar-pill{
+  background:#ffe5e5;
+  color:#b91c1c;
+}
 
-    .pill { padding: 6px 11px; border-radius: 999px; font-size: 12px; font-weight: 900; display: inline-flex; justify-content: center; min-width: 112px; }
+.conferir-pill{
+  background:#ede9fe;
+  color:#6d28d9;
+}
 
-    .separar-pill {
-      background: rgba(223,76,76,.16);
-      color: #b91c1c;
-      border: 1px solid rgba(223,76,76,.28);
-    }
-
-    .conferir-pill {
-      background: rgba(124,58,237,.14);
-      color: #6d28d9;
-      border: 1px solid rgba(124,58,237,.26);
-    }
-
-    .pedido { color: var(--azul); font-weight: 900; }
-
-    .small-table td { font-size: 13px; }
-
-    @media (max-width: 1200px){
-      body{overflow:auto}
-      .container{height:auto}
-      .hero-grid, .content-grid{grid-template-columns:1fr}
-      .scroll-body.auto-scroll{animation:none}
-    }
-  </style>
+/* SCROLL */
+.scroll{
+  overflow-y:auto;
+  height:100%;
+}
+</style>
 </head>
 
 <body>
+
 <div class="container">
 
-  <div class="topbar">
-    <div class="brand">
-      <img src="logo-labor.png" alt="Labor Health Supply">
-      <div class="title">
-        <h1>Painel Operacional</h1>
-        <p>Separação e Conferência • acompanhamento em tempo real</p>
-      </div>
-    </div>
-    <div class="update-box">
-      <div class="label">Atualização</div>
-      <div class="time">22/04 15:40</div>
+<!-- TOPO -->
+<div class="topbar">
+  <div class="brand">
+    <img src="logo-labor.png">
+    <div class="title">
+      <h1>Painel Operacional</h1>
+      <p>Separação e Conferência</p>
     </div>
   </div>
+  <div class="update">22/04 15:40</div>
+</div>
 
-  <div class="hero-grid">
-    <div class="hero-card separar"><div class="label">Falta separar</div><div class="value">5</div></div>
-    <div class="hero-card conferir"><div class="label">Falta conferir</div><div class="value">1</div></div>
-    <div class="hero-card pendente"><div class="label">Total pendente</div><div class="value">6</div></div>
-    <div class="hero-card concluido"><div class="label">Concluído</div><div class="value">51</div></div>
-    <div class="hero-card"><div class="label">Total pedidos</div><div class="value">66</div></div>
-  </div>
+<!-- KPIs -->
+<div class="hero">
+  <div class="card separar"><div class="label">Falta separar</div><div class="value">5</div></div>
+  <div class="card conferir"><div class="label">Falta conferir</div><div class="value">1</div></div>
+  <div class="card pendente"><div class="label">Total pendente</div><div class="value">6</div></div>
+  <div class="card concluido"><div class="label">Concluído</div><div class="value">51</div></div>
+  <div class="card"><div class="label">Total pedidos</div><div class="value">66</div></div>
+</div>
 
-  <div class="content-grid">
+<!-- CONTEÚDO -->
+<div class="grid">
 
-    <div class="panel">
-      <h2>Produtividade Separadores</h2>
-      <div class="table-shell">
-        <table class="small-table">
-          <thead>
-            <tr>
-              <th class="left">Separador</th>
-              <th class="center">Pedidos</th>
-              <th class="center">Endereços</th>
-              <th class="center">%</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="top3"><td class="left">🥇 Debora Correa</td><td class="center">12</td><td class="center">544</td><td class="center">19,67%</td></tr>
-            <tr class="top3"><td class="left">🥈 Karina A. Souza</td><td class="center">10</td><td class="center">151</td><td class="center">16,39%</td></tr>
-            <tr class="top3"><td class="left">🥉 Rosana Morais</td><td class="center">10</td><td class="center">477</td><td class="center">16,39%</td></tr>
-            <tr><td class="left">Waldenice Brito</td><td class="center">9</td><td class="center">72</td><td class="center">14,75%</td></tr>
-            <tr><td class="left">Maria Rosinete</td><td class="center">9</td><td class="center">121</td><td class="center">14,75%</td></tr>
-            <tr><td class="left">Gabriel Fernando</td><td class="center">4</td><td class="center">21</td><td class="center">6,56%</td></tr>
-            <tr><td class="left">Jhonatan Pessoa</td><td class="center">2</td><td class="center">29</td><td class="center">3,28%</td></tr>
-            <tr><td class="left">SYTHEX</td><td class="center">2</td><td class="center">13</td><td class="center">3,28%</td></tr>
-            <tr><td class="left">Rafael S. Francisco</td><td class="center">2</td><td class="center">5</td><td class="center">3,28%</td></tr>
-            <tr><td class="left">Rafael P. Santos</td><td class="center">1</td><td class="center">4</td><td class="center">1,64%</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<!-- PRODUTIVIDADE -->
+<div class="panel">
+<h2>Produtividade Separadores</h2>
 
-    <div class="panel">
-      <h2>Pedidos Pendentes</h2>
+<div class="table-box">
+<table>
+<thead>
+<tr>
+<th class="left">Separador</th>
+<th class="center">Pedidos</th>
+<th class="center">Endereços</th>
+<th class="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="top3"><td>🥇 Debora</td><td class="center">12</td><td class="center">544</td><td class="center">19%</td></tr>
+<tr class="top3"><td>🥈 Karina</td><td class="center">10</td><td class="center">151</td><td class="center">16%</td></tr>
+<tr class="top3"><td>🥉 Rosana</td><td class="center">10</td><td class="center">477</td><td class="center">16%</td></tr>
+<tr><td>Waldenice</td><td class="center">9</td><td class="center">72</td><td class="center">14%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
 
-      <div class="table-shell">
-        <table>
-          <thead>
-            <tr>
-              <th class="center">Pedido</th>
-              <th class="center">Integrado</th>
-              <th class="center">Status</th>
-              <th class="left">Cliente</th>
-            </tr>
-          </thead>
-        </table>
+<!-- PEDIDOS -->
+<div class="panel">
+<h2>Pedidos Pendentes</h2>
 
-        <div class="scroll">
-          <table>
-            <tbody class="scroll-body">
-              <tr><td class="pedido center">688743</td><td class="center">10:06</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
-              <tr><td class="pedido center">688844</td><td class="center">15:16</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
-              <tr><td class="pedido center">688854</td><td class="center">15:36</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
-              <tr><td class="pedido center">688852</td><td class="center">15:36</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td class="left">Cliente</td></tr>
-              <tr><td class="pedido center">688842</td><td class="center">15:14</td><td class="center"><span class="pill conferir-pill">Falta Conferir</span></td><td class="left">Cliente</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+<div class="table-box">
+<table>
+<thead>
+<tr>
+<th class="center">Pedido</th>
+<th class="center">Integrado</th>
+<th class="center">Status</th>
+<th class="left">Cliente</th>
+</tr>
+</thead>
+</table>
 
-  </div>
+<div class="scroll" id="scrollArea">
+<table>
+<tbody id="scrollBody">
+
+<tr><td class="center">688743</td><td class="center">10:06</td><td class="center"><span class="pill separar-pill">Falta Separar</span></td><td>Cliente</td></tr>
+<tr><td class="center">688842</td><td class="center">15:14</td><td class="center"><span class="pill conferir-pill">Falta Conferir</span></td><td>Cliente</td></tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 </div>
+</div>
+
+<script>
+const scroll = document.getElementById('scrollArea');
+const body = document.getElementById('scrollBody');
+
+if(body.scrollHeight > scroll.clientHeight){
+  let pos = 0;
+  setInterval(()=>{
+    pos += 1;
+    scroll.scrollTop = pos;
+    if(pos >= body.scrollHeight) pos = 0;
+  }, 60);
+}
+</script>
+
 </body>
 </html>
