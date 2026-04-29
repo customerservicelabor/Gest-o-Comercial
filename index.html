@@ -2,33 +2,24 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel Operacional</title>
 
 <style>
 :root {
-  --azul-escuro:#001E50;
   --azul:#2858F0;
-  --verde:#64E678;
+  --verde:#22c55e;
+  --amarelo:#f59e0b;
+  --vermelho:#ef4444;
   --fundo:#edf3f8;
-  --borda:#d7e1ee;
-  --muted:#65758b;
-  --vermelho:#df4c4c;
-  --roxo:#7c3aed;
-  --laranja:#f97316;
 }
 
 body{
   margin:0;
   font-family:Arial;
-  background:#edf3f8;
+  background:var(--fundo);
 }
 
 .container{
-  height:100vh;
-  display:grid;
-  grid-template-rows:auto auto 1fr;
-  gap:12px;
   padding:12px;
 }
 
@@ -38,9 +29,45 @@ body{
   justify-content:space-between;
   align-items:center;
   background:#001E50;
-  padding:12px;
-  border-radius:12px;
   color:#fff;
+  padding:12px;
+  border-radius:10px;
+}
+
+.top-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.top-left img{
+  height:40px;
+  background:#fff;
+  padding:5px;
+  border-radius:6px;
+}
+
+/* SEMÁFORO */
+.status-operacao{
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+  padding:10px;
+  border-radius:10px;
+  color:#fff;
+}
+
+.verde{background:var(--verde);}
+.amarelo{background:var(--amarelo);}
+.vermelho{
+  background:var(--vermelho);
+  animation:piscando 1s infinite;
+}
+
+@keyframes piscando{
+  0%{opacity:1;}
+  50%{opacity:0.6;}
+  100%{opacity:1;}
 }
 
 /* CARDS */
@@ -48,41 +75,43 @@ body{
   display:grid;
   grid-template-columns:repeat(6,1fr);
   gap:10px;
+  margin-top:10px;
 }
 
 .card{
   background:#fff;
-  border-radius:10px;
   padding:10px;
-  border-top:5px solid var(--azul);
+  border-radius:10px;
+  text-align:center;
 }
 
-.separar{border-color:var(--vermelho);}
-.conferir{border-color:var(--roxo);}
-.execucao{border-color:var(--azul);}
-.pendente{border-color:var(--laranja);}
-.concluido{border-color:var(--verde);}
+.card strong{
+  font-size:28px;
+}
 
-.card .label{font-size:11px;color:#65758b;}
-.card .value{font-size:28px;font-weight:bold;}
+.alerta{
+  border:3px solid var(--vermelho);
+  background:#ffe5e5;
+}
+
+.execucao{
+  border:3px solid var(--azul);
+}
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-}
-
-.panel{
-  background:#fff;
-  border-radius:12px;
-  padding:10px;
+  margin-top:12px;
 }
 
 /* TABELA */
 table{
   width:100%;
   border-collapse:collapse;
+  background:#fff;
+  border-radius:10px;
 }
 
 th,td{
@@ -94,9 +123,6 @@ th{
   background:#eef4ff;
 }
 
-.center{text-align:center;}
-.left{text-align:left;}
-
 .pill{
   padding:4px 10px;
   border-radius:15px;
@@ -107,19 +133,6 @@ th{
 .separar-pill{background:#ffe5e5;color:#b91c1c;}
 .conferir-pill{background:#ede9fe;color:#6d28d9;}
 
-.scroll{
-  max-height:300px;
-  overflow:hidden;
-}
-
-.auto-scroll{
-  animation:scroll 30s linear infinite;
-}
-
-@keyframes scroll{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-50%);}
-}
 </style>
 </head>
 
@@ -128,43 +141,66 @@ th{
 <div class="container">
 
 <div class="topbar">
-  <div style="display:flex; align-items:center; gap:12px;">
-    <img src="logo-labor.png" style="height:40px; background:#fff; padding:4px 8px; border-radius:6px;">
-    <h2 style="margin:0;">Painel Operacional</h2>
+  <div class="top-left">
+    <img src="logo-labor.png">
+    <h2>Painel Operacional</h2>
   </div>
-
   <div id="atualizacao">--</div>
 </div>
 
+<div id="statusOperacao" class="status-operacao">--</div>
+
 <div class="hero">
-  <div class="card separar"><div class="label">Falta separar</div><div id="faltaSeparar" class="value">0</div></div>
-  <div class="card conferir"><div class="label">Falta conferir</div><div id="faltaConferir" class="value">0</div></div>
-  <div class="card execucao"><div class="label">Em execução</div><div id="emExecucao" class="value">0</div></div>
-  <div class="card pendente"><div class="label">Total pendente</div><div id="totalPendente" class="value">0</div></div>
-  <div class="card concluido"><div class="label">Concluído</div><div id="concluido" class="value">0</div></div>
-  <div class="card"><div class="label">Total pedidos</div><div id="totalPedidos" class="value">0</div></div>
+  <div class="card alerta">
+    <div>Falta separar</div>
+    <strong id="faltaSeparar">0</strong>
+  </div>
+
+  <div class="card">
+    <div>Falta conferir</div>
+    <strong id="faltaConferir">0</strong>
+  </div>
+
+  <div class="card execucao">
+    <div>Em execução</div>
+    <strong id="emExecucao">0</strong>
+  </div>
+
+  <div class="card">
+    <div>Pendente</div>
+    <strong id="totalPendente">0</strong>
+  </div>
+
+  <div class="card">
+    <div>Concluído</div>
+    <strong id="concluido">0</strong>
+  </div>
+
+  <div class="card">
+    <div>Total</div>
+    <strong id="totalPedidos">0</strong>
+  </div>
 </div>
 
 <div class="grid">
 
-<div class="panel">
+<div>
 <h3>Produtividade</h3>
 <table>
 <thead>
 <tr>
-<th class="left">Separador</th>
-<th class="center">Pedidos</th>
-<th class="center">End.</th>
-<th class="center">%</th>
+<th>Separador</th>
+<th>Pedidos</th>
+<th>End.</th>
+<th>%</th>
 </tr>
 </thead>
 <tbody id="produtividade"></tbody>
 </table>
 </div>
 
-<div class="panel">
+<div>
 <h3>Pedidos Pendentes</h3>
-
 <table>
 <thead>
 <tr>
@@ -174,10 +210,6 @@ th{
 <th>Cliente</th>
 </tr>
 </thead>
-</table>
-
-<div class="scroll" id="scrollArea">
-<table>
 <tbody id="pedidos"></tbody>
 </table>
 </div>
@@ -186,77 +218,80 @@ th{
 
 </div>
 
-</div>
-
 <script>
 async function carregar(){
-  try{
-    const res = await fetch('data.json?t='+Date.now());
-    const data = await res.json();
+  const res = await fetch('data.json?t='+Date.now());
+  const data = await res.json();
 
-    document.getElementById('atualizacao').innerText = data.atualizacao;
+  document.getElementById('atualizacao').innerText = data.atualizacao;
 
-    document.getElementById('faltaSeparar').innerText = data.cards.falta_separar;
-    document.getElementById('faltaConferir').innerText = data.cards.falta_conferir;
-    document.getElementById('emExecucao').innerText = data.cards.em_execucao;
-    document.getElementById('concluido').innerText = data.cards.concluido;
-    document.getElementById('totalPedidos').innerText = data.cards.total_pedidos;
+  const faltaSeparar = data.cards.falta_separar;
+  const faltaConferir = data.cards.falta_conferir;
+  const execucao = data.cards.em_execucao;
+  const concluido = data.cards.concluido;
+  const total = data.cards.total_pedidos;
 
-    document.getElementById('totalPendente').innerText =
-      data.cards.total_pedidos - data.cards.concluido;
+  const pendente = total - concluido;
 
-    const prod = document.getElementById('produtividade');
-    prod.innerHTML = '';
+  document.getElementById('faltaSeparar').innerText = faltaSeparar;
+  document.getElementById('faltaConferir').innerText = faltaConferir;
+  document.getElementById('emExecucao').innerText = execucao;
+  document.getElementById('totalPendente').innerText = pendente;
+  document.getElementById('concluido').innerText = concluido;
+  document.getElementById('totalPedidos').innerText = total;
 
-    data.produtividade.forEach(p=>{
-      prod.innerHTML += `
+  // SEMÁFORO
+  const statusBox = document.getElementById('statusOperacao');
+
+  if(pendente > 20){
+    statusBox.className = 'status-operacao vermelho';
+    statusBox.innerText = 'CRÍTICO - AÇÃO IMEDIATA';
+  } else if(pendente > 10){
+    statusBox.className = 'status-operacao amarelo';
+    statusBox.innerText = 'ATENÇÃO - RISCO DE ATRASO';
+  } else {
+    statusBox.className = 'status-operacao verde';
+    statusBox.innerText = 'OPERAÇÃO SOB CONTROLE';
+  }
+
+  // PRODUTIVIDADE
+  const prod = document.getElementById('produtividade');
+  prod.innerHTML = '';
+
+  data.produtividade.forEach(p=>{
+    prod.innerHTML += `
       <tr>
         <td>${p.separador}</td>
-        <td class="center">${p.pedidos}</td>
-        <td class="center">${p.enderecos}</td>
-        <td class="center">${p.percentual}</td>
+        <td>${p.pedidos}</td>
+        <td>${p.enderecos}</td>
+        <td>${p.percentual}</td>
       </tr>`;
-    });
+  });
 
-    const ped = document.getElementById('pedidos');
-    ped.innerHTML = '';
+  // PEDIDOS
+  const ped = document.getElementById('pedidos');
+  ped.innerHTML = '';
 
-    data.pedidos_pendentes.forEach(p=>{
-      const statusLimpo = String(p.status || '')
-        .trim()
-        .toLowerCase()
-        .replace(' ', '_');
+  data.pedidos_pendentes.forEach(p=>{
+    const statusLimpo = String(p.status).trim().toLowerCase().replace(' ','_');
 
-      const statusClasse = statusLimpo === 'falta_separar'
-        ? 'separar-pill'
-        : 'conferir-pill';
+    const classe = statusLimpo === 'falta_separar'
+      ? 'separar-pill'
+      : 'conferir-pill';
 
-      const statusTexto = statusLimpo === 'falta_separar'
-        ? 'Falta Separar'
-        : 'Falta Conferir';
+    const texto = statusLimpo === 'falta_separar'
+      ? 'Falta Separar'
+      : 'Falta Conferir';
 
-      ped.innerHTML += `
+    ped.innerHTML += `
       <tr>
-        <td class="center">${p.pedido}</td>
-        <td class="center">${p.integrado}</td>
-        <td class="center">
-          <span class="pill ${statusClasse}">
-            ${statusTexto}
-          </span>
-        </td>
+        <td>${p.pedido}</td>
+        <td>${p.integrado}</td>
+        <td><span class="pill ${classe}">${texto}</span></td>
         <td>${p.cliente}</td>
       </tr>`;
-    });
+  });
 
-    const scrollArea = document.getElementById('scrollArea');
-
-    if(ped.scrollHeight > scrollArea.clientHeight){
-      ped.classList.add('auto-scroll');
-    }
-
-  }catch(e){
-    console.error("Erro ao carregar JSON:", e);
-  }
 }
 
 carregar();
