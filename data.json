@@ -1,161 +1,61 @@
 {
-  "atualizacao": "22/04/2026 15:40",
+  "atualizacao": "29/04/2026 12:15",
 
   "cards": {
     "falta_separar": 5,
     "falta_conferir": 1,
-    "total_pendente": 6,
+    "em_execucao": 6,
+    "total_pendente": 12,
     "concluido": 51,
-    "total_pedidos": 66
+    "total_pedidos": 63
   },
 
   "produtividade": [
-    {
-      "separador": "Debora Correa",
-      "pedidos": 12,
-      "enderecos": 544,
-      "percentual": "19,67%"
-    },
-    {
-      "separador": "Karina Aparecida De Souza",
-      "pedidos": 10,
-      "enderecos": 151,
-      "percentual": "16,39%"
-    },
-    {
-      "separador": "Rosana Ribeiro Morais",
-      "pedidos": 10,
-      "enderecos": 477,
-      "percentual": "16,39%"
-    },
-    {
-      "separador": "Waldenice de Socorro Brito",
-      "pedidos": 9,
-      "enderecos": 72,
-      "percentual": "14,75%"
-    },
-    {
-      "separador": "Maria Rosinete Gomes dos Santos",
-      "pedidos": 9,
-      "enderecos": 121,
-      "percentual": "14,75%"
-    },
-    {
-      "separador": "Gabriel Fernando",
-      "pedidos": 4,
-      "enderecos": 21,
-      "percentual": "6,56%"
-    },
-    {
-      "separador": "Jhonatan Pessoa Rodrigues",
-      "pedidos": 2,
-      "enderecos": 29,
-      "percentual": "3,28%"
-    },
-    {
-      "separador": "SYTHEX",
-      "pedidos": 2,
-      "enderecos": 13,
-      "percentual": "3,28%"
-    },
-    {
-      "separador": "Rafael dos Santos Francisco",
-      "pedidos": 2,
-      "enderecos": 5,
-      "percentual": "3,28%"
-    },
-    {
-      "separador": "Rafael Pereira dos Santos",
-      "pedidos": 1,
-      "enderecos": 4,
-      "percentual": "1,64%"
-    }
-  ],
+ { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "151 ", "percentual": "16,4%" },
+ { "separador": "Debora Correa ","pedidos": "12 ", "enderecos": "544 ", "percentual": "19,7%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "9 ", "enderecos": "72 ", "percentual": "14,8%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "10 ", "enderecos": "477 ", "percentual": "16,4%" },
+ { "separador": "Jhonatan Pessoa Rodrigues ","pedidos": "2 ", "enderecos": "29 ", "percentual": "3,3%" },
+ { "separador": "Gabriel Fernando ","pedidos": "4 ", "enderecos": "21 ", "percentual": "6,6%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "9 ", "enderecos": "121 ", "percentual": "14,8%" },
+ { "separador": "SYTHEX ","pedidos": "2 ", "enderecos": "13 ", "percentual": "3,3%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "1 ", "enderecos": "4 ", "percentual": "1,6%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "2 ", "enderecos": "5 ", "percentual": "3,3%" }
 
+
+
+
+
+ ],
   "pedidos_pendentes": [
-    {
-      "pedido": 688743,
-      "integrado": "22/04/2026 10:06",
-      "status": "falta_separar",
-      "cliente": "Hospital São Lucas"
-    },
-    {
-      "pedido": 688844,
-      "integrado": "22/04/2026 15:16",
-      "status": "falta_separar",
-      "cliente": "Clínica Vida"
-    },
-    {
-      "pedido": 688854,
-      "integrado": "22/04/2026 15:36",
-      "status": "falta_separar",
-      "cliente": "Hospital Central"
-    },
-    {
-      "pedido": 688852,
-      "integrado": "22/04/2026 15:36",
-      "status": "falta_separar",
-      "cliente": "Laboratório Diagnóstico+"
-    },
-    {
-      "pedido": 688861,
-      "integrado": "22/04/2026 15:42",
-      "status": "falta_separar",
-      "cliente": "Clínica Bem Estar"
-    },
-    {
-      "pedido": 688862,
-      "integrado": "22/04/2026 15:44",
-      "status": "falta_separar",
-      "cliente": "Hospital Municipal"
-    },
-    {
-      "pedido": 688863,
-      "integrado": "22/04/2026 15:45",
-      "status": "falta_separar",
-      "cliente": "Rede Saúde+"
-    },
-    {
-      "pedido": 688842,
-      "integrado": "22/04/2026 15:14",
-      "status": "falta_conferir",
-      "cliente": "Hospital São Lucas"
-    },
-    {
-      "pedido": 688865,
-      "integrado": "22/04/2026 15:47",
-      "status": "falta_conferir",
-      "cliente": "Hospital Vida Nova"
-    },
-    {
-      "pedido": 688866,
-      "integrado": "22/04/2026 15:48",
-      "status": "falta_conferir",
-      "cliente": "Clínica Integrada"
-    },
-    {
-      "pedido": 688867,
-      "integrado": "22/04/2026 15:49",
-      "status": "falta_conferir",
-      "cliente": "Laboratório Bio+"
-    },
-    {
-      "pedido": 688868,
-      "integrado": "22/04/2026 15:50",
-      "status": "falta_conferir",
-      "cliente": "Hospital Regional"
-    },
-    {
-      "pedido": 688869,
-      "integrado": "22/04/2026 15:51",
-      "status": "falta_conferir",
-      "cliente": "Clínica Saúde Total"
-    },
-    {
-      "pedido": 688870,
-      "integrado": "22/04/2026 15:52",
-      "status": "falta_conferir",
-      "cliente": "Hospital Santa Maria"
-    }
+ { "pedido": "688743 ","integrado": "22/04/2026 10:06 ", "status": "falta_separar ", "cliente": "LABORATORIO DE ANALISES CLINICAS VICENTE LEMOS LTD" },
+ { "pedido": "688842 ","integrado": "22/04/2026 15:14 ", "status": "falta_conferir ", "cliente": "HOSPITALAR DISTRIBUIDORA DE MEDICAMENTOS LTDA" },
+ { "pedido": "688844 ","integrado": "22/04/2026 15:16 ", "status": "falta_separar ", "cliente": "ALEXANDRE LAZARO AQUINO" },
+ { "pedido": "688854 ","integrado": "22/04/2026 15:36 ", "status": "falta_separar ", "cliente": "ALEXANDRE LAZARO AQUINO" },
+ { "pedido": "688852 ","integrado": "22/04/2026 15:36 ", "status": "falta_separar ", "cliente": "ESSENCIAL MEDICAMENTOS LTDA" }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   ]
 }
