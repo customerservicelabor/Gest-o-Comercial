@@ -1,13 +1,13 @@
 {
-  "atualizacao": "29/04/2026 12:48",
+  "atualizacao": "29/04/2026 13:04",
 
   "cards": {
-    "falta_separar": 9,
+    "falta_separar": 4,
     "falta_conferir": 3,
     "em_execucao": 7,
-    "total_pendente": 19,
+    "total_pendente": 14,
     "concluido": 44,
-    "total_pedidos": 63
+    "total_pedidos": 58
   },
 
   "produtividade": [
