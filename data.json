@@ -1,40 +1,40 @@
 {
-  "atualizacao": "29/04/2026 12:35",
+  "atualizacao": "29/04/2026 12:43",
 
   "cards": {
-    "falta_separar": 10,
-    "falta_conferir": 4,
-    "em_execucao": 6,
-    "total_pendente": 20,
-    "concluido": 51,
+    "falta_separar": 9,
+    "falta_conferir": 3,
+    "em_execucao": 7,
+    "total_pendente": 19,
+    "concluido": 44,
     "total_pedidos": 63
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "151 ", "percentual": "16,4%" },
- { "separador": "Debora Correa ","pedidos": "12 ", "enderecos": "544 ", "percentual": "19,7%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "9 ", "enderecos": "72 ", "percentual": "14,8%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "10 ", "enderecos": "477 ", "percentual": "16,4%" },
- { "separador": "Jhonatan Pessoa Rodrigues ","pedidos": "2 ", "enderecos": "29 ", "percentual": "3,3%" },
- { "separador": "Gabriel Fernando ","pedidos": "4 ", "enderecos": "21 ", "percentual": "6,6%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "9 ", "enderecos": "121 ", "percentual": "14,8%" },
- { "separador": "SYTHEX ","pedidos": "2 ", "enderecos": "13 ", "percentual": "3,3%" },
- { "separador": "Rafael Pereira dos Santos ","pedidos": "1 ", "enderecos": "4 ", "percentual": "1,6%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "2 ", "enderecos": "5 ", "percentual": "3,3%" }
-
-
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "7 ", "enderecos": "123 ", "percentual": "18,4%" },
+ { "separador": "Debora Correa ","pedidos": "7 ", "enderecos": "122 ", "percentual": "18,4%" },
+ { "separador": "Jhonatan Pessoa Rodrigues ","pedidos": "5 ", "enderecos": "200 ", "percentual": "13,2%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "4 ", "enderecos": "284 ", "percentual": "10,5%" },
+ { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "4 ", "enderecos": "86 ", "percentual": "10,5%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "2 ", "enderecos": "172 ", "percentual": "5,3%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "4 ", "enderecos": "19 ", "percentual": "10,5%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "2 ", "enderecos": "83 ", "percentual": "5,3%" },
+ { "separador": "Gabriela Alexandra Acosta Beiza ","pedidos": "2 ", "enderecos": "48 ", "percentual": "5,3%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "1 ", "enderecos": "799 ", "percentual": "2,6%" },
+ { "separador": "Raquel Ferreira ","pedidos": " ", "enderecos": " ", "percentual": "
+ { "separador": "Marcia Cristina Tavares de Almeida ","pedidos": " ", "enderecos": " ", "percentual": "
 
 
 
  ],
   "pedidos_pendentes": [
- { "pedido": "688743 ","integrado": "22/04/2026 10:06 ", "status": "falta_separar ", "cliente": "LABORATORIO DE ANALISES CLINICAS VICENTE LEMOS LTD" },
- { "pedido": "688842 ","integrado": "22/04/2026 15:14 ", "status": "falta_conferir ", "cliente": "HOSPITALAR DISTRIBUIDORA DE MEDICAMENTOS LTDA" },
- { "pedido": "688844 ","integrado": "22/04/2026 15:16 ", "status": "falta_separar ", "cliente": "ALEXANDRE LAZARO AQUINO" },
- { "pedido": "688854 ","integrado": "22/04/2026 15:36 ", "status": "falta_separar ", "cliente": "ALEXANDRE LAZARO AQUINO" },
- { "pedido": "688852 ","integrado": "22/04/2026 15:36 ", "status": "falta_separar ", "cliente": "ESSENCIAL MEDICAMENTOS LTDA" }
-
-
+ { "pedido": "689958 ","integrado": "29/04/2026 09:37 ", "status": "falta_conferir ", "cliente": "PROMIX COMERCIAL HOSPITALAR LTDA" },
+ { "pedido": "690042 ","integrado": "29/04/2026 11:36 ", "status": "falta_conferir ", "cliente": "DIMACLO COM DE PRODUTOS MEDICOS E HOSPITALARES LTD" },
+ { "pedido": "690075 ","integrado": "29/04/2026 12:14 ", "status": "falta_conferir ", "cliente": "JOAO HILDS PORTO PEREIRA LTDA" },
+ { "pedido": "690081 ","integrado": "29/04/2026 12:32 ", "status": "falta_separar ", "cliente": "NORTE SAUDE HOSPITALARES E ODONTOLOGICOS LTDA" },
+ { "pedido": "690074 ","integrado": "29/04/2026 12:32 ", "status": "falta_separar ", "cliente": "CCAF COMERCIO DE MEDICAMENTOS E MATERIAL HOSPITALA" },
+ { "pedido": "690056 ","integrado": "29/04/2026 12:32 ", "status": "falta_separar ", "cliente": "ANIMAIS CENTRO VETERINARIO LTDA" },
+ { "pedido": "690083 ","integrado": "29/04/2026 12:38 ", "status": "falta_separar ", "cliente": "FLEURY S A" }
 
 
 
