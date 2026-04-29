@@ -121,6 +121,23 @@ body{
   border-top-color:var(--amarelo);
 }
 
+.card-pendente-alerta{
+  background:#fff7ed;
+  border-top-color:var(--amarelo);
+}
+
+.card-pendente-critico{
+  background:#ffe5e5;
+  border-top-color:var(--vermelho);
+  animation:piscandoCard 1s infinite;
+}
+
+@keyframes piscandoCard{
+  0%{box-shadow:0 0 0 rgba(239,68,68,0);}
+  50%{box-shadow:0 0 12px rgba(239,68,68,.45);}
+  100%{box-shadow:0 0 0 rgba(239,68,68,0);}
+}
+
 .card-concluido{
   border-top-color:var(--verde);
 }
@@ -190,6 +207,17 @@ th{
   color:#6d28d9;
 }
 
+.linha-mais-antiga{
+  background:#fff7cc;
+  font-weight:bold;
+}
+
+.cliente-cell{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
 @media(max-width:1100px){
   .hero{
     grid-template-columns:repeat(3,1fr);
@@ -232,7 +260,7 @@ th{
       <strong id="emExecucao">0</strong>
     </div>
 
-    <div class="card card-pendente">
+    <div id="cardTotalPendente" class="card card-pendente">
       <div>Total pendente</div>
       <strong id="totalPendente">0</strong>
     </div>
@@ -319,6 +347,15 @@ async function carregar(){
       statusBox.innerText = 'OPERAÇÃO SOB CONTROLE';
     }
 
+    const cardPendente = document.getElementById('cardTotalPendente');
+    cardPendente.className = 'card card-pendente';
+
+    if(pendente > 20){
+      cardPendente.className = 'card card-pendente card-pendente-critico';
+    } else if(pendente > 10){
+      cardPendente.className = 'card card-pendente card-pendente-alerta';
+    }
+
     const prod = document.getElementById('produtividade');
     prod.innerHTML = '';
 
@@ -341,7 +378,13 @@ async function carregar(){
     const ped = document.getElementById('pedidos');
     ped.innerHTML = '';
 
-    data.pedidos_pendentes.forEach(p=>{
+    const pedidosOrdenados = [...data.pedidos_pendentes].sort((a, b) => {
+      const dataA = converterDataBR(a.integrado);
+      const dataB = converterDataBR(b.integrado);
+      return dataA - dataB;
+    });
+
+    pedidosOrdenados.forEach((p, index)=>{
       const statusLimpo = String(p.status || '')
         .trim()
         .toLowerCase()
@@ -355,20 +398,42 @@ async function carregar(){
         ? 'Falta Separar'
         : 'Falta Conferir';
 
+      const classeLinha = index === 0 ? 'linha-mais-antiga' : '';
+
       ped.innerHTML += `
-        <tr>
+        <tr class="${classeLinha}">
           <td class="center">${p.pedido}</td>
           <td class="center">${p.integrado}</td>
           <td class="center">
             <span class="pill ${classe}">${texto}</span>
           </td>
-          <td class="left">${p.cliente}</td>
+          <td class="left cliente-cell" title="${p.cliente}">${p.cliente}</td>
         </tr>`;
     });
 
   }catch(e){
     console.error('Erro ao carregar data.json:', e);
   }
+}
+
+function converterDataBR(valor){
+  if(!valor) return new Date(9999, 11, 31);
+
+  const texto = String(valor).trim();
+  const partes = texto.split(' ');
+  const data = partes[0] || '';
+  const hora = partes[1] || '00:00';
+
+  const d = data.split('/');
+  const h = hora.split(':');
+
+  return new Date(
+    Number(d[2]),
+    Number(d[1]) - 1,
+    Number(d[0]),
+    Number(h[0] || 0),
+    Number(h[1] || 0)
+  );
 }
 
 carregar();
