@@ -25,7 +25,6 @@ body{
   padding:12px;
 }
 
-/* TOPO */
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -53,7 +52,6 @@ body{
   margin:0;
 }
 
-/* SEMÁFORO */
 .status-operacao{
   margin-top:10px;
   text-align:center;
@@ -77,7 +75,6 @@ body{
   100%{opacity:1;}
 }
 
-/* CARDS */
 .hero{
   display:grid;
   grid-template-columns:repeat(6,1fr);
@@ -128,7 +125,6 @@ body{
   border-top-color:var(--verde);
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -136,7 +132,6 @@ body{
   margin-top:12px;
 }
 
-/* PAINÉIS */
 .panel-box{
   background:#fff;
   border-radius:10px;
@@ -152,7 +147,6 @@ body{
   font-size:15px;
 }
 
-/* TABELA */
 table{
   width:100%;
   border-collapse:collapse;
@@ -196,7 +190,6 @@ th{
   color:#6d28d9;
 }
 
-/* RESPONSIVO */
 @media(max-width:1100px){
   .hero{
     grid-template-columns:repeat(3,1fr);
@@ -329,7 +322,13 @@ async function carregar(){
     const prod = document.getElementById('produtividade');
     prod.innerHTML = '';
 
-    data.produtividade.forEach(p=>{
+    const produtividadeOrdenada = [...data.produtividade].sort((a, b) => {
+      const pA = parseFloat(String(a.percentual || '0').replace(',', '.').replace('%','').trim());
+      const pB = parseFloat(String(b.percentual || '0').replace(',', '.').replace('%','').trim());
+      return pB - pA;
+    });
+
+    produtividadeOrdenada.forEach(p=>{
       prod.innerHTML += `
         <tr>
           <td class="left">${p.separador}</td>
