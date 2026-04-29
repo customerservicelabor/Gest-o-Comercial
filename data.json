@@ -1,9 +1,9 @@
 {
-  "atualizacao": "29/04/2026 12:15",
+  "atualizacao": "29/04/2026 12:35",
 
   "cards": {
-    "falta_separar": 5,
-    "falta_conferir": 1,
+    "falta_separar": 10,
+    "falta_conferir": 4,
     "em_execucao": 6,
     "total_pendente": 20,
     "concluido": 51,
