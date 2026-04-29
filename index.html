@@ -6,16 +6,18 @@
 
 <style>
 :root {
+  --azul-escuro:#001E50;
   --azul:#2858F0;
   --verde:#22c55e;
   --amarelo:#f59e0b;
   --vermelho:#ef4444;
   --fundo:#edf3f8;
+  --borda:#d7e1ee;
 }
 
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   background:var(--fundo);
 }
 
@@ -28,7 +30,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#001E50;
+  background:var(--azul-escuro);
   color:#fff;
   padding:12px;
   border-radius:10px;
@@ -41,14 +43,19 @@ body{
 }
 
 .top-left img{
-  height:40px;
+  height:42px;
   background:#fff;
-  padding:5px;
+  padding:5px 8px;
   border-radius:6px;
+}
+
+.top-left h2{
+  margin:0;
 }
 
 /* SEMÁFORO */
 .status-operacao{
+  margin-top:10px;
   text-align:center;
   font-weight:bold;
   font-size:18px;
@@ -66,7 +73,7 @@ body{
 
 @keyframes piscando{
   0%{opacity:1;}
-  50%{opacity:0.6;}
+  50%{opacity:.6;}
   100%{opacity:1;}
 }
 
@@ -83,19 +90,42 @@ body{
   padding:10px;
   border-radius:10px;
   text-align:center;
+  border-top:5px solid var(--azul);
+}
+
+.card div{
+  font-size:12px;
+  color:#475569;
+  text-transform:uppercase;
+  font-weight:bold;
 }
 
 .card strong{
-  font-size:28px;
+  display:block;
+  margin-top:4px;
+  font-size:30px;
 }
 
-.alerta{
-  border:3px solid var(--vermelho);
-  background:#ffe5e5;
+.card-separar{
+  border-top-color:var(--vermelho);
+  background:#fff5f5;
 }
 
-.execucao{
-  border:3px solid var(--azul);
+.card-conferir{
+  border-top-color:#7c3aed;
+}
+
+.card-execucao{
+  border-top-color:var(--azul);
+  background:#eef4ff;
+}
+
+.card-pendente{
+  border-top-color:var(--amarelo);
+}
+
+.card-concluido{
+  border-top-color:var(--verde);
 }
 
 /* GRID */
@@ -106,33 +136,76 @@ body{
   margin-top:12px;
 }
 
+/* PAINÉIS */
+.panel-box{
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--borda);
+}
+
+.panel-header{
+  background:var(--azul-escuro);
+  color:#fff;
+  padding:10px 12px;
+  font-weight:bold;
+  font-size:15px;
+}
+
 /* TABELA */
 table{
   width:100%;
   border-collapse:collapse;
-  background:#fff;
-  border-radius:10px;
+  table-layout:fixed;
 }
 
 th,td{
   padding:8px;
   font-size:13px;
+  border-bottom:1px solid #e5e7eb;
 }
 
 th{
   background:#eef4ff;
+  color:#475569;
+  text-transform:uppercase;
+  font-size:12px;
 }
 
+.center{text-align:center;}
+.left{text-align:left;}
+
 .pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:4px 10px;
   border-radius:15px;
   font-size:11px;
   font-weight:bold;
+  white-space:nowrap;
 }
 
-.separar-pill{background:#ffe5e5;color:#b91c1c;}
-.conferir-pill{background:#ede9fe;color:#6d28d9;}
+.separar-pill{
+  background:#ffe5e5;
+  color:#b91c1c;
+}
 
+.conferir-pill{
+  background:#ede9fe;
+  color:#6d28d9;
+}
+
+/* RESPONSIVO */
+@media(max-width:1100px){
+  .hero{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
@@ -140,158 +213,163 @@ th{
 
 <div class="container">
 
-<div class="topbar">
-  <div class="top-left">
-    <img src="logo-labor.png">
-    <h2>Painel Operacional</h2>
-  </div>
-  <div id="atualizacao">--</div>
-</div>
-
-<div id="statusOperacao" class="status-operacao">--</div>
-
-<div class="hero">
-  <div class="card alerta">
-    <div>Falta separar</div>
-    <strong id="faltaSeparar">0</strong>
+  <div class="topbar">
+    <div class="top-left">
+      <img src="logo-labor.png" alt="Logo">
+      <h2>Painel Operacional</h2>
+    </div>
+    <div id="atualizacao">--</div>
   </div>
 
-  <div class="card">
-    <div>Falta conferir</div>
-    <strong id="faltaConferir">0</strong>
+  <div id="statusOperacao" class="status-operacao">--</div>
+
+  <div class="hero">
+    <div class="card card-separar">
+      <div>Falta separar</div>
+      <strong id="faltaSeparar">0</strong>
+    </div>
+
+    <div class="card card-conferir">
+      <div>Falta conferir</div>
+      <strong id="faltaConferir">0</strong>
+    </div>
+
+    <div class="card card-execucao">
+      <div>Em execução</div>
+      <strong id="emExecucao">0</strong>
+    </div>
+
+    <div class="card card-pendente">
+      <div>Total pendente</div>
+      <strong id="totalPendente">0</strong>
+    </div>
+
+    <div class="card card-concluido">
+      <div>Concluído</div>
+      <strong id="concluido">0</strong>
+    </div>
+
+    <div class="card">
+      <div>Total pedidos</div>
+      <strong id="totalPedidos">0</strong>
+    </div>
   </div>
 
-  <div class="card execucao">
-    <div>Em execução</div>
-    <strong id="emExecucao">0</strong>
+  <div class="grid">
+
+    <div class="panel-box">
+      <div class="panel-header">Produtividade</div>
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Separador</th>
+            <th class="center">Pedidos</th>
+            <th class="center">End.</th>
+            <th class="center">%</th>
+          </tr>
+        </thead>
+        <tbody id="produtividade"></tbody>
+      </table>
+    </div>
+
+    <div class="panel-box">
+      <div class="panel-header">Pedidos Pendentes</div>
+      <table>
+        <thead>
+          <tr>
+            <th class="center">Pedido</th>
+            <th class="center">Integrado</th>
+            <th class="center">Status</th>
+            <th class="left">Cliente</th>
+          </tr>
+        </thead>
+        <tbody id="pedidos"></tbody>
+      </table>
+    </div>
+
   </div>
-
-  <div class="card">
-    <div>Pendente</div>
-    <strong id="totalPendente">0</strong>
-  </div>
-
-  <div class="card">
-    <div>Concluído</div>
-    <strong id="concluido">0</strong>
-  </div>
-
-  <div class="card">
-    <div>Total</div>
-    <strong id="totalPedidos">0</strong>
-  </div>
-</div>
-
-<div class="grid">
-
-<div>
-<h3>Produtividade</h3>
-<table>
-<thead>
-<tr>
-<th>Separador</th>
-<th>Pedidos</th>
-<th>End.</th>
-<th>%</th>
-</tr>
-</thead>
-<tbody id="produtividade"></tbody>
-</table>
-</div>
-
-<div>
-<h3>Pedidos Pendentes</h3>
-<table>
-<thead>
-<tr>
-<th>Pedido</th>
-<th>Integrado</th>
-<th>Status</th>
-<th>Cliente</th>
-</tr>
-</thead>
-<tbody id="pedidos"></tbody>
-</table>
-</div>
-
-</div>
 
 </div>
 
 <script>
 async function carregar(){
-  const res = await fetch('data.json?t='+Date.now());
-  const data = await res.json();
+  try{
+    const res = await fetch('data.json?t=' + Date.now());
+    const data = await res.json();
 
-  document.getElementById('atualizacao').innerText = data.atualizacao;
+    document.getElementById('atualizacao').innerText = data.atualizacao || '--';
 
-  const faltaSeparar = data.cards.falta_separar;
-  const faltaConferir = data.cards.falta_conferir;
-  const execucao = data.cards.em_execucao;
-  const concluido = data.cards.concluido;
-  const total = data.cards.total_pedidos;
+    const faltaSeparar = Number(data.cards.falta_separar || 0);
+    const faltaConferir = Number(data.cards.falta_conferir || 0);
+    const execucao = Number(data.cards.em_execucao || 0);
+    const concluido = Number(data.cards.concluido || 0);
+    const total = Number(data.cards.total_pedidos || 0);
+    const pendente = total - concluido;
 
-  const pendente = total - concluido;
+    document.getElementById('faltaSeparar').innerText = faltaSeparar;
+    document.getElementById('faltaConferir').innerText = faltaConferir;
+    document.getElementById('emExecucao').innerText = execucao;
+    document.getElementById('totalPendente').innerText = pendente;
+    document.getElementById('concluido').innerText = concluido;
+    document.getElementById('totalPedidos').innerText = total;
 
-  document.getElementById('faltaSeparar').innerText = faltaSeparar;
-  document.getElementById('faltaConferir').innerText = faltaConferir;
-  document.getElementById('emExecucao').innerText = execucao;
-  document.getElementById('totalPendente').innerText = pendente;
-  document.getElementById('concluido').innerText = concluido;
-  document.getElementById('totalPedidos').innerText = total;
+    const statusBox = document.getElementById('statusOperacao');
 
-  // SEMÁFORO
-  const statusBox = document.getElementById('statusOperacao');
+    if(pendente >= 31){
+      statusBox.className = 'status-operacao vermelho';
+      statusBox.innerText = 'CRÍTICO - AÇÃO IMEDIATA';
+    } else if(pendente >= 16){
+      statusBox.className = 'status-operacao amarelo';
+      statusBox.innerText = 'ATENÇÃO - VOLUME ELEVADO';
+    } else {
+      statusBox.className = 'status-operacao verde';
+      statusBox.innerText = 'OPERAÇÃO SOB CONTROLE';
+    }
 
-  if(pendente > 20){
-    statusBox.className = 'status-operacao vermelho';
-    statusBox.innerText = 'CRÍTICO - AÇÃO IMEDIATA';
-  } else if(pendente > 10){
-    statusBox.className = 'status-operacao amarelo';
-    statusBox.innerText = 'ATENÇÃO - RISCO DE ATRASO';
-  } else {
-    statusBox.className = 'status-operacao verde';
-    statusBox.innerText = 'OPERAÇÃO SOB CONTROLE';
+    const prod = document.getElementById('produtividade');
+    prod.innerHTML = '';
+
+    data.produtividade.forEach(p=>{
+      prod.innerHTML += `
+        <tr>
+          <td class="left">${p.separador}</td>
+          <td class="center">${p.pedidos}</td>
+          <td class="center">${p.enderecos}</td>
+          <td class="center">${p.percentual}</td>
+        </tr>`;
+    });
+
+    const ped = document.getElementById('pedidos');
+    ped.innerHTML = '';
+
+    data.pedidos_pendentes.forEach(p=>{
+      const statusLimpo = String(p.status || '')
+        .trim()
+        .toLowerCase()
+        .replace(' ', '_');
+
+      const classe = statusLimpo === 'falta_separar'
+        ? 'separar-pill'
+        : 'conferir-pill';
+
+      const texto = statusLimpo === 'falta_separar'
+        ? 'Falta Separar'
+        : 'Falta Conferir';
+
+      ped.innerHTML += `
+        <tr>
+          <td class="center">${p.pedido}</td>
+          <td class="center">${p.integrado}</td>
+          <td class="center">
+            <span class="pill ${classe}">${texto}</span>
+          </td>
+          <td class="left">${p.cliente}</td>
+        </tr>`;
+    });
+
+  }catch(e){
+    console.error('Erro ao carregar data.json:', e);
   }
-
-  // PRODUTIVIDADE
-  const prod = document.getElementById('produtividade');
-  prod.innerHTML = '';
-
-  data.produtividade.forEach(p=>{
-    prod.innerHTML += `
-      <tr>
-        <td>${p.separador}</td>
-        <td>${p.pedidos}</td>
-        <td>${p.enderecos}</td>
-        <td>${p.percentual}</td>
-      </tr>`;
-  });
-
-  // PEDIDOS
-  const ped = document.getElementById('pedidos');
-  ped.innerHTML = '';
-
-  data.pedidos_pendentes.forEach(p=>{
-    const statusLimpo = String(p.status).trim().toLowerCase().replace(' ','_');
-
-    const classe = statusLimpo === 'falta_separar'
-      ? 'separar-pill'
-      : 'conferir-pill';
-
-    const texto = statusLimpo === 'falta_separar'
-      ? 'Falta Separar'
-      : 'Falta Conferir';
-
-    ped.innerHTML += `
-      <tr>
-        <td>${p.pedido}</td>
-        <td>${p.integrado}</td>
-        <td><span class="pill ${classe}">${texto}</span></td>
-        <td>${p.cliente}</td>
-      </tr>`;
-  });
-
 }
 
 carregar();
