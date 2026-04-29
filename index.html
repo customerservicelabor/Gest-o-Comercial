@@ -20,9 +20,10 @@
 }
 
 *{box-sizing:border-box;}
+
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   background:linear-gradient(180deg,#f7faff,#edf3f8);
   overflow:hidden;
 }
@@ -60,8 +61,16 @@ body{
   box-shadow:0 4px 12px rgba(0,0,0,0.25);
 }
 
-.title h1{margin:0;font-size:28px;}
-.title p{margin:4px 0 0;font-size:13px;opacity:.8;}
+.title h1{
+  margin:0;
+  font-size:28px;
+}
+
+.title p{
+  margin:4px 0 0;
+  font-size:13px;
+  opacity:.8;
+}
 
 .update-box{
   background:rgba(255,255,255,.15);
@@ -77,7 +86,7 @@ body{
 /* CARDS */
 .hero{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(6,1fr);
   gap:10px;
 }
 
@@ -90,6 +99,7 @@ body{
 
 .separar{border-color:var(--vermelho);}
 .conferir{border-color:var(--roxo);}
+.execucao{border-color:var(--azul);}
 .pendente{border-color:var(--laranja);}
 .concluido{border-color:var(--verde);}
 
@@ -97,6 +107,7 @@ body{
   font-size:11px;
   color:var(--muted);
   font-weight:bold;
+  text-transform:uppercase;
 }
 
 .card .value{
@@ -118,6 +129,7 @@ body{
   padding:12px;
   display:flex;
   flex-direction:column;
+  min-height:0;
 }
 
 .panel h2{
@@ -131,27 +143,32 @@ body{
   overflow:hidden;
   border:1px solid var(--borda);
   border-radius:10px;
+  min-height:0;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
+  table-layout:fixed;
 }
 
 thead{
   background:#eef4ff;
   position:sticky;
   top:0;
+  z-index:2;
 }
 
 th,td{
   padding:9px;
   font-size:13px;
+  line-height:1.2;
 }
 
 th{
   color:var(--muted);
   text-transform:uppercase;
+  font-size:12px;
 }
 
 td{
@@ -161,16 +178,33 @@ td{
 .center{text-align:center;}
 .left{text-align:left;}
 
+/* LARGURA DAS COLUNAS - PEDIDOS PENDENTES */
+.col-pedido{width:18%;}
+.col-integrado{width:28%;}
+.col-status{width:22%;}
+.col-cliente{width:32%;}
+
 /* STATUS */
 .pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:5px 10px;
   border-radius:20px;
   font-size:11px;
   font-weight:bold;
+  white-space:nowrap;
 }
 
-.separar-pill{background:#ffe5e5;color:#b91c1c;}
-.conferir-pill{background:#ede9fe;color:#6d28d9;}
+.separar-pill{
+  background:#ffe5e5;
+  color:#b91c1c;
+}
+
+.conferir-pill{
+  background:#ede9fe;
+  color:#6d28d9;
+}
 
 /* SCROLL */
 .scroll{
@@ -186,6 +220,27 @@ td{
   0%{transform:translateY(0);}
   100%{transform:translateY(-50%);}
 }
+
+/* AJUSTE FINO PEDIDOS PENDENTES */
+#pedidos td{
+  text-align:center;
+  vertical-align:middle;
+}
+
+#pedidos td:last-child{
+  text-align:left;
+}
+
+/* RESPONSIVO */
+@media(max-width:1100px){
+  .hero{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
@@ -193,121 +248,160 @@ td{
 
 <div class="container">
 
-<div class="topbar">
-  <div class="brand">
-    <img src="logo-labor.png">
-    <div class="title">
-      <h1>Painel Operacional</h1>
-      <p>Separação e Conferência</p>
+  <div class="topbar">
+    <div class="brand">
+      <img src="logo-labor.png" alt="Logo">
+      <div class="title">
+        <h1>Painel Operacional</h1>
+        <p>Separação e Conferência</p>
+      </div>
+    </div>
+
+    <div class="update-box">
+      <div class="time" id="atualizacao">--</div>
     </div>
   </div>
 
-  <div class="update-box">
-    <div class="time" id="atualizacao">--</div>
+  <div class="hero">
+    <div class="card separar">
+      <div class="label">Falta separar</div>
+      <div id="faltaSeparar" class="value">0</div>
+    </div>
+
+    <div class="card conferir">
+      <div class="label">Falta conferir</div>
+      <div id="faltaConferir" class="value">0</div>
+    </div>
+
+    <div class="card execucao">
+      <div class="label">Em execução</div>
+      <div id="emExecucao" class="value">0</div>
+    </div>
+
+    <div class="card pendente">
+      <div class="label">Total pendente</div>
+      <div id="totalPendente" class="value">0</div>
+    </div>
+
+    <div class="card concluido">
+      <div class="label">Concluído</div>
+      <div id="concluido" class="value">0</div>
+    </div>
+
+    <div class="card">
+      <div class="label">Total pedidos</div>
+      <div id="totalPedidos" class="value">0</div>
+    </div>
   </div>
-</div>
 
-<div class="hero">
-  <div class="card separar"><div class="label">Falta separar</div><div id="faltaSeparar" class="value">0</div></div>
-  <div class="card conferir"><div class="label">Falta conferir</div><div id="faltaConferir" class="value">0</div></div>
-  <div class="card pendente"><div class="label">Total pendente</div><div id="totalPendente" class="value">0</div></div>
-  <div class="card concluido"><div class="label">Concluído</div><div id="concluido" class="value">0</div></div>
-  <div class="card"><div class="label">Total pedidos</div><div id="totalPedidos" class="value">0</div></div>
-</div>
+  <div class="grid">
 
-<div class="grid">
+    <div class="panel">
+      <h2>Produtividade do Time</h2>
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr>
+              <th class="left">Separador</th>
+              <th class="center">Pedidos</th>
+              <th class="center">Endereços</th>
+              <th class="center">%</th>
+            </tr>
+          </thead>
+          <tbody id="produtividade"></tbody>
+        </table>
+      </div>
+    </div>
 
-<div class="panel">
-<h2>Produtividade do Time</h2>
-<div class="table-box">
-<table>
-<thead>
-<tr>
-<th class="left">Separador</th>
-<th class="center">Pedidos</th>
-<th class="center">Endereços</th>
-<th class="center">%</th>
-</tr>
-</thead>
-<tbody id="produtividade"></tbody>
-</table>
-</div>
-</div>
+    <div class="panel">
+      <h2>Pedidos Pendentes</h2>
 
-<div class="panel">
-<h2>Pedidos Pendentes</h2>
+      <div class="table-box">
+        <table>
+          <thead id="pedidosPendentesHeader">
+            <tr>
+              <th class="center col-pedido">Pedido</th>
+              <th class="center col-integrado">Integrado</th>
+              <th class="center col-status">Status</th>
+              <th class="left col-cliente">Cliente</th>
+            </tr>
+          </thead>
+        </table>
 
-<div class="table-box">
-<table>
-<thead>
-<tr>
-<th class="center">Pedido</th>
-<th class="center">Integrado</th>
-<th class="center">Status</th>
-<th class="left">Cliente</th>
-</tr>
-</thead>
-</table>
+        <div class="scroll" id="scrollArea">
+          <table>
+            <tbody id="pedidos" class="scroll-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-<div class="scroll" id="scrollArea">
-<table>
-<tbody id="pedidos" class="scroll-body"></tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
 <script>
 async function carregar() {
-  const res = await fetch('data.json?t=' + Date.now());
-  const data = await res.json();
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    const data = await res.json();
 
-  document.getElementById('atualizacao').innerText = data.atualizacao;
+    document.getElementById('atualizacao').innerText = data.atualizacao || '--';
 
-  document.getElementById('faltaSeparar').innerText = data.cards.falta_separar;
-  document.getElementById('faltaConferir').innerText = data.cards.falta_conferir;
-  document.getElementById('totalPendente').innerText = data.cards.total_pendente;
-  document.getElementById('concluido').innerText = data.cards.concluido;
-  document.getElementById('totalPedidos').innerText = data.cards.total_pedidos;
+    const totalPedidos = Number(data.cards.total_pedidos || 0);
+    const concluido = Number(data.cards.concluido || 0);
 
-  const prod = document.getElementById('produtividade');
-  prod.innerHTML = '';
+    document.getElementById('faltaSeparar').innerText = data.cards.falta_separar || 0;
+    document.getElementById('faltaConferir').innerText = data.cards.falta_conferir || 0;
+    document.getElementById('emExecucao').innerText = data.cards.em_execucao || 0;
+    document.getElementById('concluido').innerText = concluido;
+    document.getElementById('totalPedidos').innerText = totalPedidos;
 
-  data.produtividade.forEach(p=>{
-    prod.innerHTML += `
-      <tr>
-        <td>${p.separador}</td>
-        <td class="center">${p.pedidos}</td>
-        <td class="center">${p.enderecos}</td>
-        <td class="center">${p.percentual}</td>
-      </tr>`;
-  });
+    document.getElementById('totalPendente').innerText = totalPedidos - concluido;
 
-  const ped = document.getElementById('pedidos');
-  ped.innerHTML = '';
+    const prod = document.getElementById('produtividade');
+    prod.innerHTML = '';
 
-  data.pedidos_pendentes.forEach(p=>{
-    ped.innerHTML += `
-      <tr>
-        <td class="center">${p.pedido}</td>
-        <td class="center">${p.integrado}</td>
-        <td class="center">
-          <span class="pill ${p.status==='falta_separar'?'separar-pill':'conferir-pill'}">
-            ${p.status==='falta_separar'?'Falta Separar':'Falta Conferir'}
-          </span>
-        </td>
-        <td>${p.cliente}</td>
-      </tr>`;
-  });
+    data.produtividade.forEach(p=>{
+      prod.innerHTML += `
+        <tr>
+          <td class="left">${p.separador}</td>
+          <td class="center">${p.pedidos}</td>
+          <td class="center">${p.enderecos}</td>
+          <td class="center">${p.percentual}</td>
+        </tr>`;
+    });
 
-  const scrollArea = document.getElementById('scrollArea');
-  if(ped.scrollHeight > scrollArea.clientHeight){
-    ped.classList.add('auto-scroll');
+    const ped = document.getElementById('pedidos');
+    ped.innerHTML = '';
+
+    data.pedidos_pendentes.forEach(p=>{
+      const statusClasse = p.status === 'falta_separar' ? 'separar-pill' : 'conferir-pill';
+      const statusTexto = p.status === 'falta_separar' ? 'Falta Separar' : 'Falta Conferir';
+
+      ped.innerHTML += `
+        <tr>
+          <td class="center col-pedido">${p.pedido}</td>
+          <td class="center col-integrado">${p.integrado}</td>
+          <td class="center col-status">
+            <span class="pill ${statusClasse}">${statusTexto}</span>
+          </td>
+          <td class="left col-cliente">${p.cliente}</td>
+        </tr>`;
+    });
+
+    const scrollArea = document.getElementById('scrollArea');
+
+    ped.classList.remove('auto-scroll');
+
+    setTimeout(()=>{
+      if(ped.scrollHeight > scrollArea.clientHeight){
+        ped.classList.add('auto-scroll');
+      }
+    },100);
+
+  } catch (error) {
+    console.error('Erro ao carregar data.json:', error);
   }
 }
 
