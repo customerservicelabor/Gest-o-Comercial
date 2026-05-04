@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "titulo": "Painel de Performance do Time",
+    "subtitulo": "Demanda, capacidade, produção, apoio e eficiência operacional",
+    "periodo": "Abril/2026"
+  },
+  "dias": [
+    {
+      "data": "01/04/2026",
+      "demanda_total": 164,
+      "produzido": 160,
+      "producao_base": 90,
+      "producao_apoio": 77,
+      "backlog_gerado": 4,
+      "eficiencia_operacional": 0.9647,
+      "capacidade_perdida": 0.06,
+      "gap": -0.91
+    },
+    {
+      "data": "02/04/2026",
+      "demanda_total": 87,
+      "produzido": 87,
+      "producao_base": 53,
+      "producao_apoio": 35,
+      "backlog_gerado": 0,
+      "eficiencia_operacional": 0.58,
+      "capacidade_perdida": 0.42,
+      "gap": -7.00
+    },
+    {
+      "data": "06/04/2026",
+      "demanda_total": 59,
+      "produzido": 58,
+      "producao_base": 43,
+      "producao_apoio": 15,
+      "backlog_gerado": 1,
+      "eficiencia_operacional": 0.4214,
+      "capacidade_perdida": 0.59,
+      "gap": -10.25
+    },
+    {
+      "data": "07/04/2026",
+      "demanda_total": 65,
+      "produzido": 65,
+      "producao_base": 53,
+      "producao_apoio": 13,
+      "backlog_gerado": 0,
+      "eficiencia_operacional": 0.4194,
+      "capacidade_perdida": 0.58,
+      "gap": -11.25
+    },
+    {
+      "data": "08/04/2026",
+      "demanda_total": 103,
+      "produzido": 103,
+      "producao_base": 93,
+      "producao_apoio": 11,
+      "backlog_gerado": 0,
+      "eficiencia_operacional": 0.6645,
+      "capacidade_perdida": 0.34,
+      "gap": -6.50
+    },
+    {
+      "data": "09/04/2026",
+      "demanda_total": 92,
+      "produzido": 91,
+      "producao_base": 77,
+      "producao_apoio": 14,
+      "backlog_gerado": 1,
+      "eficiencia_operacional": 0.5576,
+      "capacidade_perdida": 0.45,
+      "gap": -8.22
+    },
+    {
+      "data": "10/04/2026",
+      "demanda_total": 79,
+      "produzido": 79,
+      "producao_base": 76,
+      "producao_apoio": 3,
+      "backlog_gerado": 0,
+      "eficiencia_operacional": 0.5097,
+      "capacidade_perdida": 0.49,
+      "gap": -9.50
+    },
+    {
+      "data": "13/04/2026",
+      "demanda_total": 110,
+      "produzido": 95,
+      "producao_base": 101,
+      "producao_apoio": 3,
+      "backlog_gerado": 15,
+      "eficiencia_operacional": 0.7586,
+      "capacidade_perdida": 0.34,
+      "gap": -7.14
+    },
+    {
+      "data": "14/04/2026",
+      "demanda_total": 117,
+      "produzido": 100,
+      "producao_base": 93,
+      "producao_apoio": 12,
+      "backlog_gerado": 17,
+      "eficiencia_operacional": 0.7091,
+      "capacidade_perdida": 0.39,
+      "gap": -7.22
+    },
+    {
+      "data": "15/04/2026",
+      "demanda_total": 116,
+      "produzido": 96,
+      "producao_base": 90,
+      "producao_apoio": 16,
+      "backlog_gerado": 20,
+      "eficiencia_operacional": 0.6629,
+      "capacidade_perdida": 0.45,
+      "gap": -7.90
+    },
+    {
+      "data": "16/04/2026",
+      "demanda_total": 147,
+      "produzido": 145,
+      "producao_base": 80,
+      "producao_apoio": 70,
+      "backlog_gerado": 2,
+      "eficiencia_operacional": 0.7946,
+      "capacidade_perdida": 0.22,
+      "gap": -3.64
+    },
+    {
+      "data": "17/04/2026",
+      "demanda_total": 109,
+      "produzido": 96,
+      "producao_base": 64,
+      "producao_apoio": 36,
+      "backlog_gerado": 13,
+      "eficiencia_operacional": 0.5892,
+      "capacidade_perdida": 0.48,
+      "gap": -8.09
+    },
+    {
+      "data": "20/04/2026",
+      "demanda_total": 111,
+      "produzido": 111,
+      "producao_base": 83,
+      "producao_apoio": 34,
+      "backlog_gerado": 0,
+      "eficiencia_operacional": 0.6343,
+      "capacidade_perdida": 0.37,
+      "gap": -6.40
+    },
+    {
+      "data": "22/04/2026",
+      "demanda_total": 98,
+      "produzido": 94,
+      "producao_base": 70,
+      "producao_apoio": 25,
+      "backlog_gerado": 4,
+      "eficiencia_operacional": 0.5939,
+      "capacidade_perdida": 0.43,
+      "gap": -7.89
+    },
+    {
+      "data": "23/04/2026",
+      "demanda_total": 106,
+      "produzido": 105,
+      "producao_base": 86,
+      "producao_apoio": 21,
+      "backlog_gerado": 1,
+      "eficiencia_operacional": 0.6057,
+      "capacidade_perdida": 0.40,
+      "gap": -7.00
+    },
+    {
+      "data": "24/04/2026",
+      "demanda_total": 116,
+      "produzido": 108,
+      "producao_base": 91,
+      "producao_apoio": 39,
+      "backlog_gerado": 8,
+      "eficiencia_operacional": 0.7030,
+      "capacidade_perdida": 0.35,
+      "gap": -6.33
+    },
+    {
+      "data": "27/04/2026",
+      "demanda_total": 121,
+      "produzido": 120,
+      "producao_base": 99,
+      "producao_apoio": 55,
+      "backlog_gerado": 1,
+      "eficiencia_operacional": 0.6541,
+      "capacidade_perdida": 0.35,
+      "gap": -5.91
+    },
+    {
+      "data": "28/04/2026",
+      "demanda_total": 119,
+      "produzido": 118,
+      "producao_base": 94,
+      "producao_apoio": 37,
+      "backlog_gerado": 1,
+      "eficiencia_operacional": 0.7212,
+      "capacidade_perdida": 0.28,
+      "gap": -5.22
+    },
+    {
+      "data": "29/04/2026",
+      "demanda_total": 184,
+      "produzido": 183,
+      "producao_base": 108,
+      "producao_apoio": 102,
+      "backlog_gerado": 1,
+      "eficiencia_operacional": 0.8178,
+      "capacidade_perdida": 0.19,
+      "gap": -2.80
+    }
+  ]
+}
