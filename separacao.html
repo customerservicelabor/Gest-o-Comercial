@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Gestão Individual</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b2e;
+      --panel-2: #101f34;
+      --card: #f4f6f8;
+      --text: #f7fbff;
+      --muted: #8fa3bd;
+      --blue: #0b2a55;
+      --green: #1f9d55;
+      --green-soft: #dff5e8;
+      --yellow: #f2b84b;
+      --yellow-soft: #fff1cf;
+      --red: #e55353;
+      --red-soft: #ffe1e1;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 16px 40px rgba(0,0,0,.28);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top left, #102b4a 0%, var(--bg) 42%, #030812 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 22px 28px 28px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .title-wrap h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .title-wrap p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.35fr .9fr;
+      gap: 16px;
+    }
+
+    .kpis {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .kpi {
+      background: linear-gradient(180deg, #ffffff 0%, #edf1f5 100%);
+      color: #061329;
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow);
+      min-height: 108px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -45px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(11,42,85,.08);
+    }
+
+    .kpi .label {
+      font-size: 12px;
+      color: #30445f;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .kpi .value {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .kpi .sub {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #52667f;
+    }
+
+    .kpi.green { border-left: 7px solid var(--green); }
+    .kpi.yellow { border-left: 7px solid var(--yellow); }
+    .kpi.red { border-left: 7px solid var(--red); }
+    .kpi.blue { border-left: 7px solid #2f80ed; }
+
+    .panel {
+      background: rgba(13,27,46,.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 100px;
+    }
+
+    .panel-header {
+      background: linear-gradient(90deg, #071329 0%, #0b2140 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 13px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -.2px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line);
+      color: #d8e7f7;
+      white-space: nowrap;
+    }
+
+    .panel-body { padding: 14px 16px 16px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    th {
+      color: #b7c9dd;
+      text-align: left;
+      font-size: 11px;
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--line);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    td {
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: #f5f9ff;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 74px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .tag.keep { color: #0b5b2a; background: var(--green-soft); }
+    .tag.dev { color: #765000; background: var(--yellow-soft); }
+    .tag.act { color: #8c1010; background: var(--red-soft); }
+    .tag.ignore { color: #52667f; background: #edf1f5; }
+
+    .matrix {
+      height: 418px;
+      position: relative;
+      border-radius: 14px;
+      background:
+        linear-gradient(90deg, rgba(229,83,83,.15) 0 50%, rgba(31,157,85,.12) 50% 100%),
+        linear-gradient(0deg, rgba(229,83,83,.16) 0 50%, rgba(31,157,85,.10) 50% 100%),
+        #0a1628;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .axis-x, .axis-y {
+      position: absolute;
+      background: rgba(255,255,255,.34);
+    }
+
+    .axis-x { left: 0; right: 0; top: 50%; height: 1px; }
+    .axis-y { top: 0; bottom: 0; left: 50%; width: 1px; }
+
+    .q-label {
+      position: absolute;
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .q1 { top: 14px; right: 16px; color: #8ff0b2; }
+    .q2 { top: 14px; left: 16px; color: #ffd47c; }
+    .q3 { bottom: 14px; left: 16px; color: #ff9a9a; }
+    .q4 { bottom: 14px; right: 16px; color: #ffd47c; }
+
+    .dot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 4px rgba(255,255,255,.07), 0 6px 18px rgba(0,0,0,.4);
+    }
+
+    .dot.green { background: var(--green); }
+    .dot.yellow { background: var(--yellow); }
+    .dot.red { background: var(--red); }
+
+    .dot-label {
+      position: absolute;
+      transform: translate(10px, -11px);
+      font-size: 11px;
+      white-space: nowrap;
+      color: #f5f9ff;
+      text-shadow: 0 1px 2px #000;
+    }
+
+    .axis-title-x,
+    .axis-title-y {
+      position: absolute;
+      font-size: 11px;
+      color: #a9bdd4;
+    }
+
+    .axis-title-x { bottom: 8px; left: 50%; transform: translateX(-50%); }
+    .axis-title-y { top: 50%; left: 8px; transform: rotate(-90deg) translateX(-50%); transform-origin: left center; }
+
+    .alerts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .alert {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+    }
+
+    .alert .icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-weight: 900;
+    }
+
+    .alert.red .icon { background: var(--red); }
+    .alert.yellow .icon { background: var(--yellow); color: #15100a; }
+    .alert.green .icon { background: var(--green); }
+
+    .alert h3 {
+      margin: 0 0 3px;
+      font-size: 13px;
+    }
+
+    .alert p {
+      margin: 0;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .alert .action {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    @media (max-width: 1200px) {
+      .grid { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="title-wrap">
+        <h1>Painel de Gestão Individual</h1>
+        <p>Visão restrita à gestão • análise de produtividade, confiabilidade e ação recomendada</p>
+      </div>
+      <div class="filters">
+        <div class="pill">Período: Abril/2026</div>
+        <div class="pill">Filtro: Separação</div>
+        <div class="pill">Acesso: Gestão</div>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi green">
+        <div class="label">Confiáveis</div>
+        <div class="value">4</div>
+        <div class="sub">Maria, Rosana, Débora e Karina</div>
+      </div>
+      <div class="kpi red">
+        <div class="label">Não confiáveis</div>
+        <div class="value">5</div>
+        <div class="sub">exigem ação gerencial</div>
+      </div>
+      <div class="kpi blue">
+        <div class="label">Alta performance</div>
+        <div class="value">1</div>
+        <div class="sub">referência operacional</div>
+      </div>
+      <div class="kpi yellow">
+        <div class="label">Faltas no time base</div>
+        <div class="value">3</div>
+        <div class="sub">impacto direto na capacidade</div>
+      </div>
+      <div class="kpi red">
+        <div class="label">Ações necessárias</div>
+        <div class="value">5</div>
+        <div class="sub">baixo desempenho recorrente</div>
+      </div>
+    </section>
+
+    <main class="grid" style="margin-top:16px;">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Ranking individual</h2>
+          <span class="badge">Média mensal ajustada</span>
+        </div>
+        <div class="panel-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Funcionário</th>
+                <th class="num">Média</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Débora Correa</td><td class="num">22,76%</td><td><span class="tag keep">Manter</span></td></tr>
+              <tr><td>Maria Rosinete</td><td class="num">6,31%</td><td><span class="tag keep">Manter</span></td></tr>
+              <tr><td>Rosana Ribeiro</td><td class="num">2,00%</td><td><span class="tag keep">Manter</span></td></tr>
+              <tr><td>Karina Aparecida</td><td class="num">1,84%</td><td><span class="tag keep">Manter</span></td></tr>
+              <tr><td>Waldenice Brito</td><td class="num">-12,96%</td><td><span class="tag act">Agir</span></td></tr>
+              <tr><td>Josiane Ferreira</td><td class="num">-32,94%</td><td><span class="tag act">Agir</span></td></tr>
+              <tr><td>Gabriela</td><td class="num">-44,60%</td><td><span class="tag act">Agir</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Matriz de decisão</h2>
+          <span class="badge">Média mensal × Indicador de inconsistência</span>
+        </div>
+        <div class="panel-body">
+          <div class="matrix">
+            <div class="axis-x"></div>
+            <div class="axis-y"></div>
+            <div class="q-label q1">Manter</div>
+            <div class="q-label q2">Desenvolver</div>
+            <div class="q-label q3">Agir</div>
+            <div class="q-label q4">Monitorar</div>
+            <div class="axis-title-x">Média mensal →</div>
+            <div class="axis-title-y">Consistência →</div>
+
+            <div class="dot green" style="left:78%; top:18%;"><span class="dot-label">Débora</span></div>
+            <div class="dot green" style="left:60%; top:34%;"><span class="dot-label">Maria</span></div>
+            <div class="dot green" style="left:55%; top:38%;"><span class="dot-label">Rosana</span></div>
+            <div class="dot green" style="left:54%; top:39%;"><span class="dot-label">Karina</span></div>
+            <div class="dot red" style="left:28%; top:78%;"><span class="dot-label">Waldenice</span></div>
+            <div class="dot red" style="left:16%; top:88%;"><span class="dot-label">Josiane</span></div>
+            <div class="dot red" style="left:10%; top:92%;"><span class="dot-label">Gabriela</span></div>
+            <div class="dot red" style="left:22%; top:86%;"><span class="dot-label">Gabriel</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Alertas gerenciais</h2>
+          <span class="badge">Prioridade</span>
+        </div>
+        <div class="panel-body alerts">
+          <div class="alert red">
+            <div class="icon">!</div>
+            <div>
+              <h3>Waldenice com risco operacional</h3>
+              <p>Média negativa, alta inconsistência e 2 faltas.</p>
+            </div>
+            <div class="action" style="color:#ff9b9b;">Agir</div>
+          </div>
+          <div class="alert red">
+            <div class="icon">!</div>
+            <div>
+              <h3>Diaristas abaixo da régua</h3>
+              <p>Josiane, Gabriela e Gabriel com desempenho crítico.</p>
+            </div>
+            <div class="action" style="color:#ff9b9b;">Rever</div>
+          </div>
+          <div class="alert yellow">
+            <div class="icon">~</div>
+            <div>
+              <h3>Maria com oscilação</h3>
+              <p>Confiável, mas com dias negativos relevantes.</p>
+            </div>
+            <div class="action" style="color:#ffd47c;">Acompanhar</div>
+          </div>
+          <div class="alert green">
+            <div class="icon">✓</div>
+            <div>
+              <h3>Débora como referência</h3>
+              <p>Alta performance e baixa inconsistência.</p>
+            </div>
+            <div class="action" style="color:#8ff0b2;">Manter</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" style="grid-column: 1 / 2;">
+        <div class="panel-header">
+          <h2>Ação recomendada</h2>
+          <span class="badge">Resumo</span>
+        </div>
+        <div class="panel-body">
+          <table>
+            <thead>
+              <tr><th>Ação</th><th class="num">Qtde</th><th>Leitura</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="tag keep">Manter</span></td><td class="num">4</td><td>time confiável</td></tr>
+              <tr><td><span class="tag dev">Desenvolver</span></td><td class="num">0</td><td>sem casos médios</td></tr>
+              <tr><td><span class="tag act">Agir</span></td><td class="num">5</td><td>risco operacional</td></tr>
+              <tr><td><span class="tag ignore">Ignorar</span></td><td class="num">13</td><td>não aplicável</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" style="grid-column: 2 / -1;">
+        <div class="panel-header">
+          <h2>Leitura executiva</h2>
+          <span class="badge">Restrito à gestão</span>
+        </div>
+        <div class="panel-body">
+          <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
+            <div style="background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:14px;">
+              <strong style="color:#8ff0b2;">Quem puxa o resultado</strong>
+              <p style="color:var(--muted); font-size:12px; line-height:1.45; margin-bottom:0;">Débora aparece como referência de performance e deve ser preservada para evitar sobrecarga.</p>
+            </div>
+            <div style="background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:14px;">
+              <strong style="color:#ffd47c;">Quem sustenta</strong>
+              <p style="color:var(--muted); font-size:12px; line-height:1.45; margin-bottom:0;">Maria, Rosana e Karina estão confiáveis, mas ainda com oportunidade de ganho de consistência.</p>
+            </div>
+            <div style="background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:14px;">
+              <strong style="color:#ff9b9b;">Onde agir</strong>
+              <p style="color:var(--muted); font-size:12px; line-height:1.45; margin-bottom:0;">Waldenice e diaristas críticos exigem plano de ação, treinamento ou substituição de estratégia.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Fonte: base de produtividade individual • Abril/2026</span>
+      <span>Labor • Painel de Gestão Individual</span>
+    </footer>
+  </div>
+</body>
+</html>
