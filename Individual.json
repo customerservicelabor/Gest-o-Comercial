@@ -1,0 +1,260 @@
+{
+  "metadata": {
+    "titulo": "Painel de Gestão Individual",
+    "subtitulo": "Visão restrita à gestão • análise de produtividade, confiabilidade e ação recomendada",
+    "periodo": "Abril/2026",
+    "filtro": "Separação",
+    "acesso": "Gestão",
+    "fonte": "base de produtividade individual"
+  },
+  "kpis": {
+    "confiaveis": {
+      "valor": 4,
+      "descricao": "Maria, Rosana, Débora e Karina"
+    },
+    "nao_confiaveis": {
+      "valor": 5,
+      "descricao": "exigem ação gerencial"
+    },
+    "alta_performance": {
+      "valor": 1,
+      "descricao": "referência operacional"
+    },
+    "faltas_time_base": {
+      "valor": 3,
+      "descricao": "impacto direto na capacidade"
+    },
+    "acoes_necessarias": {
+      "valor": 5,
+      "descricao": "baixo desempenho recorrente"
+    }
+  },
+  "ranking": [
+    {
+      "nome": "Débora Correa",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0.2276,
+      "score_final": "Alta Performance",
+      "faltas": 0,
+      "indicador_confiabilidade": 0.1053,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
+    },
+    {
+      "nome": "Maria Rosinete Gomes dos Santos",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0.0631,
+      "score_final": "Dentro do esperado",
+      "faltas": 1,
+      "indicador_confiabilidade": 0.3333,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
+    },
+    {
+      "nome": "Rosana Ribeiro Morais",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0.0200,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_confiabilidade": 0.3684,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
+    },
+    {
+      "nome": "Karina Aparecida De Souza",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0.0184,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_confiabilidade": 0.3684,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
+    },
+    {
+      "nome": "Waldenice de Socorro Brito",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.1296,
+      "score_final": "Crítico",
+      "faltas": 2,
+      "indicador_confiabilidade": 0.8824,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "JOSIANE FERREIRA SERAFIM",
+      "modelo": "Diarista - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.3294,
+      "score_final": "Crítico",
+      "faltas": null,
+      "indicador_confiabilidade": 1.0000,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "Gabriela",
+      "modelo": "Diarista - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.4460,
+      "score_final": "Crítico",
+      "faltas": null,
+      "indicador_confiabilidade": 1.0000,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "Gabriel Fernando",
+      "modelo": "Diarista - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.2256,
+      "score_final": "Crítico",
+      "faltas": null,
+      "indicador_confiabilidade": 1.0000,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "Gabriela Alexandra Acosta Beiza",
+      "modelo": "Diarista - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.2159,
+      "score_final": "Crítico",
+      "faltas": null,
+      "indicador_confiabilidade": 1.0000,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    }
+  ],
+  "matriz_decisao": {
+    "eixo_x": "Média mensal",
+    "eixo_y": "Consistência",
+    "pontos": [
+      {
+        "nome": "Débora",
+        "media_mensal": 0.2276,
+        "consistencia": 0.8947,
+        "quadrante": "Manter",
+        "cor": "green"
+      },
+      {
+        "nome": "Maria",
+        "media_mensal": 0.0631,
+        "consistencia": 0.6667,
+        "quadrante": "Manter",
+        "cor": "green"
+      },
+      {
+        "nome": "Rosana",
+        "media_mensal": 0.0200,
+        "consistencia": 0.6316,
+        "quadrante": "Manter",
+        "cor": "green"
+      },
+      {
+        "nome": "Karina",
+        "media_mensal": 0.0184,
+        "consistencia": 0.6316,
+        "quadrante": "Manter",
+        "cor": "green"
+      },
+      {
+        "nome": "Waldenice",
+        "media_mensal": -0.1296,
+        "consistencia": 0.1176,
+        "quadrante": "Agir",
+        "cor": "red"
+      },
+      {
+        "nome": "Josiane",
+        "media_mensal": -0.3294,
+        "consistencia": 0.0000,
+        "quadrante": "Agir",
+        "cor": "red"
+      },
+      {
+        "nome": "Gabriela",
+        "media_mensal": -0.4460,
+        "consistencia": 0.0000,
+        "quadrante": "Agir",
+        "cor": "red"
+      },
+      {
+        "nome": "Gabriel",
+        "media_mensal": -0.2256,
+        "consistencia": 0.0000,
+        "quadrante": "Agir",
+        "cor": "red"
+      }
+    ]
+  },
+  "alertas": [
+    {
+      "tipo": "critico",
+      "titulo": "Waldenice com risco operacional",
+      "descricao": "Média negativa, alta inconsistência e 2 faltas.",
+      "acao": "Agir"
+    },
+    {
+      "tipo": "critico",
+      "titulo": "Diaristas abaixo da régua",
+      "descricao": "Josiane, Gabriela e Gabriel com desempenho crítico.",
+      "acao": "Rever"
+    },
+    {
+      "tipo": "atencao",
+      "titulo": "Maria com oscilação",
+      "descricao": "Confiável, mas com dias negativos relevantes.",
+      "acao": "Acompanhar"
+    },
+    {
+      "tipo": "positivo",
+      "titulo": "Débora como referência",
+      "descricao": "Alta performance e baixa inconsistência.",
+      "acao": "Manter"
+    }
+  ],
+  "acoes_recomendadas": [
+    {
+      "acao": "Manter",
+      "quantidade": 4,
+      "leitura": "time confiável"
+    },
+    {
+      "acao": "Desenvolver",
+      "quantidade": 0,
+      "leitura": "sem casos médios"
+    },
+    {
+      "acao": "Agir",
+      "quantidade": 5,
+      "leitura": "risco operacional"
+    },
+    {
+      "acao": "Ignorar",
+      "quantidade": 13,
+      "leitura": "não aplicável"
+    }
+  ],
+  "leitura_executiva": [
+    {
+      "titulo": "Quem puxa o resultado",
+      "texto": "Débora aparece como referência de performance e deve ser preservada para evitar sobrecarga.",
+      "tipo": "positivo"
+    },
+    {
+      "titulo": "Quem sustenta",
+      "texto": "Maria, Rosana e Karina estão confiáveis, mas ainda com oportunidade de ganho de consistência.",
+      "tipo": "neutro"
+    },
+    {
+      "titulo": "Onde agir",
+      "texto": "Waldenice e diaristas críticos exigem plano de ação, treinamento ou substituição de estratégia.",
+      "tipo": "critico"
+    }
+  ]
+}
