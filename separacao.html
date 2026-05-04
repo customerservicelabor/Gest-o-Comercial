@@ -8,17 +8,15 @@
     :root {
       --bg: #07111f;
       --panel: #0d1b2e;
-      --panel-2: #101f34;
-      --card: #f4f6f8;
       --text: #f7fbff;
       --muted: #8fa3bd;
-      --blue: #0b2a55;
       --green: #1f9d55;
       --green-soft: #dff5e8;
       --yellow: #f2b84b;
       --yellow-soft: #fff1cf;
       --red: #e55353;
       --red-soft: #ffe1e1;
+      --blue: #2f80ed;
       --line: rgba(255,255,255,.12);
       --shadow: 0 16px 40px rgba(0,0,0,.28);
       --radius: 18px;
@@ -34,311 +32,87 @@
       overflow-x: hidden;
     }
 
-    .page {
-      width: 100%;
-      min-height: 100vh;
-      padding: 22px 28px 28px;
-    }
+    .page { width: 100%; min-height: 100vh; padding: 22px 28px 28px; }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+    .title-wrap h1 { margin: 0; font-size: 30px; line-height: 1.05; letter-spacing: -0.5px; }
+    .title-wrap p { margin: 7px 0 0; color: var(--muted); font-size: 13px; }
+    .filters { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .pill { border: 1px solid var(--line); background: rgba(255,255,255,.05); color: var(--text); border-radius: 999px; padding: 10px 14px; font-size: 12px; white-space: nowrap; }
 
-    .title-wrap h1 {
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.05;
-      letter-spacing: -0.5px;
-    }
-
-    .title-wrap p {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .filters {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .pill {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1.35fr .9fr;
-      gap: 16px;
-    }
-
-    .kpis {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .kpi {
-      background: linear-gradient(180deg, #ffffff 0%, #edf1f5 100%);
-      color: #061329;
-      border-radius: 16px;
-      padding: 16px 16px 14px;
-      box-shadow: var(--shadow);
-      min-height: 108px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .kpi::after {
-      content: "";
-      position: absolute;
-      right: -30px;
-      bottom: -45px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: rgba(11,42,85,.08);
-    }
-
-    .kpi .label {
-      font-size: 12px;
-      color: #30445f;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .kpi .value {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .kpi .sub {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #52667f;
-    }
-
+    .kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+    .kpi { background: linear-gradient(180deg, #ffffff 0%, #edf1f5 100%); color: #061329; border-radius: 16px; padding: 16px; box-shadow: var(--shadow); min-height: 108px; position: relative; overflow: hidden; }
+    .kpi::after { content: ""; position: absolute; right: -30px; bottom: -45px; width: 120px; height: 120px; border-radius: 50%; background: rgba(11,42,85,.08); }
+    .kpi .label { font-size: 12px; color: #30445f; font-weight: 700; margin-bottom: 12px; }
+    .kpi .value { font-size: 30px; font-weight: 900; letter-spacing: -1px; }
+    .kpi .sub { margin-top: 10px; font-size: 12px; color: #52667f; }
     .kpi.green { border-left: 7px solid var(--green); }
     .kpi.yellow { border-left: 7px solid var(--yellow); }
     .kpi.red { border-left: 7px solid var(--red); }
-    .kpi.blue { border-left: 7px solid #2f80ed; }
+    .kpi.blue { border-left: 7px solid var(--blue); }
 
-    .panel {
-      background: rgba(13,27,46,.92);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      min-height: 100px;
-    }
-
-    .panel-header {
-      background: linear-gradient(90deg, #071329 0%, #0b2140 100%);
-      border-bottom: 1px solid var(--line);
-      padding: 13px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .panel-header h2 {
-      margin: 0;
-      font-size: 16px;
-      letter-spacing: -.2px;
-    }
-
-    .badge {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--line);
-      color: #d8e7f7;
-      white-space: nowrap;
-    }
-
+    .grid { display: grid; grid-template-columns: 1.05fr 1.35fr .9fr; gap: 16px; margin-top: 16px; }
+    .panel { background: rgba(13,27,46,.92); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; min-height: 100px; }
+    .panel-header { background: linear-gradient(90deg, #071329 0%, #0b2140 100%); border-bottom: 1px solid var(--line); padding: 13px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .panel-header h2 { margin: 0; font-size: 16px; letter-spacing: -.2px; }
+    .badge { font-size: 11px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid var(--line); color: #d8e7f7; white-space: nowrap; }
     .panel-body { padding: 14px 16px 16px; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-    }
-
-    th {
-      color: #b7c9dd;
-      text-align: left;
-      font-size: 11px;
-      padding: 9px 8px;
-      border-bottom: 1px solid var(--line);
-      text-transform: uppercase;
-      letter-spacing: .3px;
-    }
-
-    td {
-      padding: 10px 8px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      color: #f5f9ff;
-    }
-
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { color: #b7c9dd; text-align: left; font-size: 11px; padding: 9px 8px; border-bottom: 1px solid var(--line); text-transform: uppercase; letter-spacing: .3px; }
+    td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,.08); color: #f5f9ff; }
     tr:last-child td { border-bottom: 0; }
-
     .num { text-align: right; font-variant-numeric: tabular-nums; }
 
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 74px;
-      padding: 5px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
+    .tag { display: inline-flex; align-items: center; justify-content: center; min-width: 74px; padding: 5px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
     .tag.keep { color: #0b5b2a; background: var(--green-soft); }
     .tag.dev { color: #765000; background: var(--yellow-soft); }
     .tag.act { color: #8c1010; background: var(--red-soft); }
     .tag.ignore { color: #52667f; background: #edf1f5; }
 
-    .matrix {
-      height: 418px;
-      position: relative;
-      border-radius: 14px;
-      background:
-        linear-gradient(90deg, rgba(229,83,83,.15) 0 50%, rgba(31,157,85,.12) 50% 100%),
-        linear-gradient(0deg, rgba(229,83,83,.16) 0 50%, rgba(31,157,85,.10) 50% 100%),
-        #0a1628;
-      border: 1px solid var(--line);
-      overflow: hidden;
-    }
-
-    .axis-x, .axis-y {
-      position: absolute;
-      background: rgba(255,255,255,.34);
-    }
-
+    .matrix { height: 418px; position: relative; border-radius: 14px; background: linear-gradient(90deg, rgba(229,83,83,.15) 0 50%, rgba(31,157,85,.12) 50% 100%), linear-gradient(0deg, rgba(229,83,83,.16) 0 50%, rgba(31,157,85,.10) 50% 100%), #0a1628; border: 1px solid var(--line); overflow: hidden; }
+    .axis-x, .axis-y { position: absolute; background: rgba(255,255,255,.34); }
     .axis-x { left: 0; right: 0; top: 50%; height: 1px; }
     .axis-y { top: 0; bottom: 0; left: 50%; width: 1px; }
-
-    .q-label {
-      position: absolute;
-      font-size: 12px;
-      color: rgba(255,255,255,.72);
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
+    .q-label { position: absolute; font-size: 12px; color: rgba(255,255,255,.72); font-weight: 800; text-transform: uppercase; }
     .q1 { top: 14px; right: 16px; color: #8ff0b2; }
     .q2 { top: 14px; left: 16px; color: #ffd47c; }
     .q3 { bottom: 14px; left: 16px; color: #ff9a9a; }
     .q4 { bottom: 14px; right: 16px; color: #ffd47c; }
-
-    .dot {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 0 0 4px rgba(255,255,255,.07), 0 6px 18px rgba(0,0,0,.4);
-    }
-
+    .dot { position: absolute; transform: translate(-50%, -50%); width: 13px; height: 13px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.07), 0 6px 18px rgba(0,0,0,.4); }
     .dot.green { background: var(--green); }
     .dot.yellow { background: var(--yellow); }
     .dot.red { background: var(--red); }
-
-    .dot-label {
-      position: absolute;
-      transform: translate(10px, -11px);
-      font-size: 11px;
-      white-space: nowrap;
-      color: #f5f9ff;
-      text-shadow: 0 1px 2px #000;
-    }
-
-    .axis-title-x,
-    .axis-title-y {
-      position: absolute;
-      font-size: 11px;
-      color: #a9bdd4;
-    }
-
+    .dot-label { position: absolute; transform: translate(10px, -11px); font-size: 11px; white-space: nowrap; color: #f5f9ff; text-shadow: 0 1px 2px #000; }
+    .axis-title-x, .axis-title-y { position: absolute; font-size: 11px; color: #a9bdd4; }
     .axis-title-x { bottom: 8px; left: 50%; transform: translateX(-50%); }
     .axis-title-y { top: 50%; left: 8px; transform: rotate(-90deg) translateX(-50%); transform-origin: left center; }
 
-    .alerts {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .alert {
-      display: grid;
-      grid-template-columns: 34px 1fr auto;
-      gap: 10px;
-      align-items: center;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.05);
-    }
-
-    .alert .icon {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      font-weight: 900;
-    }
-
+    .alerts { display: flex; flex-direction: column; gap: 10px; }
+    .alert { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.05); }
+    .alert .icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; font-weight: 900; }
     .alert.red .icon { background: var(--red); }
     .alert.yellow .icon { background: var(--yellow); color: #15100a; }
     .alert.green .icon { background: var(--green); }
+    .alert h3 { margin: 0 0 3px; font-size: 13px; }
+    .alert p { margin: 0; font-size: 11px; color: var(--muted); }
+    .alert .action { font-size: 11px; font-weight: 900; text-transform: uppercase; }
 
-    .alert h3 {
-      margin: 0 0 3px;
-      font-size: 13px;
-    }
+    .reading-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .reading-card { background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+    .reading-card strong { display: block; margin-bottom: 8px; }
+    .reading-card p { color: var(--muted); font-size: 12px; line-height: 1.45; margin: 0; }
+    .reading-card.positivo strong { color: #8ff0b2; }
+    .reading-card.neutro strong { color: #ffd47c; }
+    .reading-card.critico strong { color: #ff9b9b; }
 
-    .alert p {
-      margin: 0;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .alert .action {
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .footer {
-      margin-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 11px;
-    }
+    .footer { margin-top: 12px; display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
+    .error { padding: 18px; border: 1px solid rgba(229,83,83,.4); background: rgba(229,83,83,.12); border-radius: 14px; color: #ffdede; margin-top: 16px; }
 
     @media (max-width: 1200px) {
       .grid { grid-template-columns: 1fr; }
       .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .reading-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -346,45 +120,19 @@
   <div class="page">
     <header class="topbar">
       <div class="title-wrap">
-        <h1>Painel de Gestão Individual</h1>
-        <p>Visão restrita à gestão • análise de produtividade, confiabilidade e ação recomendada</p>
+        <h1 id="titulo">Painel de Gestão Individual</h1>
+        <p id="subtitulo">Carregando dados...</p>
       </div>
       <div class="filters">
-        <div class="pill">Período: Abril/2026</div>
-        <div class="pill">Filtro: Separação</div>
-        <div class="pill">Acesso: Gestão</div>
+        <div class="pill" id="periodo">Período: --</div>
+        <div class="pill" id="filtro">Filtro: --</div>
+        <div class="pill" id="acesso">Acesso: --</div>
       </div>
     </header>
 
-    <section class="kpis">
-      <div class="kpi green">
-        <div class="label">Confiáveis</div>
-        <div class="value">4</div>
-        <div class="sub">Maria, Rosana, Débora e Karina</div>
-      </div>
-      <div class="kpi red">
-        <div class="label">Não confiáveis</div>
-        <div class="value">5</div>
-        <div class="sub">exigem ação gerencial</div>
-      </div>
-      <div class="kpi blue">
-        <div class="label">Alta performance</div>
-        <div class="value">1</div>
-        <div class="sub">referência operacional</div>
-      </div>
-      <div class="kpi yellow">
-        <div class="label">Faltas no time base</div>
-        <div class="value">3</div>
-        <div class="sub">impacto direto na capacidade</div>
-      </div>
-      <div class="kpi red">
-        <div class="label">Ações necessárias</div>
-        <div class="value">5</div>
-        <div class="sub">baixo desempenho recorrente</div>
-      </div>
-    </section>
+    <section class="kpis" id="kpis"></section>
 
-    <main class="grid" style="margin-top:16px;">
+    <main class="grid">
       <section class="panel">
         <div class="panel-header">
           <h2>Ranking individual</h2>
@@ -399,15 +147,7 @@
                 <th>Ação</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>Débora Correa</td><td class="num">22,76%</td><td><span class="tag keep">Manter</span></td></tr>
-              <tr><td>Maria Rosinete</td><td class="num">6,31%</td><td><span class="tag keep">Manter</span></td></tr>
-              <tr><td>Rosana Ribeiro</td><td class="num">2,00%</td><td><span class="tag keep">Manter</span></td></tr>
-              <tr><td>Karina Aparecida</td><td class="num">1,84%</td><td><span class="tag keep">Manter</span></td></tr>
-              <tr><td>Waldenice Brito</td><td class="num">-12,96%</td><td><span class="tag act">Agir</span></td></tr>
-              <tr><td>Josiane Ferreira</td><td class="num">-32,94%</td><td><span class="tag act">Agir</span></td></tr>
-              <tr><td>Gabriela</td><td class="num">-44,60%</td><td><span class="tag act">Agir</span></td></tr>
-            </tbody>
+            <tbody id="ranking-body"></tbody>
           </table>
         </div>
       </section>
@@ -415,10 +155,10 @@
       <section class="panel">
         <div class="panel-header">
           <h2>Matriz de decisão</h2>
-          <span class="badge">Média mensal × Indicador de inconsistência</span>
+          <span class="badge">Média mensal × consistência</span>
         </div>
         <div class="panel-body">
-          <div class="matrix">
+          <div class="matrix" id="matrix">
             <div class="axis-x"></div>
             <div class="axis-y"></div>
             <div class="q-label q1">Manter</div>
@@ -427,15 +167,6 @@
             <div class="q-label q4">Monitorar</div>
             <div class="axis-title-x">Média mensal →</div>
             <div class="axis-title-y">Consistência →</div>
-
-            <div class="dot green" style="left:78%; top:18%;"><span class="dot-label">Débora</span></div>
-            <div class="dot green" style="left:60%; top:34%;"><span class="dot-label">Maria</span></div>
-            <div class="dot green" style="left:55%; top:38%;"><span class="dot-label">Rosana</span></div>
-            <div class="dot green" style="left:54%; top:39%;"><span class="dot-label">Karina</span></div>
-            <div class="dot red" style="left:28%; top:78%;"><span class="dot-label">Waldenice</span></div>
-            <div class="dot red" style="left:16%; top:88%;"><span class="dot-label">Josiane</span></div>
-            <div class="dot red" style="left:10%; top:92%;"><span class="dot-label">Gabriela</span></div>
-            <div class="dot red" style="left:22%; top:86%;"><span class="dot-label">Gabriel</span></div>
           </div>
         </div>
       </section>
@@ -445,40 +176,7 @@
           <h2>Alertas gerenciais</h2>
           <span class="badge">Prioridade</span>
         </div>
-        <div class="panel-body alerts">
-          <div class="alert red">
-            <div class="icon">!</div>
-            <div>
-              <h3>Waldenice com risco operacional</h3>
-              <p>Média negativa, alta inconsistência e 2 faltas.</p>
-            </div>
-            <div class="action" style="color:#ff9b9b;">Agir</div>
-          </div>
-          <div class="alert red">
-            <div class="icon">!</div>
-            <div>
-              <h3>Diaristas abaixo da régua</h3>
-              <p>Josiane, Gabriela e Gabriel com desempenho crítico.</p>
-            </div>
-            <div class="action" style="color:#ff9b9b;">Rever</div>
-          </div>
-          <div class="alert yellow">
-            <div class="icon">~</div>
-            <div>
-              <h3>Maria com oscilação</h3>
-              <p>Confiável, mas com dias negativos relevantes.</p>
-            </div>
-            <div class="action" style="color:#ffd47c;">Acompanhar</div>
-          </div>
-          <div class="alert green">
-            <div class="icon">✓</div>
-            <div>
-              <h3>Débora como referência</h3>
-              <p>Alta performance e baixa inconsistência.</p>
-            </div>
-            <div class="action" style="color:#8ff0b2;">Manter</div>
-          </div>
-        </div>
+        <div class="panel-body alerts" id="alertas"></div>
       </section>
 
       <section class="panel" style="grid-column: 1 / 2;">
@@ -491,12 +189,7 @@
             <thead>
               <tr><th>Ação</th><th class="num">Qtde</th><th>Leitura</th></tr>
             </thead>
-            <tbody>
-              <tr><td><span class="tag keep">Manter</span></td><td class="num">4</td><td>time confiável</td></tr>
-              <tr><td><span class="tag dev">Desenvolver</span></td><td class="num">0</td><td>sem casos médios</td></tr>
-              <tr><td><span class="tag act">Agir</span></td><td class="num">5</td><td>risco operacional</td></tr>
-              <tr><td><span class="tag ignore">Ignorar</span></td><td class="num">13</td><td>não aplicável</td></tr>
-            </tbody>
+            <tbody id="acoes-body"></tbody>
           </table>
         </div>
       </section>
@@ -507,28 +200,191 @@
           <span class="badge">Restrito à gestão</span>
         </div>
         <div class="panel-body">
-          <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
-            <div style="background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:14px;">
-              <strong style="color:#8ff0b2;">Quem puxa o resultado</strong>
-              <p style="color:var(--muted); font-size:12px; line-height:1.45; margin-bottom:0;">Débora aparece como referência de performance e deve ser preservada para evitar sobrecarga.</p>
-            </div>
-            <div style="background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:14px;">
-              <strong style="color:#ffd47c;">Quem sustenta</strong>
-              <p style="color:var(--muted); font-size:12px; line-height:1.45; margin-bottom:0;">Maria, Rosana e Karina estão confiáveis, mas ainda com oportunidade de ganho de consistência.</p>
-            </div>
-            <div style="background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:14px; padding:14px;">
-              <strong style="color:#ff9b9b;">Onde agir</strong>
-              <p style="color:var(--muted); font-size:12px; line-height:1.45; margin-bottom:0;">Waldenice e diaristas críticos exigem plano de ação, treinamento ou substituição de estratégia.</p>
-            </div>
-          </div>
+          <div class="reading-grid" id="leitura"></div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>Fonte: base de produtividade individual • Abril/2026</span>
+      <span id="fonte">Fonte: --</span>
       <span>Labor • Painel de Gestão Individual</span>
     </footer>
   </div>
+
+  <script>
+    const DATA_URL = "dados.json";
+
+    const fmtPercent = (value) => {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return "--";
+      return new Intl.NumberFormat("pt-BR", {
+        style: "percent",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(Number(value));
+    };
+
+    const actionClass = (acao) => {
+      const normalized = String(acao || "").toLowerCase();
+      if (normalized.includes("manter")) return "keep";
+      if (normalized.includes("desenvolver")) return "dev";
+      if (normalized.includes("agir") || normalized.includes("rever")) return "act";
+      return "ignore";
+    };
+
+    const alertClass = (tipo) => {
+      if (tipo === "positivo") return "green";
+      if (tipo === "atencao" || tipo === "neutro") return "yellow";
+      return "red";
+    };
+
+    const alertIcon = (tipo) => {
+      if (tipo === "positivo") return "✓";
+      if (tipo === "atencao" || tipo === "neutro") return "~";
+      return "!";
+    };
+
+    const kpiClassByKey = (key) => {
+      if (["confiaveis", "alta_performance"].includes(key)) return "green";
+      if (["faltas_time_base"].includes(key)) return "yellow";
+      if (["nao_confiaveis", "acoes_necessarias"].includes(key)) return "red";
+      return "blue";
+    };
+
+    const kpiLabel = (key) => ({
+      confiaveis: "Confiáveis",
+      nao_confiaveis: "Não confiáveis",
+      alta_performance: "Alta performance",
+      faltas_time_base: "Faltas no time base",
+      acoes_necessarias: "Ações necessárias"
+    }[key] || key);
+
+    function renderMetadata(data) {
+      const meta = data.metadata || {};
+      document.title = meta.titulo || "Painel de Gestão Individual";
+      document.getElementById("titulo").textContent = meta.titulo || "Painel de Gestão Individual";
+      document.getElementById("subtitulo").textContent = meta.subtitulo || "";
+      document.getElementById("periodo").textContent = `Período: ${meta.periodo || "--"}`;
+      document.getElementById("filtro").textContent = `Filtro: ${meta.filtro || "--"}`;
+      document.getElementById("acesso").textContent = `Acesso: ${meta.acesso || "--"}`;
+      document.getElementById("fonte").textContent = `Fonte: ${meta.fonte || "--"}`;
+    }
+
+    function renderKpis(kpis) {
+      const container = document.getElementById("kpis");
+      const order = ["confiaveis", "nao_confiaveis", "alta_performance", "faltas_time_base", "acoes_necessarias"];
+      container.innerHTML = order.map((key) => {
+        const item = kpis?.[key] || { valor: "--", descricao: "" };
+        return `
+          <div class="kpi ${kpiClassByKey(key)}">
+            <div class="label">${kpiLabel(key)}</div>
+            <div class="value">${item.valor ?? "--"}</div>
+            <div class="sub">${item.descricao || ""}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderRanking(ranking) {
+      const body = document.getElementById("ranking-body");
+      const sorted = [...(ranking || [])].sort((a, b) => Number(b.media_mensal) - Number(a.media_mensal));
+      body.innerHTML = sorted.map((item) => `
+        <tr>
+          <td>${item.nome}</td>
+          <td class="num">${fmtPercent(item.media_mensal)}</td>
+          <td><span class="tag ${actionClass(item.acao_recomendada)}">${item.acao_recomendada}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderMatrix(matriz) {
+      const matrix = document.getElementById("matrix");
+      const points = matriz?.pontos || [];
+      points.forEach((p) => {
+        const media = Number(p.media_mensal || 0);
+        const consistencia = Number(p.consistencia || 0);
+
+        /* Escala pensada para médias entre -50% e +30%, e consistência entre 0% e 100%. */
+        const x = Math.max(4, Math.min(96, ((media + 0.50) / 0.80) * 100));
+        const y = Math.max(4, Math.min(96, (1 - consistencia) * 100));
+
+        const dot = document.createElement("div");
+        dot.className = `dot ${p.cor || "yellow"}`;
+        dot.style.left = `${x}%`;
+        dot.style.top = `${y}%`;
+        dot.title = `${p.nome} | Média: ${fmtPercent(media)} | Consistência: ${fmtPercent(consistencia)}`;
+        dot.innerHTML = `<span class="dot-label">${p.nome}</span>`;
+        matrix.appendChild(dot);
+      });
+    }
+
+    function renderAlertas(alertas) {
+      const container = document.getElementById("alertas");
+      container.innerHTML = (alertas || []).map((a) => {
+        const cls = alertClass(a.tipo);
+        return `
+          <div class="alert ${cls}">
+            <div class="icon">${alertIcon(a.tipo)}</div>
+            <div>
+              <h3>${a.titulo}</h3>
+              <p>${a.descricao}</p>
+            </div>
+            <div class="action">${a.acao}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAcoes(acoes) {
+      const body = document.getElementById("acoes-body");
+      body.innerHTML = (acoes || []).map((a) => `
+        <tr>
+          <td><span class="tag ${actionClass(a.acao)}">${a.acao}</span></td>
+          <td class="num">${a.quantidade}</td>
+          <td>${a.leitura}</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderLeitura(leitura) {
+      const container = document.getElementById("leitura");
+      container.innerHTML = (leitura || []).map((item) => `
+        <div class="reading-card ${item.tipo || "neutro"}">
+          <strong>${item.titulo}</strong>
+          <p>${item.texto}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderError(message) {
+      document.querySelector(".page").insertAdjacentHTML("beforeend", `
+        <div class="error">
+          <strong>Erro ao carregar o painel.</strong><br />
+          ${message}<br />
+          Verifique se o arquivo <b>dados.json</b> está na mesma pasta do <b>index.html</b> no GitHub.
+        </div>
+      `);
+    }
+
+    async function init() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+
+        renderMetadata(data);
+        renderKpis(data.kpis);
+        renderRanking(data.ranking);
+        renderMatrix(data.matriz_decisao);
+        renderAlertas(data.alertas);
+        renderAcoes(data.acoes_recomendadas);
+        renderLeitura(data.leitura_executiva);
+      } catch (error) {
+        console.error(error);
+        renderError(error.message);
+      }
+    }
+
+    init();
+  </script>
 </body>
 </html>
