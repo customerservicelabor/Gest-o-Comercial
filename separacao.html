@@ -11,7 +11,6 @@
       --panel:#ffffff;
       --navy:#061d3a;
       --navy-2:#0d3567;
-      --navy-3:#123f78;
       --text:#0d1b2e;
       --muted:#607089;
       --line:#d5dfec;
@@ -26,7 +25,6 @@
       --red-deep:#9f1717;
       --blue:#245ee8;
       --blue-bg:#e8efff;
-      --purple:#7c3aed;
       --shadow:0 12px 30px rgba(10,33,66,.13);
       --shadow-strong:0 20px 48px rgba(10,33,66,.18);
       --radius:16px;
@@ -51,7 +49,6 @@
       gap:18px;
       margin-bottom:12px;
       background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 72%,#164a8a 100%);
-      border:1px solid rgba(255,255,255,.12);
       border-radius:18px;
       padding:15px 18px;
       box-shadow:var(--shadow-strong);
@@ -66,8 +63,21 @@
       color:#fff;
     }
 
-    .title-wrap p { margin:7px 0 0; color:#c9d8ec; font-size:13px; font-weight:700; }
-    .filters { display:flex; gap:9px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .title-wrap p {
+      margin:7px 0 0;
+      color:#c9d8ec;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .filters {
+      display:flex;
+      gap:9px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
     .pill {
       border:1px solid rgba(255,255,255,.24);
       background:rgba(255,255,255,.11);
@@ -77,8 +87,8 @@
       font-size:12px;
       font-weight:900;
       white-space:nowrap;
-      box-shadow:0 2px 8px rgba(10,33,66,.08);
     }
+
     .btn-voltar {
       text-decoration:none;
       background:#fff;
@@ -90,7 +100,6 @@
       border:1px solid #fff;
       box-shadow:0 8px 20px rgba(0,0,0,.18);
     }
-    .btn-voltar:hover { background:#dbeafe; }
 
     .executive-strip {
       display:grid;
@@ -111,14 +120,14 @@
       gap:18px;
     }
 
-    .summary-card .headline {
+    .headline {
       font-size:16px;
       font-weight:900;
       color:var(--navy);
       margin-bottom:4px;
     }
 
-    .summary-card .note {
+    .note {
       font-size:12px;
       color:var(--muted);
       font-weight:700;
@@ -134,13 +143,30 @@
       text-align:center;
     }
 
-    .health-score .small { font-size:11px; font-weight:900; color:#8b1a1a; text-transform:uppercase; }
-    .health-score .big { font-size:30px; font-weight:900; color:var(--red-deep); line-height:1; margin-top:4px; }
+    .health-score .small {
+      font-size:11px;
+      font-weight:900;
+      color:#8b1a1a;
+      text-transform:uppercase;
+    }
 
-    .kpis { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin-bottom:12px; }
+    .health-score .big {
+      font-size:30px;
+      font-weight:900;
+      color:var(--red-deep);
+      line-height:1;
+      margin-top:4px;
+    }
+
+    .kpis {
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:12px;
+      margin-bottom:12px;
+    }
+
     .kpi {
       background:var(--panel);
-      color:var(--text);
       border-radius:15px;
       padding:14px 15px;
       box-shadow:var(--shadow);
@@ -149,10 +175,41 @@
       position:relative;
       overflow:hidden;
     }
-    .kpi::after { content:""; position:absolute; right:-28px; bottom:-40px; width:112px; height:112px; border-radius:50%; opacity:.6; }
-    .kpi .label { font-size:11px; color:#465971; font-weight:900; margin-bottom:9px; text-transform:uppercase; letter-spacing:.35px; }
-    .kpi .value { font-size:33px; font-weight:900; letter-spacing:-1.1px; color:var(--navy); }
-    .kpi .sub { margin-top:7px; font-size:12px; color:var(--muted); line-height:1.35; font-weight:700; }
+
+    .kpi::after {
+      content:"";
+      position:absolute;
+      right:-28px;
+      bottom:-40px;
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      opacity:.6;
+    }
+
+    .kpi .label {
+      font-size:11px;
+      color:#465971;
+      font-weight:900;
+      margin-bottom:9px;
+      text-transform:uppercase;
+      letter-spacing:.35px;
+    }
+
+    .kpi .value {
+      font-size:33px;
+      font-weight:900;
+      letter-spacing:-1.1px;
+      color:var(--navy);
+    }
+
+    .kpi .sub {
+      margin-top:7px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
+      font-weight:700;
+    }
 
     .kpi.green { border-left:8px solid var(--green); background:linear-gradient(180deg,#ffffff 0%,#eefbf3 100%); }
     .kpi.green::after { background:var(--green-bg); }
@@ -166,7 +223,13 @@
     .kpi.green .value { color:var(--green-deep); }
     .kpi.yellow .value { color:#8a5c00; }
 
-    .grid { display:grid; grid-template-columns:1.05fr 1.35fr .9fr; gap:12px; }
+    .grid {
+      display:grid;
+      grid-template-columns:1fr 1.45fr .95fr;
+      gap:12px;
+      align-items:start;
+    }
+
     .panel {
       background:var(--panel);
       border:1px solid var(--line);
@@ -175,9 +238,9 @@
       overflow:hidden;
       min-height:100px;
     }
+
     .panel-header {
       background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);
-      border-bottom:1px solid rgba(255,255,255,.12);
       padding:12px 15px;
       display:flex;
       justify-content:space-between;
@@ -185,27 +248,108 @@
       gap:12px;
       color:#fff;
     }
-    .panel-header h2 { margin:0; font-size:16px; letter-spacing:-.2px; color:#fff; }
-    .badge { font-size:11px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.24); color:#fff; font-weight:900; white-space:nowrap; }
+
+    .panel-header h2 {
+      margin:0;
+      font-size:16px;
+      letter-spacing:-.2px;
+      color:#fff;
+    }
+
+    .badge {
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.24);
+      color:#fff;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
     .panel-body { padding:13px 15px 15px; }
 
-    table { width:100%; border-collapse:collapse; font-size:12px; }
-    th { color:#28435f; text-align:left; font-size:11px; padding:9px 8px; border-bottom:1px solid var(--line); background:#dfeafe; text-transform:uppercase; letter-spacing:.3px; }
-    td { padding:10px 8px; border-bottom:1px solid var(--line-soft); color:var(--text); font-weight:800; }
-    tr:last-child td { border-bottom:0; }
+    table {
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+    }
+
+    th {
+      color:#28435f;
+      text-align:left;
+      font-size:11px;
+      padding:9px 8px;
+      border-bottom:1px solid var(--line);
+      background:#dfeafe;
+      text-transform:uppercase;
+      letter-spacing:.3px;
+    }
+
+    td {
+      padding:10px 8px;
+      border-bottom:1px solid var(--line-soft);
+      color:var(--text);
+      font-weight:800;
+    }
+
     tbody tr:nth-child(even) { background:#f7fbff; }
     tbody tr:hover { background:#eaf2ff; }
-    .num { text-align:right; font-variant-numeric:tabular-nums; }
+
+    .num {
+      text-align:right;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .rank-scroll {
+      max-height:420px;
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:12px;
+    }
+
+    .rank-scroll thead th {
+      position:sticky;
+      top:0;
+      z-index:2;
+    }
 
     .rank-positive { background:linear-gradient(90deg,rgba(22,163,74,.14),transparent 65%) !important; }
     .rank-critical { background:linear-gradient(90deg,rgba(217,37,37,.16),transparent 70%) !important; }
     .rank-neutral { background:#fff; }
-    .employee-name { display:flex; align-items:center; gap:8px; }
-    .rank-bar { width:6px; height:25px; border-radius:99px; background:#cbd5e1; display:inline-block; flex:0 0 auto; }
+
+    .employee-name {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .rank-bar {
+      width:6px;
+      height:25px;
+      border-radius:99px;
+      background:#cbd5e1;
+      display:inline-block;
+      flex:0 0 auto;
+    }
+
     .rank-positive .rank-bar { background:var(--green); }
     .rank-critical .rank-bar { background:var(--red); }
 
-    .tag { display:inline-flex; align-items:center; justify-content:center; min-width:78px; padding:5px 9px; border-radius:999px; font-size:11px; font-weight:900; border:1px solid transparent; }
+    .tag {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:78px;
+      padding:5px 9px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
     .tag.keep { color:#0b6b33; background:var(--green-bg); border-color:#bfe8cc; }
     .tag.dev { color:#7c5600; background:var(--yellow-bg); border-color:#f8df9b; }
     .tag.act { color:#9b1717; background:var(--red-bg); border-color:#f4b9b9; }
@@ -223,58 +367,204 @@
       overflow:hidden;
       box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
     }
+
     .axis-x,.axis-y { position:absolute; background:#6f8198; }
     .axis-x { left:0; right:0; top:50%; height:1px; }
     .axis-y { top:0; bottom:0; left:50%; width:1px; }
-    .q-label { position:absolute; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.2px; }
+
+    .axis-marker {
+      position:absolute;
+      font-size:10px;
+      font-weight:900;
+      color:#607089;
+      z-index:1;
+    }
+
+    .axis-top { left:50%; top:4px; transform:translateX(-50%); }
+    .axis-bottom { left:50%; bottom:4px; transform:translateX(-50%); }
+    .axis-left { left:8px; top:50%; transform:translateY(-50%); }
+    .axis-right { right:8px; top:50%; transform:translateY(-50%); }
+
+    .q-label {
+      position:absolute;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.2px;
+    }
+
     .q1 { top:14px; right:16px; color:#0c7438; }
     .q2 { top:14px; left:16px; color:#9a6200; }
     .q3 { bottom:14px; left:16px; color:#a51616; }
     .q4 { bottom:14px; right:16px; color:#9a6200; }
-    .dot { position:absolute; transform:translate(-50%,-50%); width:15px; height:15px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 4px rgba(15,35,70,.10), 0 8px 20px rgba(15,35,70,.25); }
+
+    .dot {
+      position:absolute;
+      transform:translate(-50%,-50%);
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      border:2px solid #fff;
+      box-shadow:0 0 0 4px rgba(15,35,70,.10), 0 8px 20px rgba(15,35,70,.25);
+      z-index:3;
+    }
+
     .dot.green { background:var(--green); }
     .dot.yellow { background:var(--yellow); }
     .dot.red { background:var(--red); }
-    .dot-label { position:absolute; transform:translate(10px,-12px); font-size:11px; white-space:nowrap; color:var(--navy); font-weight:900; text-shadow:0 1px 0 #fff; }
-    .axis-title-x,.axis-title-y { position:absolute; font-size:11px; color:#4b5f78; font-weight:900; }
-    .axis-title-x { bottom:8px; left:50%; transform:translateX(-50%); }
-    .axis-title-y { top:50%; left:8px; transform:rotate(-90deg) translateX(-50%); transform-origin:left center; }
 
-    .alerts { display:flex; flex-direction:column; gap:9px; }
-    .alert { display:grid; grid-template-columns:34px 1fr auto; gap:10px; align-items:center; padding:11px; border-radius:14px; border:1px solid var(--line); background:#fff; box-shadow:0 4px 12px rgba(10,33,66,.05); }
-    .alert .icon { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; font-weight:900; color:#fff; }
+    .dot-label {
+      position:absolute;
+      transform:translate(10px,-12px);
+      font-size:11px;
+      white-space:nowrap;
+      color:var(--navy);
+      font-weight:900;
+      text-shadow:0 1px 0 #fff;
+    }
+
+    .axis-title-x,.axis-title-y {
+      position:absolute;
+      font-size:11px;
+      color:#4b5f78;
+      font-weight:900;
+    }
+
+    .axis-title-x {
+      bottom:8px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+
+    .axis-title-y {
+      top:50%;
+      left:8px;
+      transform:rotate(-90deg) translateX(-50%);
+      transform-origin:left center;
+    }
+
+    .alerts {
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+      max-height:420px;
+      overflow:auto;
+      padding-right:2px;
+    }
+
+    .alert {
+      display:grid;
+      grid-template-columns:34px 1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:11px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 4px 12px rgba(10,33,66,.05);
+    }
+
+    .alert .icon {
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      font-weight:900;
+      color:#fff;
+    }
+
     .alert.red { background:#fff4f4; border-color:#efb5b5; }
     .alert.yellow { background:#fff7df; border-color:#efd18d; }
     .alert.green { background:#effaf3; border-color:#bce7ca; }
     .alert.red .icon { background:var(--red); }
     .alert.yellow .icon { background:var(--yellow); color:#15100a; }
     .alert.green .icon { background:var(--green); }
-    .alert h3 { margin:0 0 3px; font-size:13px; color:var(--navy); }
-    .alert p { margin:0; font-size:11px; color:#40536b; line-height:1.35; font-weight:700; }
-    .alert .action { font-size:11px; font-weight:900; text-transform:uppercase; color:var(--navy); }
 
-    .action-summary tr td:first-child { width:110px; }
-    .action-summary .tag { min-width:92px; }
+    .alert h3 {
+      margin:0 0 3px;
+      font-size:13px;
+      color:var(--navy);
+    }
 
-    .reading-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-    .reading-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px; min-height:82px; box-shadow:0 4px 12px rgba(10,33,66,.05); }
-    .reading-card strong { display:block; margin-bottom:8px; color:var(--navy); font-size:15px; }
-    .reading-card p { color:#40536b; font-size:12px; line-height:1.45; margin:0; font-weight:700; }
-    .reading-card.positivo { border-left:7px solid var(--green); background:#f3fbf6; }
-    .reading-card.neutro { border-left:7px solid var(--yellow); background:#fffaf0; }
-    .reading-card.critico { border-left:7px solid var(--red); background:#fff7f7; }
+    .alert p {
+      margin:0;
+      font-size:11px;
+      color:#40536b;
+      line-height:1.35;
+      font-weight:700;
+    }
 
-    .footer { margin-top:12px; display:flex; justify-content:space-between; color:var(--muted); font-size:11px; font-weight:700; }
-    .error { padding:18px; border:1px solid rgba(220,38,38,.4); background:rgba(220,38,38,.08); border-radius:14px; color:#7f1d1d; margin-top:16px; }
+    .alert .action {
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      color:var(--navy);
+    }
+
+    .impact-strip {
+      grid-column:1 / -1;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .impact-card {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:14px 15px;
+      box-shadow:var(--shadow);
+      min-height:96px;
+      border-left:7px solid var(--blue);
+    }
+
+    .impact-card.red { border-left-color:var(--red); background:#fff7f7; }
+    .impact-card.yellow { border-left-color:var(--yellow); background:#fffaf0; }
+    .impact-card.green { border-left-color:var(--green); background:#f3fbf6; }
+
+    .impact-card strong {
+      display:block;
+      color:var(--navy);
+      font-size:14px;
+      margin-bottom:7px;
+    }
+
+    .impact-card span {
+      display:block;
+      color:#40536b;
+      font-size:12px;
+      font-weight:700;
+      line-height:1.4;
+    }
+
+    .footer {
+      margin-top:12px;
+      display:flex;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .error {
+      padding:18px;
+      border:1px solid rgba(220,38,38,.4);
+      background:rgba(220,38,38,.08);
+      border-radius:14px;
+      color:#7f1d1d;
+      margin-top:16px;
+    }
 
     @media(max-width:1200px){
       .grid{grid-template-columns:1fr;}
       .kpis{grid-template-columns:repeat(2,minmax(0,1fr));}
-      .reading-grid{grid-template-columns:1fr;}
       .executive-strip{grid-template-columns:1fr;}
+      .impact-strip{grid-template-columns:1fr;}
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header class="topbar">
@@ -293,11 +583,11 @@
     <section class="executive-strip">
       <div class="summary-card">
         <div>
-          <div class="headline">Panorama executivo de pessoas</div>
-          <div class="note">Leitura focada em quem sustenta a operação, quem exige plano de ação e onde há risco de produtividade/assiduidade.</div>
+          <div class="headline">Panorama executivo de risco operacional</div>
+          <div class="note">Leitura focada em impacto operacional, estabilidade da base, produtividade e risco de ruptura por pessoas.</div>
         </div>
         <div class="health-score">
-          <div class="small">Risco gerencial</div>
+          <div class="small">Risco operacional</div>
           <div class="big" id="risco-gerencial">--</div>
         </div>
       </div>
@@ -314,54 +604,78 @@
     <main class="grid">
       <section class="panel">
         <div class="panel-header">
-          <h2>Ranking individual</h2>
-          <span class="badge">Média mensal ajustada</span>
+          <h2>Ranking operacional individual</h2>
+          <span class="badge">média, presença e meta</span>
         </div>
         <div class="panel-body">
-          <table>
-            <thead><tr><th>Funcionário</th><th class="num">Média</th><th>Ação</th></tr></thead>
-            <tbody id="ranking-body"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Matriz de decisão</h2>
-          <span class="badge">Média mensal × assiduidade/consistência</span>
-        </div>
-        <div class="panel-body">
-          <div class="matrix" id="matrix">
-            <div class="axis-x"></div>
-            <div class="axis-y"></div>
-            <div class="q-label q1">Manter</div>
-            <div class="q-label q2">Desenvolver</div>
-            <div class="q-label q3">Agir</div>
-            <div class="q-label q4">Monitorar</div>
-            <div class="axis-title-x">Média mensal →</div>
-            <div class="axis-title-y">Consistência / assiduidade →</div>
+          <div class="rank-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Funcionário</th>
+                  <th class="num">Média</th>
+                  <th class="num">Presença</th>
+                  <th class="num">Meta</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="ranking-body"></tbody>
+            </table>
           </div>
         </div>
       </section>
 
       <section class="panel">
-        <div class="panel-header"><h2>Alertas gerenciais</h2><span class="badge">Prioridade</span></div>
-        <div class="panel-body alerts" id="alertas"></div>
-      </section>
-
-      <section class="panel" style="grid-column:1 / 2;">
-        <div class="panel-header"><h2>Ação recomendada</h2><span class="badge">Resumo</span></div>
+        <div class="panel-header">
+          <h2>Matriz de decisão operacional</h2>
+          <span class="badge">performance × confiabilidade</span>
+        </div>
         <div class="panel-body">
-          <table class="action-summary">
-            <thead><tr><th>Ação</th><th class="num">Qtde</th><th>Leitura</th></tr></thead>
-            <tbody id="acoes-body"></tbody>
-          </table>
+          <div class="matrix" id="matrix">
+            <div class="axis-x"></div>
+            <div class="axis-y"></div>
+
+            <div class="axis-marker axis-top">100%</div>
+            <div class="axis-marker axis-bottom">0%</div>
+            <div class="axis-marker axis-left">0%</div>
+            <div class="axis-marker axis-right">100%</div>
+
+            <div class="q-label q1">RECURSO REFERÊNCIA</div>
+            <div class="q-label q2">POTENCIAL DESENVOLVIMENTO</div>
+            <div class="q-label q3">RISCO OPERACIONAL</div>
+            <div class="q-label q4">MONITORAMENTO</div>
+
+            <div class="axis-title-x">Performance operacional →</div>
+            <div class="axis-title-y">Confiabilidade operacional →</div>
+          </div>
         </div>
       </section>
 
-      <section class="panel" style="grid-column:2 / -1;">
-        <div class="panel-header"><h2>Leitura executiva</h2><span class="badge">Restrito à gestão</span></div>
-        <div class="panel-body"><div class="reading-grid" id="leitura"></div></div>
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Riscos operacionais</h2>
+          <span class="badge">prioridade</span>
+        </div>
+        <div class="panel-body alerts" id="alertas"></div>
+      </section>
+
+      <section class="impact-strip">
+        <div class="impact-card red">
+          <strong>Risco de ruptura</strong>
+          <span id="impacto-risco">Calculando impacto operacional da base crítica.</span>
+        </div>
+        <div class="impact-card yellow">
+          <strong>Absenteísmo</strong>
+          <span id="impacto-faltas">Calculando impacto das faltas sobre a capacidade.</span>
+        </div>
+        <div class="impact-card green">
+          <strong>Base de sustentação</strong>
+          <span id="impacto-base">Calculando recursos que sustentam a operação.</span>
+        </div>
+        <div class="impact-card">
+          <strong>Direcionamento gerencial</strong>
+          <span id="impacto-direcao">Calculando prioridade de acompanhamento.</span>
+        </div>
       </section>
     </main>
 
@@ -376,7 +690,18 @@
 
     const fmtPercent = (value) => {
       if (value === null || value === undefined || Number.isNaN(Number(value))) return "--";
-      return new Intl.NumberFormat("pt-BR", { style:"percent", minimumFractionDigits:2, maximumFractionDigits:2 }).format(Number(value));
+      return new Intl.NumberFormat("pt-BR", {
+        style:"percent",
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      }).format(Number(value));
+    };
+
+    const fmtNumber = (value) => {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return "--";
+      return new Intl.NumberFormat("pt-BR", {
+        maximumFractionDigits:2
+      }).format(Number(value));
     };
 
     const actionClass = (acao) => {
@@ -389,7 +714,7 @@
 
     const rowClass = (item) => {
       const acao = String(item.acao_recomendada || "").toLowerCase();
-      if (acao.includes("agir")) return "rank-critical";
+      if (acao.includes("agir") || acao.includes("rever")) return "rank-critical";
       if (acao.includes("manter")) return "rank-positive";
       return "rank-neutral";
     };
@@ -399,24 +724,29 @@
 
     const kpiClassByKey = (key) => {
       if (["confiaveis","alta_performance"].includes(key)) return "green";
-      if (["faltas_time_base"].includes(key)) return "yellow";
+      if (["faltas_time_base","impacto_operacional"].includes(key)) return "yellow";
       if (["nao_confiaveis","acoes_necessarias"].includes(key)) return "red";
       return "blue";
     };
 
     const kpiLabel = (key) => ({
-      confiaveis:"Confiáveis",
-      nao_confiaveis:"Não confiáveis",
-      alta_performance:"Alta performance",
-      faltas_time_base:"Faltas no time base",
-      acoes_necessarias:"Ações necessárias"
+      confiaveis:"Recursos Estáveis",
+      nao_confiaveis:"Recursos Críticos",
+      alta_performance:"Referências Operacionais",
+      faltas_time_base:"Impacto por Absenteísmo",
+      acoes_necessarias:"Plano de Ação",
+      impacto_operacional:"Impacto Operacional"
     }[key] || key);
+
+    function safeValue(value, fallback = "--"){
+      return value === undefined || value === null || value === "" ? fallback : value;
+    }
 
     function renderMetadata(data){
       const meta = data.metadata || {};
       document.title = meta.titulo || "Painel de Gestão Individual";
       document.getElementById("titulo").textContent = meta.titulo || "Painel de Gestão Individual";
-      document.getElementById("subtitulo").textContent = meta.subtitulo || "";
+      document.getElementById("subtitulo").textContent = meta.subtitulo || "Visão executiva de produtividade, confiabilidade e risco operacional da equipe.";
       document.getElementById("periodo").textContent = `Período: ${meta.periodo || "--"}`;
       document.getElementById("filtro").textContent = `Filtro: ${meta.filtro || "--"}`;
       document.getElementById("acesso").textContent = `Acesso: ${meta.acesso || "--"}`;
@@ -426,37 +756,60 @@
     function renderKpis(kpis){
       const container = document.getElementById("kpis");
       const order = ["confiaveis","nao_confiaveis","alta_performance","faltas_time_base","acoes_necessarias"];
+
       container.innerHTML = order.map((key) => {
         const item = kpis?.[key] || { valor:"--", descricao:"" };
-        return `<div class="kpi ${kpiClassByKey(key)}"><div class="label">${kpiLabel(key)}</div><div class="value">${item.valor ?? "--"}</div><div class="sub">${item.descricao || ""}</div></div>`;
+        return `
+          <div class="kpi ${kpiClassByKey(key)}">
+            <div class="label">${kpiLabel(key)}</div>
+            <div class="value">${safeValue(item.valor)}</div>
+            <div class="sub">${item.descricao || ""}</div>
+          </div>
+        `;
       }).join("");
     }
 
     function renderRanking(ranking){
       const body = document.getElementById("ranking-body");
-      const sorted = [...(ranking || [])].sort((a,b) => Number(b.media_mensal) - Number(a.media_mensal));
-      body.innerHTML = sorted.map((item) => `
-        <tr class="${rowClass(item)}">
-          <td><span class="employee-name"><span class="rank-bar"></span>${item.nome}</span></td>
-          <td class="num">${fmtPercent(item.media_mensal)}</td>
-          <td><span class="tag ${actionClass(item.acao_recomendada)}">${item.acao_recomendada}</span></td>
-        </tr>
-      `).join("");
+      const sorted = [...(ranking || [])].sort((a,b) => Number(b.media_mensal || 0) - Number(a.media_mensal || 0));
+
+      body.innerHTML = sorted.map((item) => {
+        const presenca = item.presenca_operacional ?? item.consistencia ?? item.assiduidade ?? null;
+        const meta = item.dias_acima_meta ?? item.acima_meta ?? item.meta ?? 0;
+
+        return `
+          <tr class="${rowClass(item)}">
+            <td>
+              <span class="employee-name">
+                <span class="rank-bar"></span>
+                ${item.nome}
+              </span>
+            </td>
+            <td class="num">${fmtPercent(item.media_mensal)}</td>
+            <td class="num">${presenca !== null ? fmtPercent(presenca) : "--"}</td>
+            <td class="num">${meta}</td>
+            <td><span class="tag ${actionClass(item.acao_recomendada)}">${item.acao_recomendada || "Não aplicável"}</span></td>
+          </tr>
+        `;
+      }).join("");
     }
 
     function renderMatrix(matriz){
       const matrix = document.getElementById("matrix");
       const points = matriz?.pontos || [];
+
       points.forEach((p) => {
         const media = Number(p.media_mensal || 0);
-        const consistencia = Number(p.consistencia || 0);
+        const consistencia = Number(p.consistencia || p.presenca_operacional || 0);
+
         const x = Math.max(4, Math.min(96, ((media + .50) / .80) * 100));
         const y = Math.max(4, Math.min(96, (1 - consistencia) * 100));
+
         const dot = document.createElement("div");
         dot.className = `dot ${p.cor || "yellow"}`;
         dot.style.left = `${x}%`;
         dot.style.top = `${y}%`;
-        dot.title = `${p.nome} | Média: ${fmtPercent(media)} | Consistência: ${fmtPercent(consistencia)}`;
+        dot.title = `${p.nome} | Performance: ${fmtPercent(media)} | Confiabilidade: ${fmtPercent(consistencia)}`;
         dot.innerHTML = `<span class="dot-label">${p.nome}</span>`;
         matrix.appendChild(dot);
       });
@@ -464,20 +817,20 @@
 
     function renderAlertas(alertas){
       const container = document.getElementById("alertas");
+
       container.innerHTML = (alertas || []).map((a) => {
         const cls = alertClass(a.tipo);
-        return `<div class="alert ${cls}"><div class="icon">${alertIcon(a.tipo)}</div><div><h3>${a.titulo}</h3><p>${a.descricao}</p></div><div class="action">${a.acao}</div></div>`;
+        return `
+          <div class="alert ${cls}">
+            <div class="icon">${alertIcon(a.tipo)}</div>
+            <div>
+              <h3>${a.titulo}</h3>
+              <p>${a.descricao}</p>
+            </div>
+            <div class="action">${a.acao}</div>
+          </div>
+        `;
       }).join("");
-    }
-
-    function renderAcoes(acoes){
-      const body = document.getElementById("acoes-body");
-      body.innerHTML = (acoes || []).map((a) => `<tr><td><span class="tag ${actionClass(a.acao)}">${a.acao}</span></td><td class="num">${a.quantidade}</td><td>${a.leitura}</td></tr>`).join("");
-    }
-
-    function renderLeitura(leitura){
-      const container = document.getElementById("leitura");
-      container.innerHTML = (leitura || []).map((item) => `<div class="reading-card ${item.tipo || "neutro"}"><strong>${item.titulo}</strong><p>${item.texto}</p></div>`).join("");
     }
 
     function renderExecutiveSummary(data){
@@ -490,31 +843,51 @@
       document.getElementById("risco-gerencial").textContent = `${risco}%`;
 
       if(agir > manter){
-        document.getElementById("principal-alerta").textContent = "Prioridade: reduzir risco operacional de pessoas";
-        document.getElementById("principal-alerta-texto").textContent = "O volume de ações críticas supera a base confiável. Recomendado plano de ação com acompanhamento semanal.";
+        document.getElementById("principal-alerta").textContent = "Prioridade: reduzir risco operacional da base";
+        document.getElementById("principal-alerta-texto").textContent = "A quantidade de recursos em plano de ação supera a base de sustentação. Recomendado acompanhamento semanal.";
       } else {
-        document.getElementById("principal-alerta").textContent = "Base confiável sustentando a operação";
-        document.getElementById("principal-alerta-texto").textContent = "Há pontos críticos, mas o grupo confiável ainda sustenta a operação. Manter acompanhamento e plano de desenvolvimento.";
+        document.getElementById("principal-alerta").textContent = "Base operacional sustentando o resultado";
+        document.getElementById("principal-alerta-texto").textContent = "A operação possui recursos estáveis, mas ainda exige monitoramento de performance, presença e consistência.";
       }
+
+      document.getElementById("impacto-risco").textContent =
+        `${agir} colaborador(es) exigem plano de ação ou revisão. Esse grupo representa risco direto de queda de capacidade.`;
+
+      document.getElementById("impacto-faltas").textContent =
+        `${data.kpis?.faltas_time_base?.valor ?? "--"} falta(s) no time base impactam diretamente a capacidade planejada.`;
+
+      document.getElementById("impacto-base").textContent =
+        `${manter} recurso(s) sustentam a operação e devem ser preservados como base de referência.`;
+
+      document.getElementById("impacto-direcao").textContent =
+        risco >= 30
+          ? "Prioridade alta: acompanhar semanalmente produtividade, presença e evolução dos casos críticos."
+          : "Prioridade moderada: manter acompanhamento e preservar recursos de referência.";
     }
 
     function renderError(message){
-      document.querySelector(".page").insertAdjacentHTML("beforeend", `<div class="error"><strong>Erro ao carregar o painel.</strong><br>${message}<br>Verifique se o arquivo <b>Individual.json</b> está na mesma pasta do <b>separacao.html</b>.</div>`);
+      document.querySelector(".page").insertAdjacentHTML("beforeend", `
+        <div class="error">
+          <strong>Erro ao carregar o painel.</strong><br>
+          ${message}<br>
+          Verifique se o arquivo <b>Individual.json</b> está na mesma pasta deste HTML.
+        </div>
+      `);
     }
 
     async function init(){
       try{
         const response = await fetch(DATA_URL + "?t=" + Date.now(), { cache:"no-store" });
         if(!response.ok) throw new Error(`HTTP ${response.status}`);
+
         const data = await response.json();
+
         renderMetadata(data);
         renderExecutiveSummary(data);
         renderKpis(data.kpis);
         renderRanking(data.ranking);
         renderMatrix(data.matriz_decisao);
         renderAlertas(data.alertas);
-        renderAcoes(data.acoes_recomendadas);
-        renderLeitura(data.leitura_executiva);
       }catch(error){
         console.error(error);
         renderError(error.message);
