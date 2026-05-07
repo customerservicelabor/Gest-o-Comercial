@@ -1,24 +1,24 @@
 {
   "metadata": {
     "titulo": "Painel de Gestão Individual",
-    "subtitulo": "Visão restrita à gestão • análise de produtividade, confiabilidade e ação recomendada",
+    "subtitulo": "Visão executiva de produtividade, confiabilidade e risco operacional da equipe",
     "periodo": "Abril/2026",
     "filtro": "Separação",
     "acesso": "Gestão",
-    "fonte": "base de produtividade individual"
+    "fonte": "Base de performance mensal do time"
   },
   "kpis": {
     "confiaveis": {
       "valor": 4,
-      "descricao": "Maria, Rosana, Débora e Karina"
+      "descricao": "recursos estáveis na base produtiva"
     },
     "nao_confiaveis": {
       "valor": 5,
-      "descricao": "exigem ação gerencial"
+      "descricao": "recursos com risco operacional"
     },
     "alta_performance": {
       "valor": 1,
-      "descricao": "referência operacional"
+      "descricao": "referência operacional do período"
     },
     "faltas_time_base": {
       "valor": 3,
@@ -26,195 +26,155 @@
     },
     "acoes_necessarias": {
       "valor": 5,
-      "descricao": "baixo desempenho recorrente"
+      "descricao": "colaboradores exigem plano de ação"
     }
   },
   "ranking": [
     {
-      "nome": "Débora Correa (Fixo)",
-      "modelo": "Fixo - Aux. Estoque",
-      "mede_produtividade": "Sim",
-      "media_mensal": 0.2276,
-      "score_final": "Alta Performance",
-      "faltas": 0,
-      "indicador_confiabilidade": 0.1053,
-      "confiabilidade": "Confiável",
-      "acao_recomendada": "Manter"
-    },
-    {
-      "nome": "Maria Rosinete Gomes dos Santos (Fixo)",
+      "nome": "Maria Rosinete Gomes dos Santos",
       "modelo": "Fixo - Aux. Estoque",
       "mede_produtividade": "Sim",
       "media_mensal": 0.0631,
       "score_final": "Dentro do esperado",
       "faltas": 1,
-      "indicador_confiabilidade": 0.3333,
+      "indicador_conf": 0.3333,
+      "presenca_operacional": 0.6667,
       "confiabilidade": "Confiável",
       "acao_recomendada": "Manter"
     },
     {
-      "nome": "Rosana Ribeiro Morais (Fixo)",
+      "nome": "Rosana Ribeiro Morais",
       "modelo": "Fixo - Aux. Estoque",
       "mede_produtividade": "Sim",
-      "media_mensal": 0.0200,
+      "media_mensal": 0.02,
       "score_final": "Dentro do esperado",
       "faltas": 0,
-      "indicador_confiabilidade": 0.3684,
+      "indicador_conf": 0.3684,
+      "presenca_operacional": 0.6316,
       "confiabilidade": "Confiável",
       "acao_recomendada": "Manter"
     },
     {
-      "nome": "Karina Aparecida De Souza (Fixo)",
+      "nome": "Debora Correa",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0.2276,
+      "score_final": "Alta Performance",
+      "faltas": 0,
+      "indicador_conf": 0.1053,
+      "presenca_operacional": 0.8947,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
+    },
+    {
+      "nome": "Karina Aparecida De Souza",
       "modelo": "Fixo - Aux. Estoque",
       "mede_produtividade": "Sim",
       "media_mensal": 0.0184,
       "score_final": "Dentro do esperado",
       "faltas": 0,
-      "indicador_confiabilidade": 0.3684,
+      "indicador_conf": 0.3684,
+      "presenca_operacional": 0.6316,
       "confiabilidade": "Confiável",
       "acao_recomendada": "Manter"
     },
     {
-      "nome": "Waldenice de Socorro Brito (Fixo)",
+      "nome": "JOSIANE FERREIRA SERAFIM",
+      "modelo": "Diarista - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.3294,
+      "score_final": "Crítico",
+      "faltas": 0,
+      "indicador_conf": 1,
+      "presenca_operacional": 0,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "Waldenice de Socorro Brito",
       "modelo": "Fixo - Aux. Estoque",
       "mede_produtividade": "Sim",
       "media_mensal": -0.1296,
       "score_final": "Crítico",
       "faltas": 2,
-      "indicador_confiabilidade": 0.8824,
+      "indicador_conf": 0.8824,
+      "presenca_operacional": 0.1176,
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     },
     {
-      "nome": "JOSIANE FERREIRA SERAFIM (Diarista)",
+      "nome": "Gabriela",
       "modelo": "Diarista - Aux. Estoque",
       "mede_produtividade": "Sim",
-      "media_mensal": -0.3294,
+      "media_mensal": -0.446,
       "score_final": "Crítico",
-      "faltas": null,
-      "indicador_confiabilidade": 1.0000,
+      "faltas": 0,
+      "indicador_conf": 1,
+      "presenca_operacional": 0,
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     },
     {
-      "nome": "Gabriela (Diarista)",
-      "modelo": "Diarista - Aux. Estoque",
-      "mede_produtividade": "Sim",
-      "media_mensal": -0.4460,
-      "score_final": "Crítico",
-      "faltas": null,
-      "indicador_confiabilidade": 1.0000,
-      "confiabilidade": "Não confiável",
-      "acao_recomendada": "Agir"
-    },
-    {
-      "nome": "Gabriel Fernando (Diarista)",
+      "nome": "Gabriel Fernando",
       "modelo": "Diarista - Aux. Estoque",
       "mede_produtividade": "Sim",
       "media_mensal": -0.2256,
       "score_final": "Crítico",
-      "faltas": null,
-      "indicador_confiabilidade": 1.0000,
+      "faltas": 0,
+      "indicador_conf": 1,
+      "presenca_operacional": 0,
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     },
     {
-      "nome": "Gabriela Alexandra Acosta Beiza (Diarista)",
+      "nome": "Gabriela Alexandra Acosta Beiza",
       "modelo": "Diarista - Aux. Estoque",
       "mede_produtividade": "Sim",
       "media_mensal": -0.2159,
       "score_final": "Crítico",
-      "faltas": null,
-      "indicador_confiabilidade": 1.0000,
+      "faltas": 0,
+      "indicador_conf": 1,
+      "presenca_operacional": 0,
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     }
   ],
   "matriz_decisao": {
-    "eixo_x": "Média mensal",
-    "eixo_y": "Consistência",
     "pontos": [
-      {
-        "nome": "Débora",
-        "media_mensal": 0.2276,
-        "consistencia": 0.8947,
-        "quadrante": "Manter",
-        "cor": "green"
-      },
-      {
-        "nome": "Maria",
-        "media_mensal": 0.0631,
-        "consistencia": 0.6667,
-        "quadrante": "Manter",
-        "cor": "green"
-      },
-      {
-        "nome": "Rosana",
-        "media_mensal": 0.0200,
-        "consistencia": 0.6316,
-        "quadrante": "Manter",
-        "cor": "green"
-      },
-      {
-        "nome": "Karina",
-        "media_mensal": 0.0184,
-        "consistencia": 0.6316,
-        "quadrante": "Manter",
-        "cor": "green"
-      },
-      {
-        "nome": "Waldenice",
-        "media_mensal": -0.1296,
-        "consistencia": 0.1176,
-        "quadrante": "Agir",
-        "cor": "red"
-      },
-      {
-        "nome": "Josiane",
-        "media_mensal": -0.3294,
-        "consistencia": 0.0000,
-        "quadrante": "Agir",
-        "cor": "red"
-      },
-      {
-        "nome": "Gabriela",
-        "media_mensal": -0.4460,
-        "consistencia": 0.0000,
-        "quadrante": "Agir",
-        "cor": "red"
-      },
-      {
-        "nome": "Gabriel",
-        "media_mensal": -0.2256,
-        "consistencia": 0.0000,
-        "quadrante": "Agir",
-        "cor": "red"
-      }
+      { "nome": "Maria", "media_mensal": 0.0631, "consistencia": 0.6667, "cor": "green" },
+      { "nome": "Rosana", "media_mensal": 0.02, "consistencia": 0.6316, "cor": "green" },
+      { "nome": "Débora", "media_mensal": 0.2276, "consistencia": 0.8947, "cor": "green" },
+      { "nome": "Karina", "media_mensal": 0.0184, "consistencia": 0.6316, "cor": "green" },
+      { "nome": "Waldenice", "media_mensal": -0.1296, "consistencia": 0.1176, "cor": "red" },
+      { "nome": "Josiane", "media_mensal": -0.3294, "consistencia": 0, "cor": "red" },
+      { "nome": "Gabriela", "media_mensal": -0.446, "consistencia": 0, "cor": "red" },
+      { "nome": "Gabriel", "media_mensal": -0.2256, "consistencia": 0, "cor": "red" },
+      { "nome": "Gabriela A.", "media_mensal": -0.2159, "consistencia": 0, "cor": "red" }
     ]
   },
   "alertas": [
     {
       "tipo": "critico",
       "titulo": "Waldenice com risco operacional",
-      "descricao": "Média negativa, alta inconsistência e 2 faltas.",
+      "descricao": "Média mensal negativa, baixa confiabilidade e 2 faltas no período.",
       "acao": "Agir"
     },
     {
       "tipo": "critico",
       "titulo": "Diaristas abaixo da régua",
-      "descricao": "Josiane, Gabriela e Gabriel com desempenho crítico.",
+      "descricao": "Josiane, Gabriela, Gabriel e Gabriela Alexandra apresentam desempenho crítico.",
       "acao": "Rever"
     },
     {
       "tipo": "atencao",
-      "titulo": "Maria com oscilação",
-      "descricao": "Confiável, mas com dias negativos relevantes.",
-      "acao": "Acompanhar"
+      "titulo": "Base produtiva concentrada",
+      "descricao": "Débora aparece como principal referência de performance no período.",
+      "acao": "Monitorar"
     },
     {
       "tipo": "positivo",
-      "titulo": "Débora como referência",
-      "descricao": "Alta performance e baixa inconsistência.",
+      "titulo": "Recursos estáveis sustentam a operação",
+      "descricao": "Maria, Rosana, Débora e Karina permanecem como base confiável.",
       "acao": "Manter"
     }
   ],
@@ -222,39 +182,17 @@
     {
       "acao": "Manter",
       "quantidade": 4,
-      "leitura": "time confiável"
-    },
-    {
-      "acao": "Desenvolver",
-      "quantidade": 0,
-      "leitura": "sem casos médios"
+      "leitura": "recursos estáveis que sustentam a operação"
     },
     {
       "acao": "Agir",
       "quantidade": 5,
-      "leitura": "risco operacional"
+      "leitura": "risco operacional com necessidade de plano de ação"
     },
     {
       "acao": "Ignorar",
       "quantidade": 13,
-      "leitura": "não aplicável"
-    }
-  ],
-  "leitura_executiva": [
-    {
-      "titulo": "Quem puxa o resultado",
-      "texto": "Débora aparece como referência de performance e deve ser preservada para evitar sobrecarga.",
-      "tipo": "positivo"
-    },
-    {
-      "titulo": "Quem sustenta",
-      "texto": "Maria, Rosana e Karina estão confiáveis, mas ainda com oportunidade de ganho de consistência.",
-      "tipo": "neutro"
-    },
-    {
-      "titulo": "Onde agir",
-      "texto": "Waldenice e diaristas críticos exigem plano de ação, treinamento ou substituição de estratégia.",
-      "tipo": "critico"
+      "leitura": "não aplicável para análise de produtividade"
     }
   ]
 }
