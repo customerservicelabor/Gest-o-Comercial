@@ -23,7 +23,7 @@
 <footer class="footer"><span>Fonte: base de performance mensal dos conferentes</span><span>Labor • Painel de Performance dos Conferentes</span></footer>
 </div>
 <script>
-const DATA_URL='conferentes.json';
+const DATA_URL='timeconfe.json';
 const fmtNumber=v=>new Intl.NumberFormat('pt-BR',{maximumFractionDigits:2,minimumFractionDigits:0}).format(Number(v||0));
 const fmtPercent=v=>new Intl.NumberFormat('pt-BR',{style:'percent',minimumFractionDigits:0,maximumFractionDigits:0}).format(Number(v||0));
 function clsScore(s){s=String(s||'').toLowerCase();if(s.includes('alta'))return'ok';if(s.includes('esperado')||s.includes('constante'))return'info';if(s.includes('aten'))return'warn';if(s.includes('crítico')||s.includes('baixo'))return'bad';return'neutral'}
