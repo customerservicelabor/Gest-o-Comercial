@@ -5,53 +5,1144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel de Gestão Individual</title>
   <style>
-    :root{--bg:#e5edf7;--bg-2:#dfe8f3;--panel:#fff;--navy:#061d3a;--navy-2:#0d3567;--text:#0d1b2e;--muted:#607089;--line:#d5dfec;--line-soft:#edf2f7;--green:#159447;--green-bg:#e4f7eb;--green-deep:#0b6b33;--yellow:#d99200;--yellow-bg:#fff1cb;--red:#d92525;--red-bg:#fde7e7;--red-deep:#9f1717;--blue:#245ee8;--blue-bg:#e8efff;--purple:#7c3aed;--purple-bg:#f3e8ff;--shadow:0 12px 30px rgba(10,33,66,.13);--shadow-strong:0 20px 48px rgba(10,33,66,.18);--radius:16px}
-    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg) 100%);color:var(--text);overflow-x:hidden}.page{width:100%;min-height:100vh;padding:14px 18px 18px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:12px;background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 72%,#164a8a 100%);border-radius:18px;padding:15px 18px;box-shadow:var(--shadow-strong);color:#fff}.title-wrap h1{margin:0;font-size:28px;line-height:1.05;letter-spacing:-.6px;color:#fff}.title-wrap p{margin:7px 0 0;color:#c9d8ec;font-size:13px;font-weight:700}.filters{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.pill{border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.11);color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap}.btn-voltar{text-decoration:none;background:#fff;color:var(--navy);font-weight:900;font-size:12px;padding:9px 14px;border-radius:999px;border:1px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.18)}
-    .executive-strip{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin-bottom:12px}.summary-card{background:linear-gradient(90deg,#fff 0%,#f7fbff 100%);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:98px}.headline{font-size:16px;font-weight:900;color:var(--navy);margin-bottom:4px}.note{font-size:12px;color:var(--muted);font-weight:700;line-height:1.4}.score-wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.health-score{min-width:150px;padding:12px 14px;border-radius:14px;text-align:center;border:1px solid #c8d7ef;background:linear-gradient(180deg,#f5f9ff 0%,#eef4ff 100%)}.health-score.risk{background:linear-gradient(180deg,#fff4f4 0%,#ffecec 100%);border-color:#f1b8b8}.health-score.health{background:linear-gradient(180deg,#effaf3 0%,#e4f7eb 100%);border-color:#bfe8cc}.health-score .small{font-size:11px;font-weight:900;color:#28435f;text-transform:uppercase}.health-score.risk .small{color:#8b1a1a}.health-score.health .small{color:#0b6b33}.health-score .big{font-size:30px;font-weight:900;line-height:1;margin-top:4px;color:var(--navy)}.health-score.risk .big{color:var(--red-deep)}.health-score.health .big{color:var(--green-deep)}
-    .kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:12px}.kpi{background:var(--panel);border-radius:15px;padding:14px 15px;box-shadow:var(--shadow);min-height:108px;border:1px solid var(--line);position:relative;overflow:hidden}.kpi::after{content:"";position:absolute;right:-28px;bottom:-40px;width:112px;height:112px;border-radius:50%;opacity:.6}.kpi .label{font-size:11px;color:#465971;font-weight:900;margin-bottom:9px;text-transform:uppercase;letter-spacing:.35px}.kpi .value{font-size:33px;font-weight:900;letter-spacing:-1.1px;color:var(--navy)}.kpi .sub{margin-top:7px;font-size:12px;color:var(--muted);line-height:1.35;font-weight:700}.kpi.green{border-left:8px solid var(--green);background:linear-gradient(180deg,#fff 0%,#eefbf3 100%)}.kpi.green::after{background:var(--green-bg)}.kpi.yellow{border-left:8px solid var(--yellow);background:linear-gradient(180deg,#fff 0%,#fff7dd 100%)}.kpi.yellow::after{background:var(--yellow-bg)}.kpi.red{border-left:8px solid var(--red);background:linear-gradient(180deg,#fff 0%,#ffeded 100%)}.kpi.red::after{background:var(--red-bg)}.kpi.blue{border-left:8px solid var(--blue);background:linear-gradient(180deg,#fff 0%,#eef4ff 100%)}.kpi.blue::after{background:var(--blue-bg)}.kpi.purple{border-left:8px solid var(--purple);background:linear-gradient(180deg,#fff 0%,#f8f0ff 100%)}.kpi.purple::after{background:var(--purple-bg)}.kpi.red .value{color:var(--red-deep)}.kpi.green .value{color:var(--green-deep)}.kpi.yellow .value{color:#8a5c00}.kpi.purple .value{color:#581c87}
-    .grid{display:grid;grid-template-columns:1fr 1.45fr .95fr;gap:12px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;min-height:100px}.panel-header{background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);padding:12px 15px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff}.panel-header h2{margin:0;font-size:16px;letter-spacing:-.2px;color:#fff}.badge{font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24);color:#fff;font-weight:900;white-space:nowrap}.panel-body{padding:13px 15px 15px}table{width:100%;border-collapse:collapse;font-size:12px}th{color:#28435f;text-align:left;font-size:11px;padding:9px 8px;border-bottom:1px solid var(--line);background:#dfeafe;text-transform:uppercase;letter-spacing:.3px}td{padding:10px 8px;border-bottom:1px solid var(--line-soft);color:var(--text);font-weight:800}tbody tr:nth-child(even){background:#f7fbff}tbody tr:hover{background:#eaf2ff}.num{text-align:right;font-variant-numeric:tabular-nums}.rank-scroll{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:12px}.rank-scroll thead th{position:sticky;top:0;z-index:2}.rank-positive{background:linear-gradient(90deg,rgba(22,163,74,.14),transparent 65%)!important}.rank-critical{background:linear-gradient(90deg,rgba(217,37,37,.16),transparent 70%)!important}.rank-warning{background:linear-gradient(90deg,rgba(217,146,0,.16),transparent 70%)!important}.rank-neutral{background:#fff}.employee-name{display:flex;align-items:center;gap:8px;white-space:nowrap}.rank-bar{width:6px;height:25px;border-radius:99px;background:#cbd5e1;display:inline-block;flex:0 0 auto}.rank-positive .rank-bar{background:var(--green)}.rank-critical .rank-bar{background:var(--red)}.rank-warning .rank-bar{background:var(--yellow)}
-    .trend{display:inline-flex;align-items:center;justify-content:center;min-width:58px;padding:4px 7px;border-radius:999px;font-size:11px;font-weight:900;border:1px solid transparent;white-space:nowrap}.trend.up{color:#0b6b33;background:#e3f6ea;border-color:#bfe8cc}.trend.flat{color:#475569;background:#eef2f7;border-color:#d8e1ec}.trend.down{color:#9b1717;background:#fde7e7;border-color:#f4b9b9}.tag{display:inline-flex;align-items:center;justify-content:center;min-width:78px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;border:1px solid transparent;white-space:nowrap}.tag.keep{color:#0b6b33;background:var(--green-bg);border-color:#bfe8cc}.tag.dev{color:#7c5600;background:var(--yellow-bg);border-color:#f8df9b}.tag.act{color:#9b1717;background:var(--red-bg);border-color:#f4b9b9}.tag.ignore{color:#566579;background:#eef2f7;border-color:#d8e1ec}
-    .matrix{height:420px;position:relative;border-radius:14px;background:linear-gradient(90deg,rgba(220,38,38,.18) 0 50%,rgba(22,163,74,.18) 50% 100%),linear-gradient(0deg,rgba(220,38,38,.16) 0 50%,rgba(37,99,235,.10) 50% 100%),#fbfdff;border:1px solid var(--line);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}.axis-x,.axis-y{position:absolute;background:#6f8198}.axis-x{left:0;right:0;top:50%;height:1px}.axis-y{top:0;bottom:0;left:50%;width:1px}.axis-marker{position:absolute;font-size:10px;font-weight:900;color:#607089;z-index:1}.axis-top{left:50%;top:4px;transform:translateX(-50%)}.axis-bottom{left:50%;bottom:4px;transform:translateX(-50%)}.axis-left{left:8px;top:50%;transform:translateY(-50%)}.axis-right{right:8px;top:50%;transform:translateY(-50%)}.q-label{position:absolute;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.2px;z-index:1}.q1{top:14px;right:16px;color:#0c7438}.q2{top:14px;left:16px;color:#9a6200}.q3{bottom:14px;left:16px;color:#a51616}.q4{bottom:14px;right:16px;color:#9a6200}.dot{position:absolute;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 4px rgba(15,35,70,.10),0 8px 20px rgba(15,35,70,.25);z-index:3}.dot.green{background:var(--green)}.dot.yellow{background:var(--yellow)}.dot.red{background:var(--red)}.dot-label{position:absolute;transform:translate(10px,-12px);font-size:11px;white-space:nowrap;color:var(--navy);font-weight:900;text-shadow:0 1px 0 #fff}.axis-title-x,.axis-title-y{position:absolute;font-size:11px;color:#4b5f78;font-weight:900}.axis-title-x{bottom:8px;left:50%;transform:translateX(-50%)}.axis-title-y{top:50%;left:8px;transform:rotate(-90deg) translateX(-50%);transform-origin:left center}
-    .alerts{display:flex;flex-direction:column;gap:9px;max-height:420px;overflow:auto;padding-right:2px}.alert{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:11px;border-radius:14px;border:1px solid var(--line);background:#fff;box-shadow:0 4px 12px rgba(10,33,66,.05)}.alert .icon{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;font-weight:900;color:#fff}.alert.red{background:#fff4f4;border-color:#efb5b5}.alert.yellow{background:#fff7df;border-color:#efd18d}.alert.green{background:#effaf3;border-color:#bce7ca}.alert.red .icon{background:var(--red)}.alert.yellow .icon{background:var(--yellow);color:#15100a}.alert.green .icon{background:var(--green)}.alert h3{margin:0 0 3px;font-size:13px;color:var(--navy)}.alert p{margin:0;font-size:11px;color:#40536b;line-height:1.35;font-weight:700}.alert .action{font-size:11px;font-weight:900;text-transform:uppercase;color:var(--navy);display:flex;flex-direction:column;align-items:flex-end;gap:5px}.priority{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900;border:1px solid transparent}.priority.alta{color:#9b1717;background:#fde7e7;border-color:#f4b9b9}.priority.media{color:#7c5600;background:#fff1cb;border-color:#f8df9b}.priority.baixa{color:#0b6b33;background:#e3f6ea;border-color:#bfe8cc}
-    .impact-strip{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.impact-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px 15px;box-shadow:var(--shadow);min-height:96px;border-left:7px solid var(--blue)}.impact-card.red{border-left-color:var(--red);background:#fff7f7}.impact-card.yellow{border-left-color:var(--yellow);background:#fffaf0}.impact-card.green{border-left-color:var(--green);background:#f3fbf6}.impact-card.purple{border-left-color:var(--purple);background:#fbf7ff}.impact-card strong{display:block;color:var(--navy);font-size:14px;margin-bottom:7px}.impact-card span{display:block;color:#40536b;font-size:12px;font-weight:700;line-height:1.4}.footer{margin-top:12px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;font-weight:700}.error{padding:18px;border:1px solid rgba(220,38,38,.4);background:rgba(220,38,38,.08);border-radius:14px;color:#7f1d1d;margin-top:16px}@media(max-width:1200px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.executive-strip{grid-template-columns:1fr}.impact-strip{grid-template-columns:1fr}.score-wrap{justify-content:flex-start}}
+    :root {
+      --bg:#e5edf7;
+      --bg-2:#dfe8f3;
+      --panel:#ffffff;
+      --navy:#061d3a;
+      --navy-2:#0d3567;
+      --text:#0d1b2e;
+      --muted:#607089;
+      --line:#d5dfec;
+      --line-soft:#edf2f7;
+      --green:#159447;
+      --green-bg:#e4f7eb;
+      --green-deep:#0b6b33;
+      --yellow:#d99200;
+      --yellow-bg:#fff1cb;
+      --red:#d92525;
+      --red-bg:#fde7e7;
+      --red-deep:#9f1717;
+      --blue:#245ee8;
+      --blue-bg:#e8efff;
+      --purple:#7c3aed;
+      --purple-bg:#f3e8ff;
+      --shadow:0 12px 30px rgba(10,33,66,.13);
+      --shadow-strong:0 20px 48px rgba(10,33,66,.18);
+      --radius:16px;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg) 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    .page { width:100%; min-height:100vh; padding:14px 18px 18px; }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:12px;
+      background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 72%,#164a8a 100%);
+      border-radius:18px;
+      padding:15px 18px;
+      box-shadow:var(--shadow-strong);
+      color:#fff;
+    }
+
+    .title-wrap h1 {
+      margin:0;
+      font-size:28px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+      color:#fff;
+    }
+
+    .title-wrap p {
+      margin:7px 0 0;
+      color:#c9d8ec;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .filters {
+      display:flex;
+      gap:9px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill {
+      border:1px solid rgba(255,255,255,.24);
+      background:rgba(255,255,255,.11);
+      color:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .btn-voltar {
+      text-decoration:none;
+      background:#fff;
+      color:var(--navy);
+      font-weight:900;
+      font-size:12px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid #fff;
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+    }
+
+    .executive-strip {
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .summary-card {
+      background:linear-gradient(90deg,#ffffff 0%,#f7fbff 100%);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:98px;
+    }
+
+    .headline {
+      font-size:16px;
+      font-weight:900;
+      color:var(--navy);
+      margin-bottom:4px;
+    }
+
+    .note {
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+      line-height:1.4;
+    }
+
+    .score-wrap {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .health-score {
+      min-width:150px;
+      padding:12px 14px;
+      border-radius:14px;
+      text-align:center;
+      border:1px solid #c8d7ef;
+      background:linear-gradient(180deg,#f5f9ff 0%,#eef4ff 100%);
+    }
+
+    .health-score.risk {
+      background:linear-gradient(180deg,#fff4f4 0%,#ffecec 100%);
+      border-color:#f1b8b8;
+    }
+
+    .health-score.health {
+      background:linear-gradient(180deg,#effaf3 0%,#e4f7eb 100%);
+      border-color:#bfe8cc;
+    }
+
+    .health-score .small {
+      font-size:11px;
+      font-weight:900;
+      color:#28435f;
+      text-transform:uppercase;
+    }
+
+    .health-score.risk .small { color:#8b1a1a; }
+    .health-score.health .small { color:#0b6b33; }
+
+    .health-score .big {
+      font-size:30px;
+      font-weight:900;
+      line-height:1;
+      margin-top:4px;
+      color:var(--navy);
+    }
+
+    .health-score.risk .big { color:var(--red-deep); }
+    .health-score.health .big { color:var(--green-deep); }
+
+    .kpis {
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .kpi {
+      background:var(--panel);
+      border-radius:15px;
+      padding:14px 15px;
+      box-shadow:var(--shadow);
+      min-height:108px;
+      border:1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .kpi::after {
+      content:"";
+      position:absolute;
+      right:-28px;
+      bottom:-40px;
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      opacity:.6;
+    }
+
+    .kpi .label {
+      font-size:11px;
+      color:#465971;
+      font-weight:900;
+      margin-bottom:9px;
+      text-transform:uppercase;
+      letter-spacing:.35px;
+    }
+
+    .kpi .value {
+      font-size:33px;
+      font-weight:900;
+      letter-spacing:-1.1px;
+      color:var(--navy);
+    }
+
+    .kpi .sub {
+      margin-top:7px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
+      font-weight:700;
+    }
+
+    .kpi.green { border-left:8px solid var(--green); background:linear-gradient(180deg,#ffffff 0%,#eefbf3 100%); }
+    .kpi.green::after { background:var(--green-bg); }
+    .kpi.yellow { border-left:8px solid var(--yellow); background:linear-gradient(180deg,#ffffff 0%,#fff7dd 100%); }
+    .kpi.yellow::after { background:var(--yellow-bg); }
+    .kpi.red { border-left:8px solid var(--red); background:linear-gradient(180deg,#ffffff 0%,#ffeded 100%); }
+    .kpi.red::after { background:var(--red-bg); }
+    .kpi.blue { border-left:8px solid var(--blue); background:linear-gradient(180deg,#ffffff 0%,#eef4ff 100%); }
+    .kpi.blue::after { background:var(--blue-bg); }
+    .kpi.purple { border-left:8px solid var(--purple); background:linear-gradient(180deg,#ffffff 0%,#f8f0ff 100%); }
+    .kpi.purple::after { background:var(--purple-bg); }
+    .kpi.red .value { color:var(--red-deep); }
+    .kpi.green .value { color:var(--green-deep); }
+    .kpi.yellow .value { color:#8a5c00; }
+    .kpi.purple .value { color:#581c87; }
+
+    .grid {
+      display:grid;
+      grid-template-columns:1fr 1.45fr .95fr;
+      gap:12px;
+      align-items:start;
+    }
+
+    .panel {
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-height:100px;
+    }
+
+    .panel-header {
+      background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);
+      padding:12px 15px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      color:#fff;
+    }
+
+    .panel-header h2 {
+      margin:0;
+      font-size:16px;
+      letter-spacing:-.2px;
+      color:#fff;
+    }
+
+    .badge {
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.24);
+      color:#fff;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .panel-body { padding:13px 15px 15px; }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+    }
+
+    th {
+      color:#28435f;
+      text-align:left;
+      font-size:11px;
+      padding:9px 8px;
+      border-bottom:1px solid var(--line);
+      background:#dfeafe;
+      text-transform:uppercase;
+      letter-spacing:.3px;
+    }
+
+    td {
+      padding:10px 8px;
+      border-bottom:1px solid var(--line-soft);
+      color:var(--text);
+      font-weight:800;
+    }
+
+    tbody tr:nth-child(even) { background:#f7fbff; }
+    tbody tr:hover { background:#eaf2ff; }
+
+    .num {
+      text-align:right;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .rank-scroll {
+      max-height:420px;
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:12px;
+    }
+
+    .rank-scroll thead th {
+      position:sticky;
+      top:0;
+      z-index:2;
+    }
+
+    .rank-positive { background:linear-gradient(90deg,rgba(22,163,74,.14),transparent 65%) !important; }
+    .rank-critical { background:linear-gradient(90deg,rgba(217,37,37,.16),transparent 70%) !important; }
+    .rank-warning { background:linear-gradient(90deg,rgba(217,146,0,.16),transparent 70%) !important; }
+    .rank-neutral { background:#fff; }
+
+    .employee-name {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .rank-bar {
+      width:6px;
+      height:25px;
+      border-radius:99px;
+      background:#cbd5e1;
+      display:inline-block;
+      flex:0 0 auto;
+    }
+
+    .rank-positive .rank-bar { background:var(--green); }
+    .rank-critical .rank-bar { background:var(--red); }
+    .rank-warning .rank-bar { background:var(--yellow); }
+
+    .trend {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:58px;
+      padding:4px 7px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .trend.up { color:#0b6b33; background:#e3f6ea; border-color:#bfe8cc; }
+    .trend.flat { color:#475569; background:#eef2f7; border-color:#d8e1ec; }
+    .trend.down { color:#9b1717; background:#fde7e7; border-color:#f4b9b9; }
+
+    .tag {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:78px;
+      padding:5px 9px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .tag.keep { color:#0b6b33; background:var(--green-bg); border-color:#bfe8cc; }
+    .tag.dev { color:#7c5600; background:var(--yellow-bg); border-color:#f8df9b; }
+    .tag.act { color:#9b1717; background:var(--red-bg); border-color:#f4b9b9; }
+    .tag.ignore { color:#566579; background:#eef2f7; border-color:#d8e1ec; }
+
+    .risk-map {
+      height:420px;
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
+    }
+
+    .risk-row {
+      display:grid;
+      grid-template-columns:170px 1fr 78px;
+      gap:10px;
+      align-items:center;
+      padding:9px 8px;
+      border-bottom:1px solid var(--line-soft);
+    }
+
+    .risk-row:last-child { border-bottom:0; }
+
+    .risk-name {
+      font-size:12px;
+      font-weight:900;
+      color:var(--navy);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .risk-reason {
+      font-size:10px;
+      color:#607089;
+      font-weight:800;
+      margin-top:3px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .risk-bar-track {
+      height:18px;
+      background:#dfe8f3;
+      border-radius:999px;
+      overflow:hidden;
+      position:relative;
+      border:1px solid #c9d6e7;
+    }
+
+    .risk-bar {
+      height:100%;
+      border-radius:999px;
+      min-width:3%;
+    }
+
+    .risk-bar.high { background:linear-gradient(90deg,#ef4444,#b91c1c); }
+    .risk-bar.mid { background:linear-gradient(90deg,#f59e0b,#b45309); }
+    .risk-bar.low { background:linear-gradient(90deg,#22c55e,#15803d); }
+
+    .risk-score {
+      text-align:right;
+      font-size:12px;
+      font-weight:900;
+      color:var(--navy);
+      font-variant-numeric:tabular-nums;
+    }
+
+    .risk-level {
+      display:inline-flex;
+      margin-top:3px;
+      padding:3px 7px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:900;
+      border:1px solid transparent;
+    }
+
+    .risk-level.high { color:#9b1717; background:#fde7e7; border-color:#f4b9b9; }
+    .risk-level.mid { color:#7c5600; background:#fff1cb; border-color:#f8df9b; }
+    .risk-level.low { color:#0b6b33; background:#e3f6ea; border-color:#bfe8cc; }
+
+    .risk-legend {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:9px;
+      padding:8px 9px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#f8fbff;
+      color:#40536b;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .alerts {
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+      max-height:420px;
+      overflow:auto;
+      padding-right:2px;
+    }
+
+    .alert {
+      display:grid;
+      grid-template-columns:34px 1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:11px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 4px 12px rgba(10,33,66,.05);
+    }
+
+    .alert .icon {
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      font-weight:900;
+      color:#fff;
+    }
+
+    .alert.red { background:#fff4f4; border-color:#efb5b5; }
+    .alert.yellow { background:#fff7df; border-color:#efd18d; }
+    .alert.green { background:#effaf3; border-color:#bce7ca; }
+    .alert.red .icon { background:var(--red); }
+    .alert.yellow .icon { background:var(--yellow); color:#15100a; }
+    .alert.green .icon { background:var(--green); }
+
+    .alert h3 {
+      margin:0 0 3px;
+      font-size:13px;
+      color:var(--navy);
+    }
+
+    .alert p {
+      margin:0;
+      font-size:11px;
+      color:#40536b;
+      line-height:1.35;
+      font-weight:700;
+    }
+
+    .alert .action {
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      color:var(--navy);
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:5px;
+    }
+
+    .priority {
+      display:inline-flex;
+      border-radius:999px;
+      padding:4px 8px;
+      font-size:10px;
+      font-weight:900;
+      border:1px solid transparent;
+    }
+
+    .priority.alta { color:#9b1717; background:#fde7e7; border-color:#f4b9b9; }
+    .priority.media { color:#7c5600; background:#fff1cb; border-color:#f8df9b; }
+    .priority.baixa { color:#0b6b33; background:#e3f6ea; border-color:#bfe8cc; }
+
+    .impact-strip {
+      grid-column:1 / -1;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .impact-card {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:14px 15px;
+      box-shadow:var(--shadow);
+      min-height:96px;
+      border-left:7px solid var(--blue);
+    }
+
+    .impact-card.red { border-left-color:var(--red); background:#fff7f7; }
+    .impact-card.yellow { border-left-color:var(--yellow); background:#fffaf0; }
+    .impact-card.green { border-left-color:var(--green); background:#f3fbf6; }
+    .impact-card.purple { border-left-color:var(--purple); background:#fbf7ff; }
+
+    .impact-card strong {
+      display:block;
+      color:var(--navy);
+      font-size:14px;
+      margin-bottom:7px;
+    }
+
+    .impact-card span {
+      display:block;
+      color:#40536b;
+      font-size:12px;
+      font-weight:700;
+      line-height:1.4;
+    }
+
+    .footer {
+      margin-top:12px;
+      display:flex;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .error {
+      padding:18px;
+      border:1px solid rgba(220,38,38,.4);
+      background:rgba(220,38,38,.08);
+      border-radius:14px;
+      color:#7f1d1d;
+      margin-top:16px;
+    }
+
+    @media(max-width:1200px){
+      .grid{grid-template-columns:1fr;}
+      .kpis{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .executive-strip{grid-template-columns:1fr;}
+      .impact-strip{grid-template-columns:1fr;}
+      .score-wrap{justify-content:flex-start;}
+      .risk-row{grid-template-columns:130px 1fr 64px;}
+    }
   </style>
 </head>
+
 <body>
   <div class="page">
-    <header class="topbar"><div class="title-wrap"><h1 id="titulo">Painel de Gestão Individual</h1><p id="subtitulo">Carregando dados...</p></div><div class="filters"><div class="pill" id="periodo">Período: --</div><div class="pill" id="filtro">Filtro: --</div><div class="pill" id="acesso">Acesso: --</div><a href="index.html" class="btn-voltar">← Painel Geral</a></div></header>
-    <section class="executive-strip"><div class="summary-card"><div><div class="headline">Panorama executivo de risco operacional</div><div class="note">Leitura focada em impacto operacional, estabilidade da base, produtividade e risco de ruptura por pessoas.</div></div><div class="score-wrap"><div class="health-score risk"><div class="small">Risco operacional</div><div class="big" id="risco-gerencial">--</div></div><div class="health-score health"><div class="small">Saúde operacional</div><div class="big" id="saude-operacional">--</div></div></div></div><div class="summary-card"><div><div class="headline" id="principal-alerta">Carregando diagnóstico...</div><div class="note" id="principal-alerta-texto">Aguardando leitura do arquivo JSON.</div></div></div></section>
+    <header class="topbar">
+      <div class="title-wrap">
+        <h1 id="titulo">Painel de Gestão Individual</h1>
+        <p id="subtitulo">Carregando dados...</p>
+      </div>
+      <div class="filters">
+        <div class="pill" id="periodo">Período: --</div>
+        <div class="pill" id="filtro">Filtro: --</div>
+        <div class="pill" id="acesso">Acesso: --</div>
+        <a href="index.html" class="btn-voltar">← Painel Geral</a>
+      </div>
+    </header>
+
+    <section class="executive-strip">
+      <div class="summary-card">
+        <div>
+          <div class="headline">Panorama executivo de risco operacional</div>
+          <div class="note">Leitura focada em impacto operacional, estabilidade da base, produtividade e risco de ruptura por pessoas.</div>
+        </div>
+        <div class="score-wrap">
+          <div class="health-score risk">
+            <div class="small">Risco operacional</div>
+            <div class="big" id="risco-gerencial">--</div>
+          </div>
+          <div class="health-score health">
+            <div class="small">Saúde operacional</div>
+            <div class="big" id="saude-operacional">--</div>
+          </div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div>
+          <div class="headline" id="principal-alerta">Carregando diagnóstico...</div>
+          <div class="note" id="principal-alerta-texto">Aguardando leitura do arquivo JSON.</div>
+        </div>
+      </div>
+    </section>
+
     <section class="kpis" id="kpis"></section>
+
     <main class="grid">
-      <section class="panel"><div class="panel-header"><h2>Ranking operacional individual</h2><span class="badge">média, presença e tendência</span></div><div class="panel-body"><div class="rank-scroll"><table><thead><tr><th>Funcionário</th><th class="num">Média</th><th class="num">Presença</th><th>Tend.</th><th>Ação</th></tr></thead><tbody id="ranking-body"></tbody></table></div></div></section>
-      <section class="panel"><div class="panel-header"><h2>Matriz de decisão operacional</h2><span class="badge">performance normalizada × confiabilidade</span></div><div class="panel-body"><div class="matrix" id="matrix"><div class="axis-x"></div><div class="axis-y"></div><div class="axis-marker axis-top">100%</div><div class="axis-marker axis-bottom">0%</div><div class="axis-marker axis-left">0%</div><div class="axis-marker axis-right">100%</div><div class="q-label q1">RECURSO REFERÊNCIA</div><div class="q-label q2">POTENCIAL DESENVOLVIMENTO</div><div class="q-label q3">RISCO OPERACIONAL</div><div class="q-label q4">MONITORAMENTO</div><div class="axis-title-x">Performance operacional normalizada →</div><div class="axis-title-y">Confiabilidade operacional →</div></div></div></section>
-      <section class="panel"><div class="panel-header"><h2>Riscos operacionais</h2><span class="badge">prioridade</span></div><div class="panel-body alerts" id="alertas"></div></section>
-      <section class="impact-strip"><div class="impact-card red"><strong>Risco de ruptura</strong><span id="impacto-risco">Calculando impacto operacional da base crítica.</span></div><div class="impact-card yellow"><strong>Absenteísmo</strong><span id="impacto-faltas">Calculando impacto das faltas sobre a capacidade.</span></div><div class="impact-card purple"><strong>Dependência operacional</strong><span id="impacto-dependencia">Calculando concentração de produtividade positiva.</span></div><div class="impact-card green"><strong>Direcionamento gerencial</strong><span id="impacto-direcao">Calculando prioridade de acompanhamento.</span></div></section>
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Ranking operacional individual</h2>
+          <span class="badge">média, presença e tendência</span>
+        </div>
+        <div class="panel-body">
+          <div class="rank-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Funcionário</th>
+                  <th class="num">Média</th>
+                  <th class="num">Presença</th>
+                  <th>Tend.</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="ranking-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Mapa de risco por colaborador</h2>
+          <span class="badge">risco calculado e ordenado</span>
+        </div>
+        <div class="panel-body">
+          <div class="risk-map">
+            <div class="risk-legend">
+              <span>Baixo risco</span>
+              <span>Risco operacional</span>
+              <span>Crítico</span>
+            </div>
+            <div id="risk-body"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Riscos operacionais</h2>
+          <span class="badge">prioridade</span>
+        </div>
+        <div class="panel-body alerts" id="alertas"></div>
+      </section>
+
+      <section class="impact-strip">
+        <div class="impact-card red">
+          <strong>Risco de ruptura</strong>
+          <span id="impacto-risco">Calculando impacto operacional da base crítica.</span>
+        </div>
+        <div class="impact-card yellow">
+          <strong>Absenteísmo</strong>
+          <span id="impacto-faltas">Calculando impacto das faltas sobre a capacidade.</span>
+        </div>
+        <div class="impact-card purple">
+          <strong>Dependência operacional</strong>
+          <span id="impacto-dependencia">Calculando concentração de produtividade positiva.</span>
+        </div>
+        <div class="impact-card green">
+          <strong>Direcionamento gerencial</strong>
+          <span id="impacto-direcao">Calculando prioridade de acompanhamento.</span>
+        </div>
+      </section>
     </main>
-    <footer class="footer"><span id="fonte">Fonte: --</span><span>Labor • Painel de Gestão Individual</span></footer>
+
+    <footer class="footer">
+      <span id="fonte">Fonte: --</span>
+      <span>Labor • Painel de Gestão Individual</span>
+    </footer>
   </div>
+
   <script>
-    const DATA_URL="Individual.json";
-    const fmtPercent=(value,digits=2)=>{if(value===null||value===undefined||Number.isNaN(Number(value)))return"--";return new Intl.NumberFormat("pt-BR",{style:"percent",minimumFractionDigits:digits,maximumFractionDigits:digits}).format(Number(value))};
-    const actionClass=(acao)=>{const n=String(acao||"").toLowerCase();if(n.includes("manter"))return"keep";if(n.includes("desenvolver")||n.includes("acompanhar")||n.includes("monitorar"))return"dev";if(n.includes("agir")||n.includes("rever"))return"act";return"ignore"};
-    const rowClass=(item)=>{const a=String(item.acao_recomendada||"").toLowerCase();const s=String(item.score_final||"").toLowerCase();if(a.includes("agir")||a.includes("rever")||s.includes("crítico"))return"rank-critical";if(a.includes("desenvolver")||a.includes("acompanhar")||s.includes("atenção"))return"rank-warning";if(a.includes("manter"))return"rank-positive";return"rank-neutral"};
-    const alertClass=(tipo)=>tipo==="positivo"?"green":(tipo==="atencao"||tipo==="atenção"||tipo==="neutro"?"yellow":"red");
-    const alertIcon=(tipo)=>tipo==="positivo"?"✓":(tipo==="atencao"||tipo==="atenção"||tipo==="neutro"?"~":"!");
-    const priorityFromAlert=(a)=>{const raw=String(a.prioridade||"").toLowerCase();if(raw.includes("alta"))return"ALTA";if(raw.includes("média")||raw.includes("media"))return"MÉDIA";if(raw.includes("baixa"))return"BAIXA";const tipo=String(a.tipo||"").toLowerCase();const acao=String(a.acao||"").toLowerCase();if(tipo.includes("critico")||tipo.includes("crítico")||acao.includes("agir")||acao.includes("rever"))return"ALTA";if(tipo.includes("atencao")||tipo.includes("atenção")||acao.includes("acompanhar")||acao.includes("monitorar"))return"MÉDIA";return"BAIXA"};
-    const priorityClass=(p)=>p==="ALTA"?"alta":(p==="MÉDIA"?"media":"baixa");
-    const tendenciaFromItem=(item)=>{const t=String(item.tendencia||"").toLowerCase();if(t.includes("alta")||t.includes("sub")||t.includes("melhor")||t.includes("up"))return{label:"↑ Alta",cls:"up"};if(t.includes("queda")||t.includes("pior")||t.includes("down")||t.includes("baixa"))return{label:"↓ Queda",cls:"down"};if(t.includes("estável")||t.includes("estavel")||t.includes("flat"))return{label:"→ Estável",cls:"flat"};const media=Number(item.media_mensal||0);const acao=String(item.acao_recomendada||"").toLowerCase();const score=String(item.score_final||"").toLowerCase();if(media>0.05&&acao.includes("manter"))return{label:"↑ Alta",cls:"up"};if(media<-0.10||score.includes("crítico")||acao.includes("agir"))return{label:"↓ Queda",cls:"down"};return{label:"→ Estável",cls:"flat"}};
-    const kpiClassByKey=(key)=>{if(["confiaveis","alta_performance"].includes(key))return"green";if(["faltas_time_base"].includes(key))return"yellow";if(["nao_confiaveis","acoes_necessarias"].includes(key))return"red";if(["dependencia_operacional"].includes(key))return"purple";return"blue"};
-    const kpiLabel=(key)=>({confiaveis:"Recursos Estáveis",nao_confiaveis:"Recursos Críticos",alta_performance:"Referências Operacionais",faltas_time_base:"Impacto por Absenteísmo",acoes_necessarias:"Plano de Ação",dependencia_operacional:"Dependência Operacional"}[key]||key);
-    function getRanking(data){return data.ranking||[]} function getMeasurablePeople(data){return getRanking(data).filter(p=>String(p.mede_produtividade||"").toLowerCase()==="sim")} function getActionCount(data,text){const acoes=data.acoes_recomendadas||[];return acoes.find(a=>String(a.acao).toLowerCase().includes(text))?.quantidade||0}
-    function calcDependencia(data){const oficiais=getMeasurablePeople(data);const positivos=oficiais.map(p=>({nome:p.nome,media:Math.max(0,Number(p.media_mensal||0))})).filter(p=>p.media>0);const total=positivos.reduce((s,p)=>s+p.media,0);if(!positivos.length||total<=0)return{nome:"--",share:0,media:0};const maior=positivos.sort((a,b)=>b.media-a.media)[0];return{nome:maior.nome,share:maior.media/total,media:maior.media}}
-    function calcSaudeOperacional(data){const ranking=getRanking(data);const oficiais=getMeasurablePeople(data);const base=oficiais.length?oficiais:ranking;const total=base.length||1;const criticos=base.filter(p=>{const s=String(p.score_final||"").toLowerCase();const a=String(p.acao_recomendada||"").toLowerCase();return s.includes("crítico")||a.includes("agir")||a.includes("rever")}).length;const presenca=base.reduce((s,p)=>s+Number(p.presenca_operacional??p.consistencia??0),0)/total;const produtividade=base.reduce((s,p)=>s+Math.max(0,Math.min(1,Number(p.media_mensal||0)+0.5)),0)/total;const riscoInv=1-(criticos/total);return Math.max(0,Math.min(1,(presenca*.35)+(produtividade*.35)+(riscoInv*.30)))}
-    function renderMetadata(data){const m=data.metadata||{};document.title=m.titulo||"Painel de Gestão Individual";document.getElementById("titulo").textContent=m.titulo||"Painel de Gestão Individual";document.getElementById("subtitulo").textContent=m.subtitulo||"Visão executiva de produtividade, confiabilidade e risco operacional da equipe.";document.getElementById("periodo").textContent=`Período: ${m.periodo||"--"}`;document.getElementById("filtro").textContent=`Filtro: ${m.filtro||"--"}`;document.getElementById("acesso").textContent=`Acesso: ${m.acesso||"--"}`;document.getElementById("fonte").textContent=`Fonte: ${m.fonte||"--"}`}
-    function renderKpis(data){const c=document.getElementById("kpis");const dep=calcDependencia(data);const kpis={...(data.kpis||{}),dependencia_operacional:{valor:fmtPercent(dep.share,0),descricao:dep.nome!=="--"?`${dep.nome.split(" ")[0]} concentra a maior parcela da produtividade positiva`:"sem concentração relevante"}};const order=["confiaveis","nao_confiaveis","alta_performance","faltas_time_base","dependencia_operacional"];c.innerHTML=order.map(key=>{const i=kpis?.[key]||{valor:"--",descricao:""};return`<div class="kpi ${kpiClassByKey(key)}"><div class="label">${kpiLabel(key)}</div><div class="value">${i.valor??"--"}</div><div class="sub">${i.descricao||""}</div></div>`}).join("")}
-    function renderRanking(data){const body=document.getElementById("ranking-body");const sorted=[...getRanking(data)].sort((a,b)=>Number(b.media_mensal||0)-Number(a.media_mensal||0));body.innerHTML=sorted.map(item=>{const p=item.presenca_operacional??item.consistencia??item.assiduidade??null;const tend=tendenciaFromItem(item);return`<tr class="${rowClass(item)}"><td><span class="employee-name"><span class="rank-bar"></span>${item.nome}</span></td><td class="num">${fmtPercent(item.media_mensal)}</td><td class="num">${p!==null?fmtPercent(p):"--"}</td><td><span class="trend ${tend.cls}">${tend.label}</span></td><td><span class="tag ${actionClass(item.acao_recomendada)}">${item.acao_recomendada||"Não aplicável"}</span></td></tr>`}).join("")}
-    function renderMatrix(data){const matrix=document.getElementById("matrix");const points=data.matriz_decisao?.pontos||[];const medias=points.map(p=>Number(p.media_mensal||0));const min=Math.min(...medias,-0.10);const max=Math.max(...medias,0.10);const amp=max-min||1;points.forEach(p=>{const media=Number(p.media_mensal||0);const consist=Number(p.consistencia||p.presenca_operacional||0);const xNorm=(media-min)/amp;const x=Math.max(5,Math.min(95,xNorm*100));const y=Math.max(5,Math.min(95,(1-consist)*100));const dot=document.createElement("div");dot.className=`dot ${p.cor||"yellow"}`;dot.style.left=`${x}%`;dot.style.top=`${y}%`;dot.title=`${p.nome} | Performance: ${fmtPercent(media)} | Confiabilidade: ${fmtPercent(consist)} | Performance normalizada: ${fmtPercent(xNorm,0)}`;dot.innerHTML=`<span class="dot-label">${p.nome}</span>`;matrix.appendChild(dot)})}
-    function renderAlertas(data){const cont=document.getElementById("alertas");cont.innerHTML=(data.alertas||[]).map(a=>{const cls=alertClass(a.tipo);const pr=priorityFromAlert(a);return`<div class="alert ${cls}"><div class="icon">${alertIcon(a.tipo)}</div><div><h3>${a.titulo}</h3><p>${a.descricao}</p></div><div class="action"><span class="priority ${priorityClass(pr)}">${pr}</span><span>${a.acao}</span></div></div>`}).join("")}
-    function renderExecutiveSummary(data){const manter=getActionCount(data,"manter");const agir=getActionCount(data,"agir");const total=(data.acoes_recomendadas||[]).reduce((s,a)=>s+Number(a.quantidade||0),0)||(getRanking(data).length||1);const risco=Math.round((agir/total)*100);const saude=calcSaudeOperacional(data);const dep=calcDependencia(data);document.getElementById("risco-gerencial").textContent=`${risco}%`;document.getElementById("saude-operacional").textContent=fmtPercent(saude,0);if(risco>=30){document.getElementById("principal-alerta").textContent="Prioridade: reduzir risco operacional da base";document.getElementById("principal-alerta-texto").textContent="O índice de risco exige acompanhamento ativo de produtividade, presença e evolução dos casos críticos."}else{document.getElementById("principal-alerta").textContent="Base operacional sustentando o resultado";document.getElementById("principal-alerta-texto").textContent="A operação possui recursos estáveis, mas ainda exige monitoramento de performance, presença e concentração produtiva."}document.getElementById("impacto-risco").textContent=`${agir} colaborador(es) exigem plano de ação ou revisão. Esse grupo representa risco direto de queda de capacidade.`;document.getElementById("impacto-faltas").textContent=`${data.kpis?.faltas_time_base?.valor??"--"} falta(s) no time base impactam diretamente a capacidade planejada.`;document.getElementById("impacto-dependencia").textContent=dep.nome!=="--"?`${dep.nome.split(" ")[0]} concentra ${fmtPercent(dep.share,0)} da produtividade positiva. Avaliar risco de sobrecarga e necessidade de backup.`:"Não há concentração relevante de produtividade positiva no período.";document.getElementById("impacto-direcao").textContent=risco>=30?"Prioridade alta: acompanhar semanalmente produtividade, presença e evolução dos casos críticos.":"Prioridade moderada: manter acompanhamento e preservar recursos de referência."}
-    function renderError(msg){document.querySelector(".page").insertAdjacentHTML("beforeend",`<div class="error"><strong>Erro ao carregar o painel.</strong><br>${msg}<br>Verifique se o arquivo <b>Individual.json</b> está na mesma pasta deste HTML.</div>`)}
-    async function init(){try{const response=await fetch(DATA_URL+"?t="+Date.now(),{cache:"no-store"});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();renderMetadata(data);renderExecutiveSummary(data);renderKpis(data);renderRanking(data);renderMatrix(data);renderAlertas(data)}catch(error){console.error(error);renderError(error.message)}} init();
+    const DATA_URL = "Individual.json";
+
+    const fmtPercent = (value, digits = 2) => {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return "--";
+      return new Intl.NumberFormat("pt-BR", {
+        style:"percent",
+        minimumFractionDigits:digits,
+        maximumFractionDigits:digits
+      }).format(Number(value));
+    };
+
+    const fmtNumber = (value) => {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return "--";
+      return new Intl.NumberFormat("pt-BR", {
+        maximumFractionDigits:2
+      }).format(Number(value));
+    };
+
+    const actionClass = (acao) => {
+      const normalized = String(acao || "").toLowerCase();
+      if (normalized.includes("manter")) return "keep";
+      if (normalized.includes("desenvolver") || normalized.includes("acompanhar") || normalized.includes("monitorar")) return "dev";
+      if (normalized.includes("agir") || normalized.includes("rever")) return "act";
+      return "ignore";
+    };
+
+    const rowClass = (item) => {
+      const acao = String(item.acao_recomendada || "").toLowerCase();
+      const score = String(item.score_final || "").toLowerCase();
+      if (acao.includes("agir") || acao.includes("rever") || score.includes("crítico")) return "rank-critical";
+      if (acao.includes("desenvolver") || acao.includes("acompanhar") || score.includes("atenção")) return "rank-warning";
+      if (acao.includes("manter")) return "rank-positive";
+      return "rank-neutral";
+    };
+
+    const alertClass = (tipo) => tipo === "positivo" ? "green" : (tipo === "atencao" || tipo === "neutro" ? "yellow" : "red");
+    const alertIcon = (tipo) => tipo === "positivo" ? "✓" : (tipo === "atencao" || tipo === "neutro" ? "~" : "!");
+
+    const priorityFromAlert = (a) => {
+      const raw = String(a.prioridade || "").toLowerCase();
+      if (raw.includes("alta")) return "ALTA";
+      if (raw.includes("média") || raw.includes("media")) return "MÉDIA";
+      if (raw.includes("baixa")) return "BAIXA";
+
+      const tipo = String(a.tipo || "").toLowerCase();
+      const acao = String(a.acao || "").toLowerCase();
+      if (tipo.includes("critico") || tipo.includes("crítico") || acao.includes("agir") || acao.includes("rever")) return "ALTA";
+      if (tipo.includes("atencao") || tipo.includes("atenção") || acao.includes("acompanhar") || acao.includes("monitorar")) return "MÉDIA";
+      return "BAIXA";
+    };
+
+    const priorityClass = (p) => {
+      if (p === "ALTA") return "alta";
+      if (p === "MÉDIA") return "media";
+      return "baixa";
+    };
+
+    const tendenciaFromItem = (item) => {
+      const t = String(item.tendencia || "").toLowerCase();
+      if (t.includes("alta") || t.includes("sub") || t.includes("melhor") || t.includes("up")) return {label:"↑ Alta", cls:"up"};
+      if (t.includes("queda") || t.includes("pior") || t.includes("down") || t.includes("baixa")) return {label:"↓ Queda", cls:"down"};
+      if (t.includes("estável") || t.includes("estavel") || t.includes("flat")) return {label:"→ Estável", cls:"flat"};
+
+      const media = Number(item.media_mensal || 0);
+      const acao = String(item.acao_recomendada || "").toLowerCase();
+      const score = String(item.score_final || "").toLowerCase();
+
+      if (media > 0.05 && acao.includes("manter")) return {label:"↑ Alta", cls:"up"};
+      if (media < -0.10 || score.includes("crítico") || acao.includes("agir")) return {label:"↓ Queda", cls:"down"};
+      return {label:"→ Estável", cls:"flat"};
+    };
+
+    const kpiClassByKey = (key) => {
+      if (["confiaveis","alta_performance"].includes(key)) return "green";
+      if (["faltas_time_base"].includes(key)) return "yellow";
+      if (["nao_confiaveis","acoes_necessarias"].includes(key)) return "red";
+      if (["dependencia_operacional"].includes(key)) return "purple";
+      return "blue";
+    };
+
+    const kpiLabel = (key) => ({
+      confiaveis:"Recursos Estáveis",
+      nao_confiaveis:"Recursos Críticos",
+      alta_performance:"Referências Operacionais",
+      faltas_time_base:"Impacto por Absenteísmo",
+      acoes_necessarias:"Plano de Ação",
+      dependencia_operacional:"Dependência Operacional"
+    }[key] || key);
+
+    function safeValue(value, fallback = "--"){
+      return value === undefined || value === null || value === "" ? fallback : value;
+    }
+
+    function getRanking(data){
+      return data.ranking || [];
+    }
+
+    function getMeasurablePeople(data){
+      return getRanking(data).filter(p => String(p.mede_produtividade || "").toLowerCase() === "sim");
+    }
+
+    function getActionCount(data, text){
+      const acoes = data.acoes_recomendadas || [];
+      return acoes.find(a => String(a.acao).toLowerCase().includes(text))?.quantidade || 0;
+    }
+
+    function calcDependencia(data){
+      const oficiais = getMeasurablePeople(data);
+      const positivos = oficiais
+        .map(p => ({ nome:p.nome, media:Math.max(0, Number(p.media_mensal || 0)) }))
+        .filter(p => p.media > 0);
+
+      const totalPositivo = positivos.reduce((s,p) => s + p.media, 0);
+
+      if(!positivos.length || totalPositivo <= 0){
+        return { nome:"--", share:0, media:0 };
+      }
+
+      const maior = positivos.sort((a,b) => b.media - a.media)[0];
+      return {
+        nome: maior.nome,
+        share: maior.media / totalPositivo,
+        media: maior.media
+      };
+    }
+
+    function calcSaudeOperacional(data){
+      const ranking = getRanking(data);
+      const oficiais = getMeasurablePeople(data);
+      const base = oficiais.length ? oficiais : ranking;
+
+      const total = base.length || 1;
+      const criticos = base.filter(p => {
+        const score = String(p.score_final || "").toLowerCase();
+        const acao = String(p.acao_recomendada || "").toLowerCase();
+        return score.includes("crítico") || acao.includes("agir") || acao.includes("rever");
+      }).length;
+
+      const presencaMedia = base.reduce((s,p) => s + Number(p.presenca_operacional ?? p.consistencia ?? 0), 0) / total;
+      const produtividadeMedia = base.reduce((s,p) => s + Math.max(0, Math.min(1, Number(p.media_mensal || 0) + 0.5)), 0) / total;
+      const riscoInvertido = 1 - (criticos / total);
+
+      return Math.max(0, Math.min(1, (presencaMedia * 0.35) + (produtividadeMedia * 0.35) + (riscoInvertido * 0.30)));
+    }
+
+    function calcRiskScore(item){
+      const media = Number(item.media_mensal || 0);
+      const presenca = Number(item.presenca_operacional ?? item.consistencia ?? 1);
+      const indicadorConf = Number(item.indicador_conf || 0);
+      const acao = String(item.acao_recomendada || "").toLowerCase();
+      const score = String(item.score_final || "").toLowerCase();
+      const mede = String(item.mede_produtividade || "").toLowerCase() === "sim";
+
+      let risk = 0;
+
+      // Performance: quanto mais negativa, maior o risco.
+      if(media < 0) risk += Math.min(45, Math.abs(media) * 100);
+      if(media < -0.10) risk += 15;
+      if(media < -0.20) risk += 15;
+
+      // Presença: ausência gera risco operacional.
+      risk += Math.max(0, (1 - presenca) * 35);
+
+      // Indicador de confiabilidade vindo do Excel.
+      risk += Math.max(0, Math.min(25, indicadorConf * 20));
+
+      // Classificação e ação.
+      if(score.includes("crítico")) risk += 25;
+      if(score.includes("atenção")) risk += 10;
+      if(acao.includes("agir") || acao.includes("rever")) risk += 25;
+      if(acao.includes("desenvolver") || acao.includes("acompanhar")) risk += 12;
+      if(acao.includes("manter")) risk -= 15;
+
+      // Fora da régua oficial deve pesar menos, mas ainda aparecer quando há absenteísmo alto.
+      if(!mede && acao.includes("ignorar")) risk *= 0.45;
+
+      return Math.max(0, Math.min(100, Math.round(risk)));
+    }
+
+    function riskLevel(score){
+      if(score >= 65) return { label:"ALTO", cls:"high" };
+      if(score >= 35) return { label:"MÉDIO", cls:"mid" };
+      return { label:"BAIXO", cls:"low" };
+    }
+
+    function riskReason(item, risk){
+      const parts = [];
+      const media = Number(item.media_mensal || 0);
+      const presenca = Number(item.presenca_operacional ?? 1);
+      const acao = String(item.acao_recomendada || "");
+      const score = String(item.score_final || "");
+
+      if(score) parts.push(score);
+      if(media < 0) parts.push("média negativa");
+      if(presenca < .95) parts.push("presença abaixo de 95%");
+      if(acao && !acao.toLowerCase().includes("ignorar")) parts.push(acao);
+
+      return parts.length ? parts.join(" • ") : "sem criticidade relevante";
+    }
+
+    function renderMetadata(data){
+      const meta = data.metadata || {};
+      document.title = meta.titulo || "Painel de Gestão Individual";
+      document.getElementById("titulo").textContent = meta.titulo || "Painel de Gestão Individual";
+      document.getElementById("subtitulo").textContent = meta.subtitulo || "Visão executiva de produtividade, confiabilidade e risco operacional da equipe.";
+      document.getElementById("periodo").textContent = `Período: ${meta.periodo || "--"}`;
+      document.getElementById("filtro").textContent = `Filtro: ${meta.filtro || "--"}`;
+      document.getElementById("acesso").textContent = `Acesso: ${meta.acesso || "--"}`;
+      document.getElementById("fonte").textContent = `Fonte: ${meta.fonte || "--"}`;
+    }
+
+    function renderKpis(data){
+      const container = document.getElementById("kpis");
+      const dependencia = calcDependencia(data);
+
+      const kpis = {
+        ...(data.kpis || {}),
+        dependencia_operacional: {
+          valor: fmtPercent(dependencia.share, 0),
+          descricao: dependencia.nome !== "--"
+            ? `${dependencia.nome.split(" ")[0]} concentra a maior parcela da produtividade positiva`
+            : "sem concentração relevante"
+        }
+      };
+
+      const order = ["confiaveis","nao_confiaveis","alta_performance","faltas_time_base","dependencia_operacional"];
+
+      container.innerHTML = order.map((key) => {
+        const item = kpis?.[key] || { valor:"--", descricao:"" };
+        return `
+          <div class="kpi ${kpiClassByKey(key)}">
+            <div class="label">${kpiLabel(key)}</div>
+            <div class="value">${safeValue(item.valor)}</div>
+            <div class="sub">${item.descricao || ""}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderRanking(data){
+      const ranking = getRanking(data);
+      const body = document.getElementById("ranking-body");
+      const sorted = [...ranking].sort((a,b) => Number(b.media_mensal || 0) - Number(a.media_mensal || 0));
+
+      body.innerHTML = sorted.map((item) => {
+        const presenca = item.presenca_operacional ?? item.consistencia ?? item.assiduidade ?? null;
+        const tendencia = tendenciaFromItem(item);
+
+        return `
+          <tr class="${rowClass(item)}">
+            <td>
+              <span class="employee-name">
+                <span class="rank-bar"></span>
+                ${item.nome}
+              </span>
+            </td>
+            <td class="num">${fmtPercent(item.media_mensal)}</td>
+            <td class="num">${presenca !== null ? fmtPercent(presenca) : "--"}</td>
+            <td><span class="trend ${tendencia.cls}">${tendencia.label}</span></td>
+            <td><span class="tag ${actionClass(item.acao_recomendada)}">${item.acao_recomendada || "Não aplicável"}</span></td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderRiskMap(data){
+      const ranking = getRanking(data);
+      const body = document.getElementById("risk-body");
+
+      const items = ranking
+        .map(item => {
+          const risk = calcRiskScore(item);
+          return { item, risk, level:riskLevel(risk), reason:riskReason(item, risk) };
+        })
+        .sort((a,b) => b.risk - a.risk);
+
+      body.innerHTML = items.map(({item, risk, level, reason}) => `
+        <div class="risk-row">
+          <div>
+            <div class="risk-name" title="${item.nome}">${item.nome}</div>
+            <div class="risk-reason" title="${reason}">${reason}</div>
+          </div>
+          <div class="risk-bar-track" title="${risk}% de risco operacional">
+            <div class="risk-bar ${level.cls}" style="width:${Math.max(3, risk)}%"></div>
+          </div>
+          <div class="risk-score">
+            ${risk}%
+            <div><span class="risk-level ${level.cls}">${level.label}</span></div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderAlertas(data){
+      const alertas = data.alertas || [];
+      const container = document.getElementById("alertas");
+
+      container.innerHTML = alertas.map((a) => {
+        const cls = alertClass(a.tipo);
+        const prioridade = priorityFromAlert(a);
+
+        return `
+          <div class="alert ${cls}">
+            <div class="icon">${alertIcon(a.tipo)}</div>
+            <div>
+              <h3>${a.titulo}</h3>
+              <p>${a.descricao}</p>
+            </div>
+            <div class="action">
+              <span class="priority ${priorityClass(prioridade)}">${prioridade}</span>
+              <span>${a.acao}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderExecutiveSummary(data){
+      const ranking = getRanking(data);
+      const manter = getActionCount(data, "manter");
+      const agir = getActionCount(data, "agir");
+      const totalAcoes = (data.acoes_recomendadas || []).reduce((s,a) => s + Number(a.quantidade || 0), 0) || (ranking.length || 1);
+      const risco = Math.round((agir / totalAcoes) * 100);
+      const saude = calcSaudeOperacional(data);
+      const dependencia = calcDependencia(data);
+
+      document.getElementById("risco-gerencial").textContent = `${risco}%`;
+      document.getElementById("saude-operacional").textContent = fmtPercent(saude, 0);
+
+      if(risco >= 30){
+        document.getElementById("principal-alerta").textContent = "Prioridade: reduzir risco operacional da base";
+        document.getElementById("principal-alerta-texto").textContent = "O índice de risco exige acompanhamento ativo de produtividade, presença e evolução dos casos críticos.";
+      } else {
+        document.getElementById("principal-alerta").textContent = "Base operacional sustentando o resultado";
+        document.getElementById("principal-alerta-texto").textContent = "A operação possui recursos estáveis, mas ainda exige monitoramento de performance, presença e concentração produtiva.";
+      }
+
+      document.getElementById("impacto-risco").textContent =
+        `${agir} colaborador(es) exigem plano de ação ou revisão. Esse grupo representa risco direto de queda de capacidade.`;
+
+      document.getElementById("impacto-faltas").textContent =
+        `${data.kpis?.faltas_time_base?.valor ?? "--"} falta(s) no time base impactam diretamente a capacidade planejada.`;
+
+      document.getElementById("impacto-dependencia").textContent =
+        dependencia.nome !== "--"
+          ? `${dependencia.nome.split(" ")[0]} concentra ${fmtPercent(dependencia.share,0)} da produtividade positiva. Avaliar risco de sobrecarga e necessidade de backup.`
+          : "Não há concentração relevante de produtividade positiva no período.";
+
+      document.getElementById("impacto-direcao").textContent =
+        risco >= 30
+          ? "Prioridade alta: acompanhar semanalmente produtividade, presença e evolução dos casos críticos."
+          : "Prioridade moderada: manter acompanhamento e preservar recursos de referência.";
+    }
+
+    function renderError(message){
+      document.querySelector(".page").insertAdjacentHTML("beforeend", `
+        <div class="error">
+          <strong>Erro ao carregar o painel.</strong><br>
+          ${message}<br>
+          Verifique se o arquivo <b>Individual.json</b> está na mesma pasta deste HTML.
+        </div>
+      `);
+    }
+
+    async function init(){
+      try{
+        const response = await fetch(DATA_URL + "?t=" + Date.now(), { cache:"no-store" });
+        if(!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+
+        renderMetadata(data);
+        renderExecutiveSummary(data);
+        renderKpis(data);
+        renderRanking(data);
+        renderRiskMap(data);
+        renderAlertas(data);
+      }catch(error){
+        console.error(error);
+        renderError(error.message);
+      }
+    }
+
+    init();
   </script>
 </body>
 </html>
