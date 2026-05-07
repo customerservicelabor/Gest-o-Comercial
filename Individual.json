@@ -7,7 +7,6 @@
     "acesso": "Gestão",
     "fonte": "Base de performance mensal do time"
   },
-
   "kpis": {
     "confiaveis": {
       "valor": 6,
@@ -22,29 +21,15 @@
       "descricao": "referências operacionais do período"
     },
     "faltas_time_base": {
-      "valor": 11,
-      "descricao": "impacto direto sobre capacidade"
+      "valor": 16,
+      "descricao": "faltas registradas no período"
     },
     "acoes_necessarias": {
       "valor": 6,
       "descricao": "necessitam acompanhamento"
     }
   },
-
   "ranking": [
-    {
-      "nome": "Debora Correa",
-      "modelo": "Fixo - Aux. Estoque",
-      "mede_produtividade": "Sim",
-      "media_mensal": 0.2276,
-      "score_final": "Alta Performance",
-      "faltas": 0,
-      "indicador_conf": 0.1053,
-      "presenca_operacional": 1,
-      "confiabilidade": "Confiável",
-      "acao_recomendada": "Manter"
-    },
-
     {
       "nome": "Maria Rosinete Gomes dos Santos",
       "modelo": "Fixo - Aux. Estoque",
@@ -57,20 +42,6 @@
       "confiabilidade": "Confiável",
       "acao_recomendada": "Manter"
     },
-
-    {
-      "nome": "Rayane dos Santos",
-      "modelo": "Fixo - Conferente",
-      "mede_produtividade": "Não",
-      "media_mensal": 0.2997,
-      "score_final": "Alta Performance",
-      "faltas": 1,
-      "indicador_conf": 0,
-      "presenca_operacional": 0.9474,
-      "confiabilidade": "Não aplicável",
-      "acao_recomendada": "Ignorar"
-    },
-
     {
       "nome": "Rosana Ribeiro Morais",
       "modelo": "Fixo - Aux. Estoque",
@@ -83,46 +54,30 @@
       "confiabilidade": "Confiável",
       "acao_recomendada": "Manter"
     },
-
     {
-      "nome": "Karina Aparecida De Souza",
-      "modelo": "Fixo - Aux. Estoque",
-      "mede_produtividade": "Sim",
-      "media_mensal": 0.0184,
-      "score_final": "Dentro do esperado",
-      "faltas": 0,
-      "indicador_conf": 0.3684,
-      "presenca_operacional": 1,
-      "confiabilidade": "Confiável",
-      "acao_recomendada": "Manter"
-    },
-
-    {
-      "nome": "Paloma Bento",
+      "nome": "Rafaelen Gomes Da Silva",
       "modelo": "Fixo - Conferente",
+      "mede_produtividade": "Não",
+      "media_mensal": -0.0455,
+      "score_final": "Atenção",
+      "faltas": 5,
+      "indicador_conf": 0.6667,
+      "presenca_operacional": 0.7368,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Debora Correa",
+      "modelo": "Fixo - Aux. Estoque",
       "mede_produtividade": "Sim",
-      "media_mensal": 0,
-      "score_final": "Dentro do esperado",
+      "media_mensal": 0.2276,
+      "score_final": "Alta Performance",
       "faltas": 0,
-      "indicador_conf": 0,
+      "indicador_conf": 0.1053,
       "presenca_operacional": 1,
       "confiabilidade": "Confiável",
       "acao_recomendada": "Manter"
     },
-
-    {
-      "nome": "Waldenice de Socorro Brito",
-      "modelo": "Fixo - Aux. Estoque",
-      "mede_produtividade": "Sim",
-      "media_mensal": -0.1296,
-      "score_final": "Crítico",
-      "faltas": 2,
-      "indicador_conf": 0.8824,
-      "presenca_operacional": 0.8947,
-      "confiabilidade": "Não confiável",
-      "acao_recomendada": "Agir"
-    },
-
     {
       "nome": "JOSIANE FERREIRA SERAFIM",
       "modelo": "Diarista - Aux. Estoque",
@@ -135,7 +90,102 @@
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     },
-
+    {
+      "nome": "Francisco Cavalcante da Silva",
+      "modelo": "Fixo - Op. Empilhadeira",
+      "mede_produtividade": "Não",
+      "media_mensal": -0.0182,
+      "score_final": "Atenção",
+      "faltas": 0,
+      "indicador_conf": 0.6667,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Rayane dos Santos",
+      "modelo": "Fixo - Conferente",
+      "mede_produtividade": "Não",
+      "media_mensal": 0.2997,
+      "score_final": "Alta Performance",
+      "faltas": 1,
+      "indicador_conf": 0,
+      "presenca_operacional": 0.9474,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Karina Aparecida De Souza",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0.0184,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_conf": 0.3684,
+      "presenca_operacional": 1,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
+    },
+    {
+      "nome": "Jhonatan Pessoa Rodrigues",
+      "modelo": "Fixo - Op. Empilhadeira",
+      "mede_produtividade": "Não",
+      "media_mensal": 0.0422,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_conf": 0.4286,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Rafael Pereira dos Santos",
+      "modelo": "Fixo - Op. Empilhadeira",
+      "mede_produtividade": "Não",
+      "media_mensal": 0.023,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_conf": 0.6316,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Waldenice de Socorro Brito",
+      "modelo": "Fixo - Aux. Estoque",
+      "mede_produtividade": "Sim",
+      "media_mensal": -0.1296,
+      "score_final": "Crítico",
+      "faltas": 2,
+      "indicador_conf": 0.8824,
+      "presenca_operacional": 0.8947,
+      "confiabilidade": "Não confiável",
+      "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "Rafael dos Santos Francisco",
+      "modelo": "Fixo - Op. Empilhadeira",
+      "mede_produtividade": "Não",
+      "media_mensal": -0.075,
+      "score_final": "Atenção",
+      "faltas": 0,
+      "indicador_conf": 0.875,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Marcia Cristina Tavares de Almeida",
+      "modelo": "Fixo - Conferente",
+      "mede_produtividade": "Não",
+      "media_mensal": 0.0298,
+      "score_final": "Dentro do esperado",
+      "faltas": 1,
+      "indicador_conf": 0.5,
+      "presenca_operacional": 0.9474,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
     {
       "nome": "Gabriela",
       "modelo": "Diarista - Aux. Estoque",
@@ -148,7 +198,66 @@
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     },
-
+    {
+      "nome": "Nataly Czech Mangi",
+      "modelo": "Fixo - Qualidade",
+      "mede_produtividade": "Não",
+      "media_mensal": -0.0159,
+      "score_final": "Atenção",
+      "faltas": 0,
+      "indicador_conf": 1,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Francisco Cristiano",
+      "modelo": "Fixo - Qualidade",
+      "mede_produtividade": "Não",
+      "media_mensal": 0.0335,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_conf": 0,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "RAYANE GABRIELLY MACIEL DA SILVA",
+      "modelo": "Diarista - Aux. Estoque",
+      "mede_produtividade": "Não",
+      "media_mensal": 0.071,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_conf": 0,
+      "presenca_operacional": 1,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Raquel Ferreira",
+      "modelo": "Fixo - Conferente",
+      "mede_produtividade": "Não",
+      "media_mensal": -0.0352,
+      "score_final": "Atenção",
+      "faltas": 2,
+      "indicador_conf": 0.8333,
+      "presenca_operacional": 0.8947,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
+    {
+      "nome": "Nayra Maria Santos Souza",
+      "modelo": "Fixo - Conferente",
+      "mede_produtividade": "Não",
+      "media_mensal": -0.0263,
+      "score_final": "Atenção",
+      "faltas": 2,
+      "indicador_conf": 1,
+      "presenca_operacional": 0.8947,
+      "confiabilidade": "Não aplicável",
+      "acao_recomendada": "Ignorar"
+    },
     {
       "nome": "Gabriel Fernando",
       "modelo": "Diarista - Aux. Estoque",
@@ -161,7 +270,6 @@
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
     },
-
     {
       "nome": "Gabriela Alexandra Acosta Beiza",
       "modelo": "Diarista - Aux. Estoque",
@@ -173,126 +281,75 @@
       "presenca_operacional": 1,
       "confiabilidade": "Não confiável",
       "acao_recomendada": "Agir"
+    },
+    {
+      "nome": "Paloma Bento",
+      "modelo": "Fixo - Conferente",
+      "mede_produtividade": "Sim",
+      "media_mensal": 0,
+      "score_final": "Dentro do esperado",
+      "faltas": 0,
+      "indicador_conf": 0,
+      "presenca_operacional": 1,
+      "confiabilidade": "Confiável",
+      "acao_recomendada": "Manter"
     }
   ],
-
   "matriz_decisao": {
     "pontos": [
-      {
-        "nome": "Débora",
-        "media_mensal": 0.2276,
-        "consistencia": 1,
-        "cor": "green"
-      },
-
-      {
-        "nome": "Maria",
-        "media_mensal": 0.0631,
-        "consistencia": 0.9474,
-        "cor": "green"
-      },
-
-      {
-        "nome": "Rosana",
-        "media_mensal": 0.02,
-        "consistencia": 1,
-        "cor": "green"
-      },
-
-      {
-        "nome": "Karina",
-        "media_mensal": 0.0184,
-        "consistencia": 1,
-        "cor": "green"
-      },
-
-      {
-        "nome": "Paloma",
-        "media_mensal": 0,
-        "consistencia": 1,
-        "cor": "yellow"
-      },
-
-      {
-        "nome": "Waldenice",
-        "media_mensal": -0.1296,
-        "consistencia": 0.8947,
-        "cor": "red"
-      },
-
-      {
-        "nome": "Josiane",
-        "media_mensal": -0.3294,
-        "consistencia": 1,
-        "cor": "red"
-      },
-
-      {
-        "nome": "Gabriela",
-        "media_mensal": -0.446,
-        "consistencia": 1,
-        "cor": "red"
-      },
-
-      {
-        "nome": "Gabriel",
-        "media_mensal": -0.2256,
-        "consistencia": 1,
-        "cor": "red"
-      },
-
-      {
-        "nome": "Gabriela A.",
-        "media_mensal": -0.2159,
-        "consistencia": 1,
-        "cor": "red"
-      }
+      { "nome": "Maria", "media_mensal": 0.0631, "consistencia": 0.9474, "cor": "green" },
+      { "nome": "Rosana", "media_mensal": 0.02, "consistencia": 1, "cor": "green" },
+      { "nome": "Débora", "media_mensal": 0.2276, "consistencia": 1, "cor": "green" },
+      { "nome": "Karina", "media_mensal": 0.0184, "consistencia": 1, "cor": "green" },
+      { "nome": "Paloma", "media_mensal": 0, "consistencia": 1, "cor": "yellow" },
+      { "nome": "Waldenice", "media_mensal": -0.1296, "consistencia": 0.8947, "cor": "red" },
+      { "nome": "Josiane", "media_mensal": -0.3294, "consistencia": 1, "cor": "red" },
+      { "nome": "Gabriela", "media_mensal": -0.446, "consistencia": 1, "cor": "red" },
+      { "nome": "Gabriel", "media_mensal": -0.2256, "consistencia": 1, "cor": "red" },
+      { "nome": "Gabriela A.", "media_mensal": -0.2159, "consistencia": 1, "cor": "red" }
     ]
   },
-
   "alertas": [
     {
       "tipo": "critico",
+      "prioridade": "Alta",
       "titulo": "Base crítica permanece concentrada",
-      "descricao": "Waldenice, Josiane, Gabriela e Gabriel seguem abaixo da régua operacional.",
+      "descricao": "Waldenice, Josiane, Gabriela, Gabriel e Gabriela Alexandra seguem abaixo da régua operacional.",
       "acao": "Agir"
     },
-
     {
       "tipo": "critico",
+      "prioridade": "Alta",
       "titulo": "Dependência da Débora",
       "descricao": "Débora permanece como principal referência operacional da equipe.",
       "acao": "Monitorar"
     },
-
     {
       "tipo": "atencao",
+      "prioridade": "Média",
       "titulo": "Risco por absenteísmo",
-      "descricao": "11 faltas acumuladas impactaram diretamente a capacidade operacional.",
+      "descricao": "16 faltas acumuladas impactaram diretamente a capacidade operacional.",
       "acao": "Acompanhar"
     },
-
     {
       "tipo": "positivo",
+      "prioridade": "Baixa",
       "titulo": "Base estável sustenta operação",
       "descricao": "Maria, Rosana, Karina e Paloma apresentam estabilidade operacional.",
       "acao": "Manter"
     }
   ],
-
   "acoes_recomendadas": [
     {
       "acao": "Manter",
       "quantidade": 6,
       "leitura": "base estável e sustentável"
     },
-
     {
       "acao": "Agir",
       "quantidade": 6,
       "leitura": "necessitam acompanhamento operacional"
     },
-
     {
       "acao": "Ignorar",
       "quantidade": 10,
