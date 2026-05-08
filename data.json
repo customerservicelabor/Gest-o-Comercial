@@ -1,61 +1,61 @@
 {
-  "atualizacao": "29/04/2026 18:30",
+  "atualizacao": "
 
   "cards": {
-    "falta_separar": 17,
-    "falta_conferir": 14,
-    "em_execucao": 16,
-    "total_pendente": 47,
-    "concluido": 133,
-    "total_pedidos": 180
+    "falta_separar": 
+    "falta_conferir": 
+    "em_execucao": 
+    "total_pendente": 
+    "concluido": 
+    "total_pedidos": 
   },
 
   "produtividade": [
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "19 ", "enderecos": "242 ", "percentual": "10,3%" },
- { "separador": "Debora Correa ","pedidos": "28 ", "enderecos": "420 ", "percentual": "15,1%" },
- { "separador": "Jhonatan Pessoa Rodrigues ","pedidos": "15 ", "enderecos": "272 ", "percentual": "8,1%" },
- { "separador": "Karina Aparecida De Souza ","pedidos": "21 ", "enderecos": "425 ", "percentual": "11,4%" },
- { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "13 ", "enderecos": "236 ", "percentual": "7,0%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "17 ", "enderecos": "306 ", "percentual": "9,2%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "67 ", "percentual": "6,0%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "12 ", "enderecos": "191 ", "percentual": "6,5%" },
- { "separador": "Gabriela Alexandra Acosta Beiza ","pedidos": "10 ", "enderecos": "224 ", "percentual": "5,4%" },
- { "separador": "Rafael Pereira dos Santos ","pedidos": "3 ", "enderecos": "882 ", "percentual": "1,6%" },
- { "separador": "Raquel Ferreira ","pedidos": "8 ", "enderecos": "113 ", "percentual": "4,3%" },
- { "separador": "Marcia Cristina Tavares de Almeida ","pedidos": "6 ", "enderecos": "32 ", "percentual": "3,2%" },
- { "separador": "SYTHEX ","pedidos": "2 ", "enderecos": "14 ", "percentual": "1,1%" },
- { "separador": "Nataly Czech Mangi ","pedidos": "7 ", "enderecos": "167 ", "percentual": "3,8%" },
- { "separador": "Francisco Cristiano ","pedidos": "13 ", "enderecos": "94 ", "percentual": "7,0%" }
+ { "separador": "
+ { "separador": "
+
+
+
+
+
+
+
+
+
+
+
+
+
  ],
   "pedidos_pendentes": [
- { "pedido": "690089 ","integrado": "29/04/2026 13:09 ", "status": "falta_separar ", "cliente": "PRAINA COMERCIO  IMPORTACAO E EXPORTACAO LTDA" },
- { "pedido": "690205 ","integrado": "29/04/2026 16:08 ", "status": "falta_conferir ", "cliente": "PLUSPHARMA DISTRIBUICAO LTDA" },
- { "pedido": "690207 ","integrado": "29/04/2026 16:30 ", "status": "falta_conferir ", "cliente": "GLEIDSON RODRIGUES RANULFO LTDA" },
- { "pedido": "690209 ","integrado": "29/04/2026 16:44 ", "status": "falta_conferir ", "cliente": "BIOREGEN COMERCIO E DISTRIBUICAO DE PRODUTOS MEDIC" },
- { "pedido": "690234 ","integrado": "29/04/2026 17:02 ", "status": "falta_conferir ", "cliente": "PROMED DISTRIBUIDORA DE MEDICAMENTOS E PRODUTOS PA" },
- { "pedido": "690213 ","integrado": "29/04/2026 17:02 ", "status": "falta_conferir ", "cliente": "ALLFAMED COMERCIO ATACADISTA DE MEDICAMENTOS LTDA" },
- { "pedido": "690231 ","integrado": "29/04/2026 17:08 ", "status": "falta_conferir ", "cliente": "BIANCA FERREIRA" },
- { "pedido": "690122 ","integrado": "29/04/2026 17:08 ", "status": "falta_conferir ", "cliente": "PLUSVET COMERCIO DE PRODUTOS PARA LABORATORIOS E V" },
- { "pedido": "689960 ","integrado": "29/04/2026 17:12 ", "status": "falta_conferir ", "cliente": "INOVA HOSPITALAR LTDA" },
- { "pedido": "690210 ","integrado": "29/04/2026 17:13 ", "status": "falta_conferir ", "cliente": "SUPERMIX VALE DISTRIBUIDORA S A" },
- { "pedido": "690263 ","integrado": "29/04/2026 17:19 ", "status": "falta_conferir ", "cliente": "EMENALLI MEDICAL LTDA" },
- { "pedido": "690273 ","integrado": "29/04/2026 17:37 ", "status": "falta_conferir ", "cliente": "ULTRA MEDICAL COMERCIO DE MATERIAIS HOSPITALARES L" },
- { "pedido": "690281 ","integrado": "29/04/2026 17:40 ", "status": "falta_separar ", "cliente": "NEWCARE COMERCIO DISTRIBUICAO E SERVICOS LTDA" },
- { "pedido": "690255 ","integrado": "29/04/2026 17:40 ", "status": "falta_conferir ", "cliente": "MEDMAIS COMERCIO DE MATERIAIS HOSPITALARES E MEDIC" },
- { "pedido": "690269 ","integrado": "29/04/2026 17:41 ", "status": "falta_conferir ", "cliente": "SANTA MARIA MEDICAL  DISTRIBUIDORA DE MATERIAIS HO" },
- { "pedido": "690249 ","integrado": "29/04/2026 17:42 ", "status": "falta_conferir ", "cliente": "BRUNO FERREIRA DA SILVA" },
- { "pedido": "690289 ","integrado": "29/04/2026 17:46 ", "status": "falta_separar ", "cliente": "BIOVIDA DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTD" },
- { "pedido": "690292 ","integrado": "29/04/2026 17:53 ", "status": "falta_separar ", "cliente": "NCA MEDICAL  COMERCIO DE PRODUTOS HOSPITALAR LTDA" },
- { "pedido": "690293 ","integrado": "29/04/2026 17:53 ", "status": "falta_separar ", "cliente": "SAMOC S A SOC ASSISTENCIAL MEDICA E ODONTOCIRURGIC" },
- { "pedido": "690296 ","integrado": "29/04/2026 17:53 ", "status": "falta_separar ", "cliente": "CIRURVET COMERCIO DE MEDICAMENTO E PRODUTOS VETERI" },
- { "pedido": "690297 ","integrado": "29/04/2026 17:53 ", "status": "falta_separar ", "cliente": "CIRURGICA SANTA CATARINA COMERCIO ATACADISTA DE ME" },
- { "pedido": "690299 ","integrado": "29/04/2026 17:53 ", "status": "falta_separar ", "cliente": "LUMAR COMERCIO DE PRODUTOS FARMACEUTICOS LTDA" },
- { "pedido": "690301 ","integrado": "29/04/2026 17:59 ", "status": "falta_separar ", "cliente": "INSTITUTO DE BIOMEDICINA DO ABC LTDA" },
- { "pedido": "690305 ","integrado": "29/04/2026 18:01 ", "status": "falta_separar ", "cliente": "COMPHARMA COMERCIO DE MEDICAMENTOS LTDA" },
- { "pedido": "690283 ","integrado": "29/04/2026 18:10 ", "status": "falta_separar ", "cliente": "WM5 PRODUTOS HOSPITALARES E LABORATORIAIS LTDA" },
- { "pedido": "690308 ","integrado": "29/04/2026 18:10 ", "status": "falta_separar ", "cliente": "SEAMED DESCARTAVEIS LTDA" },
- { "pedido": "690310 ","integrado": "29/04/2026 18:14 ", "status": "falta_separar ", "cliente": "OMETAC DENTAL LTDA" }
+ { "pedido": "
+ { "pedido": "
+ { "pedido": "
+ { "pedido": "
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
   ]
 }
