@@ -3,37 +3,371 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Painel de Performance dos Conferentes</title>
+<title>Painel Executivo dos Conferentes</title>
 <style>
-:root{--bg:#edf3f8;--panel:#fff;--navy:#001E50;--navy2:#0d3567;--blue:#2858F0;--green:#16a34a;--yellow:#f59e0b;--red:#dc2626;--purple:#7c3aed;--teal:#0f766e;--line:#d7e1ee;--soft:#f7fafc;--text:#0f172a;--muted:#64748b;--shadow:0 12px 30px rgba(10,33,66,.12);--radius:16px}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#dfe8f3 0%,var(--bg) 100%);color:var(--text)}.page{padding:14px 18px 18px;min-height:100vh}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;background:linear-gradient(90deg,var(--navy),var(--navy2));border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);color:#fff;margin-bottom:12px}.top-left{display:flex;align-items:center;gap:12px}.top-left img{height:42px;background:#fff;padding:5px 8px;border-radius:6px}h1{margin:0;font-size:25px;letter-spacing:-.5px}.subtitle{margin-top:6px;color:#c9d8ec;font-size:13px;font-weight:700}.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.pill,.btn{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;text-decoration:none}.btn{background:#fff;color:var(--navy);border-color:#fff}.btn-blue{background:var(--blue);color:#fff;border-color:transparent}.btn-purple{background:var(--purple);color:#fff;border-color:transparent}.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:12px}.kpi{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px 14px;box-shadow:var(--shadow);min-height:104px;border-left:8px solid var(--blue)}.kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.35px;color:#465971;font-weight:900;margin-bottom:8px}.kpi .value{font-size:30px;font-weight:900;color:var(--navy);letter-spacing:-1px}.kpi .sub{margin-top:7px;color:var(--muted);font-size:12px;font-weight:700}.kpi.green{border-left-color:var(--green);background:linear-gradient(180deg,#fff,#effbf4)}.kpi.yellow{border-left-color:var(--yellow);background:linear-gradient(180deg,#fff,#fff7df)}.kpi.red{border-left-color:var(--red);background:linear-gradient(180deg,#fff,#fff0f0)}.kpi.purple{border-left-color:var(--purple);background:linear-gradient(180deg,#fff,#f5efff)}.kpi.teal{border-left-color:var(--teal);background:linear-gradient(180deg,#fff,#effdfa)}.grid{display:grid;grid-template-columns:1.15fr 1fr;gap:12px}.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.panel-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 15px;background:linear-gradient(90deg,var(--navy),var(--navy2));color:#fff}.panel-header h2{margin:0;font-size:16px}.badge{font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-weight:900}.panel-body{padding:13px 15px 15px}table{width:100%;border-collapse:collapse;font-size:12px}th{padding:9px 8px;background:#eef4ff;border-bottom:1px solid var(--line);color:#28435f;text-align:left;text-transform:uppercase;font-size:11px;letter-spacing:.3px}td{padding:10px 8px;border-bottom:1px solid #edf2f7;color:var(--text);font-weight:700}tbody tr:nth-child(even){background:#f8fbff}.num{text-align:right;font-variant-numeric:tabular-nums}.name{max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tag{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;border:1px solid transparent;white-space:nowrap}.ok{color:#0b6b33;background:#e3f6ea;border-color:#bfe8cc}.warn{color:#7c5600;background:#fff1cb;border-color:#f8df9b}.bad{color:#9b1717;background:#fde7e7;border-color:#f4b9b9}.info{color:#1d4ed8;background:#e8efff;border-color:#c7d7ff}.neutral{color:#475569;background:#f1f5f9;border-color:#d7e1ee}.chart{height:280px;display:flex;align-items:end;gap:8px;padding:10px 4px 4px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#fff,#f2f6fb)}.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:6px;min-width:28px}.bar-area{width:100%;height:220px;display:flex;align-items:end;justify-content:center}.bar{width:58%;border-radius:7px 7px 0 0;min-height:2px;background:linear-gradient(180deg,#3b82f6,#1d4ed8)}.bar.apoio{background:linear-gradient(180deg,#14b8a6,#0f766e)}.bar.baixo{background:linear-gradient(180deg,#f87171,#dc2626)}.bar-label{font-size:10px;color:#36506d;font-weight:900;transform:rotate(-45deg);height:22px;white-space:nowrap}.cards{display:flex;flex-direction:column;gap:9px}.person-card{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:11px;border:1px solid var(--line);border-radius:14px;background:#fff}.person-card strong{display:block;color:var(--navy);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.person-card small{display:block;color:#475569;font-weight:800;margin-top:3px}.progress{height:9px;background:#dde7f2;border-radius:999px;overflow:hidden;margin-top:7px}.progress div{height:100%;border-radius:999px;background:var(--green)}.resumo-scroll{max-height:330px;overflow:auto;border:1px solid var(--line);border-radius:12px}.resumo-scroll thead th{position:sticky;top:0;z-index:2;background:#dfeafe}.top-panels{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;grid-column:1 / -1}.top-panels .panel{height:430px}.top-panels .panel-body{height:374px}.ranking-scroll{height:100%;max-height:100%}.conf-scroll{height:100%;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fbfdff}.historico-panel{grid-column:1 / -1}.historico-scroll{max-height:430px;overflow:auto}.historico-scroll table{min-width:1650px}.conf-scroll::-webkit-scrollbar,.resumo-scroll::-webkit-scrollbar{width:9px;height:9px}.conf-scroll::-webkit-scrollbar-thumb,.resumo-scroll::-webkit-scrollbar-thumb{background:#9db2cc;border-radius:99px}.conf-scroll::-webkit-scrollbar-track,.resumo-scroll::-webkit-scrollbar-track{background:#edf3f8}.footer{margin-top:12px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;font-weight:700}.error{padding:18px;border:1px solid rgba(220,38,38,.4);background:rgba(220,38,38,.08);border-radius:14px;color:#7f1d1d;margin-top:16px}@media(max-width:1200px){.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.top-panels{grid-template-columns:1fr}.top-panels .panel{height:auto}.top-panels .panel-body{height:auto}.conf-scroll,.ranking-scroll{max-height:360px}.topbar{flex-direction:column;align-items:flex-start}}
+:root{
+  --bg:#edf3f8;--panel:#fff;--navy:#001E50;--navy2:#0d3567;--blue:#2858F0;
+  --green:#16a34a;--yellow:#f59e0b;--red:#dc2626;--purple:#7c3aed;--teal:#0f766e;
+  --line:#d7e1ee;--soft:#f7fafc;--text:#0f172a;--muted:#64748b;
+  --shadow:0 12px 30px rgba(10,33,66,.12);--radius:16px
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#dfe8f3 0%,var(--bg) 100%);color:var(--text)}
+.page{padding:14px 18px 18px;min-height:100vh}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;background:linear-gradient(90deg,var(--navy),var(--navy2));border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);color:#fff;margin-bottom:12px}
+.top-left{display:flex;align-items:center;gap:12px}
+.top-left img{height:42px;background:#fff;padding:5px 8px;border-radius:6px}
+h1{margin:0;font-size:25px;letter-spacing:-.5px}
+.subtitle{margin-top:6px;color:#c9d8ec;font-size:13px;font-weight:700}
+.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pill,.btn{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;text-decoration:none}
+.btn{background:#fff;color:var(--navy);border-color:#fff}
+.btn-blue{background:var(--blue);color:#fff;border-color:transparent}
+.btn-purple{background:var(--purple);color:#fff;border-color:transparent}
+
+.executive-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-bottom:12px}
+.summary-card{background:linear-gradient(90deg,#fff,#f8fbff);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:94px}
+.headline{font-size:16px;font-weight:900;color:var(--navy);margin-bottom:4px}
+.note{font-size:12px;color:#40536b;font-weight:700;line-height:1.45}
+.score-wrap{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.health-score{min-width:145px;padding:12px 14px;border-radius:14px;text-align:center;border:1px solid #c8d7ef;background:linear-gradient(180deg,#f5f9ff,#eef4ff)}
+.health-score.risk{background:linear-gradient(180deg,#fff4f4,#ffecec);border-color:#f1b8b8}
+.health-score.health{background:linear-gradient(180deg,#effaf3,#e4f7eb);border-color:#bfe8cc}
+.health-score .small{font-size:11px;font-weight:900;color:#28435f;text-transform:uppercase}
+.health-score.risk .small{color:#8b1a1a}.health-score.health .small{color:#0b6b33}
+.health-score .big{font-size:30px;font-weight:900;line-height:1;margin-top:4px;color:var(--navy)}
+.health-score.risk .big{color:#9f1717}.health-score.health .big{color:#0b6b33}
+
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px 14px;box-shadow:var(--shadow);min-height:104px;border-left:8px solid var(--blue);position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;right:-30px;bottom:-42px;width:112px;height:112px;border-radius:50%;opacity:.50;background:#e8efff}
+.kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.35px;color:#465971;font-weight:900;margin-bottom:8px}
+.kpi .value{font-size:30px;font-weight:900;color:var(--navy);letter-spacing:-1px}
+.kpi .sub{margin-top:7px;color:var(--muted);font-size:12px;font-weight:700;line-height:1.35}
+.kpi.green{border-left-color:var(--green);background:linear-gradient(180deg,#fff,#effbf4)}.kpi.green::after{background:#dcfce7}
+.kpi.yellow{border-left-color:var(--yellow);background:linear-gradient(180deg,#fff,#fff7df)}.kpi.yellow::after{background:#fef3c7}
+.kpi.red{border-left-color:var(--red);background:linear-gradient(180deg,#fff,#fff0f0)}.kpi.red::after{background:#fee2e2}
+.kpi.purple{border-left-color:var(--purple);background:linear-gradient(180deg,#fff,#f5efff)}.kpi.purple::after{background:#ede9fe}
+.kpi.teal{border-left-color:var(--teal);background:linear-gradient(180deg,#fff,#effdfa)}.kpi.teal::after{background:#ccfbf1}
+
+.grid{display:grid;grid-template-columns:1.05fr 1.1fr .9fr;gap:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.panel-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 15px;background:linear-gradient(90deg,var(--navy),var(--navy2));color:#fff}
+.panel-header h2{margin:0;font-size:16px}
+.badge{font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-weight:900;white-space:nowrap}
+.panel-body{padding:13px 15px 15px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{padding:9px 8px;background:#eef4ff;border-bottom:1px solid var(--line);color:#28435f;text-align:left;text-transform:uppercase;font-size:11px;letter-spacing:.3px}
+td{padding:10px 8px;border-bottom:1px solid #edf2f7;color:var(--text);font-weight:700}
+tbody tr:nth-child(even){background:#f8fbff}tbody tr:hover{background:#eaf2ff}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.name{max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.tag{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;border:1px solid transparent;white-space:nowrap}
+.ok{color:#0b6b33;background:#e3f6ea;border-color:#bfe8cc}.warn{color:#7c5600;background:#fff1cb;border-color:#f8df9b}
+.bad{color:#9b1717;background:#fde7e7;border-color:#f4b9b9}.info{color:#1d4ed8;background:#e8efff;border-color:#c7d7ff}.neutral{color:#475569;background:#f1f5f9;border-color:#d7e1ee}
+
+.resumo-scroll{max-height:380px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.resumo-scroll thead th{position:sticky;top:0;z-index:2;background:#dfeafe}
+.resumo-scroll::-webkit-scrollbar,.conf-scroll::-webkit-scrollbar,.risk-map::-webkit-scrollbar,.historico-scroll::-webkit-scrollbar{width:9px;height:9px}
+.resumo-scroll::-webkit-scrollbar-thumb,.conf-scroll::-webkit-scrollbar-thumb,.risk-map::-webkit-scrollbar-thumb,.historico-scroll::-webkit-scrollbar-thumb{background:#9db2cc;border-radius:99px}
+.resumo-scroll::-webkit-scrollbar-track,.conf-scroll::-webkit-scrollbar-track,.risk-map::-webkit-scrollbar-track,.historico-scroll::-webkit-scrollbar-track{background:#edf3f8}
+
+.risk-map{height:380px;overflow:auto;border:1px solid var(--line);border-radius:14px;padding:10px;background:#fbfdff}
+.risk-row{display:grid;grid-template-columns:170px 1fr 72px;gap:10px;align-items:center;padding:9px 8px;border-bottom:1px solid #edf2f7}
+.risk-row:last-child{border-bottom:0}
+.risk-name{font-size:12px;font-weight:900;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.risk-reason{font-size:10px;color:#607089;font-weight:800;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.risk-track{height:18px;background:#dfe8f3;border-radius:999px;overflow:hidden;border:1px solid #c9d6e7}
+.risk-fill{height:100%;border-radius:999px;min-width:3%}
+.risk-fill.high{background:linear-gradient(90deg,#ef4444,#b91c1c)}
+.risk-fill.mid{background:linear-gradient(90deg,#f59e0b,#b45309)}
+.risk-fill.low{background:linear-gradient(90deg,#22c55e,#15803d)}
+.risk-score{text-align:right;font-size:12px;font-weight:900;color:var(--navy)}
+.risk-level{display:inline-flex;margin-top:3px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;border:1px solid transparent}
+.risk-level.high{color:#9b1717;background:#fde7e7;border-color:#f4b9b9}.risk-level.mid{color:#7c5600;background:#fff1cb;border-color:#f8df9b}.risk-level.low{color:#0b6b33;background:#e3f6ea;border-color:#bfe8cc}
+
+.cards{display:flex;flex-direction:column;gap:9px}.conf-scroll{height:380px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fbfdff}
+.person-card{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:11px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.person-card strong{display:block;color:var(--navy);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person-card small{display:block;color:#475569;font-weight:800;margin-top:3px}
+.progress{height:9px;background:#dde7f2;border-radius:999px;overflow:hidden;margin-top:7px}
+.progress div{height:100%;border-radius:999px;background:var(--green)}
+.progress div.warnbar{background:var(--yellow)}.progress div.badbar{background:var(--red)}
+
+.action-grid{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.action-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px 15px;box-shadow:var(--shadow);border-left:7px solid var(--blue);min-height:94px}
+.action-card.green{border-left-color:var(--green);background:#f3fbf6}.action-card.yellow{border-left-color:var(--yellow);background:#fffaf0}.action-card.red{border-left-color:var(--red);background:#fff7f7}.action-card.purple{border-left-color:var(--purple);background:#fbf7ff}
+.action-card strong{display:block;color:var(--navy);font-size:14px;margin-bottom:7px}.action-card span{display:block;color:#40536b;font-size:12px;font-weight:700;line-height:1.4}
+
+.historico-panel{grid-column:1 / -1}.historico-scroll{max-height:360px;overflow:auto}.historico-scroll table{min-width:1650px}
+.history-toggle{cursor:pointer;user-select:none}.collapsed{display:none}
+
+.footer{margin-top:12px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;font-weight:700}
+.error{padding:18px;border:1px solid rgba(220,38,38,.4);background:rgba(220,38,38,.08);border-radius:14px;color:#7f1d1d;margin-top:16px}
+@media(max-width:1200px){.executive-strip{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.action-grid{grid-template-columns:1fr}.topbar{flex-direction:column;align-items:flex-start}.conf-scroll,.risk-map{height:auto;max-height:360px}}
 </style>
 </head>
 <body>
 <div class="page">
-<header class="topbar"><div class="top-left"><img src="logo-labor.png" alt="Logo"><div><h1 id="titulo">Painel de Performance dos Conferentes</h1><div class="subtitle" id="subtitulo">Produtividade, presença operacional, confiabilidade e apoio à conferência</div></div></div><div class="actions"><span class="pill" id="periodo">Período: --</span><span class="pill">Visão: Conferentes</span><a href="index.html" class="btn">← Painel Geral</a><a href="conferencia.html" class="btn btn-blue">📊 Conferência</a><a href="separacao.html" class="btn btn-purple">👤 Separação</a></div></header>
+<header class="topbar">
+  <div class="top-left">
+    <img src="logo-labor.png" alt="Logo">
+    <div>
+      <h1 id="titulo">Painel Executivo dos Conferentes</h1>
+      <div class="subtitle" id="subtitulo">Produtividade, risco operacional, dependência e confiabilidade da conferência</div>
+    </div>
+  </div>
+  <div class="actions">
+    <span class="pill" id="periodo">Período: --</span>
+    <span class="pill">Visão: Conferentes</span>
+    <a href="index.html" class="btn">← Painel Geral</a>
+    <a href="conferencia.html" class="btn btn-blue">📊 Conferência</a>
+    <a href="separacao.html" class="btn btn-purple">👤 Separação</a>
+  </div>
+</header>
+
+<section class="executive-strip">
+  <div class="summary-card">
+    <div>
+      <div class="headline">Diagnóstico executivo dos conferentes</div>
+      <div class="note" id="diagnostico-texto">Carregando análise...</div>
+    </div>
+    <div class="score-wrap">
+      <div class="health-score risk"><div class="small">Risco operacional</div><div class="big" id="risco-operacional">--</div></div>
+      <div class="health-score health"><div class="small">Saúde operacional</div><div class="big" id="saude-operacional">--</div></div>
+    </div>
+  </div>
+  <div class="summary-card">
+    <div>
+      <div class="headline" id="alerta-principal">Carregando prioridade...</div>
+      <div class="note" id="alerta-texto">Aguardando leitura do arquivo JSON.</div>
+    </div>
+  </div>
+</section>
+
 <section class="kpis" id="kpis"></section>
+
 <main class="grid">
-<div class="top-panels">
-<section class="panel"><div class="panel-header"><h2>Ranking de Performance</h2><span class="badge">média oficial</span></div><div class="panel-body"><div class="resumo-scroll ranking-scroll"><table><thead><tr><th>Conferente</th><th>Modelo</th><th class="num">Média</th><th class="num">Acima Meta</th><th class="num">Presença</th><th>Score</th></tr></thead><tbody id="ranking-body"></tbody></table></div></div></section>
-<section class="panel"><div class="panel-header"><h2>Confiabilidade Operacional</h2><span class="badge">presença no mês</span></div><div class="panel-body"><div class="conf-scroll"><div class="cards" id="confiabilidade-lista"></div></div></div></section>
-</div>
-<section class="panel historico-panel"><div class="panel-header"><h2>Produção diária por pessoa</h2><span class="badge">histórico do período</span></div><div class="panel-body"><div class="resumo-scroll historico-scroll"><table><thead id="historico-head"></thead><tbody id="historico-body"></tbody></table></div></div></section>
+  <section class="panel">
+    <div class="panel-header"><h2>Ranking operacional</h2><span class="badge">base, apoio e performance</span></div>
+    <div class="panel-body">
+      <div class="resumo-scroll">
+        <table>
+          <thead><tr><th>Conferente</th><th>Modelo</th><th class="num">Média</th><th class="num">Presença</th><th>Score</th></tr></thead>
+          <tbody id="ranking-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-header"><h2>Mapa de risco por conferente</h2><span class="badge">risco calculado</span></div>
+    <div class="panel-body"><div class="risk-map" id="risk-map"></div></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-header"><h2>Confiabilidade operacional</h2><span class="badge">presença no mês</span></div>
+    <div class="panel-body"><div class="conf-scroll"><div class="cards" id="confiabilidade-lista"></div></div></div>
+  </section>
+
+  <section class="action-grid">
+    <div class="action-card green"><strong>Referência operacional</strong><span id="acao-referencia">Calculando principal referência do período.</span></div>
+    <div class="action-card red"><strong>Risco de performance</strong><span id="acao-risco">Calculando recursos abaixo da régua.</span></div>
+    <div class="action-card purple"><strong>Dependência operacional</strong><span id="acao-dependencia">Calculando concentração de produção oficial.</span></div>
+    <div class="action-card yellow"><strong>Gestão recomendada</strong><span id="acao-gestao">Calculando direcionamento gerencial.</span></div>
+  </section>
+
+  <section class="panel historico-panel">
+    <div class="panel-header history-toggle" onclick="toggleHistorico()"><h2>Produção diária por pessoa</h2><span class="badge" id="hist-badge">mostrar / ocultar detalhe</span></div>
+    <div class="panel-body" id="historico-panel-body">
+      <div class="resumo-scroll historico-scroll">
+        <table><thead id="historico-head"></thead><tbody id="historico-body"></tbody></table>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="footer"><span>Fonte: base de performance mensal dos conferentes</span><span>Labor • Painel de Performance dos Conferentes</span></footer>
+
+<footer class="footer"><span>Fonte: base de performance mensal dos conferentes</span><span>Labor • Painel Executivo dos Conferentes</span></footer>
 </div>
+
 <script>
 const DATA_URL='timeconfe.json';
+
 const fmtNumber=v=>new Intl.NumberFormat('pt-BR',{maximumFractionDigits:2,minimumFractionDigits:0}).format(Number(v||0));
 const fmtPercent=v=>new Intl.NumberFormat('pt-BR',{style:'percent',minimumFractionDigits:0,maximumFractionDigits:0}).format(Number(v||0));
-function clsScore(s){s=String(s||'').toLowerCase();if(s.includes('alta'))return'ok';if(s.includes('esperado')||s.includes('constante'))return'info';if(s.includes('aten'))return'warn';if(s.includes('crítico')||s.includes('baixo'))return'bad';return'neutral'}
-function clsConf(s){s=String(s||'').toLowerCase();if(s.includes('muito'))return'ok';if(s.includes('confi'))return'info';if(s.includes('estável'))return'warn';if(s.includes('oscil')||s.includes('crítico'))return'bad';return'neutral'}
-function renderKpis(data){const pessoas=data.conferentes||[];const oficiais=pessoas.filter(p=>p.mede_produtividade==='Sim');const apoios=pessoas.filter(p=>p.mede_produtividade!=='Sim');const total=pessoas.reduce((s,p)=>s+p.valores.reduce((a,b)=>a+b,0),0);const totalOficial=oficiais.reduce((s,p)=>s+p.valores.reduce((a,b)=>a+b,0),0);const totalApoio=total-totalOficial;const mediaOficial=oficiais.reduce((s,p)=>s+p.meta_oficial,0)/(oficiais.length||1);const melhor=[...pessoas].sort((a,b)=>b.meta_oficial-a.meta_oficial)[0];const presencaMedia=pessoas.reduce((s,p)=>s+p.presenca_operacional,0)/(pessoas.length||1);const kpis=[{label:'Produção total',value:fmtNumber(total),sub:'pedidos no período',cls:'blue'},{label:'Produção oficial',value:fmtNumber(totalOficial),sub:'conferentes que medem produtividade',cls:'green'},{label:'Produção apoio',value:fmtNumber(totalApoio),sub:'participação de áreas apoio',cls:'teal'},{label:'Média oficial',value:fmtNumber(mediaOficial),sub:'média dos conferentes SEP',cls:mediaOficial>=45?'green':'yellow'},{label:'Referência do mês',value:melhor?melhor.nome.split(' ')[0]:'--',sub:melhor?fmtNumber(melhor.meta_oficial)+' pedidos/dia':'--',cls:'purple'},{label:'Presença média',value:fmtPercent(presencaMedia),sub:'confiabilidade do time',cls:presencaMedia>=.9?'green':presencaMedia>=.8?'yellow':'red'}];document.getElementById('kpis').innerHTML=kpis.map(k=>`<div class="kpi ${k.cls}"><div class="label">${k.label}</div><div class="value">${k.value}</div><div class="sub">${k.sub}</div></div>`).join('')}
-function renderRanking(pessoas){const ordenado=[...pessoas].sort((a,b)=>{const ga=a.mede_produtividade==='Sim'?0:1;const gb=b.mede_produtividade==='Sim'?0:1;return ga-gb || b.meta_oficial-a.meta_oficial});document.getElementById('ranking-body').innerHTML=ordenado.map(p=>`<tr><td class="name" title="${p.nome}">${p.nome}</td><td>${p.modelo}</td><td class="num">${fmtNumber(p.meta_oficial)}</td><td class="num">${p.dias_acima_meta}</td><td class="num">${fmtPercent(p.presenca_operacional)}</td><td><span class="tag ${clsScore(p.score)}">${p.score}</span></td></tr>`).join('')}
-function renderConfiabilidade(pessoas){const ordenado=[...pessoas].sort((a,b)=>a.presenca_operacional-b.presenca_operacional);document.getElementById('confiabilidade-lista').innerHTML=ordenado.map(p=>`<div class="person-card"><div><strong title="${p.nome}">${p.nome}</strong><small>${p.dias_trabalhados}/${p.dias_no_mes} dias • ${fmtPercent(p.presenca_operacional)}</small><div class="progress"><div style="width:${Math.max(4,p.presenca_operacional*100)}%"></div></div></div><span class="tag ${clsConf(p.confiabilidade_operacional)}">${p.confiabilidade_operacional}</span></div>`).join('')}
-function renderHistorico(data){const datas=data.datas||[];document.getElementById('historico-head').innerHTML=`<tr><th>Conferente</th>${datas.map(d=>`<th class="num">${d.slice(0,5)}</th>`).join('')}<th class="num">Média</th></tr>`;document.getElementById('historico-body').innerHTML=(data.conferentes||[]).map(p=>`<tr><td class="name" title="${p.nome}">${p.nome}</td>${p.valores.map(v=>`<td class="num">${v}</td>`).join('')}<td class="num"><b>${fmtNumber(p.meta_oficial)}</b></td></tr>`).join('')}
+const fmtPercent2=v=>new Intl.NumberFormat('pt-BR',{style:'percent',minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(v||0));
+
+function clsScore(s){
+  s=String(s||'').toLowerCase();
+  if(s.includes('alta'))return'ok';
+  if(s.includes('esperado')||s.includes('constante'))return'info';
+  if(s.includes('aten'))return'warn';
+  if(s.includes('crítico')||s.includes('critico')||s.includes('baixo'))return'bad';
+  return'neutral'
+}
+function clsConf(s){
+  s=String(s||'').toLowerCase();
+  if(s.includes('muito')||s==='confiável'||s==='confiavel')return'ok';
+  if(s.includes('confi'))return'info';
+  if(s.includes('estável')||s.includes('estavel'))return'warn';
+  if(s.includes('oscil')||s.includes('crítico')||s.includes('critico'))return'bad';
+  return'neutral'
+}
+function confBarClass(p){
+  if(p>=.90)return '';
+  if(p>=.80)return 'warnbar';
+  return 'badbar';
+}
+function getPessoas(data){return data.conferentes||[]}
+function oficiais(data){return getPessoas(data).filter(p=>String(p.mede_produtividade||'').toLowerCase()==='sim')}
+function apoios(data){return getPessoas(data).filter(p=>String(p.mede_produtividade||'').toLowerCase()!=='sim')}
+function totalPessoa(p){return (p.valores||[]).reduce((a,b)=>a+Number(b||0),0)}
+
+function riskScore(p){
+  const media=Number(p.meta_oficial||0);
+  const pres=Number(p.presenca_operacional||0);
+  const score=String(p.score||'').toLowerCase();
+  const mede=String(p.mede_produtividade||'').toLowerCase()==='sim';
+  let risk=0;
+
+  if(mede){
+    if(media<30) risk+=35;
+    else if(media<40) risk+=20;
+    else if(media<45) risk+=10;
+  } else {
+    if(pres<.80) risk+=25;
+    else if(pres<.90) risk+=12;
+  }
+
+  risk += Math.max(0,(1-pres)*35);
+
+  if(score.includes('crítico')||score.includes('critico')||score.includes('baixo')) risk+=30;
+  if(score.includes('aten')) risk+=15;
+  if(score.includes('apoio constante')) risk+=8;
+  if(score.includes('alta')) risk-=20;
+
+  if(!mede) risk*=0.65;
+  return Math.max(0,Math.min(100,Math.round(risk)));
+}
+function riskLevel(r){if(r>=60)return{label:'ALTO',cls:'high'};if(r>=30)return{label:'MÉDIO',cls:'mid'};return{label:'BAIXO',cls:'low'}}
+function reason(p){
+  const parts=[];
+  const media=Number(p.meta_oficial||0);
+  const pres=Number(p.presenca_operacional||0);
+  if(String(p.mede_produtividade||'').toLowerCase()==='sim' && media<40) parts.push('média abaixo da régua');
+  if(pres<.90) parts.push('presença abaixo de 90%');
+  if(p.score) parts.push(p.score);
+  return parts.length?parts.join(' • '):'sem criticidade relevante';
+}
+function calc(data){
+  const ps=getPessoas(data), ofs=oficiais(data), aps=apoios(data);
+  const total=ps.reduce((s,p)=>s+totalPessoa(p),0);
+  const totalOf=ofs.reduce((s,p)=>s+totalPessoa(p),0);
+  const totalAp=total-totalOf;
+  const mediaOf=ofs.reduce((s,p)=>s+Number(p.meta_oficial||0),0)/(ofs.length||1);
+  const presMedia=ps.reduce((s,p)=>s+Number(p.presenca_operacional||0),0)/(ps.length||1);
+  const criticos=ofs.filter(p=>String(p.score||'').toLowerCase().includes('crítico')||String(p.score||'').toLowerCase().includes('critico')||Number(p.meta_oficial||0)<30).length;
+  const alta=ofs.filter(p=>String(p.score||'').toLowerCase().includes('alta')).length;
+  const ref=[...ofs].sort((a,b)=>Number(b.meta_oficial||0)-Number(a.meta_oficial||0))[0]||[...ps].sort((a,b)=>Number(b.meta_oficial||0)-Number(a.meta_oficial||0))[0];
+  const dependencia=totalOf?((ref?totalPessoa(ref):0)/totalOf):0;
+  const apoioRate=total?totalAp/total:0;
+  const risco=Math.max(0,Math.min(1,(criticos/(ofs.length||1)*.45)+(Math.max(0,.90-presMedia)*.35)+(dependencia*.20)));
+  const saude=Math.max(0,Math.min(1,(presMedia*.35)+(Math.min(1,mediaOf/45)*.35)+((1-(criticos/(ofs.length||1)))*.30)));
+  return{ps,ofs,aps,total,totalOf,totalAp,mediaOf,presMedia,criticos,alta,ref,dependencia,apoioRate,risco,saude}
+}
+
+function renderExecutive(data){
+  const m=calc(data);
+  document.getElementById('risco-operacional').textContent=fmtPercent(m.risco);
+  document.getElementById('saude-operacional').textContent=fmtPercent(m.saude);
+
+  if(m.criticos>0){
+    document.getElementById('diagnostico-texto').textContent=`A operação possui ${m.criticos} conferente(s) oficial(is) abaixo da régua, com necessidade de acompanhamento para reduzir risco de ruptura na conferência.`;
+  }else{
+    document.getElementById('diagnostico-texto').textContent='A base oficial apresenta estabilidade relativa, com foco em preservar referência operacional e monitorar dependência de apoio.';
+  }
+
+  if(m.dependencia>.55){
+    document.getElementById('alerta-principal').textContent='Prioridade: reduzir concentração produtiva';
+    document.getElementById('alerta-texto').textContent=`${m.ref?.nome?.split(' ')[0]||'Referência'} concentra ${fmtPercent(m.dependencia)} da produção oficial. Avaliar backup e plano de desenvolvimento.`;
+  }else if(m.criticos>0){
+    document.getElementById('alerta-principal').textContent='Prioridade: desenvolver base crítica';
+    document.getElementById('alerta-texto').textContent='Há recursos oficiais abaixo da régua de performance. Recomendado acompanhamento semanal.';
+  }else{
+    document.getElementById('alerta-principal').textContent='Operação sob controle';
+    document.getElementById('alerta-texto').textContent='Manter gestão de presença, produtividade e apoio operacional.';
+  }
+}
+function renderKpis(data){
+  const m=calc(data);
+  const kpis=[
+    {label:'Produção total',value:fmtNumber(m.total),sub:'pedidos no período',cls:'blue'},
+    {label:'Produção oficial',value:fmtNumber(m.totalOf),sub:'conferentes que medem produtividade',cls:'green'},
+    {label:'Produção apoio',value:fmtNumber(m.totalAp),sub:'participação de áreas apoio',cls:'teal'},
+    {label:'Recursos críticos',value:m.criticos,sub:'oficiais abaixo da régua',cls:m.criticos>0?'red':'green'},
+    {label:'Dependência operacional',value:fmtPercent(m.dependencia),sub:`${m.ref?m.ref.nome.split(' ')[0]:'--'} concentra produção oficial`,cls:m.dependencia>.55?'red':m.dependencia>.40?'yellow':'green'},
+    {label:'Presença média',value:fmtPercent(m.presMedia),sub:'confiabilidade do time',cls:m.presMedia>=.9?'green':m.presMedia>=.8?'yellow':'red'}
+  ];
+  document.getElementById('kpis').innerHTML=kpis.map(k=>`<div class="kpi ${k.cls}"><div class="label">${k.label}</div><div class="value">${k.value}</div><div class="sub">${k.sub}</div></div>`).join('')
+}
+function renderRanking(pessoas){
+  const ordenado=[...pessoas].sort((a,b)=>{
+    const ga=String(a.mede_produtividade||'').toLowerCase()==='sim'?0:1;
+    const gb=String(b.mede_produtividade||'').toLowerCase()==='sim'?0:1;
+    return ga-gb || Number(b.meta_oficial||0)-Number(a.meta_oficial||0)
+  });
+  document.getElementById('ranking-body').innerHTML=ordenado.map(p=>`<tr><td class="name" title="${p.nome}">${p.nome}</td><td>${p.modelo}</td><td class="num">${fmtNumber(p.meta_oficial)}</td><td class="num">${fmtPercent(p.presenca_operacional)}</td><td><span class="tag ${clsScore(p.score)}">${p.score}</span></td></tr>`).join('')
+}
+function renderRiskMap(pessoas){
+  const items=[...pessoas].map(p=>({p,r:riskScore(p)})).sort((a,b)=>b.r-a.r);
+  document.getElementById('risk-map').innerHTML=items.map(({p,r})=>{
+    const lv=riskLevel(r);
+    return `<div class="risk-row"><div><div class="risk-name" title="${p.nome}">${p.nome}</div><div class="risk-reason" title="${reason(p)}">${reason(p)}</div></div><div class="risk-track"><div class="risk-fill ${lv.cls}" style="width:${Math.max(3,r)}%"></div></div><div class="risk-score">${r}%<div><span class="risk-level ${lv.cls}">${lv.label}</span></div></div></div>`
+  }).join('')
+}
+function renderConfiabilidade(pessoas){
+  const ordenado=[...pessoas].sort((a,b)=>Number(a.presenca_operacional||0)-Number(b.presenca_operacional||0));
+  document.getElementById('confiabilidade-lista').innerHTML=ordenado.map(p=>{
+    const pres=Number(p.presenca_operacional||0);
+    return `<div class="person-card"><div><strong title="${p.nome}">${p.nome}</strong><small>${p.dias_trabalhados}/${p.dias_no_mes} dias • ${fmtPercent(pres)}</small><div class="progress"><div class="${confBarClass(pres)}" style="width:${Math.max(4,pres*100)}%"></div></div></div><span class="tag ${clsConf(p.confiabilidade_operacional)}">${p.confiabilidade_operacional}</span></div>`
+  }).join('')
+}
+function renderActions(data){
+  const m=calc(data);
+  document.getElementById('acao-referencia').textContent=m.ref?`${m.ref.nome} é a principal referência, com média de ${fmtNumber(m.ref.meta_oficial)} pedidos/dia.`:'Sem referência identificada.';
+  document.getElementById('acao-risco').textContent=m.criticos>0?`${m.criticos} recurso(s) oficial(is) exigem desenvolvimento ou plano de ação.`:'Não há recursos oficiais críticos no período.';
+  document.getElementById('acao-dependencia').textContent=m.ref?`${m.ref.nome.split(' ')[0]} concentra ${fmtPercent(m.dependencia)} da produção oficial. Avaliar backup operacional.`:'Sem concentração relevante.';
+  document.getElementById('acao-gestao').textContent=m.criticos>0?'Prioridade: acompanhar semanalmente baixa performance e presença operacional.':'Prioridade: preservar referência e reduzir dependência de apoio.';
+}
+function renderHistorico(data){
+  const datas=data.datas||[];
+  document.getElementById('historico-head').innerHTML=`<tr><th>Conferente</th>${datas.map(d=>`<th class="num">${d.slice(0,5)}</th>`).join('')}<th class="num">Média</th></tr>`;
+  document.getElementById('historico-body').innerHTML=(data.conferentes||[]).map(p=>`<tr><td class="name" title="${p.nome}">${p.nome}</td>${(p.valores||[]).map(v=>`<td class="num">${v}</td>`).join('')}<td class="num"><b>${fmtNumber(p.meta_oficial)}</b></td></tr>`).join('')
+}
+function toggleHistorico(){
+  const body=document.getElementById('historico-panel-body');
+  body.classList.toggle('collapsed');
+  document.getElementById('hist-badge').textContent=body.classList.contains('collapsed')?'mostrar detalhe':'ocultar detalhe';
+}
 function renderError(m){document.querySelector('.page').insertAdjacentHTML('beforeend',`<div class="error"><strong>Erro ao carregar painel.</strong><br>${m}<br>Verifique se o arquivo <b>timeconfe.json</b> está na mesma pasta deste HTML.</div>`)}
-async function init(){try{const res=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();document.getElementById('periodo').textContent='Período: '+(data.metadata?.periodo||'--');document.getElementById('titulo').textContent=data.metadata?.titulo||'Painel de Performance dos Conferentes';document.getElementById('subtitulo').textContent=data.metadata?.subtitulo||'';renderKpis(data);renderRanking(data.conferentes||[]);renderConfiabilidade(data.conferentes||[]);renderHistorico(data)}catch(e){console.error(e);renderError(e.message)}}
+async function init(){
+  try{
+    const res=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    document.getElementById('periodo').textContent='Período: '+(data.metadata?.periodo||'--');
+    document.getElementById('titulo').textContent=data.metadata?.titulo||'Painel Executivo dos Conferentes';
+    document.getElementById('subtitulo').textContent=data.metadata?.subtitulo||'';
+    renderExecutive(data);
+    renderKpis(data);
+    renderRanking(data.conferentes||[]);
+    renderRiskMap(data.conferentes||[]);
+    renderConfiabilidade(data.conferentes||[]);
+    renderActions(data);
+    renderHistorico(data);
+  }catch(e){console.error(e);renderError(e.message)}
+}
 init();
 </script>
 </body>
