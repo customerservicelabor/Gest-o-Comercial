@@ -3,490 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel de Performance do Time</title>
+  <title>Painel Executivo de Eficiência Operacional</title>
   <style>
     :root {
-      --bg:#e8eef6;
-      --panel:#ffffff;
-      --navy:#071f3f;
-      --navy-2:#0d3567;
-      --text:#0d1b2e;
-      --muted:#607089;
-      --line:#d7e1ee;
-      --line-soft:#edf2f7;
-      --green:#159447;
-      --green-bg:#e3f6ea;
-      --yellow:#d99200;
-      --yellow-bg:#fff1cb;
-      --red:#d92525;
-      --red-bg:#fde7e7;
-      --blue:#245ee8;
-      --blue-bg:#e8efff;
-      --purple:#7c3aed;
-      --purple-bg:#f0eaff;
-      --shadow:0 12px 30px rgba(10,33,66,.12);
-      --radius:16px;
+      --bg:#e8eef6; --panel:#ffffff; --navy:#071f3f; --navy-2:#0d3567; --text:#0d1b2e; --muted:#607089;
+      --line:#d7e1ee; --line-soft:#edf2f7; --green:#159447; --green-bg:#e3f6ea; --yellow:#d99200;
+      --yellow-bg:#fff1cb; --red:#d92525; --red-bg:#fde7e7; --blue:#245ee8; --blue-bg:#e8efff;
+      --purple:#7c3aed; --purple-bg:#f0eaff; --teal:#0f766e; --shadow:0 12px 30px rgba(10,33,66,.12); --radius:16px;
     }
-
-    * { box-sizing:border-box; }
-
-    body {
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#dfe8f3 0%,var(--bg) 100%);
-      color:var(--text);
-    }
-
-    .page { padding:14px 18px 18px; min-height:100vh; }
-
-    .topbar {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;
-      padding:14px 18px;
-      box-shadow:var(--shadow);
-      margin-bottom:12px;
-      color:#fff;
-    }
-
-    h1 { margin:0; color:#fff; font-size:27px; letter-spacing:-.6px; }
-    .subtitle { margin-top:7px; color:#c9d8ec; font-size:13px; font-weight:600; }
-
-    .filters { display:flex; gap:9px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
-    .pill, .btn {
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(255,255,255,.10);
-      color:#fff;
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:12px;
-      font-weight:800;
-      white-space:nowrap;
-      text-decoration:none;
-    }
-    .btn { background:#ffffff; color:var(--navy); border-color:#ffffff; }
-    .btn:hover { background:#dbeafe; }
-
-    .kpis { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:12px; margin-bottom:12px; }
-    .kpi {
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:15px;
-      padding:13px 14px;
-      box-shadow:var(--shadow);
-      min-height:104px;
-      position:relative;
-      overflow:hidden;
-    }
-    .kpi::after { content:""; position:absolute; right:-28px; bottom:-40px; width:110px; height:110px; border-radius:50%; opacity:.55; }
-    .kpi .label { font-size:11px; text-transform:uppercase; letter-spacing:.35px; color:#465971; font-weight:900; margin-bottom:8px; }
-    .kpi .value { font-size:30px; font-weight:900; color:var(--navy); letter-spacing:-1px; }
-    .kpi .sub { margin-top:7px; color:var(--muted); font-size:12px; font-weight:600; }
-    .kpi.green { border-left:8px solid var(--green); background:linear-gradient(180deg,#fff 0%,#eefbf3 100%); }
-    .kpi.green::after { background:var(--green-bg); }
-    .kpi.yellow { border-left:8px solid var(--yellow); background:linear-gradient(180deg,#fff 0%,#fff6db 100%); }
-    .kpi.yellow::after { background:var(--yellow-bg); }
-    .kpi.red { border-left:8px solid var(--red); background:linear-gradient(180deg,#fff 0%,#ffeded 100%); }
-    .kpi.red::after { background:var(--red-bg); }
-    .kpi.blue { border-left:8px solid var(--blue); background:linear-gradient(180deg,#fff 0%,#eef4ff 100%); }
-    .kpi.blue::after { background:var(--blue-bg); }
-    .kpi.purple { border-left:8px solid var(--purple); background:linear-gradient(180deg,#fff 0%,#f5efff 100%); }
-    .kpi.purple::after { background:var(--purple-bg); }
-    .kpi.red .value { color:#9f1717; }
-    .kpi.green .value { color:#0b6b33; }
-    .kpi.yellow .value { color:#8a5c00; }
-
-    .grid { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:12px; }
-    .panel {
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      min-height:100px;
-    }
-    .panel-header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      padding:12px 15px;
-      border-bottom:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);
-      color:#fff;
-    }
-    .panel-header h2 { margin:0; color:#fff; font-size:16px; }
-    .badge { font-size:11px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.22); font-weight:900; }
-    .panel-body { padding:13px 15px 15px; }
-
-    table { width:100%; border-collapse:collapse; font-size:12px; }
-    th { padding:9px 8px; background:#eef4ff; border-bottom:1px solid var(--line); color:#28435f; text-align:left; text-transform:uppercase; font-size:11px; letter-spacing:.3px; }
-    td { padding:10px 8px; border-bottom:1px solid var(--line-soft); color:var(--text); font-weight:700; }
-    tr:last-child td { border-bottom:0; }
-    tbody tr:nth-child(even) { background:#f8fbff; }
-    .num { text-align:right; font-variant-numeric:tabular-nums; }
-
-    .tag { display:inline-flex; justify-content:center; align-items:center; min-width:84px; padding:5px 9px; border-radius:999px; font-size:11px; font-weight:900; border:1px solid transparent; }
-    .tag.ok { color:#0b6b33; background:var(--green-bg); border-color:#bfe8cc; }
-    .tag.warn { color:#7c5600; background:var(--yellow-bg); border-color:#f8df9b; }
-    .tag.bad { color:#9b1717; background:var(--red-bg); border-color:#f4b9b9; }
-
-    .chart { height:280px; display:flex; align-items:end; gap:8px; padding:10px 4px 4px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(180deg,#ffffff 0%,#f2f6fb 100%); }
-    .bar-wrap { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:end; height:100%; gap:6px; min-width:28px; }
-    .bar-area { width:100%; height:220px; display:flex; gap:3px; align-items:end; justify-content:center; }
-    .bar { width:38%; border-radius:6px 6px 0 0; min-height:2px; }
-    .bar.base { background:linear-gradient(180deg,#3b82f6 0%,#1d4ed8 100%); }
-    .bar.apoio { background:linear-gradient(180deg,#8b5cf6 0%,#6d28d9 100%); }
-    .bar-label { font-size:10px; color:#36506d; font-weight:900; transform:rotate(-45deg); height:22px; white-space:nowrap; }
-
-    .line-list { display:flex; flex-direction:column; gap:8px; }
-    .day-card { display:grid; grid-template-columns:74px 1fr auto; align-items:center; gap:10px; padding:10px; border-radius:13px; border:1px solid var(--line); background:#fff; }
-    .day-card.bad { background:#fff4f4; border-color:#efb5b5; }
-    .day-card.warn { background:#fff7df; border-color:#efd18d; }
-    .day-card.ok { background:#effaf3; border-color:#bce7ca; }
-    .day-card strong { color:var(--navy); font-size:13px; }
-    .day-card small { color:#40536b; font-weight:800; }
-
-    .progress { height:9px; background:#dde7f2; border-radius:999px; overflow:hidden; margin-top:4px; }
-    .progress div { height:100%; border-radius:999px; }
-    .progress .ok { background:var(--green); }
-    .progress .warn { background:var(--yellow); }
-    .progress .bad { background:var(--red); }
-
-    .resumo-scroll {
-      max-height:290px;
-      overflow-y:auto;
-      border:1px solid var(--line);
-      border-radius:12px;
-    }
-    .resumo-scroll table { margin:0; }
-    .resumo-scroll thead th {
-      position:sticky;
-      top:0;
-      z-index:2;
-      background:#dfeafe;
-    }
-    .resumo-scroll::-webkit-scrollbar { width:9px; }
-    .resumo-scroll::-webkit-scrollbar-thumb { background:#9db2cc; border-radius:99px; }
-    .resumo-scroll::-webkit-scrollbar-track { background:#edf3f8; }
-
-    .reading-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-    .reading-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px; min-height:84px; box-shadow:0 4px 12px rgba(10,33,66,.04); }
-    .reading-card strong { display:block; margin-bottom:8px; color:var(--navy); font-size:15px; }
-    .reading-card p { color:var(--muted); font-size:12px; line-height:1.45; margin:0; font-weight:600; }
-    .reading-card.ok { border-left:7px solid var(--green); background:#f3fbf6; }
-    .reading-card.warn { border-left:7px solid var(--yellow); background:#fffaf0; }
-    .reading-card.bad { border-left:7px solid var(--red); background:#fff7f7; }
-
-    .footer { margin-top:12px; display:flex; justify-content:space-between; color:var(--muted); font-size:11px; font-weight:600; }
-    .error { padding:18px; border:1px solid rgba(220,38,38,.4); background:rgba(220,38,38,.08); border-radius:14px; color:#7f1d1d; margin-top:16px; }
-
-    @media(max-width:1200px){
-      .kpis{grid-template-columns:repeat(2,minmax(0,1fr));}
-      .grid{grid-template-columns:1fr;}
-      .reading-grid{grid-template-columns:1fr;}
-    }
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#dfe8f3 0%,var(--bg) 100%);color:var(--text)}
+    .page{padding:14px 18px 18px;min-height:100vh}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);margin-bottom:12px;color:#fff}
+    h1{margin:0;color:#fff;font-size:27px;letter-spacing:-.6px}.subtitle{margin-top:7px;color:#c9d8ec;font-size:13px;font-weight:700}.filters{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.pill,.btn{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;text-decoration:none}.btn{background:#fff;color:var(--navy);border-color:#fff}.btn:hover{background:#dbeafe}
+    .executive-strip{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin-bottom:12px}.summary-card{background:linear-gradient(90deg,#fff 0%,#f7fbff 100%);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:96px}.summary-card .headline{font-size:16px;font-weight:900;color:var(--navy);margin-bottom:4px}.summary-card .note{font-size:12px;color:var(--muted);font-weight:700;line-height:1.45}.score-wrap{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.health-score{min-width:145px;padding:12px 14px;border-radius:14px;text-align:center;border:1px solid #c8d7ef;background:linear-gradient(180deg,#f5f9ff 0%,#eef4ff 100%)}.health-score.risk{background:linear-gradient(180deg,#fff4f4 0%,#ffecec 100%);border-color:#f1b8b8}.health-score.health{background:linear-gradient(180deg,#effaf3 0%,#e4f7eb 100%);border-color:#bfe8cc}.health-score .small{font-size:11px;font-weight:900;color:#28435f;text-transform:uppercase}.health-score.risk .small{color:#8b1a1a}.health-score.health .small{color:#0b6b33}.health-score .big{font-size:30px;font-weight:900;line-height:1;margin-top:4px;color:var(--navy)}.health-score.risk .big{color:#9f1717}.health-score.health .big{color:#0b6b33}
+    .kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:12px}.kpi{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px 14px;box-shadow:var(--shadow);min-height:104px;position:relative;overflow:hidden}.kpi::after{content:"";position:absolute;right:-28px;bottom:-40px;width:110px;height:110px;border-radius:50%;opacity:.55}.kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.35px;color:#465971;font-weight:900;margin-bottom:8px}.kpi .value{font-size:30px;font-weight:900;color:var(--navy);letter-spacing:-1px}.kpi .sub{margin-top:7px;color:var(--muted);font-size:12px;font-weight:700;line-height:1.35}.kpi.green{border-left:8px solid var(--green);background:linear-gradient(180deg,#fff 0%,#eefbf3 100%)}.kpi.green::after{background:var(--green-bg)}.kpi.yellow{border-left:8px solid var(--yellow);background:linear-gradient(180deg,#fff 0%,#fff6db 100%)}.kpi.yellow::after{background:var(--yellow-bg)}.kpi.red{border-left:8px solid var(--red);background:linear-gradient(180deg,#fff 0%,#ffeded 100%)}.kpi.red::after{background:var(--red-bg)}.kpi.blue{border-left:8px solid var(--blue);background:linear-gradient(180deg,#fff 0%,#eef4ff 100%)}.kpi.blue::after{background:var(--blue-bg)}.kpi.purple{border-left:8px solid var(--purple);background:linear-gradient(180deg,#fff 0%,#f5efff 100%)}.kpi.purple::after{background:var(--purple-bg)}.kpi.teal{border-left:8px solid var(--teal);background:linear-gradient(180deg,#fff 0%,#effdfa 100%)}.kpi.teal::after{background:#ccfbf1}.kpi.red .value{color:#9f1717}.kpi.green .value{color:#0b6b33}.kpi.yellow .value{color:#8a5c00}.kpi.purple .value{color:#581c87}.kpi.teal .value{color:#115e59}
+    .grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;min-height:100px}.panel-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 15px;border-bottom:1px solid rgba(255,255,255,.12);background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff}.panel-header h2{margin:0;color:#fff;font-size:16px}.badge{font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.22);font-weight:900;white-space:nowrap}.panel-body{padding:13px 15px 15px}
+    table{width:100%;border-collapse:collapse;font-size:12px}th{padding:9px 8px;background:#eef4ff;border-bottom:1px solid var(--line);color:#28435f;text-align:left;text-transform:uppercase;font-size:11px;letter-spacing:.3px}td{padding:10px 8px;border-bottom:1px solid var(--line-soft);color:var(--text);font-weight:800}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f8fbff}tbody tr:hover{background:#eaf2ff}.num{text-align:right;font-variant-numeric:tabular-nums}.tag{display:inline-flex;justify-content:center;align-items:center;min-width:84px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;border:1px solid transparent;white-space:nowrap}.tag.ok{color:#0b6b33;background:var(--green-bg);border-color:#bfe8cc}.tag.warn{color:#7c5600;background:var(--yellow-bg);border-color:#f8df9b}.tag.bad{color:#9b1717;background:var(--red-bg);border-color:#f4b9b9}
+    .exec-chart{height:310px;position:relative;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(242,246,251,.96)),repeating-linear-gradient(0deg,transparent 0 54px,rgba(96,112,137,.13) 55px);padding:14px 10px 32px;overflow:hidden}.combo{height:100%;display:flex;align-items:flex-end;gap:8px;position:relative;z-index:2}.combo-day{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:28px;position:relative}.combo-bar-zone{height:235px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:3px;position:relative}.combo-bar{width:42%;border-radius:7px 7px 0 0;min-height:2px;background:linear-gradient(180deg,#ef4444,#b91c1c);box-shadow:0 4px 10px rgba(185,28,28,.15)}.combo-dot{width:9px;height:9px;border-radius:50%;background:#245ee8;border:2px solid #fff;box-shadow:0 0 0 3px rgba(36,94,232,.16);position:absolute;left:50%;transform:translate(-50%,50%);z-index:4}.combo-line{position:absolute;height:2px;background:#245ee8;transform-origin:left center;z-index:3;opacity:.9}.combo-label{font-size:10px;color:#36506d;font-weight:900;transform:rotate(-45deg);height:22px;white-space:nowrap;margin-top:5px}.chart-legend{position:absolute;right:12px;top:10px;display:flex;gap:10px;background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:10px;color:#40536b;font-weight:900;z-index:8}.legend-item{display:flex;align-items:center;gap:5px}.legend-dot{width:9px;height:9px;border-radius:50%;background:#245ee8}.legend-bar{width:12px;height:8px;border-radius:3px;background:#d92525}
+    .cause-list,.trend-list,.line-list{display:flex;flex-direction:column;gap:10px}.cause-row{border:1px solid var(--line);border-radius:14px;padding:11px;background:#fff}.cause-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:7px}.cause-title{font-size:13px;font-weight:900;color:var(--navy)}.cause-value{font-size:13px;font-weight:900;color:var(--navy)}.cause-track{height:10px;border-radius:999px;background:#dfe8f3;overflow:hidden;border:1px solid #c9d6e7}.cause-fill{height:100%;border-radius:999px}.cause-fill.red{background:var(--red)}.cause-fill.yellow{background:var(--yellow)}.cause-fill.green{background:var(--green)}.cause-fill.blue{background:var(--blue)}.cause-note{margin-top:6px;color:#607089;font-size:11px;font-weight:700;line-height:1.35}
+    .trend-card{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:11px;background:#fff}.trend-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:22px}.trend-card.good{background:#f3fbf6;border-color:#bce7ca}.trend-card.good .trend-icon{background:#e3f6ea;color:#0b6b33}.trend-card.warn{background:#fffaf0;border-color:#efd18d}.trend-card.warn .trend-icon{background:#fff1cb;color:#7c5600}.trend-card.bad{background:#fff7f7;border-color:#efb5b5}.trend-card.bad .trend-icon{background:#fde7e7;color:#9b1717}.trend-card strong{display:block;color:var(--navy);font-size:13px}.trend-card small{display:block;color:#40536b;margin-top:3px;font-weight:800;font-size:11px}.trend-status{font-size:11px;font-weight:900;text-transform:uppercase;color:var(--navy)}
+    .day-card{display:grid;grid-template-columns:74px 1fr auto;align-items:center;gap:10px;padding:10px;border-radius:13px;border:1px solid var(--line);background:#fff}.day-card.bad{background:#fff4f4;border-color:#efb5b5}.day-card.warn{background:#fff7df;border-color:#efd18d}.day-card.ok{background:#effaf3;border-color:#bce7ca}.day-card strong{color:var(--navy);font-size:13px}.day-card small{color:#40536b;font-weight:800}.progress{height:9px;background:#dde7f2;border-radius:999px;overflow:hidden;margin-top:4px}.progress div{height:100%;border-radius:999px}.progress .ok{background:var(--green)}.progress .warn{background:var(--yellow)}.progress .bad{background:var(--red)}
+    .resumo-scroll{max-height:315px;overflow:auto;border:1px solid var(--line);border-radius:12px}.resumo-scroll table{margin:0;min-width:980px}.resumo-scroll thead th{position:sticky;top:0;z-index:2;background:#dfeafe}.resumo-scroll::-webkit-scrollbar{width:9px;height:9px}.resumo-scroll::-webkit-scrollbar-thumb{background:#9db2cc;border-radius:99px}.resumo-scroll::-webkit-scrollbar-track{background:#edf3f8}.heat-ok{background:#f3fbf6!important;color:#0b6b33}.heat-warn{background:#fffaf0!important;color:#7c5600}.heat-bad{background:#fff7f7!important;color:#9b1717}
+    .reading-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.reading-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;min-height:84px;box-shadow:0 4px 12px rgba(10,33,66,.04)}.reading-card strong{display:block;margin-bottom:8px;color:var(--navy);font-size:15px}.reading-card p{color:#40536b;font-size:12px;line-height:1.45;margin:0;font-weight:700}.reading-card.ok{border-left:7px solid var(--green);background:#f3fbf6}.reading-card.warn{border-left:7px solid var(--yellow);background:#fffaf0}.reading-card.bad{border-left:7px solid var(--red);background:#fff7f7}.footer{margin-top:12px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;font-weight:700}.error{padding:18px;border:1px solid rgba(220,38,38,.4);background:rgba(220,38,38,.08);border-radius:14px;color:#7f1d1d;margin-top:16px}
+    @media(max-width:1200px){.executive-strip{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.reading-grid{grid-template-columns:1fr}.score-wrap{justify-content:flex-start}}
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="topbar">
-      <div>
-        <h1 id="titulo">Painel de Performance do Time</h1>
-        <div class="subtitle" id="subtitulo">Demanda, capacidade, produção, apoio e eficiência operacional</div>
-      </div>
-      <div class="filters">
-        <div class="pill" id="periodo">Período: --</div>
-        <div class="pill">Visão: Time inteiro</div>
-        <div class="pill">Acesso: Gestão</div>
-        <a href="index.html" class="btn">← Painel Geral</a>
-      </div>
-    </header>
-
+    <header class="topbar"><div><h1 id="titulo">Painel Executivo de Eficiência Operacional</h1><div class="subtitle" id="subtitulo">Risco, conversão da capacidade, dependência de apoio e estabilidade da operação</div></div><div class="filters"><div class="pill" id="periodo">Período: --</div><div class="pill">Visão: Time inteiro</div><div class="pill">Acesso: Gestão</div><a href="index.html" class="btn">← Painel Geral</a></div></header>
+    <section class="executive-strip"><div class="summary-card"><div><div class="headline">Diagnóstico executivo da operação</div><div class="note" id="diagnostico-texto">Carregando análise operacional...</div></div><div class="score-wrap"><div class="health-score risk"><div class="small">Risco operacional</div><div class="big" id="risco-operacional">--</div></div><div class="health-score health"><div class="small">Saúde operacional</div><div class="big" id="saude-operacional">--</div></div></div></div><div class="summary-card"><div><div class="headline" id="alerta-principal">Carregando prioridade...</div><div class="note" id="alerta-texto">Aguardando leitura do arquivo JSON.</div></div></div></section>
     <section class="kpis" id="kpis"></section>
-
     <main class="grid">
-      <section class="panel" style="grid-column:1 / 2;">
-        <div class="panel-header">
-          <h2>Produção Base × Apoio</h2>
-          <span class="badge">participação no resultado</span>
-        </div>
-        <div class="panel-body">
-          <div class="chart" id="chart-producao"></div>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Dias críticos</h2>
-          <span class="badge">gap e backlog</span>
-        </div>
-        <div class="panel-body">
-          <div class="line-list" id="dias-criticos"></div>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Uso da capacidade</h2>
-          <span class="badge">eficiência diária</span>
-        </div>
-        <div class="panel-body">
-          <div class="line-list" id="eficiencia-lista"></div>
-        </div>
-      </section>
-
-      <section class="panel" style="grid-column:1 / -1;">
-        <div class="panel-header">
-          <h2>Resumo diário</h2>
-          <span class="badge">demanda × produção × capacidade</span>
-        </div>
-        <div class="panel-body">
-          <div class="resumo-scroll" id="resumo-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Data</th>
-                  <th class="num">Demanda</th>
-                  <th class="num">Produzido</th>
-                  <th class="num">Backlog</th>
-                  <th class="num">Base</th>
-                  <th class="num">Apoio</th>
-                  <th class="num">Eficiência</th>
-                  <th class="num">Gap</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="resumo-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel" style="grid-column:1 / -1;">
-        <div class="panel-header">
-          <h2>Leitura executiva</h2>
-          <span class="badge">diagnóstico do time</span>
-        </div>
-        <div class="panel-body">
-          <div class="reading-grid" id="leitura"></div>
-        </div>
-      </section>
+      <section class="panel" style="grid-column:1 / 2;"><div class="panel-header"><h2>Eficiência operacional × backlog</h2><span class="badge">tendência diária</span></div><div class="panel-body"><div class="exec-chart" id="chart-executivo"><div class="chart-legend"><span class="legend-item"><span class="legend-dot"></span>Eficiência</span><span class="legend-item"><span class="legend-bar"></span>Backlog</span></div></div></div></section>
+      <section class="panel"><div class="panel-header"><h2>Origem da perda operacional</h2><span class="badge">causa raiz</span></div><div class="panel-body"><div class="cause-list" id="origem-perda"></div></div></section>
+      <section class="panel"><div class="panel-header"><h2>Tendência operacional</h2><span class="badge">direção do resultado</span></div><div class="panel-body"><div class="trend-list" id="tendencia-lista"></div></div></section>
+      <section class="panel"><div class="panel-header"><h2>Dias críticos</h2><span class="badge">ruptura operacional</span></div><div class="panel-body"><div class="line-list" id="dias-criticos"></div></div></section>
+      <section class="panel"><div class="panel-header"><h2>Perda operacional diária</h2><span class="badge">capacidade não convertida</span></div><div class="panel-body"><div class="line-list" id="eficiencia-lista"></div></div></section>
+      <section class="panel"><div class="panel-header"><h2>Dependência de apoio</h2><span class="badge">base × suporte</span></div><div class="panel-body"><div class="cause-list" id="apoio-lista"></div></div></section>
+      <section class="panel" style="grid-column:1 / -1;"><div class="panel-header"><h2>Resumo diário</h2><span class="badge">heatmap de demanda × produção × capacidade</span></div><div class="panel-body"><div class="resumo-scroll" id="resumo-scroll"><table><thead><tr><th>Data</th><th class="num">Demanda</th><th class="num">Produzido</th><th class="num">Backlog</th><th class="num">Base</th><th class="num">Apoio</th><th class="num">Capacidade</th><th class="num">Eficiência</th><th class="num">Perda</th><th class="num">Gap</th><th>Status</th></tr></thead><tbody id="resumo-body"></tbody></table></div></div></section>
+      <section class="panel" style="grid-column:1 / -1;"><div class="panel-header"><h2>Leitura executiva</h2><span class="badge">diagnóstico gerencial</span></div><div class="panel-body"><div class="reading-grid" id="leitura"></div></div></section>
     </main>
-
-    <footer class="footer">
-      <span>Fonte: base de monitoramento diário do time</span>
-      <span>Labor • Painel de Performance do Time</span>
-    </footer>
+    <footer class="footer"><span>Fonte: base de monitoramento diário do time</span><span>Labor • Painel Executivo de Eficiência Operacional</span></footer>
   </div>
-
   <script>
     const DATA_URL = "Equipe.json";
-
     const fmtPercent = (v) => new Intl.NumberFormat("pt-BR", { style:"percent", minimumFractionDigits:2, maximumFractionDigits:2 }).format(Number(v || 0));
+    const fmtPercent0 = (v) => new Intl.NumberFormat("pt-BR", { style:"percent", minimumFractionDigits:0, maximumFractionDigits:0 }).format(Number(v || 0));
     const fmtNumber = (v) => new Intl.NumberFormat("pt-BR", { maximumFractionDigits:2 }).format(Number(v || 0));
-
-    function statusDia(d){
-      if (d.backlog_gerado > 0 || d.gap < -7 || d.eficiencia_operacional < .60) return "Crítico";
-      if (d.gap < -4 || d.capacidade_perdida > .35) return "Atenção";
-      return "Saudável";
-    }
-
-    function statusClass(status){
-      if (status === "Saudável") return "ok";
-      if (status === "Atenção") return "warn";
-      return "bad";
-    }
-
-    function renderKpis(data){
-      const dias = data.dias || [];
-      const totalDemanda = dias.reduce((s,d)=>s+d.demanda_total,0);
-      const totalProduzido = dias.reduce((s,d)=>s+d.produzido,0);
-      const totalBacklog = dias.reduce((s,d)=>s+d.backlog_gerado,0);
-      const mediaEficiencia = dias.reduce((s,d)=>s+d.eficiencia_operacional,0)/dias.length;
-      const mediaGap = dias.reduce((s,d)=>s+d.gap,0)/dias.length;
-      const totalApoio = dias.reduce((s,d)=>s+d.producao_apoio,0);
-      const dependenciaApoio = totalApoio / totalProduzido;
-
-      const kpis = [
-        { label:"Demanda total", value:fmtNumber(totalDemanda), sub:"pedidos no período", cls:"blue" },
-        { label:"Produzido", value:fmtNumber(totalProduzido), sub:"pedidos separados", cls:"green" },
-        { label:"Backlog gerado", value:fmtNumber(totalBacklog), sub:"pedidos não atendidos", cls: totalBacklog > 0 ? "red" : "green" },
-        { label:"Eficiência média", value:fmtPercent(mediaEficiencia), sub:"produção ÷ capacidade", cls: mediaEficiencia >= .75 ? "green" : mediaEficiencia >= .60 ? "yellow" : "red" },
-        { label:"Gap médio", value:fmtNumber(mediaGap), sub:"real vs esperado por pessoa", cls: mediaGap >= -3 ? "green" : mediaGap >= -7 ? "yellow" : "red" },
-        { label:"Dependência de apoio", value:fmtPercent(dependenciaApoio), sub:"apoio ÷ produção total", cls:"purple" }
-      ];
-
-      document.getElementById("kpis").innerHTML = kpis.map(k => `
-        <div class="kpi ${k.cls}">
-          <div class="label">${k.label}</div>
-          <div class="value">${k.value}</div>
-          <div class="sub">${k.sub}</div>
-        </div>
-      `).join("");
-    }
-
-    function renderChart(dias){
-      const max = Math.max(...dias.map(d => Math.max(d.producao_base, d.producao_apoio)), 1);
-      document.getElementById("chart-producao").innerHTML = dias.map(d => {
-        const hBase = (d.producao_base / max) * 100;
-        const hApoio = (d.producao_apoio / max) * 100;
-        return `
-          <div class="bar-wrap" title="${d.data} | Base: ${d.producao_base} | Apoio: ${d.producao_apoio}">
-            <div class="bar-area">
-              <div class="bar base" style="height:${hBase}%"></div>
-              <div class="bar apoio" style="height:${hApoio}%"></div>
-            </div>
-            <div class="bar-label">${d.data.slice(0,5)}</div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function renderDiasCriticos(dias){
-      const criticos = [...dias]
-        .sort((a,b) => (b.backlog_gerado - a.backlog_gerado) || (a.gap - b.gap))
-        .slice(0,6);
-
-      document.getElementById("dias-criticos").innerHTML = criticos.map(d => {
-        const st = statusDia(d);
-        const cls = statusClass(st);
-        return `
-          <div class="day-card ${cls}">
-            <strong>${d.data}</strong>
-            <div>
-              <small>Backlog: ${d.backlog_gerado} • Gap: ${fmtNumber(d.gap)}</small>
-              <div class="progress"><div class="${cls}" style="width:${Math.min(100, Math.max(4, d.eficiencia_operacional*100))}%"></div></div>
-            </div>
-            <span class="tag ${cls}">${st}</span>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function renderEficiencia(dias){
-      const ordenado = [...dias].sort((a,b) => a.eficiencia_operacional - b.eficiencia_operacional).slice(0,6);
-      document.getElementById("eficiencia-lista").innerHTML = ordenado.map(d => {
-        const st = d.eficiencia_operacional >= .75 ? "Saudável" : d.eficiencia_operacional >= .60 ? "Atenção" : "Crítico";
-        const cls = statusClass(st);
-        return `
-          <div class="day-card ${cls}">
-            <strong>${d.data}</strong>
-            <div>
-              <small>Eficiência: ${fmtPercent(d.eficiencia_operacional)} • Cap. perdida: ${fmtPercent(d.capacidade_perdida)}</small>
-              <div class="progress"><div class="${cls}" style="width:${Math.min(100, Math.max(4, d.eficiencia_operacional*100))}%"></div></div>
-            </div>
-            <span class="tag ${cls}">${st}</span>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function renderResumo(dias){
-      document.getElementById("resumo-body").innerHTML = dias.map(d => {
-        const st = statusDia(d);
-        const cls = statusClass(st);
-        return `
-          <tr>
-            <td>${d.data}</td>
-            <td class="num">${d.demanda_total}</td>
-            <td class="num">${d.produzido}</td>
-            <td class="num">${d.backlog_gerado}</td>
-            <td class="num">${d.producao_base}</td>
-            <td class="num">${d.producao_apoio}</td>
-            <td class="num">${fmtPercent(d.eficiencia_operacional)}</td>
-            <td class="num">${fmtNumber(d.gap)}</td>
-            <td><span class="tag ${cls}">${st}</span></td>
-          </tr>
-        `;
-      }).join("");
-    }
-
-    function iniciarScrollResumo(){
-      const box = document.getElementById("resumo-scroll");
-      if(!box) return;
-
-      let paused = false;
-      let direction = 1;
-
-      box.addEventListener("mouseenter", () => paused = true);
-      box.addEventListener("mouseleave", () => paused = false);
-
-      setInterval(() => {
-        if(paused) return;
-        if(box.scrollHeight <= box.clientHeight) return;
-
-        box.scrollTop += direction;
-
-        if(box.scrollTop + box.clientHeight >= box.scrollHeight - 1) direction = -1;
-        if(box.scrollTop <= 0) direction = 1;
-      }, 60);
-    }
-
-    function renderLeitura(data){
-      const dias = data.dias || [];
-      const totalProduzido = dias.reduce((s,d)=>s+d.produzido,0);
-      const totalApoio = dias.reduce((s,d)=>s+d.producao_apoio,0);
-      const totalBacklog = dias.reduce((s,d)=>s+d.backlog_gerado,0);
-      const mediaGap = dias.reduce((s,d)=>s+d.gap,0)/dias.length;
-      const dependencia = totalApoio/totalProduzido;
-
-      const cards = [
-        {
-          cls:"bad",
-          titulo:"Capacidade existe, mas não vira produção",
-          texto:`O período apresenta gap médio de ${fmtNumber(mediaGap)} pedido(s) por pessoa, indicando perda de execução frente ao esperado.`
-        },
-        {
-          cls: dependencia > .30 ? "warn" : "ok",
-          titulo:"Apoio tem peso relevante",
-          texto:`Apoio representa ${fmtPercent(dependencia)} da produção total. Se esse índice subir, há risco de dependência operacional.`
-        },
-        {
-          cls: totalBacklog > 0 ? "bad" : "ok",
-          titulo:"Backlog ainda aparece mesmo com sobra teórica",
-          texto:`Foram gerados ${totalBacklog} pedidos de backlog no período, apesar de não haver pedidos acima da capacidade total.`
-        }
-      ];
-
-      document.getElementById("leitura").innerHTML = cards.map(c => `
-        <div class="reading-card ${c.cls}">
-          <strong>${c.titulo}</strong>
-          <p>${c.texto}</p>
-        </div>
-      `).join("");
-    }
-
-    function renderError(message){
-      document.querySelector(".page").insertAdjacentHTML("beforeend", `<div class="error"><strong>Erro ao carregar o painel.</strong><br>${message}<br>Verifique se o arquivo <b>Equipe.json</b> está na mesma pasta deste HTML.</div>`);
-    }
-
-    async function init(){
-      try{
-        const response = await fetch(DATA_URL + "?t=" + Date.now(), { cache:"no-store" });
-        if(!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        document.getElementById("periodo").textContent = `Período: ${data.metadata?.periodo || "--"}`;
-        if(data.metadata?.titulo) document.getElementById("titulo").textContent = data.metadata.titulo;
-        if(data.metadata?.subtitulo) document.getElementById("subtitulo").textContent = data.metadata.subtitulo;
-        const dias = data.dias || [];
-        renderKpis(data);
-        renderChart(dias);
-        renderDiasCriticos(dias);
-        renderEficiencia(dias);
-        renderResumo(dias);
-        renderLeitura(data);
-        iniciarScrollResumo();
-      }catch(error){
-        console.error(error);
-        renderError(error.message);
-      }
-    }
-
+    function statusDia(d){ if (d.backlog_gerado > 0 || d.gap < -7 || d.eficiencia_operacional < .60) return "Crítico"; if (d.gap < -4 || d.capacidade_perdida > .35) return "Atenção"; return "Saudável"; }
+    function statusClass(status){ if (status === "Saudável") return "ok"; if (status === "Atenção") return "warn"; return "bad"; }
+    function heatClass(value,type){ if(type==="eficiencia"){if(value>=.75)return"heat-ok";if(value>=.60)return"heat-warn";return"heat-bad";} if(type==="perda"){if(value<=.25)return"heat-ok";if(value<=.40)return"heat-warn";return"heat-bad";} if(type==="backlog"){if(value===0)return"heat-ok";if(value<=5)return"heat-warn";return"heat-bad";} if(type==="gap"){if(value>=-3)return"heat-ok";if(value>=-7)return"heat-warn";return"heat-bad";} return""; }
+    function metricas(data){const dias=data.dias||[];const totalDias=dias.length||1;const totalDemanda=dias.reduce((s,d)=>s+Number(d.demanda_total||0),0);const totalProduzido=dias.reduce((s,d)=>s+Number(d.produzido||0),0);const totalBacklog=dias.reduce((s,d)=>s+Number(d.backlog_gerado||0),0);const totalApoio=dias.reduce((s,d)=>s+Number(d.producao_apoio||0),0);const mediaEficiencia=dias.reduce((s,d)=>s+Number(d.eficiencia_operacional||0),0)/totalDias;const mediaGap=dias.reduce((s,d)=>s+Number(d.gap||0),0)/totalDias;const mediaPerda=dias.reduce((s,d)=>s+Number(d.capacidade_perdida||0),0)/totalDias;const dependenciaApoio=totalProduzido?totalApoio/totalProduzido:0;const diasCriticos=dias.filter(d=>statusDia(d)==="Crítico").length;const diasSaudaveis=dias.filter(d=>statusDia(d)==="Saudável").length;const backlogRate=dias.filter(d=>Number(d.backlog_gerado||0)>0).length/totalDias;const diasAcimaCapacidade=dias.filter(d=>Number(d.pedidos_acima_capacidade||0)>0).length;const estabilidade=diasSaudaveis/totalDias;const risco=Math.max(0,Math.min(1,((diasCriticos/totalDias)+dependenciaApoio+mediaPerda)/3));const saude=Math.max(0,Math.min(1,(mediaEficiencia+(1-dependenciaApoio)+(1-backlogRate))/3));const baixaExecucao=dias.filter(d=>Number(d.produzido||0)<Number(d.capacidade_total||0)&&Number(d.backlog_gerado||0)>0).length;const dependenciaDias=dias.filter(d=>{const prod=Number(d.produzido||0);const apoio=Number(d.producao_apoio||0);return prod>0&&(apoio/prod)>.30;}).length;const capacidadeInsuficiente=diasAcimaCapacidade;const perdaAlta=dias.filter(d=>Number(d.capacidade_perdida||0)>.35).length;return{dias,totalDias,totalDemanda,totalProduzido,totalBacklog,totalApoio,mediaEficiencia,mediaGap,mediaPerda,dependenciaApoio,diasCriticos,diasSaudaveis,backlogRate,diasAcimaCapacidade,estabilidade,risco,saude,baixaExecucao,dependenciaDias,capacidadeInsuficiente,perdaAlta};}
+    function tendencia(dias,campo,menorMelhor=false){if(!dias.length)return{label:"Estável",cls:"warn",icon:"→",delta:0};const metade=Math.floor(dias.length/2);const ini=dias.slice(0,metade);const fim=dias.slice(metade);const mediaIni=ini.reduce((s,d)=>s+Number(d[campo]||0),0)/(ini.length||1);const mediaFim=fim.reduce((s,d)=>s+Number(d[campo]||0),0)/(fim.length||1);const delta=mediaFim-mediaIni;const melhora=menorMelhor?delta<0:delta>0;const piora=menorMelhor?delta>0:delta<0;const abs=Math.abs(delta);if(abs<.02)return{label:"Estável",cls:"warn",icon:"→",delta};if(melhora)return{label:"Melhorando",cls:"good",icon:"↑",delta};if(piora)return{label:"Piorando",cls:"bad",icon:"↓",delta};return{label:"Estável",cls:"warn",icon:"→",delta};}
+    function renderExecutive(data){const m=metricas(data);document.getElementById("risco-operacional").textContent=fmtPercent0(m.risco);document.getElementById("saude-operacional").textContent=fmtPercent0(m.saude);if(m.capacidadeInsuficiente===0&&m.baixaExecucao>0){document.getElementById("diagnostico-texto").textContent="A operação não apresentou saturação estrutural de capacidade; o principal desvio está na conversão da capacidade disponível em produção efetiva.";}else if(m.capacidadeInsuficiente>0){document.getElementById("diagnostico-texto").textContent="A operação apresentou dias com demanda acima da capacidade instalada, exigindo revisão de dimensionamento e reforço operacional.";}else{document.getElementById("diagnostico-texto").textContent="A operação apresenta estabilidade relativa, com necessidade de monitorar eficiência e dependência de apoio.";}if(m.mediaEficiencia<.60||m.risco>.50){document.getElementById("alerta-principal").textContent="Prioridade: recuperar conversão operacional";document.getElementById("alerta-texto").textContent="Eficiência baixa e backlog recorrente indicam falha de execução frente à capacidade disponível.";}else if(m.dependenciaApoio>.30){document.getElementById("alerta-principal").textContent="Prioridade: reduzir dependência de apoio";document.getElementById("alerta-texto").textContent="Apoio acima de 30% da produção indica fragilidade estrutural da base operacional.";}else{document.getElementById("alerta-principal").textContent="Operação sob acompanhamento";document.getElementById("alerta-texto").textContent="Manter gestão de eficiência, backlog e estabilidade diária.";}}
+    function renderKpis(data){const m=metricas(data);const kpis=[{label:"Risco operacional",value:fmtPercent0(m.risco),sub:`${m.diasCriticos} dias críticos no período`,cls:m.risco>.50?"red":m.risco>.25?"yellow":"green"},{label:"Saúde operacional",value:fmtPercent0(m.saude),sub:"eficiência, apoio e backlog",cls:m.saude>=.75?"green":m.saude>=.60?"yellow":"red"},{label:"Eficiência média",value:fmtPercent(m.mediaEficiencia),sub:"produção ÷ capacidade",cls:m.mediaEficiencia>=.75?"green":m.mediaEficiencia>=.60?"yellow":"red"},{label:"Perda média operacional",value:fmtPercent(m.mediaPerda),sub:"capacidade não convertida",cls:m.mediaPerda<=.25?"green":m.mediaPerda<=.40?"yellow":"red"},{label:"Dependência de apoio",value:fmtPercent(m.dependenciaApoio),sub:"apoio ÷ produção total",cls:m.dependenciaApoio<=.15?"green":m.dependenciaApoio<=.30?"yellow":"purple"},{label:"Capacidade estrutural",value:m.capacidadeInsuficiente===0?"Suficiente":"Insuf.",sub:`${m.capacidadeInsuficiente} dia(s) acima da capacidade`,cls:m.capacidadeInsuficiente===0?"teal":"red"}];document.getElementById("kpis").innerHTML=kpis.map(k=>`<div class="kpi ${k.cls}"><div class="label">${k.label}</div><div class="value">${k.value}</div><div class="sub">${k.sub}</div></div>`).join("");}
+    function renderChartExecutivo(dias){const el=document.getElementById("chart-executivo");const maxBacklog=Math.max(...dias.map(d=>Number(d.backlog_gerado||0)),1);const chartHeight=235;const htmlDias=dias.map(d=>{const backlog=Number(d.backlog_gerado||0);const eficiencia=Number(d.eficiencia_operacional||0);const hBacklog=(backlog/maxBacklog)*100;const y=chartHeight-(Math.max(0,Math.min(1,eficiencia))*chartHeight);return`<div class="combo-day" title="${d.data} | Eficiência: ${fmtPercent(eficiencia)} | Backlog: ${backlog}"><div class="combo-bar-zone"><div class="combo-bar" style="height:${Math.max(2,hBacklog)}%"></div><div class="combo-dot" style="top:${y}px"></div></div><div class="combo-label">${d.data.slice(0,5)}</div></div>`;}).join("");el.querySelectorAll(".combo,.combo-line").forEach(n=>n.remove());const combo=document.createElement("div");combo.className="combo";combo.innerHTML=htmlDias;el.appendChild(combo);requestAnimationFrame(()=>{const dots=[...el.querySelectorAll(".combo-dot")];dots.forEach((dot,i)=>{if(i===0)return;const prev=dots[i-1].getBoundingClientRect();const curr=dot.getBoundingClientRect();const base=el.getBoundingClientRect();const x1=prev.left+prev.width/2-base.left;const y1=prev.top+prev.height/2-base.top;const x2=curr.left+curr.width/2-base.left;const y2=curr.top+curr.height/2-base.top;const dx=x2-x1;const dy=y2-y1;const len=Math.sqrt(dx*dx+dy*dy);const angle=Math.atan2(dy,dx)*180/Math.PI;const line=document.createElement("div");line.className="combo-line";line.style.left=`${x1}px`;line.style.top=`${y1}px`;line.style.width=`${len}px`;line.style.transform=`rotate(${angle}deg)`;el.appendChild(line);});});}
+    function renderOrigemPerda(data){const m=metricas(data);const max=Math.max(m.baixaExecucao,m.dependenciaDias,m.capacidadeInsuficiente,m.perdaAlta,1);const rows=[{titulo:"Baixa execução operacional",valor:m.baixaExecucao,cls:"red",nota:"Dias com backlog mesmo havendo capacidade disponível."},{titulo:"Dependência elevada de apoio",valor:m.dependenciaDias,cls:"yellow",nota:"Dias em que apoio representou mais de 30% da produção."},{titulo:"Capacidade insuficiente",valor:m.capacidadeInsuficiente,cls:"blue",nota:"Dias com demanda acima da capacidade teórica."},{titulo:"Capacidade não convertida",valor:m.perdaAlta,cls:"red",nota:"Dias com perda de capacidade acima de 35%."}];document.getElementById("origem-perda").innerHTML=rows.map(r=>`<div class="cause-row"><div class="cause-head"><div class="cause-title">${r.titulo}</div><div class="cause-value">${r.valor} dia(s)</div></div><div class="cause-track"><div class="cause-fill ${r.cls}" style="width:${Math.max(4,(r.valor/max)*100)}%"></div></div><div class="cause-note">${r.nota}</div></div>`).join("");}
+    function renderTendencia(data){const dias=data.dias||[];const tEfic=tendencia(dias,"eficiencia_operacional",false);const tBack=tendencia(dias,"backlog_gerado",true);const tGap=tendencia(dias,"gap",false);const tApoio=(()=>{const arr=dias.map(d=>{const prod=Number(d.produzido||0);return prod?Number(d.producao_apoio||0)/prod:0;});const metade=Math.floor(arr.length/2);const ini=arr.slice(0,metade).reduce((s,v)=>s+v,0)/(metade||1);const fim=arr.slice(metade).reduce((s,v)=>s+v,0)/(arr.length-metade||1);const delta=fim-ini;if(Math.abs(delta)<.02)return{label:"Estável",cls:"warn",icon:"→",delta};return delta>0?{label:"Apoio subindo",cls:"bad",icon:"↑",delta}:{label:"Apoio caindo",cls:"good",icon:"↓",delta};})();const cards=[{titulo:"Eficiência",sub:`Variação: ${fmtPercent(tEfic.delta)}`,...tEfic},{titulo:"Backlog",sub:`Variação média: ${fmtNumber(tBack.delta)}`,...tBack},{titulo:"Gap operacional",sub:`Variação: ${fmtNumber(tGap.delta)}`,...tGap},{titulo:"Dependência de apoio",sub:`Variação: ${fmtPercent(tApoio.delta)}`,...tApoio}];document.getElementById("tendencia-lista").innerHTML=cards.map(c=>`<div class="trend-card ${c.cls}"><div class="trend-icon">${c.icon}</div><div><strong>${c.titulo}</strong><small>${c.sub}</small></div><div class="trend-status">${c.label}</div></div>`).join("");}
+    function renderDiasCriticos(dias){const criticos=[...dias].sort((a,b)=>(b.backlog_gerado-a.backlog_gerado)||(a.gap-b.gap)).slice(0,6);document.getElementById("dias-criticos").innerHTML=criticos.map(d=>{const st=statusDia(d);const cls=statusClass(st);const msg=d.backlog_gerado>0?"Ruptura operacional":"Baixa conversão";return`<div class="day-card ${cls}"><strong>${d.data}</strong><div><small>${msg} • Backlog: ${d.backlog_gerado} • Gap: ${fmtNumber(d.gap)}</small><div class="progress"><div class="${cls}" style="width:${Math.min(100,Math.max(4,(1-d.capacidade_perdida)*100))}%"></div></div></div><span class="tag ${cls}">${st}</span></div>`;}).join("");}
+    function renderEficiencia(dias){const ordenado=[...dias].sort((a,b)=>b.capacidade_perdida-a.capacidade_perdida).slice(0,6);document.getElementById("eficiencia-lista").innerHTML=ordenado.map(d=>{const perda=Number(d.capacidade_perdida||0);const st=perda<=.25?"Saudável":perda<=.40?"Atenção":"Crítico";const cls=statusClass(st);return`<div class="day-card ${cls}"><strong>${d.data}</strong><div><small>Perda: ${fmtPercent(perda)} • Eficiência: ${fmtPercent(d.eficiencia_operacional)}</small><div class="progress"><div class="${cls}" style="width:${Math.min(100,Math.max(4,perda*100))}%"></div></div></div><span class="tag ${cls}">${st}</span></div>`;}).join("");}
+    function renderApoio(data){const dias=data.dias||[];const totalProd=dias.reduce((s,d)=>s+Number(d.produzido||0),0);const totalApoio=dias.reduce((s,d)=>s+Number(d.producao_apoio||0),0);const dep=totalProd?totalApoio/totalProd:0;const saudavel=dias.filter(d=>{const prod=Number(d.produzido||0);const ratio=prod?Number(d.producao_apoio||0)/prod:0;return ratio<=.15;}).length;const atencao=dias.filter(d=>{const prod=Number(d.produzido||0);const ratio=prod?Number(d.producao_apoio||0)/prod:0;return ratio>.15&&ratio<=.30;}).length;const critico=dias.filter(d=>{const prod=Number(d.produzido||0);const ratio=prod?Number(d.producao_apoio||0)/prod:0;return ratio>.30;}).length;const max=Math.max(saudavel,atencao,critico,1);const rows=[{titulo:"Apoio saudável",valor:saudavel,cls:"green",nota:"Dias com apoio até 15% da produção."},{titulo:"Apoio em atenção",valor:atencao,cls:"yellow",nota:"Dias com apoio entre 16% e 30%."},{titulo:"Dependência crítica",valor:critico,cls:"red",nota:"Dias com apoio acima de 30% da produção."},{titulo:"Dependência total",valor:fmtPercent(dep),cls:"blue",nota:"Participação do apoio no total produzido.",percent:true}];document.getElementById("apoio-lista").innerHTML=rows.map(r=>`<div class="cause-row"><div class="cause-head"><div class="cause-title">${r.titulo}</div><div class="cause-value">${r.percent?r.valor:r.valor+" dia(s)"}</div></div><div class="cause-track"><div class="cause-fill ${r.cls}" style="width:${r.percent?Math.max(4,dep*100):Math.max(4,(r.valor/max)*100)}%"></div></div><div class="cause-note">${r.nota}</div></div>`).join("");}
+    function renderResumo(dias){document.getElementById("resumo-body").innerHTML=dias.map(d=>{const st=statusDia(d);const cls=statusClass(st);return`<tr><td>${d.data}</td><td class="num">${d.demanda_total}</td><td class="num">${d.produzido}</td><td class="num ${heatClass(Number(d.backlog_gerado||0),"backlog")}">${d.backlog_gerado}</td><td class="num">${d.producao_base}</td><td class="num">${d.producao_apoio}</td><td class="num">${d.capacidade_total||0}</td><td class="num ${heatClass(Number(d.eficiencia_operacional||0),"eficiencia")}">${fmtPercent(d.eficiencia_operacional)}</td><td class="num ${heatClass(Number(d.capacidade_perdida||0),"perda")}">${fmtPercent(d.capacidade_perdida)}</td><td class="num ${heatClass(Number(d.gap||0),"gap")}">${fmtNumber(d.gap)}</td><td><span class="tag ${cls}">${st}</span></td></tr>`;}).join("");}
+    function iniciarScrollResumo(){const box=document.getElementById("resumo-scroll");if(!box)return;let paused=false;let direction=1;box.addEventListener("mouseenter",()=>paused=true);box.addEventListener("mouseleave",()=>paused=false);setInterval(()=>{if(paused)return;if(box.scrollHeight<=box.clientHeight)return;box.scrollTop+=direction;if(box.scrollTop+box.clientHeight>=box.scrollHeight-1)direction=-1;if(box.scrollTop<=0)direction=1;},60);}
+    function renderLeitura(data){const m=metricas(data);const cards=[{cls:m.capacidadeInsuficiente===0?"warn":"bad",titulo:m.capacidadeInsuficiente===0?"Capacidade estrutural suficiente":"Capacidade estrutural insuficiente",texto:m.capacidadeInsuficiente===0?"Não houve dias acima da capacidade teórica. O desvio está concentrado na conversão operacional da capacidade disponível.":`${m.capacidadeInsuficiente} dia(s) tiveram demanda acima da capacidade teórica, indicando necessidade de revisão de dimensionamento.`},{cls:m.dependenciaApoio>.30?"bad":m.dependenciaApoio>.15?"warn":"ok",titulo:"Dependência de apoio",texto:`${fmtPercent(m.dependenciaApoio)} da produção dependeu de apoio. Acima de 30% indica fragilidade estrutural da base operacional.`},{cls:m.mediaPerda>.40?"bad":m.mediaPerda>.25?"warn":"ok",titulo:"Conversão da capacidade",texto:`A operação perdeu em média ${fmtPercent(m.mediaPerda)} da capacidade disponível, com eficiência média de ${fmtPercent(m.mediaEficiencia)}.`}];document.getElementById("leitura").innerHTML=cards.map(c=>`<div class="reading-card ${c.cls}"><strong>${c.titulo}</strong><p>${c.texto}</p></div>`).join("");}
+    function renderError(message){document.querySelector(".page").insertAdjacentHTML("beforeend",`<div class="error"><strong>Erro ao carregar o painel.</strong><br>${message}<br>Verifique se o arquivo <b>Equipe.json</b> está na mesma pasta deste HTML.</div>`);}
+    async function init(){try{const response=await fetch(DATA_URL+"?t="+Date.now(),{cache:"no-store"});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();document.getElementById("periodo").textContent=`Período: ${data.metadata?.periodo||"--"}`;if(data.metadata?.titulo)document.getElementById("titulo").textContent=data.metadata.titulo;if(data.metadata?.subtitulo)document.getElementById("subtitulo").textContent=data.metadata.subtitulo;const dias=data.dias||[];renderExecutive(data);renderKpis(data);renderChartExecutivo(dias);renderOrigemPerda(data);renderTendencia(data);renderDiasCriticos(dias);renderEficiencia(dias);renderApoio(data);renderResumo(dias);renderLeitura(data);iniciarScrollResumo();}catch(error){console.error(error);renderError(error.message);}}
     init();
   </script>
 </body>
