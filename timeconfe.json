@@ -1,23 +1,154 @@
+```json
 {
   "metadata": {
-    "titulo": "Painel de Performance dos Conferentes",
-    "subtitulo": "Produtividade, presença operacional, confiabilidade e apoio à conferência",
-    "periodo": "01/04/2026 a 29/04/2026",
-    "dias_no_mes": 19,
-    "meta_base": 45,
-    "atualizacao": "Abril/2026"
+    "titulo": "Painel Executivo dos Conferentes",
+    "subtitulo": "Produtividade, risco operacional, dependência e confiabilidade da conferência",
+    "periodo": "01/04/2026 a 29/04/2026"
   },
-  "datas": ["01/04/2026","02/04/2026","06/04/2026","07/04/2026","08/04/2026","09/04/2026","10/04/2026","13/04/2026","14/04/2026","15/04/2026","16/04/2026","17/04/2026","20/04/2026","22/04/2026","23/04/2026","24/04/2026","27/04/2026","28/04/2026","29/04/2026"],
+  "datas": [
+    "01/04","02/04","06/04","07/04","08/04","09/04","10/04","13/04","14/04","15/04","16/04","17/04","20/04","22/04","23/04","24/04","27/04","28/04","29/04"
+  ],
   "conferentes": [
-    {"nome":"Nayra Maria Santos Souza","modelo":"Fixo - Conferente Exp.","mede_produtividade":"Não","valores":[0,30,0,0,3,7,1,21,0,10,26,8,7,0,1,0,8,0,11],"meta_oficial":7,"faltas":0,"dias_acima_meta":5,"score":"Apoio Constante","dias_trabalhados":18,"dias_no_mes":19,"presenca_operacional":0.95,"confiabilidade_operacional":"Confiável"},
-    {"nome":"Paloma Ferreira da Silva Bento","modelo":"Fixo - Conferente Sep.","mede_produtividade":"Sim","valores":[0,70,48,45,62,59,44,17,64,58,93,42,75,55,73,63,62,82,108],"meta_oficial":58.94736842,"faltas":1,"dias_acima_meta":16,"score":"Alta Performance","dias_trabalhados":18,"dias_no_mes":19,"presenca_operacional":0.95,"confiabilidade_operacional":"Muito Estável"},
-    {"nome":"Rayane dos Santos","modelo":"Fixo - Conferente Sep.","mede_produtividade":"Sim","valores":[0,44,0,0,33,29,32,44,29,21,29,28,43,30,39,38,35,35,50],"meta_oficial":29.42105,"faltas":3,"dias_acima_meta":1,"score":"Crítico - Baixo Desempenho","dias_trabalhados":16,"dias_no_mes":19,"presenca_operacional":0.84,"confiabilidade_operacional":"Oscilando"},
-    {"nome":"Rafaelen Gomes Da Silva","modelo":"Fixo - Conferente Exp.","mede_produtividade":"Não","valores":[49,0,10,20,0,1,0,9,0,0,9,8,0,0,1,0,10,0,2],"meta_oficial":6.263158,"faltas":0,"dias_acima_meta":3,"score":"Apoio Constante","dias_trabalhados":15,"dias_no_mes":19,"presenca_operacional":0.79,"confiabilidade_operacional":"Crítico"},
-    {"nome":"Igor Thiago Gomes Pereira","modelo":"Analista de Logistica","mede_produtividade":"Não","valores":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"meta_oficial":0,"faltas":0,"dias_acima_meta":0,"score":"Não atua na operação","dias_trabalhados":10,"dias_no_mes":19,"presenca_operacional":0.53,"confiabilidade_operacional":"Crítico"},
-    {"nome":"Marcia Cristina Tavares de Almeida","modelo":"Fixo - Conferente Rec.","mede_produtividade":"Não","valores":[38,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1],"meta_oficial":2.894737,"faltas":0,"dias_acima_meta":1,"score":"Apoio Pontual","dias_trabalhados":18,"dias_no_mes":19,"presenca_operacional":0.95,"confiabilidade_operacional":"Muito Estável"},
-    {"nome":"Raquel Ferreira","modelo":"Fixo - Conferente Rec.","mede_produtividade":"Não","valores":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0,1],"meta_oficial":0.526316,"faltas":0,"dias_acima_meta":0,"score":"Apoio Pontual","dias_trabalhados":14,"dias_no_mes":19,"presenca_operacional":0.74,"confiabilidade_operacional":"Crítico"},
-    {"nome":"Roberta Ferreira da Costa","modelo":"Coordenadora","mede_produtividade":"Não","valores":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"meta_oficial":0,"faltas":0,"dias_acima_meta":0,"score":"Não atua na operação","dias_trabalhados":19,"dias_no_mes":19,"presenca_operacional":1,"confiabilidade_operacional":"Muito Estável"},
-    {"nome":"Francisco Cristiano","modelo":"Fixo - Qualidade","mede_produtividade":"Não","valores":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],"meta_oficial":0.210526,"faltas":0,"dias_acima_meta":0,"score":"Não atua na operação","dias_trabalhados":19,"dias_no_mes":19,"presenca_operacional":1,"confiabilidade_operacional":"Muito Estável"},
-    {"nome":"Nataly Czech Mangi","modelo":"Fixo - Qualidade","mede_produtividade":"Não","valores":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],"meta_oficial":0.210526,"faltas":0,"dias_acima_meta":0,"score":"Não atua na operação","dias_trabalhados":19,"dias_no_mes":19,"presenca_operacional":1,"confiabilidade_operacional":"Muito Estável"}
+    {
+      "nome": "Nayra Maria Santos Souza",
+      "modelo": "Fixo - Conferente Exp.",
+      "mede_produtividade": "Não",
+      "valores": [0,30,0,0,3,7,1,21,0,10,26,8,7,0,1,0,8,0,11],
+      "meta_oficial": 7,
+      "faltas": 0,
+      "dias_acima_meta": 5,
+      "score": "Desempenho Esperado",
+      "dias_trabalhados": 17,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.89,
+      "confiabilidade_operacional": "Atenção"
+    },
+    {
+      "nome": "Paloma Ferreira da Silva Bento",
+      "modelo": "Fixo - Conferente Sep.",
+      "mede_produtividade": "Sim",
+      "valores": [0,70,48,45,62,59,44,17,64,58,93,42,75,55,73,63,62,82,108],
+      "meta_oficial": 58.95,
+      "faltas": 1,
+      "dias_acima_meta": 16,
+      "score": "Alta Performance",
+      "dias_trabalhados": 18,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.95,
+      "confiabilidade_operacional": "Confiável"
+    },
+    {
+      "nome": "Rayane dos Santos",
+      "modelo": "Fixo - Conferente Sep.",
+      "mede_produtividade": "Sim",
+      "valores": [0,44,0,0,33,29,32,44,29,21,29,28,43,30,39,38,35,35,50],
+      "meta_oficial": 29.42,
+      "faltas": 3,
+      "dias_acima_meta": 1,
+      "score": "Crítico - Baixo Desempenho",
+      "dias_trabalhados": 17,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.89,
+      "confiabilidade_operacional": "Atenção"
+    },
+    {
+      "nome": "Rafaelen Gomes Da Silva",
+      "modelo": "Fixo - Conferente Exp.",
+      "mede_produtividade": "Não",
+      "valores": [49,0,10,20,0,1,0,9,0,0,9,8,0,0,1,0,10,0,2],
+      "meta_oficial": 6.26,
+      "faltas": 0,
+      "dias_acima_meta": 3,
+      "score": "Atenção",
+      "dias_trabalhados": 15,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.79,
+      "confiabilidade_operacional": "Crítico"
+    },
+    {
+      "nome": "Igor Thiago Gomes Pereira",
+      "modelo": "Analista de Logistica",
+      "mede_produtividade": "Não",
+      "valores": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      "meta_oficial": 0,
+      "faltas": 0,
+      "dias_acima_meta": 0,
+      "score": "Não atua na operação",
+      "dias_trabalhados": 7,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.37,
+      "confiabilidade_operacional": "Crítico"
+    },
+    {
+      "nome": "Marcia Cristina Tavares de Almeida",
+      "modelo": "Fixo - Conferente Rec.",
+      "mede_produtividade": "Não",
+      "valores": [38,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1],
+      "meta_oficial": 2.89,
+      "faltas": 0,
+      "dias_acima_meta": 1,
+      "score": "Crítico - Baixo Desempenho",
+      "dias_trabalhados": 18,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.95,
+      "confiabilidade_operacional": "Confiável"
+    },
+    {
+      "nome": "Raquel Ferreira",
+      "modelo": "Fixo - Conferente Rec.",
+      "mede_produtividade": "Não",
+      "valores": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0,1],
+      "meta_oficial": 0.53,
+      "faltas": 0,
+      "dias_acima_meta": 0,
+      "score": "Crítico - Baixo Desempenho",
+      "dias_trabalhados": 17,
+      "dias_no_mes": 19,
+      "presenca_operacional": 0.89,
+      "confiabilidade_operacional": "Atenção"
+    },
+    {
+      "nome": "Roberta Ferreira da Costa",
+      "modelo": "Coordenadora",
+      "mede_produtividade": "Não",
+      "valores": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      "meta_oficial": 0,
+      "faltas": 0,
+      "dias_acima_meta": 0,
+      "score": "Não atua na operação",
+      "dias_trabalhados": 19,
+      "dias_no_mes": 19,
+      "presenca_operacional": 1,
+      "confiabilidade_operacional": "Altamente Confiável"
+    },
+    {
+      "nome": "Francisco Cristiano",
+      "modelo": "Fixo - Qualidade",
+      "mede_produtividade": "Não",
+      "valores": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+      "meta_oficial": 0.21,
+      "faltas": 0,
+      "dias_acima_meta": 0,
+      "score": "Não atua na operação",
+      "dias_trabalhados": 19,
+      "dias_no_mes": 19,
+      "presenca_operacional": 1,
+      "confiabilidade_operacional": "Altamente Confiável"
+    },
+    {
+      "nome": "Nataly Czech Mangi",
+      "modelo": "Fixo - Qualidade",
+      "mede_produtividade": "Não",
+      "valores": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4],
+      "meta_oficial": 0.21,
+      "faltas": 0,
+      "dias_acima_meta": 0,
+      "score": "Não atua na operação",
+      "dias_trabalhados": 19,
+      "dias_no_mes": 19,
+      "presenca_operacional": 1,
+      "confiabilidade_operacional": "Altamente Confiável"
+    }
   ]
 }
+```
