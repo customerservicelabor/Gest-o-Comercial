@@ -1,27 +1,27 @@
 {
-  "atualizacao": "28/05/2026 18:29",
+  "atualizacao": "28/05/2026 18:42",
 
   "cards": {
-    "falta_separar": 10,
+    "falta_separar": 9,
     "falta_conferir": 1,
     "em_execucao": 26,
-    "total_pendente": 37,
-    "concluido": 168,
+    "total_pendente": 36,
+    "concluido": 169,
     "total_pedidos": 205
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "40 ", "enderecos": "942 ", "percentual": "18,6%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "28 ", "enderecos": "775 ", "percentual": "13,0%" },
- { "separador": "Valdenice da Silva ","pedidos": "28 ", "enderecos": "712 ", "percentual": "13,0%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "20 ", "enderecos": "959 ", "percentual": "9,3%" },
- { "separador": "Rafael Pereira dos Santos ","pedidos": "9 ", "enderecos": "120 ", "percentual": "4,2%" },
- { "separador": "Debora Correa ","pedidos": "43 ", "enderecos": "1005 ", "percentual": "20,0%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "41 ", "enderecos": "947 ", "percentual": "18,8%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "28 ", "enderecos": "776 ", "percentual": "12,8%" },
+ { "separador": "Valdenice da Silva ","pedidos": "28 ", "enderecos": "713 ", "percentual": "12,8%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "20 ", "enderecos": "961 ", "percentual": "9,2%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "10 ", "enderecos": "123 ", "percentual": "4,6%" },
+ { "separador": "Debora Correa ","pedidos": "43 ", "enderecos": "1005 ", "percentual": "19,7%" },
  { "separador": "Roberta Ferreira da Costa ","pedidos": "1 ", "enderecos": "2 ", "percentual": "0,5%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "25 ", "enderecos": "1145 ", "percentual": "11,6%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "10 ", "enderecos": "275 ", "percentual": "4,7%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "25 ", "enderecos": "1149 ", "percentual": "11,5%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "277 ", "percentual": "5,1%" },
  { "separador": "Nataly Czech Mangi ","pedidos": "2 ", "enderecos": "135 ", "percentual": "0,9%" },
- { "separador": "Francisco Cristiano ","pedidos": "7 ", "enderecos": "203 ", "percentual": "3,3%" },
+ { "separador": "Francisco Cristiano ","pedidos": "7 ", "enderecos": "206 ", "percentual": "3,2%" },
  { "separador": "Raquel Ferreira ","pedidos": "1 ", "enderecos": "22 ", "percentual": "0,5%" },
  { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "9 ", "percentual": "0,5%" }
 
@@ -30,7 +30,6 @@
   "pedidos_pendentes": [
  { "pedido": "694202 ","integrado": "27/05/2026 10:03 ", "status": "falta_conferir ", "cliente": "CLINICA MEDICA PRODIGEST LTDA" },
  { "pedido": "694694 ","integrado": "28/05/2026 15:25 ", "status": "falta_separar ", "cliente": "NNMED  DISTRIBUICAO  IMPORTACAO E EXPORTACAO DE ME" },
- { "pedido": "694692 ","integrado": "28/05/2026 17:46 ", "status": "falta_separar ", "cliente": "NNMED  DISTRIBUICAO  IMPORTACAO E EXPORTACAO DE ME" },
  { "pedido": "694734 ","integrado": "28/05/2026 17:47 ", "status": "falta_separar ", "cliente": "AVANCE MEDICAMENTOS LTDA" },
  { "pedido": "694712 ","integrado": "28/05/2026 17:47 ", "status": "falta_separar ", "cliente": "CENTERVIDA DIAGNOSTICA LTDA" },
  { "pedido": "694752 ","integrado": "28/05/2026 17:47 ", "status": "falta_separar ", "cliente": "ULTRA MEDICAL COMERCIO DE MATERIAIS HOSPITALARES L" },
@@ -39,6 +38,7 @@
  { "pedido": "694608 ","integrado": "28/05/2026 17:49 ", "status": "falta_separar ", "cliente": "JR DISTRIBUIDORA DE PRODUTOS MED HOSPITALARES LTDA" },
  { "pedido": "694604 ","integrado": "28/05/2026 17:51 ", "status": "falta_separar ", "cliente": "NOVA DENTAL COMERCIO E SERVICOS LTDA" },
  { "pedido": "694724 ","integrado": "28/05/2026 17:51 ", "status": "falta_separar ", "cliente": "DOM BOSCO HOSPITALAR LTDA" }
+
 
 
 
