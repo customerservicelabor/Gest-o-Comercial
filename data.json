@@ -1,5 +1,5 @@
 {
-  "atualizacao": "03/06/2026 09:01",
+  "atualizacao": "03/06/2026 09:05",
 
   "cards": {
     "falta_separar": 30,
@@ -25,7 +25,7 @@
  { "separador": "SYTHEX ","pedidos": "2 ", "enderecos": "12 ", "percentual": "0,5%" },
  { "separador": "Nataly Czech Mangi ","pedidos": "2 ", "enderecos": "995 ", "percentual": "0,5%" },
  { "separador": "Francisco Cristiano ","pedidos": "8 ", "enderecos": "815 ", "percentual": "1,8%" }
-0,5%
+
  ],
   "pedidos_pendentes": [
  { "pedido": "695020 ","integrado": "02/06/2026 17:31 ", "status": "falta_conferir ", "cliente": "ISABELLA PARDINI COMERCIO DE MATERIAL MEDICO E HOS" },
