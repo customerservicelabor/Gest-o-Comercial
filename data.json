@@ -1,60 +1,60 @@
 {
-  "atualizacao": "28/05/2026 18:42",
+  "atualizacao": "03/06/2026 08:55",
 
   "cards": {
-    "falta_separar": 9,
-    "falta_conferir": 1,
-    "em_execucao": 26,
-    "total_pendente": 36,
-    "concluido": 169,
-    "total_pedidos": 205
+    "falta_separar": 30,
+    "falta_conferir": 11,
+    "em_execucao": 23,
+    "total_pendente": 64,
+    "concluido": 374,
+    "total_pedidos": 438
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "41 ", "enderecos": "947 ", "percentual": "18,8%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "28 ", "enderecos": "776 ", "percentual": "12,8%" },
- { "separador": "Valdenice da Silva ","pedidos": "28 ", "enderecos": "713 ", "percentual": "12,8%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "20 ", "enderecos": "961 ", "percentual": "9,2%" },
- { "separador": "Rafael Pereira dos Santos ","pedidos": "10 ", "enderecos": "123 ", "percentual": "4,6%" },
- { "separador": "Debora Correa ","pedidos": "43 ", "enderecos": "1005 ", "percentual": "19,7%" },
- { "separador": "Roberta Ferreira da Costa ","pedidos": "1 ", "enderecos": "2 ", "percentual": "0,5%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "25 ", "enderecos": "1149 ", "percentual": "11,5%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "277 ", "percentual": "5,1%" },
- { "separador": "Nataly Czech Mangi ","pedidos": "2 ", "enderecos": "135 ", "percentual": "0,9%" },
- { "separador": "Francisco Cristiano ","pedidos": "7 ", "enderecos": "206 ", "percentual": "3,2%" },
- { "separador": "Raquel Ferreira ","pedidos": "1 ", "enderecos": "22 ", "percentual": "0,5%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "9 ", "percentual": "0,5%" }
-
-
+ { "separador": "Valdenice da Silva ","pedidos": "42 ", "enderecos": "927 ", "percentual": "9,5%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "39 ", "enderecos": "1407 ", "percentual": "8,8%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "53 ", "enderecos": "1908 ", "percentual": "11,9%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "49 ", "enderecos": "1525 ", "percentual": "11,0%" },
+ { "separador": "Debora Correa ","pedidos": "85 ", "enderecos": "1912 ", "percentual": "19,1%" },
+ { "separador": "Rafaelen Gomes Da Silva ","pedidos": "28 ", "enderecos": "552 ", "percentual": "6,3%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "36 ", "enderecos": "1254 ", "percentual": "8,1%" },
+ { "separador": "Nayra Maria Santos Souza ","pedidos": "35 ", "enderecos": "283 ", "percentual": "7,9%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "32 ", "enderecos": "2414 ", "percentual": "7,2%" },
+ { "separador": "Roberta Ferreira da Costa ","pedidos": "20 ", "enderecos": "289 ", "percentual": "4,5%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "202 ", "percentual": "2,5%" },
+ { "separador": "SYTHEX ","pedidos": "2 ", "enderecos": "12 ", "percentual": "0,5%" },
+ { "separador": "Nataly Czech Mangi ","pedidos": "2 ", "enderecos": "995 ", "percentual": "0,5%" },
+ { "separador": "Francisco Cristiano ","pedidos": "8 ", "enderecos": "815 ", "percentual": "1,8%" }
+0,5%
  ],
   "pedidos_pendentes": [
- { "pedido": "694202 ","integrado": "27/05/2026 10:03 ", "status": "falta_conferir ", "cliente": "CLINICA MEDICA PRODIGEST LTDA" },
- { "pedido": "694694 ","integrado": "28/05/2026 15:25 ", "status": "falta_separar ", "cliente": "NNMED  DISTRIBUICAO  IMPORTACAO E EXPORTACAO DE ME" },
- { "pedido": "694734 ","integrado": "28/05/2026 17:47 ", "status": "falta_separar ", "cliente": "AVANCE MEDICAMENTOS LTDA" },
- { "pedido": "694712 ","integrado": "28/05/2026 17:47 ", "status": "falta_separar ", "cliente": "CENTERVIDA DIAGNOSTICA LTDA" },
- { "pedido": "694752 ","integrado": "28/05/2026 17:47 ", "status": "falta_separar ", "cliente": "ULTRA MEDICAL COMERCIO DE MATERIAIS HOSPITALARES L" },
- { "pedido": "694722 ","integrado": "28/05/2026 17:48 ", "status": "falta_separar ", "cliente": "RR COMERCIO DE PRODUTOS FARMACEUTICOS E HOSPITALAR" },
- { "pedido": "694580 ","integrado": "28/05/2026 17:48 ", "status": "falta_separar ", "cliente": "GREEN MED DISTRIBUIDORA E IMPORTADORA DE MEDICAMEN" },
- { "pedido": "694608 ","integrado": "28/05/2026 17:49 ", "status": "falta_separar ", "cliente": "JR DISTRIBUIDORA DE PRODUTOS MED HOSPITALARES LTDA" },
- { "pedido": "694604 ","integrado": "28/05/2026 17:51 ", "status": "falta_separar ", "cliente": "NOVA DENTAL COMERCIO E SERVICOS LTDA" },
- { "pedido": "694724 ","integrado": "28/05/2026 17:51 ", "status": "falta_separar ", "cliente": "DOM BOSCO HOSPITALAR LTDA" }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ { "pedido": "695020 ","integrado": "02/06/2026 17:31 ", "status": "falta_conferir ", "cliente": "ISABELLA PARDINI COMERCIO DE MATERIAL MEDICO E HOS" },
+ { "pedido": "695083 ","integrado": "02/06/2026 17:34 ", "status": "falta_conferir ", "cliente": "CENTRO DE DIAGNOSTICO MATOZINHOS LTDA" },
+ { "pedido": "695163 ","integrado": "02/06/2026 17:34 ", "status": "falta_conferir ", "cliente": "PROFARM COMERCIO DE MEDICAMENTOS E MATERIAL HOSPIT" },
+ { "pedido": "695093 ","integrado": "02/06/2026 18:22 ", "status": "falta_conferir ", "cliente": "MAPMED PRODUTOS HOSPITALARES LTDA" },
+ { "pedido": "695153 ","integrado": "02/06/2026 19:31 ", "status": "falta_conferir ", "cliente": "DBV COMERCIO IMPORTACAO E EXPORTACAO DO BRASIL LTD" },
+ { "pedido": "695183 ","integrado": "02/06/2026 19:31 ", "status": "falta_conferir ", "cliente": "PASSOS COMERCIAL HOSPITALAR LTDA" },
+ { "pedido": "695209 ","integrado": "02/06/2026 19:32 ", "status": "falta_conferir ", "cliente": "TREMED MATERIAIS E EQUIPAMENTOS HOSPITALARES LTDA" },
+ { "pedido": "695217 ","integrado": "02/06/2026 19:39 ", "status": "falta_conferir ", "cliente": "DE PAULI COMERCIO REPRESENTACAO IMPORTACAO E EXPOR" },
+ { "pedido": "694914 ","integrado": "02/06/2026 19:39 ", "status": "falta_separar ", "cliente": "PLUSPHARMA DISTRIBUICAO LTDA" },
+ { "pedido": "695132 ","integrado": "02/06/2026 19:40 ", "status": "falta_separar ", "cliente": "CIRURGICA BRASILEIRA COMERCIO DE PRODUTOS HOSPITAL" },
+ { "pedido": "695201 ","integrado": "02/06/2026 20:44 ", "status": "falta_separar ", "cliente": "STAR COMERCIO LTDA" },
+ { "pedido": "695224 ","integrado": "02/06/2026 21:04 ", "status": "falta_separar ", "cliente": "SUPRI VALE PRODUTOS MEDICOS E ORTOPEDICOS LTDA" },
+ { "pedido": "695230 ","integrado": "02/06/2026 21:04 ", "status": "falta_separar ", "cliente": "CENTERVETLAB LABORATORIO VETERINARIO LTDA" },
+ { "pedido": "695228 ","integrado": "02/06/2026 21:04 ", "status": "falta_separar ", "cliente": "HEAL PHARMA DISTRIBUIDORA LTDA" },
+ { "pedido": "695361 ","integrado": "02/06/2026 21:05 ", "status": "falta_separar ", "cliente": "DIREZIONE PRESTACAO DE SERVICOS LTDA" },
+ { "pedido": "695340 ","integrado": "02/06/2026 21:05 ", "status": "falta_separar ", "cliente": "NATOMEDIC PRODUTOS DE SAUDE LTDA" },
+ { "pedido": "695266 ","integrado": "02/06/2026 21:06 ", "status": "falta_separar ", "cliente": "PREMISSE HOSPITALAR LTDA" },
+ { "pedido": "695393 ","integrado": "02/06/2026 21:06 ", "status": "falta_separar ", "cliente": "NETCARE COMERCIO DE PRODUTOS MEDICOS E LABORATORIA" },
+ { "pedido": "695282 ","integrado": "02/06/2026 21:06 ", "status": "falta_separar ", "cliente": "LABORATORIO DE ANALISES CLINICAS LOUIS PASTEUR LIM" },
+ { "pedido": "695248 ","integrado": "02/06/2026 21:06 ", "status": "falta_separar ", "cliente": "PRODUVALE PRODUTOS HOSPITALARES LTDA" },
+ { "pedido": "695300 ","integrado": "02/06/2026 21:07 ", "status": "falta_separar ", "cliente": "AR DISTRIBUIDORA HOSPITALAR LTDA" },
+ { "pedido": "695308 ","integrado": "02/06/2026 21:07 ", "status": "falta_separar ", "cliente": "DIGEMAN  DISTRIBUIDORA GERAL DE MEDICAMENTOS ANANI" },
+ { "pedido": "695219 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "CASA DE SAUDE NOSSA SENHORA DA CONCEICAO LTDA" },
+ { "pedido": "695288 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "VITORIA DISTRIBUIDORA DE MEDICAMENTOS E MATERIAL H" },
+ { "pedido": "695353 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "LACLIMED  LABORATORIO DE ANALISES CLINICAS LTDA" },
+ { "pedido": "695373 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "BRASIL CARE DISTRIBUIDORA LTDA" },
+ { "pedido": "695379 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "NOVA DENTAL COMERCIO E SERVICOS LTDA" }
 
 
   ]
