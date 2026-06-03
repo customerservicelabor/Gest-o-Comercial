@@ -1,5 +1,5 @@
 {
-  "atualizacao": "03/06/2026 08:55",
+  "atualizacao": "03/06/2026 09:01",
 
   "cards": {
     "falta_separar": 30,
@@ -54,7 +54,32 @@
  { "pedido": "695288 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "VITORIA DISTRIBUIDORA DE MEDICAMENTOS E MATERIAL H" },
  { "pedido": "695353 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "LACLIMED  LABORATORIO DE ANALISES CLINICAS LTDA" },
  { "pedido": "695373 ","integrado": "02/06/2026 21:47 ", "status": "falta_separar ", "cliente": "BRASIL CARE DISTRIBUIDORA LTDA" },
- { "pedido": "695379 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "NOVA DENTAL COMERCIO E SERVICOS LTDA" }
+ { "pedido": "695379 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "NOVA DENTAL COMERCIO E SERVICOS LTDA" },
+ { "pedido": "695404 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "LABORATORIO GUARARAPES DE ANALISES CLINICAS LTDA" },
+ { "pedido": "695384 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "BRASIL MEDICO E LABORATORIAL LTDA" },
+ { "pedido": "695260 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "MEDPOA COMERCIO DE MATERIAL HOSPITALAR LTDA" },
+ { "pedido": "695268 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "CASA MEDICA  COMERCIO DE PRODUTOS HOSPITALARES LTD" },
+ { "pedido": "695276 ","integrado": "02/06/2026 21:48 ", "status": "falta_separar ", "cliente": "LABGLASS COMERCIO DE EQUIPAMENTOS PARA LABORATORIO" },
+ { "pedido": "695290 ","integrado": "02/06/2026 21:49 ", "status": "falta_separar ", "cliente": "INVICTA DIAGNOSTICA COMERCIO E SERVICO DE MATERIAI" },
+ { "pedido": "695333 ","integrado": "02/06/2026 21:49 ", "status": "falta_separar ", "cliente": "XLAB  SUPRIMENTOS PARA LABORATORIO LTDA" },
+ { "pedido": "695344 ","integrado": "02/06/2026 21:49 ", "status": "falta_separar ", "cliente": "CRISTALINA MATERIAIS CIRURGICOS LTDA" },
+ { "pedido": "695264 ","integrado": "02/06/2026 21:50 ", "status": "falta_separar ", "cliente": "DIMMEX COMERCIO DE PRODUTOS HOSPITALARES LTDA" },
+ { "pedido": "695408 ","integrado": "02/06/2026 21:50 ", "status": "falta_separar ", "cliente": "CIRURGICA PARANA IMPORTACAO E COMERCIO ATACADISTA" },
+ { "pedido": "695306 ","integrado": "02/06/2026 14:44 ", "status": "falta_conferir ", "cliente": "SERVICO DE HEMOTERAPIA DE SAO JOSE DOS CAMPOS LTDA" },
+ { "pedido": "694976 ","integrado": "02/06/2026 14:47 ", "status": "falta_conferir ", "cliente": "TOTAL SEGURANCA EQUIPAMENTOS DE PROTECAO E SERVICO" },
+ { "pedido": "694694 ","integrado": "28/05/2026 15:25 ", "status": "falta_separar ", "cliente": "NNMED  DISTRIBUICAO  IMPORTACAO E EXPORTACAO DE ME" },
+ { "pedido": "694384 ","integrado": "28/05/2026 22:29 ", "status": "falta_conferir ", "cliente": "LABORATORIO MARIALVA DE ANALISES CLINICAS LTDA" }
+
+
+
+
+
+
+
+
+
+
+
 
 
   ]
