@@ -1,23 +1,23 @@
 {
-  "atualizacao": "16/06/2026 15:55",
+  "atualizacao": "16/06/2026 16:57",
 
   "cards": {
-    "falta_separar": 1,
+    "falta_separar": 3,
     "falta_conferir": 0,
-    "em_execucao": 1,
-    "total_pendente": 2,
-    "concluido": 57,
-    "total_pedidos": 59
+    "em_execucao": 3,
+    "total_pendente": 6,
+    "concluido": 63,
+    "total_pedidos": 69
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "17,5%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "9 ", "enderecos": "44 ", "percentual": "15,3%" },
- { "separador": "Debora Correa ","pedidos": "18 ", "enderecos": "88 ", "percentual": "30,5%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "8 ", "enderecos": "59 ", "percentual": "13,6%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "8 ", "enderecos": "97 ", "percentual": "13,6%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,7%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "5 ", "enderecos": "10 ", "percentual": "8,5%" }
+ { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "15,2%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "10 ", "enderecos": "50 ", "percentual": "14,9%" },
+ { "separador": "Debora Correa ","pedidos": "22 ", "enderecos": "98 ", "percentual": "32,8%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "8 ", "enderecos": "59 ", "percentual": "11,9%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "11 ", "enderecos": "105 ", "percentual": "16,4%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,5%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "5 ", "enderecos": "10 ", "percentual": "7,5%" }
 
 
 
@@ -28,9 +28,9 @@
 
  ],
   "pedidos_pendentes": [
- { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" }
-
-
+ { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
+ { "pedido": "697107 ","integrado": "16/06/2026 16:47 ", "status": "falta_separar ", "cliente": "SUEVIT DISTRIBUIDORA E IMPORTADORA HOSPITALAR LTDA" },
+ { "pedido": "697131 ","integrado": "16/06/2026 16:47 ", "status": "falta_separar ", "cliente": "SUPER MEDICO COMERCIO DE MATERIAL MEDICO HOSPITALA" }
 
 
 
