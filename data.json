@@ -1,23 +1,23 @@
 {
-  "atualizacao": "16/06/2026 15:25",
+  "atualizacao": "16/06/2026 15:37",
 
   "cards": {
-    "falta_separar": 3,
-    "falta_conferir": 5,
-    "em_execucao": 2,
-    "total_pendente": 10,
-    "concluido": 46,
-    "total_pedidos": 56
+    "falta_separar": 4,
+    "falta_conferir": 2,
+    "em_execucao": 1,
+    "total_pendente": 7,
+    "concluido": 52,
+    "total_pedidos": 59
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "18,0%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "8 ", "enderecos": "41 ", "percentual": "14,8%" },
- { "separador": "Debora Correa ","pedidos": "17 ", "enderecos": "80 ", "percentual": "31,5%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "6 ", "enderecos": "53 ", "percentual": "11,1%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "8 ", "enderecos": "78 ", "percentual": "14,8%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,9%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "4 ", "enderecos": "8 ", "percentual": "7,4%" }
+ { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "17,7%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "8 ", "enderecos": "41 ", "percentual": "14,3%" },
+ { "separador": "Debora Correa ","pedidos": "18 ", "enderecos": "88 ", "percentual": "32,1%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "7 ", "enderecos": "56 ", "percentual": "12,5%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "8 ", "enderecos": "78 ", "percentual": "14,3%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,8%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "4 ", "enderecos": "8 ", "percentual": "7,1%" }
 
 
 
@@ -29,13 +29,13 @@
  ],
   "pedidos_pendentes": [
  { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
- { "pedido": "696770 ","integrado": "16/06/2026 14:39 ", "status": "falta_conferir ", "cliente": "MEDSHALOM LTDA" },
- { "pedido": "697073 ","integrado": "16/06/2026 14:39 ", "status": "falta_conferir ", "cliente": "CIENTIFICALAB PRODUTOS LABORATORIAIS E SISTEMAS LT" },
- { "pedido": "697085 ","integrado": "16/06/2026 14:40 ", "status": "falta_conferir ", "cliente": "C  R  TEDARDI   CIA LTDA" },
- { "pedido": "697089 ","integrado": "16/06/2026 14:40 ", "status": "falta_conferir ", "cliente": "GR HOSPITALAR E SERVICOS LTDA" },
- { "pedido": "697093 ","integrado": "16/06/2026 14:40 ", "status": "falta_conferir ", "cliente": "MA SANDOVAL LTDA" },
- { "pedido": "697105 ","integrado": "16/06/2026 15:11 ", "status": "falta_separar ", "cliente": "CIENTIFICALAB PRODUTOS LABORATORIAIS E SISTEMAS LT" },
- { "pedido": "697123 ","integrado": "16/06/2026 15:14 ", "status": "falta_separar ", "cliente": "AMOR SAUDE SAO VICENTE LTDA" }
+ { "pedido": "697105 ","integrado": "16/06/2026 15:11 ", "status": "falta_conferir ", "cliente": "CIENTIFICALAB PRODUTOS LABORATORIAIS E SISTEMAS LT" },
+ { "pedido": "697123 ","integrado": "16/06/2026 15:14 ", "status": "falta_conferir ", "cliente": "AMOR SAUDE SAO VICENTE LTDA" },
+ { "pedido": "697127 ","integrado": "16/06/2026 15:29 ", "status": "falta_separar ", "cliente": "PONTO COM PRODUTOS HOSPITALARES LTDA" },
+ { "pedido": "697099 ","integrado": "16/06/2026 15:31 ", "status": "falta_separar ", "cliente": "DIAGNOSTICOS DA AMERICA S A" },
+ { "pedido": "697129 ","integrado": "16/06/2026 15:31 ", "status": "falta_separar ", "cliente": "SIDD COMERCIAL DISTRIBUIDORA DE MEDICAMENTOS LTDA" }
+
+
 
 
 
