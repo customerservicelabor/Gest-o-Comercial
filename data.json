@@ -1,23 +1,23 @@
 {
-  "atualizacao": "16/06/2026 15:37",
+  "atualizacao": "16/06/2026 15:44",
 
   "cards": {
-    "falta_separar": 4,
+    "falta_separar": 1,
     "falta_conferir": 2,
-    "em_execucao": 1,
-    "total_pendente": 7,
-    "concluido": 52,
+    "em_execucao": 2,
+    "total_pendente": 5,
+    "concluido": 54,
     "total_pedidos": 59
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "17,7%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "8 ", "enderecos": "41 ", "percentual": "14,3%" },
- { "separador": "Debora Correa ","pedidos": "18 ", "enderecos": "88 ", "percentual": "32,1%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "7 ", "enderecos": "56 ", "percentual": "12,5%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "8 ", "enderecos": "78 ", "percentual": "14,3%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,8%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "4 ", "enderecos": "8 ", "percentual": "7,1%" }
+ { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "17,5%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "9 ", "enderecos": "44 ", "percentual": "15,3%" },
+ { "separador": "Debora Correa ","pedidos": "18 ", "enderecos": "88 ", "percentual": "30,5%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "8 ", "enderecos": "57 ", "percentual": "13,6%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "8 ", "enderecos": "97 ", "percentual": "13,6%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,7%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "5 ", "enderecos": "10 ", "percentual": "8,5%" }
 
 
 
@@ -29,11 +29,11 @@
  ],
   "pedidos_pendentes": [
  { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
- { "pedido": "697105 ","integrado": "16/06/2026 15:11 ", "status": "falta_conferir ", "cliente": "CIENTIFICALAB PRODUTOS LABORATORIAIS E SISTEMAS LT" },
  { "pedido": "697123 ","integrado": "16/06/2026 15:14 ", "status": "falta_conferir ", "cliente": "AMOR SAUDE SAO VICENTE LTDA" },
- { "pedido": "697127 ","integrado": "16/06/2026 15:29 ", "status": "falta_separar ", "cliente": "PONTO COM PRODUTOS HOSPITALARES LTDA" },
- { "pedido": "697099 ","integrado": "16/06/2026 15:31 ", "status": "falta_separar ", "cliente": "DIAGNOSTICOS DA AMERICA S A" },
- { "pedido": "697129 ","integrado": "16/06/2026 15:31 ", "status": "falta_separar ", "cliente": "SIDD COMERCIAL DISTRIBUIDORA DE MEDICAMENTOS LTDA" }
+ { "pedido": "697129 ","integrado": "16/06/2026 15:31 ", "status": "falta_conferir ", "cliente": "SIDD COMERCIAL DISTRIBUIDORA DE MEDICAMENTOS LTDA" }
+
+
+
 
 
 
