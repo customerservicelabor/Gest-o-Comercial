@@ -1,21 +1,21 @@
 {
-  "atualizacao": "16/06/2026 14:20",
+  "atualizacao": "16/06/2026 14:33",
 
   "cards": {
-    "falta_separar": 2,
-    "falta_conferir": 1,
-    "em_execucao": 1,
-    "total_pendente": 4,
-    "concluido": 38,
+    "falta_separar": 1,
+    "falta_conferir": 0,
+    "em_execucao": 0,
+    "total_pendente": 1,
+    "concluido": 41,
     "total_pedidos": 42
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "9 ", "enderecos": "61 ", "percentual": "21,5%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "7 ", "enderecos": "36 ", "percentual": "17,1%" },
- { "separador": "Debora Correa ","pedidos": "14 ", "enderecos": "70 ", "percentual": "34,2%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "4 ", "enderecos": "47 ", "percentual": "9,8%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "5 ", "enderecos": "57 ", "percentual": "12,2%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "22,8%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "7 ", "enderecos": "36 ", "percentual": "16,7%" },
+ { "separador": "Debora Correa ","pedidos": "14 ", "enderecos": "70 ", "percentual": "33,3%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "4 ", "enderecos": "47 ", "percentual": "9,5%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "5 ", "enderecos": "57 ", "percentual": "11,9%" },
  { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "2,4%" },
  { "separador": "Rafael dos Santos Francisco ","pedidos": "1 ", "enderecos": "2 ", "percentual": "2,4%" }
 
@@ -28,9 +28,9 @@
 
  ],
   "pedidos_pendentes": [
- { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
- { "pedido": "696604 ","integrado": "16/06/2026 12:22 ", "status": "falta_conferir ", "cliente": "EPORT LTDA" },
- { "pedido": "697077 ","integrado": "16/06/2026 13:25 ", "status": "falta_separar ", "cliente": "J  G  P  MIRANDA  LABOCANI  LABORATORIO CLINICO VE" }
+ { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" }
+
+
 
 
 
