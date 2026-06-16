@@ -1,23 +1,23 @@
 {
-  "atualizacao": "09/06/2026 12:06",
+  "atualizacao": "16/06/2026 14:20",
 
   "cards": {
-    "falta_separar": 1,
-    "falta_conferir": 0,
-    "em_execucao": 4,
-    "total_pendente": 5,
-    "concluido": 35,
-    "total_pedidos": 40
+    "falta_separar": 2,
+    "falta_conferir": 1,
+    "em_execucao": 1,
+    "total_pendente": 4,
+    "concluido": 38,
+    "total_pedidos": 42
   },
 
   "produtividade": [
- { "separador": "Debora Correa ","pedidos": "10 ", "enderecos": "110 ", "percentual": "25,0%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "15 ", "enderecos": "75 ", "percentual": "37,5%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "1 ", "percentual": "2,5%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "5 ", "enderecos": "45 ", "percentual": "12,5%" },
- { "separador": "Karina Aparecida De Souza ","pedidos": "5 ", "enderecos": "52 ", "percentual": "12,5%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "3 ", "enderecos": "26 ", "percentual": "7,5%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "1 ", "enderecos": "5 ", "percentual": "2,5%" }
+ { "separador": "Karina Aparecida De Souza ","pedidos": "9 ", "enderecos": "61 ", "percentual": "21,5%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "7 ", "enderecos": "36 ", "percentual": "17,1%" },
+ { "separador": "Debora Correa ","pedidos": "14 ", "enderecos": "70 ", "percentual": "34,2%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "4 ", "enderecos": "47 ", "percentual": "9,8%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "5 ", "enderecos": "57 ", "percentual": "12,2%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "2,4%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "1 ", "enderecos": "2 ", "percentual": "2,4%" }
 
 
 
@@ -28,9 +28,9 @@
 
  ],
   "pedidos_pendentes": [
- { "pedido": "695950 ","integrado": "09/06/2026 11:51 ", "status": "falta_separar ", "cliente": "SAO ROQUE DISTRIBUIDORA DE MEDICAMENTOS E MATERIAI" }
-
-
+ { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
+ { "pedido": "696604 ","integrado": "16/06/2026 12:22 ", "status": "falta_conferir ", "cliente": "EPORT LTDA" },
+ { "pedido": "697077 ","integrado": "16/06/2026 13:25 ", "status": "falta_separar ", "cliente": "J  G  P  MIRANDA  LABOCANI  LABORATORIO CLINICO VE" }
 
 
 
