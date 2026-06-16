@@ -1,23 +1,23 @@
 {
-  "atualizacao": "16/06/2026 17:25",
+  "atualizacao": "16/06/2026 17:49",
 
   "cards": {
     "falta_separar": 11,
-    "falta_conferir": 0,
+    "falta_conferir": 2,
     "em_execucao": 4,
-    "total_pendente": 15,
-    "concluido": 66,
-    "total_pedidos": 81
+    "total_pendente": 17,
+    "concluido": 68,
+    "total_pedidos": 85
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "13,0%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "11 ", "enderecos": "51 ", "percentual": "15,5%" },
- { "separador": "Debora Correa ","pedidos": "24 ", "enderecos": "105 ", "percentual": "33,8%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "9 ", "enderecos": "69 ", "percentual": "12,7%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "11 ", "enderecos": "115 ", "percentual": "15,5%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,4%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "5 ", "enderecos": "10 ", "percentual": "7,0%" }
+ { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "12,4%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "12 ", "enderecos": "60 ", "percentual": "16,0%" },
+ { "separador": "Debora Correa ","pedidos": "26 ", "enderecos": "120 ", "percentual": "34,7%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "10 ", "enderecos": "70 ", "percentual": "13,3%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "11 ", "enderecos": "125 ", "percentual": "14,7%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,3%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "5 ", "enderecos": "10 ", "percentual": "6,7%" }
 
 
 
@@ -29,18 +29,18 @@
  ],
   "pedidos_pendentes": [
  { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
- { "pedido": "697117 ","integrado": "16/06/2026 17:06 ", "status": "falta_separar ", "cliente": "AARAO MED COMERCIO DE PRODUTOS MEDICOS LTDA" },
- { "pedido": "697151 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "CIRURGICA MATERMED COMERCIO DE PRODUTOS HOSPITALAR" },
- { "pedido": "697119 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "LABORATORIO LABOR VIDA ITAPEMIRIM LTDA" },
- { "pedido": "697155 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "D E A FARMA DISTRIBUIDORA DE PRODUTOS FARMACEUTICO" },
+ { "pedido": "697107 ","integrado": "16/06/2026 16:47 ", "status": "falta_conferir ", "cliente": "SUEVIT DISTRIBUIDORA E IMPORTADORA HOSPITALAR LTDA" },
+ { "pedido": "697119 ","integrado": "16/06/2026 17:07 ", "status": "falta_conferir ", "cliente": "LABORATORIO LABOR VIDA ITAPEMIRIM LTDA" },
  { "pedido": "697159 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "ITAPETININGA PRODUTOS MEDICOS LTDA" },
  { "pedido": "697157 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "POLYMEDH  LTDA" },
  { "pedido": "697163 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "GALMED COMERCIAL DE PRODUTOS HOSPITALARES LTDA" },
  { "pedido": "696961 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "NORDELAB COMERCIO E REPRESENTACOES LTDA" },
  { "pedido": "697145 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "RC MED HOSPITALAR LTDA" },
- { "pedido": "697079 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "FELBRA DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTD" }
-
-
+ { "pedido": "697079 ","integrado": "16/06/2026 17:07 ", "status": "falta_separar ", "cliente": "FELBRA DISTRIBUIDORA DE PRODUTOS FARMACEUTICOS LTD" },
+ { "pedido": "697165 ","integrado": "16/06/2026 17:29 ", "status": "falta_separar ", "cliente": "QUALITYC O M CIRURGICO ODONTO MEDICO LTDA" },
+ { "pedido": "697167 ","integrado": "16/06/2026 17:29 ", "status": "falta_separar ", "cliente": "PHOENIX MED MATERIAL HOSPITALAR LTDA" },
+ { "pedido": "697161 ","integrado": "16/06/2026 17:29 ", "status": "falta_separar ", "cliente": "LINE BRASIL INDUSTRIA COMERCIO E DISTRIBUICAO DE P" },
+ { "pedido": "697171 ","integrado": "16/06/2026 17:29 ", "status": "falta_separar ", "cliente": "MEDZ DISTRIBUIDORA HOSPITALAR E MEDICA LTDA" }
 
 
 
