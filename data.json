@@ -10,8 +10,9 @@
     "total_pedidos": 16
   },
 
-  "produtividade": [
- { "separador": }
+"produtividade": [
+  { "separador": "" }
+]
 
 
 
