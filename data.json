@@ -1,23 +1,23 @@
 {
-  "atualizacao": "16/06/2026 18:45",
+  "atualizacao": "17/06/2026 09:26",
 
   "cards": {
-    "falta_separar": 1,
-    "falta_conferir": 2,
-    "em_execucao": 3,
-    "total_pendente": 6,
-    "concluido": 79,
-    "total_pedidos": 85
+    "falta_separar": 16,
+    "falta_conferir": 0,
+    "em_execucao": 0,
+    "total_pendente": 16,
+    "concluido": 0,
+    "total_pedidos": 16
   },
 
   "produtividade": [
- { "separador": "Karina Aparecida De Souza ","pedidos": "10 ", "enderecos": "65 ", "percentual": "12,2%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "13 ", "enderecos": "79 ", "percentual": "15,3%" },
- { "separador": "Debora Correa ","pedidos": "30 ", "enderecos": "143 ", "percentual": "35,3%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "10 ", "enderecos": "80 ", "percentual": "11,8%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "12 ", "enderecos": "131 ", "percentual": "14,1%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "1,2%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "9 ", "enderecos": "18 ", "percentual": "10,6%" }
+ { "separador": "69100,0%}
+
+
+
+
+
+
 
 
 
@@ -28,22 +28,22 @@
 
  ],
   "pedidos_pendentes": [
- { "pedido": "697011 ","integrado": "16/06/2026 10:01 ", "status": "falta_separar ", "cliente": "MIX COMERCIO E SERVICOS LTDA" },
- { "pedido": "697165 ","integrado": "16/06/2026 17:29 ", "status": "falta_conferir ", "cliente": "QUALITYC O M CIRURGICO ODONTO MEDICO LTDA" },
- { "pedido": "697171 ","integrado": "16/06/2026 17:29 ", "status": "falta_conferir ", "cliente": "MEDZ DISTRIBUIDORA HOSPITALAR E MEDICA LTDA" }
-
-
-
-
-
-
-
-
-
-
-
-
-
+ { "pedido": "697199 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "RIO DE JANEIRO MEDICINA LABORATORIAL LTDA" },
+ { "pedido": "697201 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "PATOLOGIA LABORATORIO DE ANALISES CLINICAS LTDA" },
+ { "pedido": "697203 ","integrado": "17/06/2026 09:13 ", "status": "falta_separar ", "cliente": "ULTRAMED DISTRIBUIDORA LTDA" },
+ { "pedido": "697179 ","integrado": "17/06/2026 09:11 ", "status": "falta_separar ", "cliente": "JURANDIR ANTONIO RODRIGUES BASTOS" },
+ { "pedido": "697181 ","integrado": "17/06/2026 09:11 ", "status": "falta_separar ", "cliente": "BIMED  EXAMES COMPLEMENTARES NR7 LTDA" },
+ { "pedido": "697183 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "C A PRODUTOS MEDICOS LTDA" },
+ { "pedido": "697185 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "CRUZ ROSSA COMERCIO DE MATERIAIS MEDICOS LTDA" },
+ { "pedido": "697187 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "PAULO CARNEIRO DE LUCENA EM RECUPERACAO JUDICIAL E" },
+ { "pedido": "697189 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "LABORATORIO DE ANALISES CLINICAS EVERSON LTDA" },
+ { "pedido": "697191 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "FUNDACAO PROINSTITUTO DE HEMATOLOGIARJ  FUNDARJ" },
+ { "pedido": "697195 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "DIMMEX COMERCIO DE PRODUTOS HOSPITALARES LTDA" },
+ { "pedido": "697173 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "RD PHARMA LTDA" },
+ { "pedido": "697169 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "MAYRA GABRIELA ROCHA DE OLIVEIRA" },
+ { "pedido": "697197 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "SERVICOS DE HEMOTERAPIA DR  PACCA LTDA" },
+ { "pedido": "697153 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "ELLO DISTRIBUICAO LTDA" },
+ { "pedido": "697193 ","integrado": "17/06/2026 09:12 ", "status": "falta_separar ", "cliente": "DUMALE PRODUTOS PARA SAUDE LTDA" }
 
 
 
