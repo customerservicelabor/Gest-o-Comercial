@@ -1,38 +1,41 @@
 {
-  "atualizacao": "29/06/2026 11:08",
+  "atualizacao": "29/06/2026 11:48",
 
   "cards": {
-    "falta_separar": 2,
-    "falta_conferir": 4,
+    "falta_separar": 0,
+    "falta_conferir": 3,
     "em_execucao": 10,
-    "total_pendente": 16,
-    "concluido": 157,
-    "total_pedidos": 173
+    "total_pendente": 13,
+    "concluido": 168,
+    "total_pedidos": 181
   },
 
   "produtividade": [
  { "separador": "Marcia Cristina Tavares de Almeida ","pedidos": "2 ", "enderecos": "33 ", "percentual": "2,9%" },
- { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "13 ", "enderecos": "104 ", "percentual": "7,4%" },
- { "separador": "Karina Aparecida De Souza ","pedidos": "20 ", "enderecos": "166 ", "percentual": "11,4%" },
- { "separador": "Debora Correa ","pedidos": "30 ", "enderecos": "117 ", "percentual": "17,1%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "10 ", "enderecos": "29 ", "percentual": "5,7%" },
- { "separador": "Valdenice da Silva ","pedidos": "17 ", "enderecos": "96 ", "percentual": "9,7%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "20 ", "enderecos": "108 ", "percentual": "11,4%" },
- { "separador": "Nayra Maria Santos Souza ","pedidos": "6 ", "enderecos": "46 ", "percentual": "3,4%" },
- { "separador": "Raquel Ferreira ","pedidos": "17 ", "enderecos": "165 ", "percentual": "9,7%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "12 ", "enderecos": "85 ", "percentual": "6,9%" },
- { "separador": "Lucas Alves Torres ","pedidos": "1 ", "enderecos": "53 ", "percentual": "0,6%" },
- { "separador": "Silderlan Leal da Silva ","pedidos": "2 ", "enderecos": "4 ", "percentual": "1,1%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "8 ", "percentual": "0,6%" },
- { "separador": "Jocelio Ventura de Magalhães ","pedidos": "3 ", "enderecos": "10 ", "percentual": "1,7%" }
+ { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "14 ", "enderecos": "114 ", "percentual": "7,5%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "21 ", "enderecos": "169 ", "percentual": "11,3%" },
+ { "separador": "Debora Correa ","pedidos": "31 ", "enderecos": "119 ", "percentual": "16,7%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "31 ", "percentual": "5,9%" },
+ { "separador": "Valdenice da Silva ","pedidos": "18 ", "enderecos": "110 ", "percentual": "9,7%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "20 ", "enderecos": "132 ", "percentual": "10,8%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "21 ", "enderecos": "110 ", "percentual": "11,3%" },
+ { "separador": "Nayra Maria Santos Souza ","pedidos": "6 ", "enderecos": "46 ", "percentual": "3,2%" },
+ { "separador": "Raquel Ferreira ","pedidos": "17 ", "enderecos": "165 ", "percentual": "9,1%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "14 ", "enderecos": "96 ", "percentual": "7,5%" },
+ { "separador": "Lucas Alves Torres ","pedidos": "2 ", "enderecos": "5 ", "percentual": "1,1%" },
+ { "separador": "Silderlan Leal da Silva ","pedidos": "3 ", "enderecos": "8 ", "percentual": "1,6%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "2 ", "enderecos": "9 ", "percentual": "1,1%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "6 ", "percentual": "0,5%" },
+ { "separador": "Jocelio Ventura de Magalhães ","pedidos": "3 ", "enderecos": "10 ", "percentual": "1,6%" }
+
  ],
   "pedidos_pendentes": [
- { "pedido": "698790 ","integrado": "29/06/2026 10:12 ", "status": "falta_conferir ", "cliente": "ODONTO CIRURGICA JUIZ DE FORA LTDA" },
- { "pedido": "698836 ","integrado": "29/06/2026 10:45 ", "status": "falta_separar ", "cliente": "CARE MED COMERCIO HOSPITALAR E DISTRIBUIDORA LTDA" },
- { "pedido": "698850 ","integrado": "29/06/2026 10:45 ", "status": "falta_conferir ", "cliente": "SUPERDINATEC COMERCIO E IMPORTACAO DE MATERIAL MED" },
- { "pedido": "698826 ","integrado": "29/06/2026 10:45 ", "status": "falta_conferir ", "cliente": "L N DISTRIBUIDORA DE PRODUTOS HOSPITALARES DE SAUD" },
- { "pedido": "698844 ","integrado": "29/06/2026 10:45 ", "status": "falta_conferir ", "cliente": "OPEN FARMA COMERCIO DE PRODUTOS HOSPITALARES LTDA" },
- { "pedido": "698848 ","integrado": "29/06/2026 10:45 ", "status": "falta_separar ", "cliente": "VERA CRUZ SAUDE HOSPITALAR LTDA" }
+ { "pedido": "698500 ","integrado": "29/06/2026 10:41 ", "status": "falta_conferir ", "cliente": "A   S COMERCIO DE PRODUTOS E MATERIAIS HOSPITALARE" },
+ { "pedido": "698864 ","integrado": "29/06/2026 11:17 ", "status": "falta_conferir ", "cliente": "FRONTMED LTDA" },
+ { "pedido": "698605 ","integrado": "29/06/2026 11:19 ", "status": "falta_conferir ", "cliente": "MEDSET SOLUCOES PARA SAUDE LTDA" }
+
+
+
 
 
 
