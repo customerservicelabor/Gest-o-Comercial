@@ -1,38 +1,38 @@
 {
-  "atualizacao": "29/06/2026 11:48",
+  "atualizacao": "29/06/2026 12:26",
 
   "cards": {
     "falta_separar": 0,
-    "falta_conferir": 3,
-    "em_execucao": 10,
-    "total_pendente": 13,
-    "concluido": 168,
-    "total_pedidos": 181
+    "falta_conferir": 1,
+    "em_execucao": 9,
+    "total_pendente": 10,
+    "concluido": 179,
+    "total_pedidos": 189
   },
 
   "produtividade": [
- { "separador": "Marcia Cristina Tavares de Almeida ","pedidos": "2 ", "enderecos": "33 ", "percentual": "2,9%" },
- { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "14 ", "enderecos": "114 ", "percentual": "7,5%" },
- { "separador": "Karina Aparecida De Souza ","pedidos": "21 ", "enderecos": "169 ", "percentual": "11,3%" },
- { "separador": "Debora Correa ","pedidos": "31 ", "enderecos": "119 ", "percentual": "16,7%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "31 ", "percentual": "5,9%" },
- { "separador": "Valdenice da Silva ","pedidos": "18 ", "enderecos": "110 ", "percentual": "9,7%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "20 ", "enderecos": "132 ", "percentual": "10,8%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "21 ", "enderecos": "110 ", "percentual": "11,3%" },
- { "separador": "Nayra Maria Santos Souza ","pedidos": "6 ", "enderecos": "46 ", "percentual": "3,2%" },
- { "separador": "Raquel Ferreira ","pedidos": "17 ", "enderecos": "165 ", "percentual": "9,1%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "14 ", "enderecos": "96 ", "percentual": "7,5%" },
- { "separador": "Lucas Alves Torres ","pedidos": "2 ", "enderecos": "5 ", "percentual": "1,1%" },
- { "separador": "Silderlan Leal da Silva ","pedidos": "3 ", "enderecos": "8 ", "percentual": "1,6%" },
- { "separador": "Rafael Pereira dos Santos ","pedidos": "2 ", "enderecos": "9 ", "percentual": "1,1%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "6 ", "percentual": "0,5%" },
+ { "separador": "Marcia Cristina Tavares de Almeida ","pedidos": "2 ", "enderecos": "33 ", "percentual": "2,7%" },
+ { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "15 ", "enderecos": "115 ", "percentual": "7,7%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "22 ", "enderecos": "174 ", "percentual": "11,3%" },
+ { "separador": "Debora Correa ","pedidos": "31 ", "enderecos": "119 ", "percentual": "16,0%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "31 ", "percentual": "5,7%" },
+ { "separador": "Valdenice da Silva ","pedidos": "20 ", "enderecos": "118 ", "percentual": "10,3%" },
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "21 ", "enderecos": "140 ", "percentual": "10,8%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "23 ", "enderecos": "119 ", "percentual": "11,9%" },
+ { "separador": "Nayra Maria Santos Souza ","pedidos": "6 ", "enderecos": "46 ", "percentual": "3,1%" },
+ { "separador": "Raquel Ferreira ","pedidos": "17 ", "enderecos": "165 ", "percentual": "8,8%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "15 ", "enderecos": "104 ", "percentual": "7,7%" },
+ { "separador": "Lucas Alves Torres ","pedidos": "2 ", "enderecos": "5 ", "percentual": "1,0%" },
+ { "separador": "Silderlan Leal da Silva ","pedidos": "3 ", "enderecos": "17 ", "percentual": "1,6%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "2 ", "enderecos": "6 ", "percentual": "1,0%" },
+ { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "24 ", "percentual": "0,5%" },
  { "separador": "Jocelio Ventura de Magalhães ","pedidos": "3 ", "enderecos": "10 ", "percentual": "1,6%" }
 
  ],
   "pedidos_pendentes": [
- { "pedido": "698500 ","integrado": "29/06/2026 10:41 ", "status": "falta_conferir ", "cliente": "A   S COMERCIO DE PRODUTOS E MATERIAIS HOSPITALARE" },
- { "pedido": "698864 ","integrado": "29/06/2026 11:17 ", "status": "falta_conferir ", "cliente": "FRONTMED LTDA" },
- { "pedido": "698605 ","integrado": "29/06/2026 11:19 ", "status": "falta_conferir ", "cliente": "MEDSET SOLUCOES PARA SAUDE LTDA" }
+ { "pedido": "698882 ","integrado": "29/06/2026 12:05 ", "status": "falta_conferir ", "cliente": "BEDALAB LABORATORIO DE ANALISES CLINICAS LTDA" }
+
+
 
 
 
