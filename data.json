@@ -1,10 +1,10 @@
 {
-  "atualizacao": "29/06/2026 08:57",
+  "atualizacao": "29/06/2026 09:10",
 
   "cards": {
     "falta_separar": 0,
-    "falta_conferir": 4,
-    "em_execucao": 6,
+    "falta_conferir": 5,
+    "em_execucao": 5,
     "total_pendente": 10,
     "concluido": 140,
     "total_pedidos": 150
@@ -28,10 +28,10 @@
  ],
   "pedidos_pendentes": [
  { "pedido": "698739 ","integrado": "26/06/2026 19:33 ", "status": "falta_conferir ", "cliente": "ANIRAM DISTRIBUIDORA DE MEDICAMENTOS E SERVICOS DE" },
- { "pedido": "698792 ","integrado": "26/06/2026 19:33 ", "status": "falta_conferir ", "cliente": "NORTELAB COMERCIO ATACADISTA  DE PRODUTOS LABORATO" },
  { "pedido": "698798 ","integrado": "26/06/2026 19:33 ", "status": "falta_conferir ", "cliente": "NNM SOUZA COMERCIO DE MATERIAIS MEDICOS  HOSPITALA" },
- { "pedido": "698802 ","integrado": "29/06/2026 08:18 ", "status": "falta_conferir ", "cliente": "ZINDA VASCONCELLOS" }
-
+ { "pedido": "698802 ","integrado": "29/06/2026 08:18 ", "status": "falta_conferir ", "cliente": "ZINDA VASCONCELLOS" },
+ { "pedido": "698804 ","integrado": "29/06/2026 08:38 ", "status": "falta_conferir ", "cliente": "LSI S A" },
+ { "pedido": "698808 ","integrado": "29/06/2026 08:46 ", "status": "falta_conferir ", "cliente": "RIO DE JANEIRO MEDICINA LABORATORIAL LTDA" }
 
 
 
