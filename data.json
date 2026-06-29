@@ -1,36 +1,36 @@
 {
-  "atualizacao": "29/06/2026 12:26",
+  "atualizacao": "29/06/2026 12:44",
 
   "cards": {
     "falta_separar": 0,
-    "falta_conferir": 1,
-    "em_execucao": 9,
-    "total_pendente": 10,
-    "concluido": 179,
-    "total_pedidos": 189
+    "falta_conferir": 0,
+    "em_execucao": 2,
+    "total_pendente": 2,
+    "concluido": 41,
+    "total_pedidos": 43
   },
 
   "produtividade": [
- { "separador": "Marcia Cristina Tavares de Almeida ","pedidos": "2 ", "enderecos": "33 ", "percentual": "2,7%" },
- { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "15 ", "enderecos": "115 ", "percentual": "7,7%" },
- { "separador": "Karina Aparecida De Souza ","pedidos": "22 ", "enderecos": "174 ", "percentual": "11,3%" },
- { "separador": "Debora Correa ","pedidos": "31 ", "enderecos": "119 ", "percentual": "16,0%" },
- { "separador": "Rafael dos Santos Francisco ","pedidos": "11 ", "enderecos": "31 ", "percentual": "5,7%" },
- { "separador": "Valdenice da Silva ","pedidos": "20 ", "enderecos": "118 ", "percentual": "10,3%" },
- { "separador": "Waldenice de Socorro Brito ","pedidos": "21 ", "enderecos": "140 ", "percentual": "10,8%" },
- { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "23 ", "enderecos": "119 ", "percentual": "11,9%" },
- { "separador": "Nayra Maria Santos Souza ","pedidos": "6 ", "enderecos": "46 ", "percentual": "3,1%" },
- { "separador": "Raquel Ferreira ","pedidos": "17 ", "enderecos": "165 ", "percentual": "8,8%" },
- { "separador": "Rosana Ribeiro Morais ","pedidos": "15 ", "enderecos": "104 ", "percentual": "7,7%" },
- { "separador": "Lucas Alves Torres ","pedidos": "2 ", "enderecos": "5 ", "percentual": "1,0%" },
- { "separador": "Silderlan Leal da Silva ","pedidos": "3 ", "enderecos": "17 ", "percentual": "1,6%" },
- { "separador": "Rafael Pereira dos Santos ","pedidos": "2 ", "enderecos": "6 ", "percentual": "1,0%" },
- { "separador": "SYTHEX ","pedidos": "1 ", "enderecos": "24 ", "percentual": "0,5%" },
- { "separador": "Jocelio Ventura de Magalhães ","pedidos": "3 ", "enderecos": "10 ", "percentual": "1,6%" }
+ { "separador": "Waldenice de Socorro Brito ","pedidos": "5 ", "enderecos": "48 ", "percentual": "17,5%" },
+ { "separador": "Rosana Ribeiro Morais ","pedidos": "9 ", "enderecos": "54 ", "percentual": "20,5%" },
+ { "separador": "Rafael dos Santos Francisco ","pedidos": "3 ", "enderecos": "8 ", "percentual": "6,8%" },
+ { "separador": "Karina Aparecida De Souza ","pedidos": "7 ", "enderecos": "26 ", "percentual": "15,9%" },
+ { "separador": "Valdenice da Silva ","pedidos": "5 ", "enderecos": "29 ", "percentual": "11,4%" },
+ { "separador": "JOSIANE FERREIRA SERAFIM ","pedidos": "4 ", "enderecos": "45 ", "percentual": "9,1%" },
+ { "separador": "Lucas Alves Torres ","pedidos": "1 ", "enderecos": "1 ", "percentual": "2,3%" },
+ { "separador": "Maria Rosinete Gomes dos Santos ","pedidos": "4 ", "enderecos": "40 ", "percentual": "9,1%" },
+ { "separador": "Debora Correa ","pedidos": "3 ", "enderecos": "8 ", "percentual": "6,8%" },
+ { "separador": "Silderlan Leal da Silva ","pedidos": "1 ", "enderecos": "9 ", "percentual": "2,3%" },
+ { "separador": "Rafael Pereira dos Santos ","pedidos": "2 ", "enderecos": "6 ", "percentual": "4,6%" }
+
+
+
+
+
 
  ],
   "pedidos_pendentes": [
- { "pedido": "698882 ","integrado": "29/06/2026 12:05 ", "status": "falta_conferir ", "cliente": "BEDALAB LABORATORIO DE ANALISES CLINICAS LTDA" }
+
 
 
 
